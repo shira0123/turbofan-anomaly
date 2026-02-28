@@ -2,3 +2,5 @@ data/raw/
 data/processed/
 models/
 .venv/
+__pycache__/
+*.pyc
