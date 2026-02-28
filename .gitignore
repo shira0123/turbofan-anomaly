@@ -34,7 +34,8 @@ models/
 # Logs & Experiments
 # =========================
 logs/
-experiments/
+experiments/*
+!experiments/experiments.csv
 *.log
 *.json
 
