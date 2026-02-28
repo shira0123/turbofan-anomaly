@@ -1,0 +1,2 @@
+run_id,datetime,owner,experiment_name,model,params,train_size,valid_size,metric_name,metric_value,notes,artifact_path
+run_000,2025-07-09,shivam,smoke_lstm,ae_smoke,"{'hidden':64,'latent':16,'batch':16}",200,50,avg_recon_loss,0.012,smoke run,models/lstm_ae_smoke.pt
