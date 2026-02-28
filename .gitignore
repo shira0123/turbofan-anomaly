@@ -1,6 +1,58 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# =========================
+# Data (NEVER PUSH RAW DATA)
+# =========================
 data/raw/
 data/processed/
+*.npy
+*.npz
+*.csv
+*.parquet
+
+# =========================
+# Models & Checkpoints
+# =========================
 models/
-.venv/
-__pycache__/
-*.pyc
+*.pt
+*.pth
+*.pkl
+*.joblib
+*.ckpt
+
+# =========================
+# Logs & Experiments
+# =========================
+logs/
+experiments/
+*.log
+*.json
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# IDE / OS
+# =========================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.*
