@@ -15,15 +15,15 @@ env/
 # =========================
 data/raw/
 data/processed/
+data/splits/
 *.npy
 *.npz
-*.csv
 *.parquet
 
 # =========================
 # Models & Checkpoints
 # =========================
-models/
+/models/
 *.pt
 *.pth
 *.pkl

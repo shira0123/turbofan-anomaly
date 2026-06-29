@@ -1,8 +1,7 @@
 # Turbofan Anomaly Detection
 
 Short project summary:
-- Goal: Detect early anomalies in turbofan engines using domain-adaptive LSTM autoencoders + adaptive thresholding + SHAP explanations.
-- Phase plan: See MASTER_EXECUTION_BIBLE.md (source of truth).
+- Goal: Detect early anomalies in turbofan engines using context-aware preprocessing and anomaly models.
 
 Quick start (Windows PowerShell):
 ```powershell
@@ -14,25 +13,25 @@ python -m scripts.make_splits
 python -m scripts.fit_domain_adapter_and_save
 python -m scripts.transform_and_save_processed
 python -m scripts.create_sequences_save
+python -m scripts.run_eda
+python -m scripts.run_baselines
 python -m scripts.train_lstm_smoke
+```
+
+Analysis artifacts:
+- EDA reports: reports/eda/
+- Baseline metrics: reports/baselines/baseline_metrics.csv
+- Experiment ledger: experiments/experiments.csv
+
 Artifacts (local, not committed):
-
-data/raw/ (raw dataset; DO NOT COMMIT)
-
-data/processed/ (processed csvs and npy files)
-
-models/ (saved scalers, kmeans, model checkpoints)
+- data/raw/ (raw dataset; do not commit)
+- data/processed/ (processed csv and npy files)
+- models/ (saved scalers, kmeans, model checkpoints)
 
 Where to find docs:
-
-MASTER_EXECUTION_BIBLE.md (project plan)
-
-PROGRESS.md (progress tracker)
-
-DECISION_LOG.md (decisions & rationale)
-
-experiments/experiments.csv (experiment ledger)
+- PROGRESS.md (progress tracker)
+- DECISION_LOG.md (decisions and rationale)
+- experiments/experiments.csv (experiment ledger)
 
 Contact:
-
-Data & Modeling Lead: Shivam Rajput (@shira0123)
+- Data and Modeling Lead: Shivam Rajput (@shira0123)
