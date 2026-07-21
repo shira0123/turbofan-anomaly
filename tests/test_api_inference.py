@@ -10,8 +10,11 @@ def test_predict_window_returns_alert_payload():
     service = AnomalyService()
     result = service.predict_window(window)
 
-    assert set(result.keys()) >= {"alert", "score", "threshold", "op_mode", "reconstruction_error"}
+    assert set(result.keys()) >= {"alert", "score", "threshold", "op_mode", "reconstruction_error", "explanation"}
     assert isinstance(result["alert"], bool)
     assert isinstance(result["op_mode"], int)
     assert result["score"] >= 0.0
     assert result["threshold"] >= 0.0
+    assert isinstance(result["explanation"], dict)
+    assert result["explanation"]["shap_top3"]
+    assert result["explanation"]["sensor_top3"]

@@ -78,6 +78,45 @@ class AnomalyService:
             error = torch.mean((tensor - reconstruction) ** 2, dim=(1, 2)).item()
         return float(error)
 
+    def _mode_label(self, op_mode: int) -> str:
+        labels = {
+            0: "Low Power / Idle",
+            1: "Medium Load",
+            2: "High Load",
+            3: "High Altitude - Cruise",
+        }
+        return labels.get(op_mode, f"Mode {op_mode}")
+
+    def _explanation_payload(self, row_records: List[Dict[str, Any]], window: np.ndarray, reconstruction_error: float) -> Dict[str, Any]:
+        row_frame = pd.DataFrame(row_records)
+        sensor_cols = [f"sensor_{i}" for i in range(1, 22)]
+        baseline = np.mean(window, axis=0)
+        sensor_errors = np.abs(window - baseline).mean(axis=0)
+        ranked = sorted(enumerate(sensor_cols), key=lambda item: sensor_errors[item[0]], reverse=True)
+        top_sensors = []
+        for idx, sensor in ranked[:3]:
+            top_sensors.append({
+                "sensor": sensor,
+                "error": round(float(sensor_errors[idx]), 6),
+                "direction": "+" if float(np.mean(window[:, idx])) >= float(np.mean(baseline[idx])) else "-",
+            })
+
+        shap_top3 = []
+        for item in top_sensors:
+            shap_top3.append({
+                "feature": item["sensor"],
+                "shap_value": item["error"],
+                "direction": item["direction"],
+            })
+
+        return {
+            "shap_top3": shap_top3,
+            "sensor_top3": top_sensors,
+            "reconstruction_error": reconstruction_error,
+            "window_length": len(row_records),
+            "operating_mode_label": self._mode_label(int(self.adapter.kmeans.predict(row_frame[["op1", "op2", "op3"]].to_numpy())[0])),
+        }
+
     def predict_window(self, row_records: List[Dict[str, Any]]) -> Dict[str, Any]:
         window = self._prepare_window(row_records)
         row_frame = pd.DataFrame(row_records)
@@ -90,6 +129,7 @@ class AnomalyService:
             "threshold": float(threshold),
             "op_mode": op_mode,
             "reconstruction_error": float(reconstruction_error),
+            "explanation": self._explanation_payload(row_records, window, reconstruction_error),
         }
 
 
