@@ -1,1 +1,60 @@
-".venv/" 
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# =========================
+# Data (NEVER PUSH RAW DATA)
+# =========================
+data/raw/
+data/processed/
+data/splits/
+*.npy
+*.npz
+*.parquet
+
+# =========================
+# Models & Checkpoints
+# =========================
+/models/
+*.pt
+*.pth
+*.pkl
+*.joblib
+*.ckpt
+
+# =========================
+# Logs & Experiments
+# =========================
+logs/
+experiments/*
+!experiments/experiments.csv
+*.log
+*.json
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# IDE / OS
+# =========================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+copilot_codex_guidance.md
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.*
