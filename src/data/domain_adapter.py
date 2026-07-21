@@ -29,10 +29,12 @@ class OperatingConditionNormalizer:
         df_local = df.copy()
         df_local['op_mode'] = self.kmeans.predict(df_local[self.op_cols].values)
         sensor_cols = [c for c in df_local.columns if c.startswith('sensor_')]
+        df_local[sensor_cols] = df_local[sensor_cols].astype(float)
         for mode, scaler in self.scalers_per_mode.items():
             mask = df_local.op_mode == mode
             if mask.sum() > 0:
-                df_local.loc[mask, sensor_cols] = scaler.transform(df_local.loc[mask, sensor_cols])
+                mode_slice = df_local.loc[mask, sensor_cols].astype(float)
+                df_local.loc[mask, sensor_cols] = scaler.transform(mode_slice)
         return df_local
 
     def fit_transform(self, df):

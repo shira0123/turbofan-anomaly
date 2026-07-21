@@ -25,3 +25,7 @@ This file records major design decisions, why they were made, and who decided.
 ## 2026-06-27 - Unified baseline metrics policy
 **Who:** Team  
 **Why:** Standardize baseline comparison using ROC-AUC, Precision@K, False Alarm Rate, and Detection Delay/Coverage to ensure model tradeoffs are visible before thresholding and explainability phases.
+
+## 2026-07-21 - Inference API and adaptive-threshold checkpoint
+**Who:** Shivam  
+**Why:** Move the project from training-only scripts to an end-to-end prediction path and preserve the adaptive-threshold work as a validated, reusable checkpoint before the next explainability milestone.

@@ -1,16 +1,21 @@
 # PROGRESS - Turbofan Anomaly Project
 
-Last updated: 2026-06-29
+Last updated: 2026-07-21
 
 ## Summary (one-line)
-Phase 2 is formally complete. EDA and baseline evaluation are finished, artifacts are generated, and baseline metrics are logged.
+Phase 2 and the initial Phase 3/4 implementation are now in place, with an inference API checkpoint added and adaptive-threshold calibration completed.
+
+## Current checkpoint (2026-07-21)
+- Added a working inference service that loads trained artifacts and returns anomaly predictions.
+- Implemented adaptive-threshold calibration and saved the threshold artifact for later evaluation.
+- Logged the current experiment runs and documented the implementation state.
 
 ## Roadmap Status
 - Phase 0: Complete
 - Phase 1: Complete
 - Phase 2: Complete
-- Phase 3: Pending
-- Phase 4: Pending
+- Phase 3: In progress
+- Phase 4: In progress
 - Phase 5: Pending
 - Phase 6: Pending
 
@@ -44,6 +49,30 @@ Phase 2 is formally complete. EDA and baseline evaluation are finished, artifact
 - EDA outputs are present under reports/eda/.
 - Baseline comparison is present in reports/baselines/baseline_metrics.csv.
 - Baseline experiments are logged in experiments/experiments.csv.
+
+## Added This Cycle (Phase 3 start)
+- src/models/lstm_ae.py
+	- LSTM encoder/decoder autoencoder for [batch, time, sensors] inputs
+	- Configurable hidden, latent, layer, and dropout dimensions
+- scripts/train_lstm_smoke.py
+	- Healthy-window training pipeline
+	- Checkpoint saving to models/
+	- Training curve export to reports/lstm_ae/
+	- Experiment logging to experiments/experiments.csv
+	- CLI switches for smoke and full runs
+- scripts/export_lstm_scores.py
+	- Loads the latest or explicit LSTM checkpoint
+	- Exports per-window reconstruction errors to reports/lstm_ae/
+	- Writes a summary CSV for thresholding and calibration
+
+## Added This Cycle (Phase 4 start)
+- src/thresholding/adaptive_threshold.py
+	- EWMA-based, per-mode threshold engine
+	- Sustained violation handling and optional online background adaptation
+- scripts/fit_adaptive_threshold.py
+	- Calibrates per-mode thresholds from reconstruction scores
+	- Saves threshold artifact to models/
+	- Writes threshold summary to reports/lstm_ae/
 
 ## Next (priority order)
 1. Begin Phase 3 LSTM autoencoder training pipeline using the same windowing assumptions.

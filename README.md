@@ -16,11 +16,14 @@ python -m scripts.create_sequences_save
 python -m scripts.run_eda
 python -m scripts.run_baselines
 python -m scripts.train_lstm_smoke
+python -m scripts.export_lstm_scores
+python -m scripts.fit_adaptive_threshold
 ```
 
 Analysis artifacts:
 - EDA reports: reports/eda/
 - Baseline metrics: reports/baselines/baseline_metrics.csv
+- LSTM AE reports: reports/lstm_ae/
 - Experiment ledger: experiments/experiments.csv
 
 Artifacts (local, not committed):
