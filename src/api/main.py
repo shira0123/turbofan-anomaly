@@ -144,9 +144,12 @@ def health() -> Dict[str, Any]:
 
 @app.post("/predict")
 def predict(payload: Dict[str, Any]) -> Dict[str, Any]:
+    row = payload.get("row")
     rows = payload.get("rows", [])
+    if row is not None:
+        rows = [row]
     if not rows:
-        return {"alert": False, "score": 0.0, "threshold": 0.0, "op_mode": -1, "reconstruction_error": 0.0}
+        return {"alert": False, "score": 0.0, "threshold": 0.0, "op_mode": -1, "reconstruction_error": 0.0, "explanation": {"shap_top3": [], "sensor_top3": []}}
     return service.predict_window(rows)
 
 
