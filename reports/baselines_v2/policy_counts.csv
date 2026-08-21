@@ -1,0 +1,6 @@
+policy_id,policy_semantics,selection_policy,healthy_windows,ambiguous_windows,anomalous_windows
+normalized_life_last_10pct_endpoint,endpoint,True,8253,0,1112
+normalized_life_last_20pct_endpoint,endpoint,True,7170,0,2195
+normalized_life_last_30pct_endpoint,endpoint,True,6075,0,3290
+normalized_life_last_20pct_full_window,full_window,False,7170,1505,690
+normalized_life_last_30pct_full_window,full_window,False,6075,1508,1782

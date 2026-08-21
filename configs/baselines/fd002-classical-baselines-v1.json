@@ -1,0 +1,205 @@
+{
+  "candidate_grid": {
+    "isolation_forest": [
+      {
+        "max_samples": 256,
+        "n_estimators": 300
+      },
+      {
+        "max_samples": 1024,
+        "n_estimators": 300
+      },
+      {
+        "max_samples": 5000,
+        "n_estimators": 300
+      }
+    ],
+    "lof": [
+      {
+        "n_neighbors": 20
+      },
+      {
+        "n_neighbors": 35
+      },
+      {
+        "n_neighbors": 50
+      }
+    ],
+    "one_class_svm": [
+      {
+        "gamma": "scale",
+        "nu": 0.01
+      },
+      {
+        "gamma": "scale",
+        "nu": 0.05
+      },
+      {
+        "gamma": "scale",
+        "nu": 0.1
+      }
+    ],
+    "pca": [
+      {
+        "n_components": 0.9
+      },
+      {
+        "n_components": 0.95
+      },
+      {
+        "n_components": 0.99
+      }
+    ]
+  },
+  "feature_definition": {
+    "input_shape": [
+      30,
+      21
+    ],
+    "name": "mean_std_end_minus_start_per_sensor",
+    "output_features": 63
+  },
+  "inputs": {
+    "preprocessed_csv_sha256": {
+      "p0_global": {
+        "train": "5296840dbce62d1ed372c333fe3d990d9f2b55c798c77b092578f285bff34bc5",
+        "validation": "b39bf1101f309f73c5b79c432f053bd7b0744b0ea9abdbebfada67ef1493c6bc"
+      },
+      "p1_k6": {
+        "train": "dd58e35cc81289fbc372797896636cbe30ccf2bdac5c3b45439e754d1b586441",
+        "validation": "9918273195cedaaafe3287189256cc8042a7a50d6280e736c6278c5ba1e8d7e7"
+      }
+    },
+    "preprocessing_selection_sha256": "4b71af5fd51cea9b90feda09e8d85ba502690e31efb3469fe20ad19482565086",
+    "split_manifest_sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327",
+    "test_data_opened_by_study": false,
+    "window_metadata_train_sha256": "a6a006e3d2dd1e6200a8fb9cbfdd8aabb82526c027368af8fb6aa5cd46574f19",
+    "window_metadata_validation_sha256": "440fe967beb833f575379fd9f3d589e50858a5ae950da1a42ef469f93ef2618e"
+  },
+  "outputs": {
+    "models_dir": "models\\baselines_v2",
+    "report_sha256": {
+      "model_selection": "9fd989c48f03e3bd9f0e1ef1da79df7d38d49d1e64d184bb180803bcebef666b",
+      "policy_counts": "ee4a2b68c172107ea7961bfceefed339123df02152ef5dc469f17c4ea7da4402",
+      "selected_models": "c4ad604a12bb4cf376c474bf22bf25c49a35202b60f022eb49399e879dfdcc9a",
+      "validation_scores": "00e766880bb99c31656d1f10bd968590f0b94cb35e215d1e60299783aceed9ee"
+    },
+    "reports": {
+      "model_selection": "reports\\baselines_v2\\model_selection.csv",
+      "policy_counts": "reports\\baselines_v2\\policy_counts.csv",
+      "selected_models": "reports\\baselines_v2\\selected_models.csv",
+      "validation_scores": "reports\\baselines_v2\\validation_scores.csv"
+    },
+    "selected_model_sha256": {
+      "p0_global": {
+        "isolation_forest": "c2545d09c4299bcb1ed9b0c6ca519f64e50243281f68a4ff8b5803b08a6f64d6",
+        "lof": "2fef7a288136bd197e90470d86a35f05579a89711bed8b890b697f6435c4c6a1",
+        "one_class_svm": "a519678c39f74e207292ed2abf76fabf0f3fcf11e34deea9fc61a773dfcbe8d0",
+        "pca": "a0fd7dc5e9a6ddfa35c5b10f3c6a23250d0983a0c752acb0162c9b32885ff8af"
+      },
+      "p1_k6": {
+        "isolation_forest": "30d3072ddeea65f6314f45c02ba76e7c21ec9987b99955fa52d8300adaeed0db",
+        "lof": "4ecc629adfdf54a76e803f4941ab95158879283a74026c06b9b7ec44389a671b",
+        "one_class_svm": "88cea19737b712f0116b97673ac935b759bfae7cc155789ac8dd07b789247cd5",
+        "pca": "e575365a33109dbb586753f9b3768b9f2ff3ada519debc1582f0ca916cbf02e0"
+      }
+    },
+    "sequence_sha256": {
+      "p0_global": {
+        "train": "0e19d1aaabd17f167ed65a0dab77ab7ae966fc45fba1edec0c99647008376582",
+        "validation": "28b68d1efc6bde51f2b35f644dd96c9bd4384ea9be3eae5fd1d56dc4aedf8f61"
+      },
+      "p1_k6": {
+        "train": "b334c60a9f8280305874a8671ef6b43104e2644c5762eecb55b99b291769867e",
+        "validation": "a3ed2d89d7ff36daba68fb6f8eaa69ee92e12ff1264d393cf904d0d698cb58ec"
+      }
+    },
+    "sequences_dir": "data\\processed\\sequences_v2",
+    "test_outputs_created": false
+  },
+  "package_versions": {
+    "joblib": "1.5.3",
+    "numpy": "2.4.2",
+    "pandas": "3.0.1",
+    "python": "3.12.8",
+    "scikit_learn": "1.8.0"
+  },
+  "pipelines": [
+    "p0_global",
+    "p1_k6"
+  ],
+  "policies": [
+    {
+      "onset_fraction": 0.1,
+      "policy_id": "normalized_life_last_10pct_endpoint",
+      "selection_policy": true,
+      "semantics": "endpoint"
+    },
+    {
+      "onset_fraction": 0.2,
+      "policy_id": "normalized_life_last_20pct_endpoint",
+      "selection_policy": true,
+      "semantics": "endpoint"
+    },
+    {
+      "onset_fraction": 0.3,
+      "policy_id": "normalized_life_last_30pct_endpoint",
+      "selection_policy": true,
+      "semantics": "endpoint"
+    },
+    {
+      "onset_fraction": 0.2,
+      "policy_id": "normalized_life_last_20pct_full_window",
+      "selection_policy": false,
+      "semantics": "full_window"
+    },
+    {
+      "onset_fraction": 0.3,
+      "policy_id": "normalized_life_last_30pct_full_window",
+      "selection_policy": false,
+      "semantics": "full_window"
+    }
+  ],
+  "preprocessing_decision_id": "fd002-preprocessing-selection-v1",
+  "random_state": 42,
+  "result_classification": "validation_model_selection_not_test_performance",
+  "selection_rule": {
+    "primary": "maximum_mean_validation_pr_auc_across_three_endpoint_policies",
+    "threshold_selected": false,
+    "tie_break_1": "maximum_mean_validation_roc_auc",
+    "tie_break_2": "candidate_id_lexicographic"
+  },
+  "sequence_shapes": {
+    "p0_global": {
+      "train": [
+        27583,
+        30,
+        21
+      ],
+      "validation": [
+        9365,
+        30,
+        21
+      ]
+    },
+    "p1_k6": {
+      "train": [
+        27583,
+        30,
+        21
+      ],
+      "validation": [
+        9365,
+        30,
+        21
+      ]
+    }
+  },
+  "split_manifest_id": "fd002-primary-v1",
+  "study_id": "fd002-classical-baselines-v1",
+  "training_policy": {
+    "fit_windows": 5037,
+    "healthy_fraction": 0.3,
+    "non_fit_training_windows_interpretation": "unlabeled_not_known_anomaly"
+  }
+}
