@@ -7,15 +7,14 @@ __pycache__/
 
 # Virtual Environment
 .venv/
+.venve/
 venv/
 env/
 
 # =========================
-# Data (NEVER PUSH RAW DATA)
+# Data (NEVER PUSH RAW/PROCESSED DATA)
 # =========================
-data/raw/
-data/processed/
-data/splits/
+data/
 *.npy
 *.npz
 *.parquet
@@ -23,7 +22,7 @@ data/splits/
 # =========================
 # Models & Checkpoints
 # =========================
-/models/
+models/
 *.pt
 *.pth
 *.pkl
@@ -31,17 +30,18 @@ data/splits/
 *.ckpt
 
 # =========================
-# Logs & Experiments
+# Logs, Reports & Experiments
 # =========================
 logs/
-experiments/*
-!experiments/experiments.csv
+reports/
+experiments/
 *.log
 *.json
 
 # =========================
 # Jupyter
 # =========================
+notebooks/
 .ipynb_checkpoints/
 
 # =========================
