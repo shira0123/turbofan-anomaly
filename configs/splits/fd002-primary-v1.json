@@ -1,0 +1,1870 @@
+{
+  "artifact_policy": {
+    "artifacts_without_matching_manifest_id": "legacy_incompatible_with_validation_or_test",
+    "required_split_manifest_id": "fd002-primary-v1"
+  },
+  "dataset": {
+    "columns": 26,
+    "engines": 260,
+    "path": "data/raw/train_FD002.txt",
+    "rows": 53759,
+    "sha256": "bc1d293b8dc6173c1bfb0fff64fe797c2cde35dbb1a1a075dae8ca1177b49a52"
+  },
+  "engines": [
+    {
+      "cycle_count": 149,
+      "engine": 1,
+      "max_cycle": 149,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 269,
+      "engine": 2,
+      "max_cycle": 269,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 206,
+      "engine": 3,
+      "max_cycle": 206,
+      "split": "test",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 235,
+      "engine": 4,
+      "max_cycle": 235,
+      "split": "test",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 154,
+      "engine": 5,
+      "max_cycle": 154,
+      "split": "validation",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 175,
+      "engine": 6,
+      "max_cycle": 175,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 174,
+      "engine": 7,
+      "max_cycle": 174,
+      "split": "validation",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 151,
+      "engine": 8,
+      "max_cycle": 151,
+      "split": "validation",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 199,
+      "engine": 9,
+      "max_cycle": 199,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 184,
+      "engine": 10,
+      "max_cycle": 184,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 271,
+      "engine": 11,
+      "max_cycle": 271,
+      "split": "test",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 249,
+      "engine": 12,
+      "max_cycle": 249,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 227,
+      "engine": 13,
+      "max_cycle": 227,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 193,
+      "engine": 14,
+      "max_cycle": 193,
+      "split": "validation",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 209,
+      "engine": 15,
+      "max_cycle": 209,
+      "split": "test",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 154,
+      "engine": 16,
+      "max_cycle": 154,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 180,
+      "engine": 17,
+      "max_cycle": 180,
+      "split": "validation",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 209,
+      "engine": 18,
+      "max_cycle": 209,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 163,
+      "engine": 19,
+      "max_cycle": 163,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 154,
+      "engine": 20,
+      "max_cycle": 154,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 189,
+      "engine": 21,
+      "max_cycle": 189,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 192,
+      "engine": 22,
+      "max_cycle": 192,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 211,
+      "engine": 23,
+      "max_cycle": 211,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 191,
+      "engine": 24,
+      "max_cycle": 191,
+      "split": "validation",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 205,
+      "engine": 25,
+      "max_cycle": 205,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 187,
+      "engine": 26,
+      "max_cycle": 187,
+      "split": "validation",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 176,
+      "engine": 27,
+      "max_cycle": 176,
+      "split": "validation",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 200,
+      "engine": 28,
+      "max_cycle": 200,
+      "split": "test",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 151,
+      "engine": 29,
+      "max_cycle": 151,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 166,
+      "engine": 30,
+      "max_cycle": 166,
+      "split": "validation",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 343,
+      "engine": 31,
+      "max_cycle": 343,
+      "split": "test",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 281,
+      "engine": 32,
+      "max_cycle": 281,
+      "split": "validation",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 195,
+      "engine": 33,
+      "max_cycle": 195,
+      "split": "test",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 205,
+      "engine": 34,
+      "max_cycle": 205,
+      "split": "test",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 196,
+      "engine": 35,
+      "max_cycle": 196,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 203,
+      "engine": 36,
+      "max_cycle": 203,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 210,
+      "engine": 37,
+      "max_cycle": 210,
+      "split": "test",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 177,
+      "engine": 38,
+      "max_cycle": 177,
+      "split": "test",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 214,
+      "engine": 39,
+      "max_cycle": 214,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 193,
+      "engine": 40,
+      "max_cycle": 193,
+      "split": "test",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 262,
+      "engine": 41,
+      "max_cycle": 262,
+      "split": "validation",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 221,
+      "engine": 42,
+      "max_cycle": 221,
+      "split": "validation",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 211,
+      "engine": 43,
+      "max_cycle": 211,
+      "split": "test",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 205,
+      "engine": 44,
+      "max_cycle": 205,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 151,
+      "engine": 45,
+      "max_cycle": 151,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 201,
+      "engine": 46,
+      "max_cycle": 201,
+      "split": "validation",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 246,
+      "engine": 47,
+      "max_cycle": 246,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 239,
+      "engine": 48,
+      "max_cycle": 239,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 168,
+      "engine": 49,
+      "max_cycle": 168,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 222,
+      "engine": 50,
+      "max_cycle": 222,
+      "split": "test",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 293,
+      "engine": 51,
+      "max_cycle": 293,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 174,
+      "engine": 52,
+      "max_cycle": 174,
+      "split": "validation",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 148,
+      "engine": 53,
+      "max_cycle": 148,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 199,
+      "engine": 54,
+      "max_cycle": 199,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 159,
+      "engine": 55,
+      "max_cycle": 159,
+      "split": "test",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 163,
+      "engine": 56,
+      "max_cycle": 163,
+      "split": "test",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 140,
+      "engine": 57,
+      "max_cycle": 140,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 162,
+      "engine": 58,
+      "max_cycle": 162,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 194,
+      "engine": 59,
+      "max_cycle": 194,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 177,
+      "engine": 60,
+      "max_cycle": 177,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 218,
+      "engine": 61,
+      "max_cycle": 218,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 184,
+      "engine": 62,
+      "max_cycle": 184,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 168,
+      "engine": 63,
+      "max_cycle": 168,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 282,
+      "engine": 64,
+      "max_cycle": 282,
+      "split": "test",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 206,
+      "engine": 65,
+      "max_cycle": 206,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 170,
+      "engine": 66,
+      "max_cycle": 170,
+      "split": "validation",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 145,
+      "engine": 67,
+      "max_cycle": 145,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 185,
+      "engine": 68,
+      "max_cycle": 185,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 136,
+      "engine": 69,
+      "max_cycle": 136,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 156,
+      "engine": 70,
+      "max_cycle": 156,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 194,
+      "engine": 71,
+      "max_cycle": 194,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 196,
+      "engine": 72,
+      "max_cycle": 196,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 239,
+      "engine": 73,
+      "max_cycle": 239,
+      "split": "validation",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 158,
+      "engine": 74,
+      "max_cycle": 158,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 231,
+      "engine": 75,
+      "max_cycle": 231,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 244,
+      "engine": 76,
+      "max_cycle": 244,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 185,
+      "engine": 77,
+      "max_cycle": 185,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 161,
+      "engine": 78,
+      "max_cycle": 161,
+      "split": "test",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 181,
+      "engine": 79,
+      "max_cycle": 181,
+      "split": "test",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 221,
+      "engine": 80,
+      "max_cycle": 221,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 288,
+      "engine": 81,
+      "max_cycle": 288,
+      "split": "validation",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 200,
+      "engine": 82,
+      "max_cycle": 200,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 170,
+      "engine": 83,
+      "max_cycle": 170,
+      "split": "test",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 259,
+      "engine": 84,
+      "max_cycle": 259,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 347,
+      "engine": 85,
+      "max_cycle": 347,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 190,
+      "engine": 86,
+      "max_cycle": 190,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 170,
+      "engine": 87,
+      "max_cycle": 170,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 365,
+      "engine": 88,
+      "max_cycle": 365,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 188,
+      "engine": 89,
+      "max_cycle": 188,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 188,
+      "engine": 90,
+      "max_cycle": 188,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 245,
+      "engine": 91,
+      "max_cycle": 245,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 188,
+      "engine": 92,
+      "max_cycle": 188,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 189,
+      "engine": 93,
+      "max_cycle": 189,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 306,
+      "engine": 94,
+      "max_cycle": 306,
+      "split": "validation",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 198,
+      "engine": 95,
+      "max_cycle": 198,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 208,
+      "engine": 96,
+      "max_cycle": 208,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 145,
+      "engine": 97,
+      "max_cycle": 145,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 167,
+      "engine": 98,
+      "max_cycle": 167,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 202,
+      "engine": 99,
+      "max_cycle": 202,
+      "split": "test",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 212,
+      "engine": 100,
+      "max_cycle": 212,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 211,
+      "engine": 101,
+      "max_cycle": 211,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 164,
+      "engine": 102,
+      "max_cycle": 164,
+      "split": "validation",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 280,
+      "engine": 103,
+      "max_cycle": 280,
+      "split": "test",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 228,
+      "engine": 104,
+      "max_cycle": 228,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 303,
+      "engine": 105,
+      "max_cycle": 303,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 272,
+      "engine": 106,
+      "max_cycle": 272,
+      "split": "validation",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 145,
+      "engine": 107,
+      "max_cycle": 145,
+      "split": "test",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 156,
+      "engine": 108,
+      "max_cycle": 156,
+      "split": "test",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 220,
+      "engine": 109,
+      "max_cycle": 220,
+      "split": "validation",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 221,
+      "engine": 110,
+      "max_cycle": 221,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 200,
+      "engine": 111,
+      "max_cycle": 200,
+      "split": "test",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 378,
+      "engine": 112,
+      "max_cycle": 378,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 232,
+      "engine": 113,
+      "max_cycle": 232,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 203,
+      "engine": 114,
+      "max_cycle": 203,
+      "split": "validation",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 206,
+      "engine": 115,
+      "max_cycle": 206,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 207,
+      "engine": 116,
+      "max_cycle": 207,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 177,
+      "engine": 117,
+      "max_cycle": 177,
+      "split": "test",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 344,
+      "engine": 118,
+      "max_cycle": 344,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 174,
+      "engine": 119,
+      "max_cycle": 174,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 129,
+      "engine": 120,
+      "max_cycle": 129,
+      "split": "validation",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 210,
+      "engine": 121,
+      "max_cycle": 210,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 185,
+      "engine": 122,
+      "max_cycle": 185,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 226,
+      "engine": 123,
+      "max_cycle": 226,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 267,
+      "engine": 124,
+      "max_cycle": 267,
+      "split": "test",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 168,
+      "engine": 125,
+      "max_cycle": 168,
+      "split": "validation",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 199,
+      "engine": 126,
+      "max_cycle": 199,
+      "split": "validation",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 256,
+      "engine": 127,
+      "max_cycle": 256,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 303,
+      "engine": 128,
+      "max_cycle": 303,
+      "split": "validation",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 202,
+      "engine": 129,
+      "max_cycle": 202,
+      "split": "test",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 182,
+      "engine": 130,
+      "max_cycle": 182,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 280,
+      "engine": 131,
+      "max_cycle": 280,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 183,
+      "engine": 132,
+      "max_cycle": 183,
+      "split": "test",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 159,
+      "engine": 133,
+      "max_cycle": 159,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 247,
+      "engine": 134,
+      "max_cycle": 247,
+      "split": "validation",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 294,
+      "engine": 135,
+      "max_cycle": 294,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 160,
+      "engine": 136,
+      "max_cycle": 160,
+      "split": "test",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 148,
+      "engine": 137,
+      "max_cycle": 148,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 200,
+      "engine": 138,
+      "max_cycle": 200,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 194,
+      "engine": 139,
+      "max_cycle": 194,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 214,
+      "engine": 140,
+      "max_cycle": 214,
+      "split": "validation",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 163,
+      "engine": 141,
+      "max_cycle": 163,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 208,
+      "engine": 142,
+      "max_cycle": 208,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 166,
+      "engine": 143,
+      "max_cycle": 166,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 224,
+      "engine": 144,
+      "max_cycle": 224,
+      "split": "validation",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 251,
+      "engine": 145,
+      "max_cycle": 251,
+      "split": "test",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 263,
+      "engine": 146,
+      "max_cycle": 263,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 207,
+      "engine": 147,
+      "max_cycle": 207,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 279,
+      "engine": 148,
+      "max_cycle": 279,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 289,
+      "engine": 149,
+      "max_cycle": 289,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 222,
+      "engine": 150,
+      "max_cycle": 222,
+      "split": "test",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 177,
+      "engine": 151,
+      "max_cycle": 177,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 184,
+      "engine": 152,
+      "max_cycle": 184,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 292,
+      "engine": 153,
+      "max_cycle": 292,
+      "split": "test",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 193,
+      "engine": 154,
+      "max_cycle": 193,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 226,
+      "engine": 155,
+      "max_cycle": 226,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 299,
+      "engine": 156,
+      "max_cycle": 299,
+      "split": "test",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 237,
+      "engine": 157,
+      "max_cycle": 237,
+      "split": "validation",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 308,
+      "engine": 158,
+      "max_cycle": 308,
+      "split": "test",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 241,
+      "engine": 159,
+      "max_cycle": 241,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 212,
+      "engine": 160,
+      "max_cycle": 212,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 224,
+      "engine": 161,
+      "max_cycle": 224,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 194,
+      "engine": 162,
+      "max_cycle": 194,
+      "split": "test",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 203,
+      "engine": 163,
+      "max_cycle": 203,
+      "split": "validation",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 249,
+      "engine": 164,
+      "max_cycle": 249,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 165,
+      "engine": 165,
+      "max_cycle": 165,
+      "split": "validation",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 204,
+      "engine": 166,
+      "max_cycle": 204,
+      "split": "validation",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 232,
+      "engine": 167,
+      "max_cycle": 232,
+      "split": "validation",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 217,
+      "engine": 168,
+      "max_cycle": 217,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 185,
+      "engine": 169,
+      "max_cycle": 185,
+      "split": "test",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 179,
+      "engine": 170,
+      "max_cycle": 179,
+      "split": "test",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 258,
+      "engine": 171,
+      "max_cycle": 258,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 174,
+      "engine": 172,
+      "max_cycle": 174,
+      "split": "validation",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 151,
+      "engine": 173,
+      "max_cycle": 151,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 193,
+      "engine": 174,
+      "max_cycle": 193,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 202,
+      "engine": 175,
+      "max_cycle": 202,
+      "split": "validation",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 164,
+      "engine": 176,
+      "max_cycle": 164,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 181,
+      "engine": 177,
+      "max_cycle": 181,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 148,
+      "engine": 178,
+      "max_cycle": 148,
+      "split": "validation",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 181,
+      "engine": 179,
+      "max_cycle": 181,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 297,
+      "engine": 180,
+      "max_cycle": 297,
+      "split": "validation",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 255,
+      "engine": 181,
+      "max_cycle": 255,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 200,
+      "engine": 182,
+      "max_cycle": 200,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 207,
+      "engine": 183,
+      "max_cycle": 207,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 171,
+      "engine": 184,
+      "max_cycle": 171,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 162,
+      "engine": 185,
+      "max_cycle": 162,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 194,
+      "engine": 186,
+      "max_cycle": 194,
+      "split": "test",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 168,
+      "engine": 187,
+      "max_cycle": 168,
+      "split": "test",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 148,
+      "engine": 188,
+      "max_cycle": 148,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 209,
+      "engine": 189,
+      "max_cycle": 209,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 257,
+      "engine": 190,
+      "max_cycle": 257,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 219,
+      "engine": 191,
+      "max_cycle": 219,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 133,
+      "engine": 192,
+      "max_cycle": 133,
+      "split": "test",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 172,
+      "engine": 193,
+      "max_cycle": 172,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 148,
+      "engine": 194,
+      "max_cycle": 148,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 190,
+      "engine": 195,
+      "max_cycle": 190,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 239,
+      "engine": 196,
+      "max_cycle": 239,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 154,
+      "engine": 197,
+      "max_cycle": 154,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 205,
+      "engine": 198,
+      "max_cycle": 205,
+      "split": "validation",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 219,
+      "engine": 199,
+      "max_cycle": 219,
+      "split": "validation",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 227,
+      "engine": 200,
+      "max_cycle": 227,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 191,
+      "engine": 201,
+      "max_cycle": 191,
+      "split": "validation",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 197,
+      "engine": 202,
+      "max_cycle": 197,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 269,
+      "engine": 203,
+      "max_cycle": 269,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 237,
+      "engine": 204,
+      "max_cycle": 237,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 198,
+      "engine": 205,
+      "max_cycle": 198,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 221,
+      "engine": 206,
+      "max_cycle": 221,
+      "split": "test",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 184,
+      "engine": 207,
+      "max_cycle": 184,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 150,
+      "engine": 208,
+      "max_cycle": 150,
+      "split": "test",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 201,
+      "engine": 209,
+      "max_cycle": 201,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 184,
+      "engine": 210,
+      "max_cycle": 184,
+      "split": "validation",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 214,
+      "engine": 211,
+      "max_cycle": 214,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 149,
+      "engine": 212,
+      "max_cycle": 149,
+      "split": "validation",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 196,
+      "engine": 213,
+      "max_cycle": 196,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 146,
+      "engine": 214,
+      "max_cycle": 146,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 226,
+      "engine": 215,
+      "max_cycle": 226,
+      "split": "validation",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 229,
+      "engine": 216,
+      "max_cycle": 229,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 162,
+      "engine": 217,
+      "max_cycle": 162,
+      "split": "test",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 237,
+      "engine": 218,
+      "max_cycle": 237,
+      "split": "validation",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 156,
+      "engine": 219,
+      "max_cycle": 156,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 234,
+      "engine": 220,
+      "max_cycle": 234,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 178,
+      "engine": 221,
+      "max_cycle": 178,
+      "split": "test",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 195,
+      "engine": 222,
+      "max_cycle": 195,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 218,
+      "engine": 223,
+      "max_cycle": 218,
+      "split": "train",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 174,
+      "engine": 224,
+      "max_cycle": 174,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 156,
+      "engine": 225,
+      "max_cycle": 156,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 178,
+      "engine": 226,
+      "max_cycle": 178,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 184,
+      "engine": 227,
+      "max_cycle": 184,
+      "split": "validation",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 262,
+      "engine": 228,
+      "max_cycle": 262,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 176,
+      "engine": 229,
+      "max_cycle": 176,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 186,
+      "engine": 230,
+      "max_cycle": 186,
+      "split": "test",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 144,
+      "engine": 231,
+      "max_cycle": 144,
+      "split": "test",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 242,
+      "engine": 232,
+      "max_cycle": 242,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 190,
+      "engine": 233,
+      "max_cycle": 190,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 159,
+      "engine": 234,
+      "max_cycle": 159,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 183,
+      "engine": 235,
+      "max_cycle": 183,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 239,
+      "engine": 236,
+      "max_cycle": 239,
+      "split": "validation",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 209,
+      "engine": 237,
+      "max_cycle": 209,
+      "split": "test",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 156,
+      "engine": 238,
+      "max_cycle": 156,
+      "split": "test",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 263,
+      "engine": 239,
+      "max_cycle": 263,
+      "split": "validation",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 266,
+      "engine": 240,
+      "max_cycle": 266,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 183,
+      "engine": 241,
+      "max_cycle": 183,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 273,
+      "engine": 242,
+      "max_cycle": 273,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 230,
+      "engine": 243,
+      "max_cycle": 230,
+      "split": "test",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 128,
+      "engine": 244,
+      "max_cycle": 128,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 253,
+      "engine": 245,
+      "max_cycle": 253,
+      "split": "test",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 194,
+      "engine": 246,
+      "max_cycle": 194,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 197,
+      "engine": 247,
+      "max_cycle": 197,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 234,
+      "engine": 248,
+      "max_cycle": 234,
+      "split": "test",
+      "stratum": 3
+    },
+    {
+      "cycle_count": 202,
+      "engine": 249,
+      "max_cycle": 202,
+      "split": "train",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 184,
+      "engine": 250,
+      "max_cycle": 184,
+      "split": "train",
+      "stratum": 1
+    },
+    {
+      "cycle_count": 266,
+      "engine": 251,
+      "max_cycle": 266,
+      "split": "test",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 135,
+      "engine": 252,
+      "max_cycle": 135,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 149,
+      "engine": 253,
+      "max_cycle": 149,
+      "split": "validation",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 260,
+      "engine": 254,
+      "max_cycle": 260,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 340,
+      "engine": 255,
+      "max_cycle": 340,
+      "split": "validation",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 163,
+      "engine": 256,
+      "max_cycle": 163,
+      "split": "validation",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 309,
+      "engine": 257,
+      "max_cycle": 309,
+      "split": "train",
+      "stratum": 4
+    },
+    {
+      "cycle_count": 143,
+      "engine": 258,
+      "max_cycle": 143,
+      "split": "train",
+      "stratum": 0
+    },
+    {
+      "cycle_count": 205,
+      "engine": 259,
+      "max_cycle": 205,
+      "split": "validation",
+      "stratum": 2
+    },
+    {
+      "cycle_count": 316,
+      "engine": 260,
+      "max_cycle": 316,
+      "split": "train",
+      "stratum": 4
+    }
+  ],
+  "evaluation_boundary": {
+    "official_fd002_test": "external_generalization_only_after_pipeline_freeze",
+    "source_used_for_internal_split": "train_FD002.txt"
+  },
+  "generator": {
+    "module": "src.data.split_manifest",
+    "numpy": "2.4.2",
+    "pandas": "3.0.1",
+    "python": "3.12.8",
+    "scikit_learn": "1.8.0"
+  },
+  "manifest_id": "fd002-primary-v1",
+  "manifest_version": 1,
+  "split": {
+    "counts": {
+      "test": 52,
+      "train": 156,
+      "validation": 52
+    },
+    "method": "seeded_stratified_engine_split",
+    "ratios": {
+      "test": 0.2,
+      "train": 0.6,
+      "validation": 0.2
+    },
+    "secondary_seed": 43,
+    "seed": 42,
+    "stratification": {
+      "bins": 5,
+      "field": "max_cycle",
+      "method": "rank_then_equal_frequency_bins",
+      "tie_break": "engine_id_order",
+      "use": "split_balancing_only_not_model_input"
+    }
+  }
+}

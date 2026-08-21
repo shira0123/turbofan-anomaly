@@ -38,6 +38,9 @@ experiments/*
 !experiments/experiments.csv
 *.log
 *.json
+!configs/splits/*.json
+!configs/preprocessing/*.json
+!configs/baselines/*.json
 
 # =========================
 # Jupyter
