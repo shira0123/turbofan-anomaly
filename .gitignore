@@ -12,12 +12,9 @@ venv/
 env/
 
 # =========================
-# Data (NEVER PUSH RAW/PROCESSED DATA)
+# Data
 # =========================
-data/
-*.npy
-*.npz
-*.parquet
+# Intentionally tracked on this branch
 
 # =========================
 # Models & Checkpoints
