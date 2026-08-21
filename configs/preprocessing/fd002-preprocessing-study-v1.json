@@ -1,0 +1,71 @@
+{
+  "fit_policy": {
+    "false_healthy_mask_interpretation": "unlabeled_not_known_anomaly",
+    "global_sensor_scaler": "first_fraction_rows_of_training_engines_only",
+    "kmeans": "all_rows_of_training_engines_only",
+    "operating_setting_scaler": "all_rows_of_training_engines_only",
+    "per_mode_sensor_scalers": "first_fraction_rows_of_training_engines_only",
+    "rare_mode_fallback": "global_healthy_training_sensor_scaler"
+  },
+  "input_hashes": {
+    "train_csv": "fd02f93b96a0e9a9022b165b7a6a7f4ce884d8c58ea57844ab0ad5419fe1c8b9",
+    "validation_csv": "7587a365edda0d95f7e6e681a900220f18bfb619954b47cb2c61fce5330fe9ad"
+  },
+  "inputs": {
+    "test_csv_opened_by_study": false,
+    "train_engines": 156,
+    "train_rows": 32107,
+    "validation_engines": 52,
+    "validation_rows": 10873
+  },
+  "outputs": {
+    "candidate_models_dir": "models\\preprocessing",
+    "candidate_processed_dir": "data\\processed\\preprocessing",
+    "reports": {
+      "centroids": "reports\\preprocessing\\centroids.csv",
+      "fit_summary": "reports\\preprocessing\\fit_summary.csv",
+      "model_selection": "reports\\preprocessing\\model_selection.csv",
+      "occupancy": "reports\\preprocessing\\occupancy.csv"
+    },
+    "test_outputs_created": false
+  },
+  "package_versions": {
+    "joblib": "1.5.3",
+    "numpy": "2.4.2",
+    "pandas": "3.0.1",
+    "python": "3.12.8",
+    "scikit_learn": "1.8.0"
+  },
+  "parameters": {
+    "candidate_k": [
+      4,
+      6,
+      8
+    ],
+    "healthy_fraction": 0.3,
+    "min_mode_fit_rows": 30,
+    "n_init": 20,
+    "seed": 42,
+    "silhouette_sample_size": 5000,
+    "stability_engine_fraction": 0.8,
+    "stability_n_init": 10,
+    "stability_seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ]
+  },
+  "selection_status": "pending_human_decision_gate_2",
+  "source_dataset_sha256": "bc1d293b8dc6173c1bfb0fff64fe797c2cde35dbb1a1a075dae8ca1177b49a52",
+  "split_manifest_id": "fd002-primary-v1",
+  "study_id": "fd002-preprocessing-study-v1",
+  "test_access_log": [
+    {
+      "access": "aggregate row/engine counts and op1-op3 ranges only",
+      "stage": "preimplementation_schema_check",
+      "used_for_candidate_fit_or_selection": false
+    }
+  ]
+}

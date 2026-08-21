@@ -1,0 +1,5 @@
+method,split_manifest_id,healthy_fraction,fit_rows_all_cycles,sensor_scaler_fit_rows,fit_engine_count,fit_engine_ids_sha256,op_mode_value,n_clusters,random_state,n_init,min_mode_fit_rows,operating_scaler_fit_rows,kmeans_fit_rows,sensor_fit_rows_per_mode,fallback_modes
+p0_global,fd002-primary-v1,0.3,32107,9561,156,50a687c48e117a5499d4f68931d29ec0d3ef5201e8797f247436f3f5b43af25d,-1.0,,,,,,,,
+p1_regime,fd002-primary-v1,0.3,32107,9561,156,50a687c48e117a5499d4f68931d29ec0d3ef5201e8797f247436f3f5b43af25d,,4.0,42.0,20.0,30.0,32107.0,32107.0,"{0: 2882, 1: 3906, 2: 1342, 3: 1431}",[]
+p1_regime,fd002-primary-v1,0.3,32107,9561,156,50a687c48e117a5499d4f68931d29ec0d3ef5201e8797f247436f3f5b43af25d,,6.0,42.0,20.0,30.0,32107.0,32107.0,"{0: 1443, 1: 1449, 2: 1342, 3: 1431, 4: 1439, 5: 2457}",[]
+p1_regime,fd002-primary-v1,0.3,32107,9561,156,50a687c48e117a5499d4f68931d29ec0d3ef5201e8797f247436f3f5b43af25d,,8.0,42.0,20.0,30.0,32107.0,32107.0,"{0: 460, 1: 1443, 2: 1342, 3: 1640, 4: 1439, 5: 1449, 6: 971, 7: 817}",[]

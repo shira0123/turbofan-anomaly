@@ -1,0 +1,29 @@
+{
+  "decision_id": "fd002-preprocessing-selection-v1",
+  "study_id": "fd002-preprocessing-study-v1",
+  "study_model_selection_report_sha256": "1c289bf1d3772598a2d4bc37a0ee37c301b1a9b9337d089fc883c87b6fa93eef",
+  "split_manifest_id": "fd002-primary-v1",
+  "decision_status": "approved",
+  "approved_choice": {
+    "global_comparator": "p0_global",
+    "primary_regime_pipeline": "p1_k6",
+    "selected_k": 6
+  },
+  "retained_selection_evidence": [
+    "p1_k4",
+    "p1_k8"
+  ],
+  "rationale": {
+    "validation_silhouette": 0.997036952749782,
+    "engine_subsample_stability_ari_mean": 1.0,
+    "minimum_validation_mode_fraction": 0.14696955761979213,
+    "minimum_sensor_scaler_fit_rows": 1342,
+    "fallback_mode_count": 0,
+    "engineering_interpretation": "six compact operating-setting regimes; K=4 merged distinct settings and K=8 split small within-setting jitter"
+  },
+  "downstream_policy": {
+    "test_split_access": "forbidden_until_pipeline_and_analysis_plan_are_frozen",
+    "required_artifact_split_manifest_id": "fd002-primary-v1",
+    "p2_residualization": "deferred"
+  }
+}
