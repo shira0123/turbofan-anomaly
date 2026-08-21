@@ -91,3 +91,16 @@ This file records consequential research and implementation decisions. Each entr
 - **Rationale:** Research conclusions must be traceable to code, configuration, data provenance, and immutable repository history.
 - **Commit policy:** Commit completed, verified units promptly on `research-validation-v2`. Do not push or merge without explicit user authorization.
 - **Owner:** Shivam.
+
+## 2026-08-22 — Recommend the balanced P1/K=6 LSTM at Gate 3
+
+- **Decision status:** Recommended, pending owner approval.
+- **Registered screen:** Three P1/K=6 architectures at seed 42, followed by the selected architecture under P0 and P1/K=6 at matched seeds 43–45; nine runs total.
+- **Optimization boundary:** Early stopping used 32 monitor engines separated from 124 development engines, all drawn from the training partition. Validation proxy labels did not control gradient updates or early stopping.
+- **Architecture recommendation:** `balanced_64x16_l1` (64 hidden units, 16 latent units, one layer, 59,045 parameters). Its Stage 1 mean validation PR-AUC was `0.81208952`, compared with `0.81026176` for the compact model and `0.80874495` for the stacked model.
+- **Pipeline recommendation:** P1/K=6. Across matched seeds 43–45, its median mean validation PR-AUC was `0.81088283` with standard deviation `0.00159528`; P0's median was `0.24004696`.
+- **Interpretation:** The pipeline effect is consistent within this screen, while the architecture margin is narrow. The LSTM is not declared superior to the P1 classical controls; P1 LOF and One-Class SVM retain higher validation mean PR-AUC diagnostics.
+- **Convergence caveat:** Several balanced runs reached or nearly reached the 50-epoch screen limit. A longer final-refit budget must be registered separately after approval.
+- **Evidence boundary:** Results use normalized-life validation proxies, not physical anomaly ground truth or held-out test outcomes. No detection threshold is selected.
+- **Evidence:** `reports/lstm_v2/` and `configs/lstm/fd002-lstm-screen-results-v1.json`.
+- **Owner:** Shivam.

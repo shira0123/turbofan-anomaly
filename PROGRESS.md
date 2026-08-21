@@ -4,7 +4,7 @@ Last updated: 2026-08-22
 
 ## Current state
 
-The revised validation foundation is implemented through the classical-baseline stage. The project now has a deterministic engine-disjoint split, train-only preprocessing with an approved six-regime P1 treatment, explicit proxy-label policies, and validation-only P0/P1 classical controls. The held-out internal-test partition has not been transformed, scored, or used for model selection.
+The revised validation foundation and LSTM architecture screen are implemented. The project now has a deterministic engine-disjoint split, train-only preprocessing with an approved six-regime P1 treatment, explicit proxy-label policies, classical controls, and a nine-run validation-only LSTM screen. The balanced one-layer architecture and P1/K=6 pipeline are recommended at Gate 3 but are not frozen until owner approval. The held-out internal-test partition has not been transformed, scored, or used for model selection.
 
 Active branch: `research-validation-v2`
 
@@ -16,7 +16,7 @@ Active branch: `research-validation-v2`
 | 1. Engine-disjoint data foundation | Complete | Versioned split manifest and aligned window metadata; 7 data-foundation tests are included in the full suite. |
 | 2. Preprocessing study | Complete | K=6 approved for P1; P0 global normalization retained as control. |
 | 3. Classical validation baselines | Complete | Eight selected P0/P1 model variants evaluated on validation proxies only. |
-| 4. LSTM autoencoder study | Pending | Register architecture/training-budget screen before running; use the same manifest, preprocessing variants, and proxy policies. |
+| 4. LSTM autoencoder study | Screen complete; Gate 3 pending | Nine registered runs completed and verified; balanced one-layer architecture with P1/K=6 is recommended for the final training protocol. |
 | 5. Threshold and event-level evaluation | Pending | Freeze on validation only after model selection. |
 | 6. Held-out and external evaluation | Pending | Open internal test once; NASA supplied test remains the external evaluation set. |
 
@@ -70,6 +70,35 @@ Selected validation diagnostics:
 
 All 12 matched parameter pairs have higher mean validation PR-AUC under P1 than P0. This is evidence that P1 is promising enough to carry into the LSTM study; it is not a held-out result or a final causal conclusion.
 
+## Phase 4 — LSTM architecture screen
+
+- Protocol: `configs/lstm/fd002-lstm-screen-protocol-v1.json`, committed before execution.
+- Optimization population: 3,988 early-life windows from 124 development engines.
+- Early-stopping population: 1,049 early-life windows from 32 separate training engines.
+- Model-selection population: 9,365 windows from the same 52 unseen validation engines used by the registered proxy policies.
+- Stage 1: three predeclared P1/K=6 architectures at seed 42.
+- Stage 2: the selected architecture under P0 and P1/K=6 at matched seeds 43, 44, and 45.
+- Total completed runs: 9 of 9.
+
+Stage 1 validation diagnostics:
+
+| Architecture | Parameters | Best epoch | Monitor MSE | Mean PR-AUC | Mean ROC-AUC |
+|---|---:|---:|---:|---:|---:|
+| Compact: 32 hidden, 8 latent, 1 layer | 16,733 | 31 | 0.48414079 | 0.81026176 | 0.95314101 |
+| Balanced: 64 hidden, 16 latent, 1 layer | 59,045 | 49 | 0.47989513 | 0.81208952 | 0.95193381 |
+| Stacked: 64 hidden, 16 latent, 2 layers | 125,605 | 13 | 0.48459463 | 0.80874495 | 0.95121474 |
+
+The registered rule recommends the balanced architecture because it has the highest mean validation PR-AUC. The margin over the compact model is only `0.00183`, so this is a pragmatic screen result rather than evidence that the larger architecture is materially superior.
+
+Stage 2 matched-seed robustness:
+
+| Pipeline | Seeds | Median mean PR-AUC | Mean mean PR-AUC | PR-AUC standard deviation | Median mean ROC-AUC |
+|---|---|---:|---:|---:|---:|
+| P0 global | 43–45 | 0.24004696 | 0.24198629 | 0.00557644 | 0.52340031 |
+| P1 K=6 | 43–45 | 0.81088283 | 0.81109563 | 0.00159528 | 0.95104697 |
+
+P1/K=6 is stable across the matched seeds and is recommended for the final LSTM training protocol. The LSTM does not automatically replace the classical controls: the selected P1 LOF and One-Class SVM validation diagnostics (`0.84970` and `0.83281` mean PR-AUC) remain higher than the LSTM screen median. Those comparisons are validation-proxy diagnostics, not held-out performance.
+
 ## Evaluation-policy counts
 
 | Policy | Healthy | Ambiguous | Anomalous |
@@ -84,10 +113,11 @@ These normalized-life policies are evaluation proxies, not physical anomaly grou
 
 ## Verification state
 
-- Full automated suite: 23 tests passing.
+- Full automated suite: 26 tests passing.
 - Git whitespace/error check: passing.
 - Phase 3 artifacts are deterministic across reruns.
 - Eight serialized model artifacts reproduce the recorded validation scores within serialization precision.
+- Nine LSTM artifacts match their registered hashes and reproduce all 84,285 recorded per-window scores. Maximum absolute differences are `7.1e-15` for raw scores and `1.2e-16` for calibrated scores.
 - Configuration files record input, output, report, and model hashes.
 
 ## Test-data status
@@ -101,6 +131,9 @@ These normalized-life policies are evaluation proxies, not physical anomaly grou
 - Historical Isolation Forest/LOF, LSTM smoke, reconstruction-score, and adaptive-threshold outputs do not declare the current manifest and are not accepted as comparative research evidence.
 - The historical LSTM smoke split contains overlapping windows from the same engine and must not be cited as validation performance.
 - FD002 supplies run-to-failure trajectories but no per-cycle anomaly labels; reported PR/ROC values therefore depend on declared normalized-life proxies.
+- Stage 1 used one seed and the three architecture scores are close; architecture superiority should not be overstated.
+- Several balanced-model runs reached or nearly reached the 50-epoch screen budget. A final refit needs a separately registered, longer convergence budget after Gate 3 approval.
+- The LSTM screen used 3,988 development windows while the classical models used all 5,037 eligible training windows; direct family comparisons should be treated as screening evidence, not a controlled model-capacity conclusion.
 - The Master Execution Bible v2, literature-validation report, and validated evidence matrix referenced by the research workflow are not present in the repository. They must be recovered or rebuilt without inventing conclusions.
 - Thresholds, event-level delay/coverage, false-alarm rates, final test metrics, and external-test metrics are not yet frozen.
 
@@ -117,4 +150,4 @@ Every experiment-producing phase must leave all of the following before it is co
 
 ## Next action
 
-Register the Phase 4 LSTM architecture screen, then compare small candidate architectures under P0 and P1/K=6 using the same healthy-training population, engine-disjoint validation engines, and declared proxy-policy metrics. No test data will be opened during that screen.
+Gate 3 decision: approve or revise the recommended balanced one-layer LSTM with P1/K=6. After approval, register a longer final-refit budget using all 5,037 eligible training windows, then freeze the model before threshold and event-level validation. No held-out test data will be opened before those choices are fixed.

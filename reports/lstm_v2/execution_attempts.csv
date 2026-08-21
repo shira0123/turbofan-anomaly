@@ -1,0 +1,4 @@
+attempt_id,datetime,status,completed_registered_runs,reason,artifact_disposition,test_data_opened
+fd002_lstm_screen_attempt_1,2026-08-22T04:58:00+05:30,interrupted,3,"foreground output was buffered and the process was manually stopped after Stage 1","three checkpoints were overwritten by the complete deterministic rerun",false
+fd002_lstm_screen_attempt_2,2026-08-22T05:01:21+05:30,terminated_before_run,0,"the sandbox ended the detached child process when its launcher exited","no checkpoint or score artifact was created",false
+fd002_lstm_screen_attempt_3,2026-08-22T05:02:11+05:30,completed,9,"clean foreground execution completed the registered protocol","authoritative reports and checkpoints retained",false
