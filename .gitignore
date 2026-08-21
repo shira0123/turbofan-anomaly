@@ -41,6 +41,7 @@ experiments/*
 !configs/splits/*.json
 !configs/preprocessing/*.json
 !configs/baselines/*.json
+!configs/lstm/*.json
 
 # =========================
 # Jupyter

@@ -20,11 +20,16 @@ class LSTMAutoencoder(nn.Module):
         super().__init__()
         if num_layers < 1:
             raise ValueError("num_layers must be at least 1")
+        if input_dim < 1 or hidden_dim < 1 or latent_dim < 1:
+            raise ValueError("Model dimensions must be positive")
+        if not 0.0 <= dropout < 1.0:
+            raise ValueError("dropout must be in [0, 1)")
 
         self.input_dim = input_dim
         self.hidden_dim = hidden_dim
         self.latent_dim = latent_dim
         self.num_layers = num_layers
+        self.dropout = float(dropout)
 
         lstm_dropout = dropout if num_layers > 1 else 0.0
 
@@ -50,6 +55,10 @@ class LSTMAutoencoder(nn.Module):
         """Reconstruct a batch of sequences with shape [batch, time, sensors]."""
         if x.dim() != 3:
             raise ValueError("Expected input with shape [batch, time, sensors]")
+        if x.shape[-1] != self.input_dim:
+            raise ValueError(
+                f"Expected {self.input_dim} sensors, received {x.shape[-1]}"
+            )
 
         batch_size, seq_len, _ = x.shape
         _, (hidden_state, _) = self.encoder(x)
