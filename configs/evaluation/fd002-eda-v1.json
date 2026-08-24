@@ -1,0 +1,174 @@
+{
+  "schema_version": "1.0.0",
+  "config_id": "fd002-eda-v1",
+  "purpose": "Training-and-validation-only descriptive EDA for the FD002 condition-aware anomaly-detection study.",
+  "evidence_classification": "descriptive_development_artifact_not_model_or_final_performance_evidence",
+  "random_seed": 42,
+  "dataset": {
+    "variant": "FD002",
+    "source_dataset_sha256": "bc1d293b8dc6173c1bfb0fff64fe797c2cde35dbb1a1a075dae8ca1177b49a52",
+    "expected_columns": [
+      "engine",
+      "cycle",
+      "op1",
+      "op2",
+      "op3",
+      "sensor_1",
+      "sensor_2",
+      "sensor_3",
+      "sensor_4",
+      "sensor_5",
+      "sensor_6",
+      "sensor_7",
+      "sensor_8",
+      "sensor_9",
+      "sensor_10",
+      "sensor_11",
+      "sensor_12",
+      "sensor_13",
+      "sensor_14",
+      "sensor_15",
+      "sensor_16",
+      "sensor_17",
+      "sensor_18",
+      "sensor_19",
+      "sensor_20",
+      "sensor_21"
+    ]
+  },
+  "data_access": {
+    "allowed_splits": [
+      "train",
+      "validation"
+    ],
+    "prohibited_inputs": [
+      "held_out_internal_test",
+      "official_nasa_test"
+    ],
+    "split_directory_enumeration_allowed": false,
+    "detector_training_allowed": false,
+    "detector_tuning_allowed": false,
+    "threshold_selection_allowed": false
+  },
+  "inputs": {
+    "split_manifest": {
+      "path": "configs/splits/fd002-primary-v1.json",
+      "sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327",
+      "hash_form": "raw"
+    },
+    "train_csv": {
+      "path": "data/splits/train.csv",
+      "sha256": "fd02f93b96a0e9a9022b165b7a6a7f4ce884d8c58ea57844ab0ad5419fe1c8b9"
+    },
+    "validation_csv": {
+      "path": "data/splits/validation.csv",
+      "sha256": "7587a365edda0d95f7e6e681a900220f18bfb619954b47cb2c61fce5330fe9ad"
+    },
+    "preprocessing_selection": {
+      "path": "configs/preprocessing/fd002-preprocessing-selection-v1.json",
+      "sha256": "4b71af5fd51cea9b90feda09e8d85ba502690e31efb3469fe20ad19482565086",
+      "hash_form": "lf"
+    },
+    "k_selection_report": {
+      "path": "reports/preprocessing/model_selection.csv",
+      "sha256": "1c289bf1d3772598a2d4bc37a0ee37c301b1a9b9337d089fc883c87b6fa93eef",
+      "hash_form": "raw"
+    },
+    "occupancy_report": {
+      "path": "reports/preprocessing/occupancy.csv",
+      "sha256": "ebc9c24318e40d032e197ecf7402fff3d4c6493471d73144738f168ff09a7e7d",
+      "hash_form": "raw"
+    },
+    "p0_preprocessor": {
+      "path": "models/preprocessing/p0_global.joblib",
+      "required": false
+    },
+    "p1_preprocessor": {
+      "path": "models/preprocessing/p1_k6.joblib",
+      "required": false
+    }
+  },
+  "analysis": {
+    "window_size": 30,
+    "sensor_columns": [
+      "sensor_1",
+      "sensor_2",
+      "sensor_3",
+      "sensor_4",
+      "sensor_5",
+      "sensor_6",
+      "sensor_7",
+      "sensor_8",
+      "sensor_9",
+      "sensor_10",
+      "sensor_11",
+      "sensor_12",
+      "sensor_13",
+      "sensor_14",
+      "sensor_15",
+      "sensor_16",
+      "sensor_17",
+      "sensor_18",
+      "sensor_19",
+      "sensor_20",
+      "sensor_21"
+    ],
+    "operating_setting_columns": [
+      "op1",
+      "op2",
+      "op3"
+    ],
+    "candidate_k": [
+      4,
+      6,
+      8
+    ],
+    "selected_k": 6,
+    "trajectory_sensors": [
+      "sensor_2",
+      "sensor_3",
+      "sensor_4",
+      "sensor_7",
+      "sensor_11",
+      "sensor_12",
+      "sensor_15",
+      "sensor_21"
+    ],
+    "representative_engine_quantiles": [
+      0.1,
+      0.5,
+      0.9
+    ],
+    "correlation_method": "pearson",
+    "near_constant_variance_threshold": 1e-12
+  },
+  "output": {
+    "report_directory": "reports/eda_v1",
+    "figure_format": "png",
+    "figure_dpi": 150,
+    "committed_notebook_outputs": "cleared",
+    "figure_label": "Descriptive training/validation EDA; not final model evidence."
+  },
+  "execution": {
+    "clean_kernel_required": true,
+    "on_missing_required_data": "leave outputs cleared and report execution pending; do not download or fabricate data",
+    "notebook_path": "notebooks/01_fd002_eda.ipynb"
+  },
+  "required_sections": [
+    "purpose_and_evidence_boundary",
+    "fd002_schema",
+    "rows_engines_cycles_and_split_counts",
+    "engine_life_distribution",
+    "missing_non_finite_constant_sensors",
+    "operating_setting_distributions",
+    "k4_k6_k8_selection_evidence",
+    "train_validation_condition_coverage",
+    "sensor_distributions_global_and_by_regime",
+    "correlation_heatmap_with_noncausal_warning",
+    "representative_normalized_life_trajectories",
+    "p0_p1_transformation_comparison",
+    "window_construction_and_shapes",
+    "engine_overlap_and_boundary_assertions",
+    "limitations_and_decision_links"
+  ]
+}
