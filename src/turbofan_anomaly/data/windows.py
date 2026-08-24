@@ -7,7 +7,7 @@ from collections.abc import Sequence
 import numpy as np
 import pandas as pd
 
-from src.data.preprocessing import SENSOR_COLUMNS
+from turbofan_anomaly.data.preprocessing import SENSOR_COLUMNS
 
 
 def build_window_array(

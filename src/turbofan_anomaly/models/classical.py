@@ -13,30 +13,7 @@ from sklearn.neighbors import LocalOutlierFactor
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import OneClassSVM
 
-
-class EmpiricalCDFCalibrator:
-    """Map anomaly scores to training-reference percentiles without labels."""
-
-    def __init__(self) -> None:
-        self.sorted_training_scores_: np.ndarray | None = None
-
-    def fit(self, scores: np.ndarray) -> "EmpiricalCDFCalibrator":
-        values = np.asarray(scores, dtype=float).reshape(-1)
-        if len(values) == 0 or not np.isfinite(values).all():
-            raise ValueError("Calibration scores must be finite and non-empty")
-        self.sorted_training_scores_ = np.sort(values)
-        return self
-
-    def transform(self, scores: np.ndarray) -> np.ndarray:
-        if self.sorted_training_scores_ is None:
-            raise RuntimeError("Call fit() before transform()")
-        values = np.asarray(scores, dtype=float).reshape(-1)
-        if not np.isfinite(values).all():
-            raise ValueError("Scores to calibrate must be finite")
-        ranks = np.searchsorted(
-            self.sorted_training_scores_, values, side="right"
-        )
-        return ranks.astype(float) / len(self.sorted_training_scores_)
+from turbofan_anomaly.alerting.calibration import EmpiricalCDFCalibrator
 
 
 class ClassicalAnomalyModel:
@@ -182,6 +159,8 @@ def load_baseline_artifact(
     expected_split_manifest_id: str | None = None,
     expected_preprocessing_decision_id: str | None = None,
 ) -> tuple[ClassicalAnomalyModel, dict[str, Any]]:
+    # Registered hashes document historical joblib outputs, but the artifacts
+    # are absent here; deliberately avoid a legacy ``src.*`` pickle shim.
     payload = joblib.load(path)
     if "model" not in payload or "metadata" not in payload:
         raise ValueError(f"Invalid baseline artifact: {path}")

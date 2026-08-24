@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=75,<76"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "turbofan-anomaly"
+version = "0.1.0"
+description = "Leakage-controlled anomaly-ranking research on NASA C-MAPSS FD002"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "Research project; no distribution license declared" }
+authors = [{ name = "Shivam" }]
+dependencies = [
+  "joblib==1.5.3",
+  "numpy==2.4.2",
+  "pandas==3.0.1",
+  "scikit-learn==1.8.0",
+  "torch==2.5.1",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.3,<9"]
+notebook = [
+  "ipython>=8.31,<9",
+  "jupyterlab>=4.3,<5",
+  "matplotlib>=3.10,<4",
+  "seaborn>=0.13,<0.14",
+]
+
+[project.scripts]
+turbofan-make-splits = "turbofan_anomaly.workflows.make_splits:main"
+turbofan-create-window-metadata = "turbofan_anomaly.workflows.create_window_metadata:main"
+turbofan-run-preprocessing-study = "turbofan_anomaly.workflows.run_preprocessing_study:main"
+turbofan-run-classical-baselines = "turbofan_anomaly.workflows.run_classical_baselines:main"
+turbofan-run-lstm-screen = "turbofan_anomaly.workflows.run_lstm_screen:main"
+turbofan-verify-lstm-screen = "turbofan_anomaly.workflows.verify_lstm_screen:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["turbofan_anomaly*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"

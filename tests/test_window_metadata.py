@@ -3,7 +3,7 @@ from __future__ import annotations
 import pandas as pd
 import pytest
 
-from src.data.window_metadata import create_window_metadata
+from turbofan_anomaly.data.metadata import create_window_metadata
 
 
 def _source_frame() -> pd.DataFrame:

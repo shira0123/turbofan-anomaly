@@ -278,6 +278,8 @@ def save_preprocessor(preprocessor: Any, path: Path) -> None:
 def load_preprocessor(
     path: Path, *, expected_split_manifest_id: str | None = None
 ) -> tuple[Any, dict[str, Any]]:
+    # The clean-v3 checkpoint contains no historical joblib model bytes. We do
+    # not retain an old ``src.*`` import shim solely for untracked pickle paths.
     payload = joblib.load(path)
     if "preprocessor" not in payload or "metadata" not in payload:
         raise ValueError(f"Invalid preprocessing artifact: {path}")

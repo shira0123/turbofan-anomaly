@@ -5,9 +5,9 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from src.models.classical_baselines import (
+from turbofan_anomaly.alerting.calibration import EmpiricalCDFCalibrator
+from turbofan_anomaly.models.classical import (
     ClassicalAnomalyModel,
-    EmpiricalCDFCalibrator,
     candidate_grid,
     load_baseline_artifact,
     save_baseline_artifact,

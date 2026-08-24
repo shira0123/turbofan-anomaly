@@ -17,7 +17,7 @@ from sklearn.model_selection import train_test_split
 from torch import nn
 from torch.utils.data import DataLoader, TensorDataset
 
-from src.models.lstm_ae import LSTMAutoencoder
+from turbofan_anomaly.models.lstm_autoencoder import LSTMAutoencoder
 
 
 @dataclass(frozen=True)

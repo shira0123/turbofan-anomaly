@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import hashlib
 import json
 import platform
 from pathlib import Path
@@ -13,58 +12,20 @@ import pandas as pd
 import sklearn
 from sklearn.model_selection import train_test_split
 
+from turbofan_anomaly.data.io import (
+    FD002_COLUMNS,
+    load_fd002,
+    validate_fd002_frame,
+)
+from turbofan_anomaly.evaluation.provenance import sha256_file
 
-FD002_COLUMNS = [
-    "engine",
-    "cycle",
-    "op1",
-    "op2",
-    "op3",
-    *[f"sensor_{i}" for i in range(1, 22)],
-]
+
 SPLIT_NAMES = ("train", "validation", "test")
-
-
-def sha256_file(path: Path) -> str:
-    """Return a streaming SHA-256 digest for an input artifact."""
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
-
-
-def load_fd002(path: Path) -> pd.DataFrame:
-    """Load the run-to-failure FD002 training file with its canonical schema."""
-    if not path.exists():
-        raise FileNotFoundError(f"FD002 source file not found: {path}")
-
-    frame = pd.read_csv(path, sep=r"\s+", header=None, names=FD002_COLUMNS)
-    _validate_source_frame(frame)
-    return frame
-
-
-def _validate_source_frame(frame: pd.DataFrame) -> None:
-    required = {"engine", "cycle"}
-    missing = required - set(frame.columns)
-    if missing:
-        raise ValueError(f"Missing required source columns: {sorted(missing)}")
-    if frame.empty:
-        raise ValueError("Cannot split an empty dataset")
-    if frame[["engine", "cycle"]].isna().any().any():
-        raise ValueError("engine and cycle columns may not contain null values")
-    if frame.duplicated(["engine", "cycle"]).any():
-        raise ValueError("Duplicate (engine, cycle) rows found")
-
-    for engine, engine_frame in frame.groupby("engine", sort=True):
-        cycles = np.sort(engine_frame["cycle"].to_numpy(dtype=int))
-        if len(cycles) > 1 and not np.all(np.diff(cycles) == 1):
-            raise ValueError(f"Engine {engine} has non-consecutive cycles")
 
 
 def summarize_engines(frame: pd.DataFrame) -> pd.DataFrame:
     """Build the engine-level characteristics allowed for split balancing."""
-    _validate_source_frame(frame)
+    validate_fd002_frame(frame)
     summary = (
         frame.groupby("engine", sort=True)["cycle"]
         .agg(cycle_count="size", max_cycle="max")
@@ -197,7 +158,7 @@ def build_split_manifest(
         "manifest_version": 1,
         "manifest_id": manifest_id,
         "generator": {
-            "module": "src.data.split_manifest",
+            "module": "turbofan_anomaly.data.splits",
             "python": platform.python_version(),
             "numpy": np.__version__,
             "pandas": pd.__version__,

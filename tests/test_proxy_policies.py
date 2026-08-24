@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pandas as pd
 
-from src.evaluation.proxy_policies import (
+from turbofan_anomaly.evaluation.proxies import (
     NormalizedLifeOnsetPolicy,
     registered_validation_policies,
     training_eligible_windows,
