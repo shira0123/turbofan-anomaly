@@ -1,18 +1,18 @@
 # Progress — Turbofan Anomaly Project
 
-Last updated: 2026-08-22
+Last updated: 2026-08-24
 
 ## Current state
 
-The revised validation foundation and LSTM architecture screen are implemented. The project now has a deterministic engine-disjoint split, train-only preprocessing with an approved six-regime P1 treatment, explicit proxy-label policies, classical controls, and a nine-run validation-only LSTM screen. The balanced one-layer architecture and P1/K=6 pipeline are recommended at Gate 3 but are not frozen until owner approval. The held-out internal-test partition has not been transformed, scored, or used for model selection.
+The revised validation foundation and LSTM architecture screen are implemented. The project now has a deterministic engine-disjoint split, train-only preprocessing with an approved six-regime P1 treatment, explicit proxy-label policies, classical controls, and a nine-run validation-only LSTM screen. The validated implementation has been consolidated into the importable `turbofan_anomaly` package with thin CLIs, governed evidence manifests, a schema-versioned JSONL ledger, and a training/validation-only EDA contract. The balanced one-layer architecture and P1/K=6 pipeline are recommended at Gate 3 but are not frozen until owner approval. The held-out internal-test partition has not been transformed, scored, or used for model selection.
 
-Active branch: `research-validation-v2`
+Active branch: `refactor/clean-v3` at base commit `3aa9f0fd6b6f8f92395e3f4940b839859a84664d`
 
 ## Roadmap status
 
 | Phase | Status | Evidence / next gate |
 |---|---|---|
-| 0. Evidence and reproducibility audit | Audit complete; remediation ongoing | Historical outputs classified as diagnostic/prototype where provenance is insufficient; missing research-planning documents still need recovery or replacement. |
+| 0. Evidence and reproducibility audit | Clean-v3 remediation complete; human diff review pending | Bible v3, 100-source evidence matrix, claims ledger, artifact/migration manifests, path/hash policy, and the 22-record current-protocol run ledger are present. |
 | 1. Engine-disjoint data foundation | Complete | Versioned split manifest and aligned window metadata; 7 data-foundation tests are included in the full suite. |
 | 2. Preprocessing study | Complete | K=6 approved for P1; P0 global normalization retained as control. |
 | 3. Classical validation baselines | Complete | Eight selected P0/P1 model variants evaluated on validation proxies only. |
@@ -111,7 +111,7 @@ P1/K=6 is stable across the matched seeds and is recommended for the final LSTM 
 
 These normalized-life policies are evaluation proxies, not physical anomaly ground truth.
 
-## Verification state
+## Verification state at the 2026-08-22 checkpoint
 
 - Full automated suite: 26 tests passing.
 - Git whitespace/error check: passing.
@@ -119,6 +119,16 @@ These normalized-life policies are evaluation proxies, not physical anomaly grou
 - Eight serialized model artifacts reproduce the recorded validation scores within serialization precision.
 - Nine LSTM artifacts match their registered hashes and reproduce all 84,285 recorded per-window scores. Maximum absolute differences are `7.1e-15` for raw scores and `1.2e-16` for calibrated scores.
 - Configuration files record input, output, report, and model hashes.
+
+## Clean-v3 refactor verification — 2026-08-24
+
+- Full synthetic/unit suite: 41 tests passed under Python 3.12.8 and PyTorch 2.5.1+cu121 (CUDA 12.1 build, NVIDIA GTX 1650 available); pytest used an explicit isolated base-temp because the account's default pytest temp directory denied access.
+- Six retained CLI `--help` checks passed without running any experiment-producing workflow.
+- All 26 checked authority/current config and report files matched their expected raw checkout SHA-256 values; strict registered LF hash forms also verified where declared.
+- Package/import, AST, TOML, JSON, 22-line JSONL round-trip, notebook JSON/code/output state, Markdown links, path traversal/drive/UNC rejection, safe metadata defaults, and stale active-reference checks passed.
+- The EDA notebook is structurally valid and output-cleared but was not executed: the allowed training/validation CSVs and registered P0/P1 model artifacts are absent from this checkout.
+- No held-out internal-test or official-test data was accessed. No split materialization, preprocessing fit, model training on project data, score reproduction, or report regeneration was performed.
+- No commit, push, PR creation, or merge was performed; the complete unstaged diff remains for owner review.
 
 ## Test-data status
 
@@ -134,7 +144,7 @@ These normalized-life policies are evaluation proxies, not physical anomaly grou
 - Stage 1 used one seed and the three architecture scores are close; architecture superiority should not be overstated.
 - Several balanced-model runs reached or nearly reached the 50-epoch screen budget. A final refit needs a separately registered, longer convergence budget after Gate 3 approval.
 - The LSTM screen used 3,988 development windows while the classical models used all 5,037 eligible training windows; direct family comparisons should be treated as screening evidence, not a controlled model-capacity conclusion.
-- The Master Execution Bible v2, literature-validation report, and validated evidence matrix referenced by the research workflow are not present in the repository. They must be recovered or rebuilt without inventing conclusions.
+- The Master Execution Bible v3 and validated 100-source evidence matrix are now present under `docs/research/`; earlier references to a missing v2 authority are superseded by the approved v3 research package.
 - Thresholds, event-level delay/coverage, false-alarm rates, final test metrics, and external-test metrics are not yet frozen.
 
 ## Tracking protocol from this checkpoint
@@ -143,11 +153,11 @@ Every experiment-producing phase must leave all of the following before it is co
 
 1. A registered, versioned configuration with fixed seeds and data-manifest identity.
 2. Run-specific artifacts plus hashes for inputs and outputs.
-3. One or more rows in `experiments/experiments.csv`, with the evidence class stated in `notes`.
+3. One or more schema-valid records in `experiments/runs_v2.jsonl`, with an explicit `evidence_class`, evidence boundary, config identity, and artifact identity.
 4. A decision-log update for any accepted/rejected alternative or protocol change.
 5. A progress update that distinguishes completed evidence from pending work.
 6. Relevant tests and an atomic commit. Pushes and merges remain explicit user decisions.
 
 ## Next action
 
-Gate 3 decision: approve or revise the recommended balanced one-layer LSTM with P1/K=6. After approval, register a longer final-refit budget using all 5,037 eligible training windows, then freeze the model before threshold and event-level validation. No held-out test data will be opened before those choices are fixed.
+First, review the complete `refactor/clean-v3` diff and decide whether clean-kernel EDA execution with restored allowed inputs is required before integration. Then make the Gate 3 decision: approve or revise the recommended balanced one-layer LSTM with P1/K=6. After approval, register a longer final-refit budget using all 5,037 eligible training windows, then freeze the model before threshold and event-level validation. No held-out test data will be opened before those choices are fixed.

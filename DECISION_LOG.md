@@ -104,3 +104,13 @@ This file records consequential research and implementation decisions. Each entr
 - **Evidence boundary:** Results use normalized-life validation proxies, not physical anomaly ground truth or held-out test outcomes. No detection threshold is selected.
 - **Evidence:** `reports/lstm_v2/` and `configs/lstm/fd002-lstm-screen-results-v1.json`.
 - **Owner:** Shivam.
+
+## 2026-08-24 — Consolidate the validated path on `refactor/clean-v3`
+
+- **Decision:** Replace the mixed legacy/prototype layout with one importable `turbofan_anomaly` package, six thin CLI wrappers, governed research documentation, a schema-versioned JSONL run ledger, and an output-cleared training/validation-only EDA notebook.
+- **Scope boundary:** This is a structural and provenance refactor. The registered split, P0/P1 preprocessing decisions, classical selection behavior, LSTM screen behavior, metric definitions, configurations, and current report bytes were not changed.
+- **Ledger migration:** Migrate 13 `run_20260822_*` records and nine `fd002_lstm_v1_*` records into `experiments/runs_v2.jsonl`; exclude ten historical/smoke rows rather than silently repairing or promoting them. The malformed CSV remains recoverable at base commit `3aa9f0f`.
+- **Removal decision:** Remove the prototype API, placeholder explanation behavior, online adaptive-threshold prototype, alternate 70/30 workflows, smoke-only artifacts, obsolete active reports, and superseded documentation after dependency and replacement review. Every tracked removal is recoverable from Git history.
+- **Safety boundary:** Metadata generation defaults to training and validation only. Internal-test metadata requires an explicit `--include-internal-test` flag, which was not exercised. The refactor did not open, transform, plot, score, or model the held-out internal test or official NASA test data.
+- **Verification:** All 41 synthetic/unit tests passed under Python 3.12.8 and PyTorch 2.5.1+cu121; six CLI `--help` checks passed; AST, JSON/JSONL, notebook structure, local links, path rejection, strict raw/LF/CRLF provenance, registered-byte immutability, and stale-active-reference checks passed. Notebook execution remains pending because allowed split data and registered P0/P1 model artifacts are absent from this checkout.
+- **Owner:** Shivam authorized the refactor; Codex implemented and verified it without committing, pushing, opening a PR, or merging.
