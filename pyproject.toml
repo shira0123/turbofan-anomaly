@@ -36,6 +36,8 @@ turbofan-run-lstm-screen = "turbofan_anomaly.workflows.run_lstm_screen:main"
 turbofan-verify-lstm-screen = "turbofan_anomaly.workflows.verify_lstm_screen:main"
 turbofan-run-lstm-final-refit = "turbofan_anomaly.workflows.run_lstm_final_refit:main"
 turbofan-verify-lstm-final-refit = "turbofan_anomaly.workflows.verify_lstm_final_refit:main"
+turbofan-run-alert-policy-study = "turbofan_anomaly.workflows.run_alert_policy_study:main"
+turbofan-verify-alert-policy-study = "turbofan_anomaly.workflows.verify_alert_policy_study:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

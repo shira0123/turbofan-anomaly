@@ -16,6 +16,8 @@ SCRIPT_NAMES = (
     "verify_lstm_screen.py",
     "run_lstm_final_refit.py",
     "verify_lstm_final_refit.py",
+    "run_alert_policy_study.py",
+    "verify_alert_policy_study.py",
 )
 
 
@@ -51,6 +53,8 @@ def test_cublas_environment_is_set_before_torch_import() -> None:
         "verify_lstm_screen.py",
         "run_lstm_final_refit.py",
         "verify_lstm_final_refit.py",
+        "run_alert_policy_study.py",
+        "verify_alert_policy_study.py",
     ):
         source = (
             REPO_ROOT / "src" / "turbofan_anomaly" / "workflows" / name
