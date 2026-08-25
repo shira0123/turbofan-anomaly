@@ -1,18 +1,18 @@
-# =========================
-# Python
-# =========================
 __pycache__/
 *.py[cod]
 *$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
 
-# Virtual Environment
 .venv/
 venv/
 env/
 
-# =========================
-# Data (NEVER PUSH RAW DATA)
-# =========================
+# Local FD002 inputs and derived arrays are never committed.
 data/raw/
 data/processed/
 data/splits/
@@ -20,9 +20,6 @@ data/splits/
 *.npz
 *.parquet
 
-# =========================
-# Models & Checkpoints
-# =========================
 /models/
 *.pt
 *.pth
@@ -30,35 +27,16 @@ data/splits/
 *.joblib
 *.ckpt
 
-# =========================
-# Logs & Experiments
-# =========================
 logs/
-experiments/*
-!experiments/experiments.csv
 *.log
-*.json
-!configs/splits/*.json
-!configs/preprocessing/*.json
-!configs/baselines/*.json
-!configs/lstm/*.json
 
-# =========================
-# Jupyter
-# =========================
 .ipynb_checkpoints/
 
-# =========================
-# IDE / OS
-# =========================
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
 implementation_guidance.md
 
-# =========================
-# Environment Variables
-# =========================
 .env
 .env.*

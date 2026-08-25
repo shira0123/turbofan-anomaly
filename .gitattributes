@@ -1,0 +1,31 @@
+# Canonical newline policy for new source and text artifacts.
+*.py text eol=lf
+*.pyi text eol=lf
+*.toml text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.jsonl text eol=lf
+*.ipynb text eol=lf
+*.csv text eol=lf
+
+# Grandfather registered evidence/config checkout bytes as CRLF. These narrow
+# rules follow the general text rules so the last match wins: the working-tree
+# bytes keep their registered hashes while Git's clean view matches HEAD.
+/configs/splits/fd002-primary-v1.json text eol=crlf
+/configs/preprocessing/fd002-preprocessing-*.json text eol=crlf
+/configs/baselines/fd002-classical-baselines-v1.json text eol=crlf
+/configs/lstm/fd002-lstm-screen-*.json text eol=crlf
+/reports/preprocessing/*.csv text eol=crlf
+/reports/baselines_v2/*.csv text eol=crlf
+/reports/lstm_v2/*.csv text eol=crlf
+
+# Copied research authorities and binary artifacts must remain byte-exact.
+/docs/research/MASTER_EXECUTION_BIBLE_V3_RESEARCH_IMPLEMENTATION_2026-08-23.md -text
+*.xlsx binary
+*.png binary
+*.npy binary
+*.npz binary
+*.joblib binary
+*.pt binary
+*.pth binary
+*.pkl binary

@@ -1,2 +1,0 @@
-checkpoint,mean_error,median_error,max_error,rows,hidden_dim,latent_dim
-models\lstm_ae_smoke_20260629_222613.pt,0.7931013703346252,0.6988676190376282,5.529723644256592,32756,64,16

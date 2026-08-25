@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from src.data.preprocessing import (
+from turbofan_anomaly.data.preprocessing import (
     OP_COLUMNS,
     SENSOR_COLUMNS,
     GlobalSensorPreprocessor,

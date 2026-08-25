@@ -1,0 +1,364 @@
+"""Deterministic training utilities for engine-disjoint LSTM validation."""
+
+from __future__ import annotations
+
+import copy
+import hashlib
+import math
+import random
+from dataclasses import asdict, dataclass
+from pathlib import Path
+from typing import Any
+
+import numpy as np
+import pandas as pd
+import torch
+from sklearn.model_selection import train_test_split
+from torch import nn
+from torch.utils.data import DataLoader, TensorDataset
+
+from turbofan_anomaly.models.lstm_autoencoder import LSTMAutoencoder
+
+
+@dataclass(frozen=True)
+class LSTMArchitecture:
+    architecture_id: str
+    hidden_dim: int
+    latent_dim: int
+    num_layers: int
+    dropout: float
+
+    def build(self, input_dim: int) -> LSTMAutoencoder:
+        return LSTMAutoencoder(
+            input_dim=input_dim,
+            hidden_dim=self.hidden_dim,
+            latent_dim=self.latent_dim,
+            num_layers=self.num_layers,
+            dropout=self.dropout,
+        )
+
+
+@dataclass(frozen=True)
+class TrainingSettings:
+    batch_size: int
+    max_epochs: int
+    minimum_epochs: int
+    patience: int
+    min_delta: float
+    learning_rate: float
+    weight_decay: float
+    gradient_clip_norm: float
+
+    def __post_init__(self) -> None:
+        if self.batch_size < 1 or self.max_epochs < 1:
+            raise ValueError("batch_size and max_epochs must be positive")
+        if not 1 <= self.minimum_epochs <= self.max_epochs:
+            raise ValueError("minimum_epochs must be within the epoch budget")
+        if self.patience < 1:
+            raise ValueError("patience must be positive")
+        if self.learning_rate <= 0.0 or self.weight_decay < 0.0:
+            raise ValueError("Invalid optimizer settings")
+        if self.gradient_clip_norm <= 0.0:
+            raise ValueError("gradient_clip_norm must be positive")
+
+
+@dataclass
+class LSTMFitResult:
+    model: LSTMAutoencoder
+    history: list[dict[str, float | int]]
+    best_epoch: int
+    best_monitor_loss: float
+
+
+def engine_id_digest(engine_ids: list[int] | tuple[int, ...]) -> str:
+    payload = ",".join(map(str, sorted(map(int, engine_ids)))).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
+def split_eligible_training_windows(
+    metadata: pd.DataFrame,
+    eligible_mask: np.ndarray,
+    *,
+    monitor_fraction: float,
+    random_state: int,
+    n_strata: int = 5,
+) -> tuple[np.ndarray, np.ndarray, pd.DataFrame]:
+    """Split eligible windows by whole engine for optimization monitoring."""
+    required = {"engine", "max_cycle", "split"}
+    missing = required - set(metadata.columns)
+    if missing:
+        raise ValueError(f"Missing monitor-split columns: {sorted(missing)}")
+    if set(metadata["split"]) != {"train"}:
+        raise ValueError("Monitor split may only be created from training metadata")
+    eligible = np.asarray(eligible_mask, dtype=bool)
+    if eligible.shape != (len(metadata),) or not eligible.any():
+        raise ValueError("eligible_mask must select training windows")
+    if not 0.0 < monitor_fraction < 1.0:
+        raise ValueError("monitor_fraction must be in (0, 1)")
+
+    eligible_metadata = metadata.loc[eligible, ["engine", "max_cycle"]]
+    engine_summary = (
+        eligible_metadata.groupby("engine", as_index=False)["max_cycle"]
+        .max()
+        .sort_values("engine")
+        .reset_index(drop=True)
+    )
+    if len(engine_summary) < 2 * n_strata:
+        raise ValueError("Not enough eligible engines for stratified monitoring")
+    if math.ceil(len(engine_summary) * monitor_fraction) < n_strata:
+        raise ValueError("Monitor engine count must cover every stratum")
+    ranked_life = engine_summary["max_cycle"].rank(method="first")
+    engine_summary["stratum"] = pd.qcut(
+        ranked_life, q=n_strata, labels=False
+    ).astype(int)
+    development_ids, monitor_ids = train_test_split(
+        engine_summary["engine"].astype(int).to_numpy(),
+        test_size=monitor_fraction,
+        random_state=random_state,
+        shuffle=True,
+        stratify=engine_summary["stratum"].to_numpy(),
+    )
+    development_set = set(map(int, development_ids))
+    monitor_set = set(map(int, monitor_ids))
+    if development_set & monitor_set:
+        raise RuntimeError("Development and monitor engines overlap")
+
+    engine_values = metadata["engine"].astype(int)
+    development_mask = eligible & engine_values.isin(development_set).to_numpy()
+    monitor_mask = eligible & engine_values.isin(monitor_set).to_numpy()
+    if np.any(development_mask & monitor_mask):
+        raise RuntimeError("Development and monitor windows overlap")
+    if not np.array_equal(development_mask | monitor_mask, eligible):
+        raise RuntimeError("Monitor split does not cover every eligible window")
+
+    roles = np.where(
+        engine_summary["engine"].isin(development_set), "development", "monitor"
+    )
+    split_summary = engine_summary.assign(role=roles).sort_values("engine")
+    return development_mask, monitor_mask, split_summary.reset_index(drop=True)
+
+
+def set_reproducible_seed(seed: int) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
+    torch.use_deterministic_algorithms(True)
+
+
+def parameter_count(model: nn.Module) -> int:
+    return int(sum(parameter.numel() for parameter in model.parameters()))
+
+
+def _loader(
+    sequences: np.ndarray,
+    *,
+    batch_size: int,
+    shuffle: bool,
+    seed: int,
+    pin_memory: bool,
+) -> DataLoader:
+    values = np.asarray(sequences, dtype=np.float32)
+    if values.ndim != 3 or len(values) == 0 or not np.isfinite(values).all():
+        raise ValueError("Expected finite non-empty [windows, time, sensors] data")
+    generator = torch.Generator()
+    generator.manual_seed(seed)
+    return DataLoader(
+        TensorDataset(torch.from_numpy(values)),
+        batch_size=batch_size,
+        shuffle=shuffle,
+        generator=generator,
+        num_workers=0,
+        pin_memory=pin_memory,
+        drop_last=False,
+    )
+
+
+def _mean_squared_error(
+    model: nn.Module,
+    loader: DataLoader,
+    device: torch.device,
+    optimizer: torch.optim.Optimizer | None,
+    gradient_clip_norm: float,
+) -> float:
+    model.train(optimizer is not None)
+    squared_error = 0.0
+    element_count = 0
+    for (batch,) in loader:
+        batch = batch.to(device, non_blocking=device.type == "cuda")
+        if optimizer is not None:
+            optimizer.zero_grad(set_to_none=True)
+        reconstruction = model(batch)
+        loss = torch.mean((reconstruction - batch) ** 2)
+        if optimizer is not None:
+            loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), gradient_clip_norm)
+            optimizer.step()
+        squared_error += float(torch.sum((reconstruction.detach() - batch) ** 2))
+        element_count += int(batch.numel())
+    return squared_error / element_count
+
+
+def fit_lstm_autoencoder(
+    development_sequences: np.ndarray,
+    monitor_sequences: np.ndarray,
+    *,
+    architecture: LSTMArchitecture,
+    settings: TrainingSettings,
+    seed: int,
+    device: torch.device,
+) -> LSTMFitResult:
+    if development_sequences.shape[1:] != monitor_sequences.shape[1:]:
+        raise ValueError("Development and monitor sequence shapes disagree")
+    set_reproducible_seed(seed)
+    model = architecture.build(int(development_sequences.shape[-1])).to(device)
+    optimizer = torch.optim.AdamW(
+        model.parameters(),
+        lr=settings.learning_rate,
+        weight_decay=settings.weight_decay,
+    )
+    development_loader = _loader(
+        development_sequences,
+        batch_size=settings.batch_size,
+        shuffle=True,
+        seed=seed,
+        pin_memory=device.type == "cuda",
+    )
+    monitor_loader = _loader(
+        monitor_sequences,
+        batch_size=settings.batch_size,
+        shuffle=False,
+        seed=seed,
+        pin_memory=device.type == "cuda",
+    )
+
+    best_loss = float("inf")
+    best_epoch = 0
+    best_state: dict[str, torch.Tensor] | None = None
+    epochs_without_improvement = 0
+    history: list[dict[str, float | int]] = []
+    for epoch in range(1, settings.max_epochs + 1):
+        train_loss = _mean_squared_error(
+            model,
+            development_loader,
+            device,
+            optimizer,
+            settings.gradient_clip_norm,
+        )
+        with torch.no_grad():
+            monitor_loss = _mean_squared_error(
+                model,
+                monitor_loader,
+                device,
+                None,
+                settings.gradient_clip_norm,
+            )
+        history.append(
+            {
+                "epoch": epoch,
+                "development_loss": train_loss,
+                "monitor_loss": monitor_loss,
+            }
+        )
+        if monitor_loss < best_loss - settings.min_delta:
+            best_loss = monitor_loss
+            best_epoch = epoch
+            best_state = copy.deepcopy(model.state_dict())
+            epochs_without_improvement = 0
+        else:
+            epochs_without_improvement += 1
+        if (
+            epoch >= settings.minimum_epochs
+            and epochs_without_improvement >= settings.patience
+        ):
+            break
+    if best_state is None:
+        raise RuntimeError("Training did not produce a checkpoint")
+    model.load_state_dict(best_state)
+    return LSTMFitResult(model, history, best_epoch, float(best_loss))
+
+
+def reconstruction_errors(
+    model: nn.Module,
+    sequences: np.ndarray,
+    *,
+    batch_size: int,
+    device: torch.device,
+) -> np.ndarray:
+    loader = _loader(
+        sequences,
+        batch_size=batch_size,
+        shuffle=False,
+        seed=0,
+        pin_memory=device.type == "cuda",
+    )
+    model.eval()
+    scores: list[np.ndarray] = []
+    with torch.no_grad():
+        for (batch,) in loader:
+            batch = batch.to(device, non_blocking=device.type == "cuda")
+            reconstruction = model(batch)
+            error = torch.mean((reconstruction - batch) ** 2, dim=(1, 2))
+            scores.append(error.cpu().numpy())
+    result = np.concatenate(scores).astype(np.float64)
+    if not np.isfinite(result).all():
+        raise RuntimeError("Model produced non-finite reconstruction errors")
+    return result
+
+
+def save_lstm_artifact(
+    model: LSTMAutoencoder,
+    architecture: LSTMArchitecture,
+    score_reference: np.ndarray,
+    metadata: dict[str, Any],
+    path: Path,
+) -> None:
+    reference = np.asarray(score_reference, dtype=np.float64).reshape(-1)
+    if len(reference) == 0 or not np.isfinite(reference).all():
+        raise ValueError("score_reference must be finite and non-empty")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    state = {
+        name: tensor.detach().cpu().clone()
+        for name, tensor in model.state_dict().items()
+    }
+    torch.save(
+        {
+            "state_dict": state,
+            "architecture": asdict(architecture),
+            "sorted_training_scores": np.sort(reference),
+            "metadata": dict(metadata),
+        },
+        path,
+    )
+
+
+def load_lstm_artifact(
+    path: Path,
+    *,
+    expected_split_manifest_id: str | None = None,
+    expected_preprocessing_decision_id: str | None = None,
+) -> tuple[LSTMAutoencoder, np.ndarray, dict[str, Any]]:
+    payload = torch.load(path, map_location="cpu", weights_only=False)
+    required = {"state_dict", "architecture", "sorted_training_scores", "metadata"}
+    if not required.issubset(payload):
+        raise ValueError(f"Invalid LSTM artifact: {path}")
+    metadata = payload["metadata"]
+    if (
+        expected_split_manifest_id is not None
+        and metadata.get("split_manifest_id") != expected_split_manifest_id
+    ):
+        raise ValueError("LSTM artifact split manifest mismatch")
+    if (
+        expected_preprocessing_decision_id is not None
+        and metadata.get("preprocessing_decision_id")
+        != expected_preprocessing_decision_id
+    ):
+        raise ValueError("LSTM artifact preprocessing decision mismatch")
+    architecture = LSTMArchitecture(**payload["architecture"])
+    model = architecture.build(int(metadata["input_dim"]))
+    model.load_state_dict(payload["state_dict"])
+    model.eval()
+    return model, np.asarray(payload["sorted_training_scores"]), metadata

@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.data.split_manifest import (
+from turbofan_anomaly.data.splits import (
     SPLIT_NAMES,
     build_split_manifest,
     manifest_json,

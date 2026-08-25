@@ -3,9 +3,9 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-from src.data.preprocessing import SENSOR_COLUMNS
-from src.data.window_arrays import build_window_array, summary_features
-from src.data.window_metadata import create_window_metadata
+from turbofan_anomaly.data.metadata import create_window_metadata
+from turbofan_anomaly.data.preprocessing import SENSOR_COLUMNS
+from turbofan_anomaly.data.windows import build_window_array, summary_features
 
 
 def _frame() -> pd.DataFrame:

@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import torch
 
-from src.models.lstm_validation import (
+from turbofan_anomaly.models.lstm_training import (
     LSTMArchitecture,
     TrainingSettings,
     fit_lstm_autoencoder,
