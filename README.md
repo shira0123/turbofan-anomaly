@@ -8,14 +8,15 @@ The frozen primary split is deterministic and engine-disjoint: 156 training, 52 
 
 The current numbers are engine-disjoint **validation proxy diagnostics**, not accuracy and not final-test performance:
 
-| P1/K=6 detector | Mean PR-AUC |
-|---|---:|
-| LOF | 0.84969513 |
-| One-Class SVM | 0.83280767 |
-| Isolation Forest | 0.78916934 |
-| PCA | 0.77240729 |
+| P1/K=6 detector | Mean PR-AUC | Mean ROC-AUC |
+|---|---:|---:|
+| LOF | 0.84969513 | 0.96436313 |
+| One-Class SVM | 0.83280767 | 0.96437111 |
+| Final LSTM calibrated ensemble | 0.82212053 | 0.95128915 |
+| Isolation Forest | 0.78916934 | 0.95592104 |
+| PCA | 0.77240729 | 0.92503450 |
 
-Nine registered LSTM screening runs are complete. `balanced_64x16_l1 + P1/K=6` is the approved Gate 3 candidate, with matched-seed median validation proxy PR-AUC `0.81088283`. Its small screen advantage is not material evidence of architectural superiority, and it has **not** beaten LOF or One-Class SVM. The governed final-refit protocol is registered at `configs/lstm/fd002-lstm-final-refit-protocol-v1.json`; project-data execution has not run.
+Nine registered LSTM screening runs and the governed final refit are complete. The final `balanced_64x16_l1 + P1/K=6` convergence best epochs were 47, 54, and 59, locking all three refits to epoch 54. The predeclared calibrated-score ensemble beat every individual final-refit LSTM seed, but it did **not** beat LOF or One-Class SVM on mean validation-proxy PR-AUC and remained below LOF, One-Class SVM, and Isolation Forest on mean validation-proxy ROC-AUC. These results do not establish LSTM superiority.
 
 FD002 provides run-to-failure trajectories but no physical per-cycle anomaly-onset labels. The late-life labels used here are declared evaluation proxies. PR-AUC is a ranking metric, not accuracy.
 
@@ -35,7 +36,7 @@ src/turbofan_anomaly/    reusable importable package
 tests/                   synthetic/unit and safety tests
 ```
 
-Raw data, processed arrays, and model binaries are intentionally not in this checkout. In particular, the registered P1 training/validation sequences and window metadata required by the final-refit protocol are absent. Their absence blocks project-data training, notebook execution, and full artifact reproduction; it does not invalidate protocol registration, implementation, or synthetic/unit checks.
+Raw data and most generated artifacts remain intentionally outside Git. The four registered P1/K=6 training/validation sequence and metadata inputs were provisioned locally with exact registered hashes for the final refit, and the three resulting model binaries remain local and ignored. Tracked evidence contains the completed result config, small reports, and ledger identities; it does not contain data arrays or checkpoints.
 
 ## Setup (Python 3.12.8)
 
@@ -63,9 +64,11 @@ python -m scripts.run_preprocessing_study --help
 python -m scripts.run_classical_baselines --help
 python -m scripts.run_lstm_screen --help
 python -m scripts.verify_lstm_screen --help
+python -m scripts.run_lstm_final_refit --help
+python -m scripts.verify_lstm_final_refit --help
 ```
 
-`verify_lstm_screen` itself is read-only with respect to registered evidence, but a full run needs the absent training/validation arrays and model checkpoints. Commands that create splits, fit models, or rewrite reports are separated and guarded in the detailed guide; do not run them as a quick start.
+The verification commands are read-only with respect to registered evidence. Historical screen reproduction still needs its absent registered checkpoints, while final-refit verification uses the three local ignored final artifacts. Commands that create splits, fit models, or rewrite reports are separated and governed; do not run them as a quick start.
 
 ## Research and governance
 

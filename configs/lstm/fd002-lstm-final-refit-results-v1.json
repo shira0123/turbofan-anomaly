@@ -1,0 +1,64 @@
+{
+  "architecture": {
+    "architecture_id": "balanced_64x16_l1",
+    "dropout": 0.0,
+    "hidden_dim": 64,
+    "latent_dim": 16,
+    "num_layers": 1
+  },
+  "code_commit": "f7ec571d8635e68ff7def8f3daa2bfe0f0354edc",
+  "completed_locked_refits": 3,
+  "convergence_best_epochs": {
+    "43": 47,
+    "44": 54,
+    "45": 59
+  },
+  "ensemble": {
+    "score_source": "lstm_calibrated_ensemble",
+    "seed": null,
+    "selection_mean_pr_auc": 0.8221205251743674,
+    "selection_mean_roc_auc": 0.9512891505686406
+  },
+  "execution_device": "cuda",
+  "execution_time": "2026-08-25T06:19:27+00:00",
+  "locked_epoch_count": 54,
+  "outputs": {
+    "ledger_records_appended": 7,
+    "model_directory": "models/lstm_final_v1/fd002-lstm-final-refit-v1",
+    "model_sha256": {
+      "43": "7a0a84dc11a1d5e2c21d8ccdc4be0385a844d24146be4d27fb7d47b3df8cda2e",
+      "44": "9f8406e39eda123f8878bcf58cec5e99c478e6d2d34f7ebbfff73a9a116e40e5",
+      "45": "86f4a993fc5247cfb7bacdfb7680ce6cb3a8dceb7d0059bf1f445c5d80e1a2b4"
+    },
+    "report_directory": "reports/lstm_final_v1/fd002-lstm-final-refit-v1",
+    "report_sha256": {
+      "artifact_manifest.csv": "79b2429e810e07c0c6c90184d6cbd630ae860299e5bc597e09259b2a2240890e",
+      "classical_comparison.csv": "ce02986ffae6b58a4c1c03f27916473ebd528d290892588df4c9881a4456f088",
+      "convergence_engine_assignment.csv": "11ba116bfb1038f802dab31bfabdb635099885bc25abd27d597906c684e6769f",
+      "convergence_history.csv": "b4b5093b227a18d9544296b20d342c6552dbee13e28cf9e5934678212731ffcf",
+      "convergence_summary.csv": "4f5572721a71901c9173c7611a9c0306ee19fc75f9f431f68eafec89647310a9",
+      "ensemble_validation_scores.csv": "0ae618f8654f5f5f30a8c5ac820b97e34d40ea330fa4a0bb745c2e1e2b07e3a3",
+      "epoch_lock.csv": "39e6410fce020eceb299fe95ea2e2319b57ed4fe9cba86aecb61eaa1d27f643d",
+      "locked_refit_training_history.csv": "d0964357c95787e4312c1b3018f6f3cb5802d55137e23cb1b61abdbb12752b82",
+      "ranking_metrics.csv": "f3e574e554231e705031f18e06119b61b7bf7e133365785167508988fa16ffca",
+      "reload_verification.csv": "16d6788b16e173777b52d99ac6e312b3870b3b70fa3a0680f5aaa55bde1fb8b4",
+      "run_summary.csv": "eac44aa68af77e37c30dcd2c57cfa65a74578450736717c22c324faa6863eda9",
+      "runtime_provenance.json": "91d3cf16735cd3cdec31d3d28bd9415d225b98f31c6f7503fc481424dfc27c61",
+      "validation_scores.csv": "421d8f169a8bfc4a8abfc051887293590dd21e9f27fb2fe2518bf99ffefb9ca2"
+    }
+  },
+  "protocol_path": "configs/lstm/fd002-lstm-final-refit-protocol-v1.json",
+  "protocol_sha256": "e6606707665e39e4b58996ce84d987e546b51d8563be0ef90dc698ac4c5a2b97",
+  "reload_verification": {
+    "maximum_calibrated_absolute_difference": 0.0,
+    "maximum_raw_absolute_difference": 0.0,
+    "verified_artifacts": 3
+  },
+  "result_classification": "validation_proxy_diagnostic_not_test_performance",
+  "run_id": "fd002-lstm-final-refit-v1",
+  "schema_version": "1.0.0",
+  "status": "completed",
+  "study_id": "fd002-lstm-final-refit-v1",
+  "test_data_opened": false,
+  "threshold_selected": false
+}

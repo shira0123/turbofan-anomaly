@@ -12,9 +12,9 @@ A present report is not automatically a final result. Evidence class and result 
 |---|---|---|---:|---|
 | bible-v3 | `docs/research/MASTER_EXECUTION_BIBLE_V3_RESEARCH_IMPLEMENTATION_2026-08-23.md` | `f7bea8ad60cd7ba53dd40ea3a877914bd2b845a4d183080c5f75853828d778af` | yes | Exact byte copy of the 2026-08-23 research authority |
 | literature-matrix-v3 | `docs/research/Turbofan_Literature_Evidence_Matrix_100_Sources_v3.xlsx` | `ae173e281fbcbccae7da91920980f4d208a908d2f1a6a6dcfb54af5ebdf05ac3` | yes | Exact byte copy of the 100-source evidence matrix |
-| claims-ledger-v1 | `docs/research/CLAIMS_LEDGER.md` | `ecef011aa16db41d071e6ada50f26376f79c377b2a4b809c942b7c40ad894c1b` | yes | Claim-to-run/config/evidence register |
+| claims-ledger-v1 | `docs/research/CLAIMS_LEDGER.md` | `4e18895c4eed31a653691b1f9a6ae182df8bb2b7a84251ebf55429b67cb440cb` | yes | Claim-to-run/config/evidence register, including bounded final-refit validation evidence |
 | path-hash-policy-v1 | `docs/research/PATH_AND_HASH_POLICY.md` | `a232a24a9f4c5011fc37ce6849d0e36a71c29d882f1b09804c96cd0dfea79690` | yes | Canonical path, strict newline-equivalent hash rules, and registered-evidence attribute policy |
-| runs-v2 | `experiments/runs_v2.jsonl` | `8316b4605a8564aabe6f20fbef330682e23a3d8be7a86e26fa7294a360542224` | yes | 22 current-protocol records, schema 2.0.0 |
+| runs-v2 | `experiments/runs_v2.jsonl` | `15869481cb757d8a9c6485f47084bf96906f51fe2c8e72f43f5127b0a5e56970` | yes | 29 current-protocol records, schema 2.0.0; seven final-refit records added |
 | fd002-eda-v1 | `configs/evaluation/fd002-eda-v1.json` | `55b265de76c493529e4649e268ea7a773bc117b085f4a42c690dfa55b6bb1003` | yes | Training/validation-only descriptive EDA contract |
 | fd002-eda-notebook-v1 | `notebooks/01_fd002_eda.ipynb` | `bd7823b2f9ee35a5309720bf22c41f8e82690091ac14edeb56b97e52c2599ede` | yes | Output-cleared notebook; execution pending absent inputs |
 
@@ -54,9 +54,34 @@ The migration manifest is intentionally not self-hashed.
 | LSTM | `reports/lstm_v2/validation_scores.csv` | `be9c2a2cfcd441c59faceaa03aa94545f7f49990318476d671c11e2dd3b6414a` | validation proxy only | yes |
 | LSTM | `reports/lstm_v2/verification_summary.csv` | `2e9c7789270374ebb34986f8121ee68181155441f5c7abef2f3e9ab79516c4b5` | validation proxy only | yes; LF registered as `d2daa7c23370df3ae272daa533953783f3fda12847d5ccf30839b5bc8490668b` |
 
-## Registered data artifacts unavailable in this checkout
+## Final LSTM refit evidence — 2026-08-25
 
-The clean clone intentionally omits raw and processed data. These identities are preserved from the registered split, baseline, and LSTM configurations; none was fetched or regenerated during the refactor.
+Every metric below is a validation-proxy diagnostic, not a final-test result. The registered protocol remained immutable at execution. The result config and reports are tracked evidence; the three model binaries are local and ignored by Git.
+
+| Artifact | Path | Raw SHA-256 | Present | Tracking / role |
+|---|---|---|---:|---|
+| Final-refit protocol | `configs/lstm/fd002-lstm-final-refit-protocol-v1.json` | `e6606707665e39e4b58996ce84d987e546b51d8563be0ef90dc698ac4c5a2b97` | yes | Tracked; registered before execution |
+| Final-refit result | `configs/lstm/fd002-lstm-final-refit-results-v1.json` | `7567d86b9f78fa2913a3d83025a1d5a71af1c887d6f4ec296d7527a1947bd09e` | yes | Tracked evidence; completed, no threshold/test access |
+| Artifact manifest report | `reports/lstm_final_v1/fd002-lstm-final-refit-v1/artifact_manifest.csv` | `79b2429e810e07c0c6c90184d6cbd630ae860299e5bc597e09259b2a2240890e` | yes | Tracked evidence |
+| Classical comparison | `reports/lstm_final_v1/fd002-lstm-final-refit-v1/classical_comparison.csv` | `ce02986ffae6b58a4c1c03f27916473ebd528d290892588df4c9881a4456f088` | yes | Tracked validation-proxy evidence |
+| Convergence engine assignment | `reports/lstm_final_v1/fd002-lstm-final-refit-v1/convergence_engine_assignment.csv` | `11ba116bfb1038f802dab31bfabdb635099885bc25abd27d597906c684e6769f` | yes | Tracked training-only evidence |
+| Convergence history | `reports/lstm_final_v1/fd002-lstm-final-refit-v1/convergence_history.csv` | `b4b5093b227a18d9544296b20d342c6552dbee13e28cf9e5934678212731ffcf` | yes | Tracked training-only evidence |
+| Convergence summary | `reports/lstm_final_v1/fd002-lstm-final-refit-v1/convergence_summary.csv` | `4f5572721a71901c9173c7611a9c0306ee19fc75f9f431f68eafec89647310a9` | yes | Tracked training-only evidence |
+| Ensemble validation scores | `reports/lstm_final_v1/fd002-lstm-final-refit-v1/ensemble_validation_scores.csv` | `0ae618f8654f5f5f30a8c5ac820b97e34d40ea330fa4a0bb745c2e1e2b07e3a3` | yes | Tracked validation-proxy evidence |
+| Epoch lock | `reports/lstm_final_v1/fd002-lstm-final-refit-v1/epoch_lock.csv` | `39e6410fce020eceb299fe95ea2e2319b57ed4fe9cba86aecb61eaa1d27f643d` | yes | Tracked training-only evidence; locked epoch 54 |
+| Locked-refit training history | `reports/lstm_final_v1/fd002-lstm-final-refit-v1/locked_refit_training_history.csv` | `d0964357c95787e4312c1b3018f6f3cb5802d55137e23cb1b61abdbb12752b82` | yes | Tracked training-only evidence |
+| Ranking metrics | `reports/lstm_final_v1/fd002-lstm-final-refit-v1/ranking_metrics.csv` | `f3e574e554231e705031f18e06119b61b7bf7e133365785167508988fa16ffca` | yes | Tracked validation-proxy evidence |
+| Reload verification | `reports/lstm_final_v1/fd002-lstm-final-refit-v1/reload_verification.csv` | `16d6788b16e173777b52d99ac6e312b3870b3b70fa3a0680f5aaa55bde1fb8b4` | yes | Tracked evidence |
+| Run summary | `reports/lstm_final_v1/fd002-lstm-final-refit-v1/run_summary.csv` | `eac44aa68af77e37c30dcd2c57cfa65a74578450736717c22c324faa6863eda9` | yes | Tracked validation-proxy evidence |
+| Runtime provenance | `reports/lstm_final_v1/fd002-lstm-final-refit-v1/runtime_provenance.json` | `91d3cf16735cd3cdec31d3d28bd9415d225b98f31c6f7503fc481424dfc27c61` | yes | Tracked provenance |
+| Per-seed validation scores | `reports/lstm_final_v1/fd002-lstm-final-refit-v1/validation_scores.csv` | `421d8f169a8bfc4a8abfc051887293590dd21e9f27fb2fe2518bf99ffefb9ca2` | yes | Tracked validation-proxy evidence |
+| Final LSTM seed 43 | `models/lstm_final_v1/fd002-lstm-final-refit-v1/fd002_lstm_final_v1_locked_p1_k6_balanced_64x16_l1_seed43.pt` | `7a0a84dc11a1d5e2c21d8ccdc4be0385a844d24146be4d27fb7d47b3df8cda2e` | yes | Local/untracked model artifact |
+| Final LSTM seed 44 | `models/lstm_final_v1/fd002-lstm-final-refit-v1/fd002_lstm_final_v1_locked_p1_k6_balanced_64x16_l1_seed44.pt` | `9f8406e39eda123f8878bcf58cec5e99c478e6d2d34f7ebbfff73a9a116e40e5` | yes | Local/untracked model artifact |
+| Final LSTM seed 45 | `models/lstm_final_v1/fd002-lstm-final-refit-v1/fd002_lstm_final_v1_locked_p1_k6_balanced_64x16_l1_seed45.pt` | `86f4a993fc5247cfb7bacdfb7680ce6cb3a8dceb7d0059bf1f445c5d80e1a2b4` | yes | Local/untracked model artifact |
+
+## Registered data artifact availability
+
+The clean clone still omits raw and most processed data. Four final-refit training/validation inputs were copied from the approved old project source only after exact registered-hash verification; they remain local and ignored by Git. No data was regenerated or downloaded.
 
 | Artifact | Canonical path | Registered SHA-256 | Evidence class | Present |
 |---|---|---|---|---:|
@@ -65,12 +90,12 @@ The clean clone intentionally omits raw and processed data. These identities are
 | P0 validation frame | `data/processed/preprocessing/p0_global/validation.csv` | `b39bf1101f309f73c5b79c432f053bd7b0744b0ea9abdbebfada67ef1493c6bc` | validation input | no |
 | P1/K6 training frame | `data/processed/preprocessing/p1_k6/train.csv` | `dd58e35cc81289fbc372797896636cbe30ccf2bdac5c3b45439e754d1b586441` | current protocol input | no |
 | P1/K6 validation frame | `data/processed/preprocessing/p1_k6/validation.csv` | `9918273195cedaaafe3287189256cc8042a7a50d6280e736c6278c5ba1e8d7e7` | validation input | no |
-| Training window metadata | `data/processed/window_metadata_train.csv` | `a6a006e3d2dd1e6200a8fb9cbfdd8aabb82526c027368af8fb6aa5cd46574f19` | current protocol input | no |
-| Validation window metadata | `data/processed/window_metadata_validation.csv` | `440fe967beb833f575379fd9f3d589e50858a5ae950da1a42ef469f93ef2618e` | validation input | no |
+| Training window metadata | `data/processed/window_metadata_train.csv` | `a6a006e3d2dd1e6200a8fb9cbfdd8aabb82526c027368af8fb6aa5cd46574f19` | current protocol input | yes; local/ignored |
+| Validation window metadata | `data/processed/window_metadata_validation.csv` | `440fe967beb833f575379fd9f3d589e50858a5ae950da1a42ef469f93ef2618e` | validation input | yes; local/ignored |
 | P0 training sequences | `data/processed/sequences_v2/p0_global/train.npy` | `0e19d1aaabd17f167ed65a0dab77ab7ae966fc45fba1edec0c99647008376582` | current protocol input | no |
 | P0 validation sequences | `data/processed/sequences_v2/p0_global/validation.npy` | `28b68d1efc6bde51f2b35f644dd96c9bd4384ea9be3eae5fd1d56dc4aedf8f61` | validation input | no |
-| P1/K6 training sequences | `data/processed/sequences_v2/p1_k6/train.npy` | `b334c60a9f8280305874a8671ef6b43104e2644c5762eecb55b99b291769867e` | current protocol input | no |
-| P1/K6 validation sequences | `data/processed/sequences_v2/p1_k6/validation.npy` | `a3ed2d89d7ff36daba68fb6f8eaa69ee92e12ff1264d393cf904d0d698cb58ec` | validation input | no |
+| P1/K6 training sequences | `data/processed/sequences_v2/p1_k6/train.npy` | `b334c60a9f8280305874a8671ef6b43104e2644c5762eecb55b99b291769867e` | current protocol input | yes; local/ignored |
+| P1/K6 validation sequences | `data/processed/sequences_v2/p1_k6/validation.npy` | `a3ed2d89d7ff36daba68fb6f8eaa69ee92e12ff1264d393cf904d0d698cb58ec` | validation input | yes; local/ignored |
 
 ## Registered model artifacts unavailable in this checkout
 

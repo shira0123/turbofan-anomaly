@@ -127,3 +127,14 @@ This file records consequential research and implementation decisions. Each entr
 - **Execution status:** Protocol registration is complete, but project-data training has not run because the four registered P1 training/validation sequence and metadata inputs are absent from this checkout. No result config, final-refit report, successful ledger row, or performance claim exists.
 - **Protocol:** `configs/lstm/fd002-lstm-final-refit-protocol-v1.json`.
 - **Owner:** Shivam.
+
+## 2026-08-25 — Complete the final LSTM refit and recommend the detector freeze
+
+- **Execution:** The registered `fd002-lstm-final-refit-v1` workflow ran unchanged on the four hash-matched P1/K=6 training/validation inputs using the NVIDIA GeForce GTX 1650. The protocol remained `registered_before_execution`; the separate result config records successful completion.
+- **Epoch lock:** Convergence best epochs were 47, 54, and 59 for seeds 43–45. The predeclared integer-median rule therefore locked all three final refits to epoch 54.
+- **Final LSTM evidence:** The per-seed mean validation-proxy PR-AUC values were `0.816912`, `0.807820`, and `0.805471`. The predeclared calibrated-score ensemble beat every individual seed at mean PR-AUC `0.822121` and mean ROC-AUC `0.951289`.
+- **Negative comparison retained:** The ensemble did not beat P1 LOF (`0.849695`) or P1 One-Class SVM (`0.832808`) on mean PR-AUC. It remained below LOF (`0.964363`), One-Class SVM (`0.964371`), and Isolation Forest (`0.955921`) on mean ROC-AUC.
+- **Detector-freeze recommendation:** Freeze P1/K=6 LOF as the primary detector for Gate 4 because it remains the strongest registered detector on the primary mean validation-proxy PR-AUC objective. Retain One-Class SVM as the strongest classical sensitivity control and the calibrated LSTM ensemble as the frozen deep temporal comparator; do not select an individual LSTM seed.
+- **Verification:** Three model artifacts, 13 reports, three sets of 9,365 validation scores, the 9,365-row aligned ensemble, and seven new ledger records passed independent hash/schema/reload verification. The complete suite passed 64 tests.
+- **Evidence boundary:** These are validation-proxy diagnostics, not accuracy, physical fault-onset performance, or final-test results. No threshold, EWMA, persistence, fusion rule, or alert policy has been selected. Held-out internal-test and official NASA-test data remain unopened.
+- **Next gate:** Register the Phase 5 alert-policy study only after the detector set and validation-only selection objective are accepted at Gate 4.

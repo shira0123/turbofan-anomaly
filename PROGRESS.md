@@ -4,20 +4,20 @@ Last updated: 2026-08-25
 
 ## Current state
 
-The revised validation foundation and LSTM architecture screen are implemented. The project now has a deterministic engine-disjoint split, train-only preprocessing with an approved six-regime P1 treatment, explicit proxy-label policies, classical controls, and a nine-run validation-only LSTM screen. The clean-v3 refactor has been merged, and active work continues from that governed package layout. Gate 3 is formally approved for the balanced one-layer architecture under P1/K=6, and the longer final-refit protocol is registered before execution. The registered P1 training/validation sequences and window metadata are absent from this checkout, so no final-refit training, validation scoring, result config, report, or new ledger record exists yet. The held-out internal-test partition has not been transformed, scored, or used for model selection.
+The revised validation foundation, LSTM architecture screen, and governed final LSTM refit are implemented and verified. The project has a deterministic engine-disjoint split, train-only preprocessing with an approved six-regime P1 treatment, explicit proxy-label policies, classical controls, and a frozen balanced one-layer LSTM ensemble under P1/K=6. The final-refit ensemble achieved mean validation-proxy PR-AUC `0.822121` and mean validation-proxy ROC-AUC `0.951289`; it beat every individual final-refit LSTM seed but did not beat LOF or One-Class SVM on mean PR-AUC and remained below LOF, One-Class SVM, and Isolation Forest on mean ROC-AUC. These are validation-proxy diagnostics, not final-test results. No threshold has been selected, and the held-out internal-test partition remains unopened.
 
-Active implementation branch: `research/phase5-validation` at starting commit `7be49897a52a3e48969add71374d6ce169634aad`
+Active implementation branch: `research/phase5-validation`; final-refit implementation commit `f7ec571d8635e68ff7def8f3daa2bfe0f0354edc`
 
 ## Roadmap status
 
 | Phase | Status | Evidence / next gate |
 |---|---|---|
-| 0. Evidence and reproducibility audit | Complete; clean-v3 merged | Bible v3, 100-source evidence matrix, claims ledger, artifact/migration manifests, path/hash policy, and the 22-record current-protocol run ledger are present. |
+| 0. Evidence and reproducibility audit | Complete; clean-v3 merged | Bible v3, 100-source evidence matrix, claims ledger, artifact/migration manifests, path/hash policy, and the 29-record current-protocol run ledger are present. |
 | 1. Engine-disjoint data foundation | Complete | Versioned split manifest and aligned window metadata; 7 data-foundation tests are included in the full suite. |
 | 2. Preprocessing study | Complete | K=6 approved for P1; P0 global normalization retained as control. |
 | 3. Classical validation baselines | Complete | Eight selected P0/P1 model variants evaluated on validation proxies only. |
-| 4. LSTM autoencoder study | Gate 3 approved; final-refit protocol registered, execution blocked on missing allowed inputs | Nine screen runs completed and verified; balanced one-layer architecture with P1/K=6 is approved for the predeclared longer-convergence and locked-refit protocol. |
-| 5. Threshold and event-level evaluation | Pending | Freeze on validation only after model selection. |
+| 4. LSTM autoencoder study | Complete; final refit verified | Nine screen runs plus three training-only convergence runs, three locked refits, and the calibrated ensemble are recorded. Locked epoch: 54. |
+| 5. Threshold and event-level evaluation | Pending Gate 4 | Freeze detector set and register threshold/EWMA/persistence evaluation on validation only. |
 | 6. Held-out and external evaluation | Pending | Open internal test once; NASA supplied test remains the external evaluation set. |
 
 ## Phase 1 — Data foundation
@@ -106,8 +106,17 @@ P1/K=6 is stable across the matched seeds and is recommended for the final LSTM 
 - Convergence selection is predeclared for seeds 43, 44, and 45 using only the registered 3,988-development/1,049-monitor training-engine split, with a 150-epoch maximum and monitor-loss early stopping.
 - Locked epoch count is the integer median of the three convergence best epochs. Each seed must then refit for exactly that count on all 5,037 eligible training windows, with no monitor split or validation feedback.
 - The frozen ensemble is the arithmetic mean of the three window-ID-aligned calibrated validation scores. Each empirical CDF is fitted only on that seed's 5,037 eligible training scores.
-- This is an implementation/protocol state, not executed evidence. The two P1 sequence arrays and two training/validation metadata files were absent at preflight, so no project-data run occurred and no result or ledger entry was created.
-- Phase 5 threshold, EWMA, persistence, fusion selection, and all internal/official test evaluation remain pending and unauthorized in this unit.
+- The four permitted P1 sequence/metadata inputs were provisioned with exact registered hashes, and the registered workflow completed without changing the frozen protocol.
+- Phase 5 threshold, EWMA, persistence, fusion selection, and all internal/official test evaluation remain pending. No threshold has been selected.
+
+## Final LSTM refit evidence — 2026-08-25
+
+- Convergence best epochs were 47, 54, and 59 for seeds 43, 44, and 45; the predeclared median rule locked all three final refits to epoch 54.
+- All three fixed-epoch refits used the same 5,037 eligible training windows. Each empirical CDF was fitted only on that seed's training reconstruction scores.
+- Mean endpoint-policy validation-proxy PR-AUC was `0.816912`, `0.807820`, and `0.805471` for seeds 43–45. The calibrated ensemble reached `0.822121` mean PR-AUC and `0.951289` mean ROC-AUC, beating every individual final-refit LSTM seed.
+- The ensemble remained below LOF (`0.849695`) and One-Class SVM (`0.832808`) on mean PR-AUC, and below LOF (`0.964363`), One-Class SVM (`0.964371`), and Isolation Forest (`0.955921`) on mean ROC-AUC.
+- Independent reload verification reproduced three sets of 9,365 raw/calibrated scores and 9,365 aligned ensemble scores. Maximum differences were `7.11e-15` raw and `1.11e-16` calibrated; three artifacts, 13 reports, and seven new ledger records were hash/schema verified.
+- Result classification is `validation_proxy_diagnostic_not_test_performance`. No best seed was selected, no threshold was selected, and no held-out internal-test or official NASA-test data was opened.
 
 ## Evaluation-policy counts
 
@@ -152,8 +161,8 @@ These normalized-life policies are evaluation proxies, not physical anomaly grou
 - The historical LSTM smoke split contains overlapping windows from the same engine and must not be cited as validation performance.
 - FD002 supplies run-to-failure trajectories but no per-cycle anomaly labels; reported PR/ROC values therefore depend on declared normalized-life proxies.
 - Stage 1 used one seed and the three architecture scores are close; architecture superiority should not be overstated.
-- Several balanced-model runs reached or nearly reached the 50-epoch screen budget. A final refit needs a separately registered, longer convergence budget after Gate 3 approval.
-- The LSTM screen used 3,988 development windows while the classical models used all 5,037 eligible training windows; direct family comparisons should be treated as screening evidence, not a controlled model-capacity conclusion.
+- The final LSTM refit closed the longer-convergence question, but its ensemble still did not surpass the strongest P1 classical controls on the primary validation-proxy ranking objective.
+- The classical and LSTM families now use the same 5,037 eligible final-fit windows, but model-family comparisons remain validation-selected proxy diagnostics without engine-bootstrap uncertainty.
 - The Master Execution Bible v3 and validated 100-source evidence matrix are now present under `docs/research/`; earlier references to a missing v2 authority are superseded by the approved v3 research package.
 - Thresholds, event-level delay/coverage, false-alarm rates, final test metrics, and external-test metrics are not yet frozen.
 
@@ -170,4 +179,4 @@ Every experiment-producing phase must leave all of the following before it is co
 
 ## Next action
 
-Complete and verify the registered final-refit implementation using synthetic tests. Restore the four registered training/validation inputs only through a separately approved provenance-preserving action, then rerun their exact hashes before any project-data execution. No held-out test data will be opened, and Phase 5 will not begin, before final-refit evidence and the detector freeze are complete.
+Close the detector freeze, then register the Gate 4 Phase 5 validation-only alert-policy study: detector set, calibration, global/per-mode threshold candidates, EWMA state, persistence, and operational selection objective. Keep the internal and official test sets unopened until that policy is selected and frozen.

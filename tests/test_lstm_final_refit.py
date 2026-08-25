@@ -14,6 +14,7 @@ import torch
 
 from turbofan_anomaly.alerting.calibration import EmpiricalCDFCalibrator
 from turbofan_anomaly.evaluation.ledger import append_run_record, load_run_ledger
+from turbofan_anomaly.evaluation.provenance import verify_registered_hash
 from turbofan_anomaly.models.lstm_training import (
     FixedEpochSettings,
     LSTMArchitecture,
@@ -247,14 +248,41 @@ def test_sequence_contract_requires_exact_shape_count_and_finite_values() -> Non
         validate_sequence_collection(invalid, expected_window_shape=(30, 21))
 
 
-def test_registered_final_refit_protocol_schema_and_preexecution_boundary() -> None:
+def test_registered_protocol_and_completed_result_preserve_boundaries() -> None:
     protocol = json.loads(PROTOCOL.read_text(encoding="utf-8"))
     validate_final_refit_protocol(protocol)
     assert protocol["status"] == "registered_before_execution"
     assert protocol["outputs"]["result_config"] == (
         "configs/lstm/fd002-lstm-final-refit-results-v1.json"
     )
-    assert not (REPO_ROOT / protocol["outputs"]["result_config"]).exists()
+    result_path = REPO_ROOT / protocol["outputs"]["result_config"]
+    assert result_path.is_file()
+    result = json.loads(result_path.read_text(encoding="utf-8"))
+    assert isinstance(result, dict)
+    assert result["status"] == "completed"
+    assert result["study_id"] == "fd002-lstm-final-refit-v1"
+    assert result["run_id"] == "fd002-lstm-final-refit-v1"
+    assert result["protocol_path"] == (
+        "configs/lstm/fd002-lstm-final-refit-protocol-v1.json"
+    )
+    protocol_hash = verify_registered_hash(PROTOCOL, result["protocol_sha256"])
+    assert protocol_hash.match_form == "raw"
+    assert result["completed_locked_refits"] == 3
+    assert result["outputs"]["ledger_records_appended"] == 7
+    assert result["threshold_selected"] is False
+    assert result["test_data_opened"] is False
+    assert result["result_classification"] == (
+        "validation_proxy_diagnostic_not_test_performance"
+    )
+    assert isinstance(result["locked_epoch_count"], int)
+    assert not isinstance(result["locked_epoch_count"], bool)
+    assert result["locked_epoch_count"] > 0
+    convergence_epochs = result["convergence_best_epochs"]
+    assert set(convergence_epochs) == {"43", "44", "45"}
+    assert all(
+        isinstance(epoch, int) and not isinstance(epoch, bool) and epoch > 0
+        for epoch in convergence_epochs.values()
+    )
     assert protocol["epoch_lock"]["rule"] == (
         "median_of_three_convergence_best_epochs"
     )
