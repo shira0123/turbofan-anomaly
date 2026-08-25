@@ -14,6 +14,8 @@ SCRIPT_NAMES = (
     "run_classical_baselines.py",
     "run_lstm_screen.py",
     "verify_lstm_screen.py",
+    "run_lstm_final_refit.py",
+    "verify_lstm_final_refit.py",
 )
 
 
@@ -44,7 +46,12 @@ def test_retained_scripts_are_thin_package_wrappers() -> None:
 
 
 def test_cublas_environment_is_set_before_torch_import() -> None:
-    for name in ("run_lstm_screen.py", "verify_lstm_screen.py"):
+    for name in (
+        "run_lstm_screen.py",
+        "verify_lstm_screen.py",
+        "run_lstm_final_refit.py",
+        "verify_lstm_final_refit.py",
+    ):
         source = (
             REPO_ROOT / "src" / "turbofan_anomaly" / "workflows" / name
         ).read_text(encoding="utf-8")

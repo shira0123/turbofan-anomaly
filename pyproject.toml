@@ -34,6 +34,8 @@ turbofan-run-preprocessing-study = "turbofan_anomaly.workflows.run_preprocessing
 turbofan-run-classical-baselines = "turbofan_anomaly.workflows.run_classical_baselines:main"
 turbofan-run-lstm-screen = "turbofan_anomaly.workflows.run_lstm_screen:main"
 turbofan-verify-lstm-screen = "turbofan_anomaly.workflows.verify_lstm_screen:main"
+turbofan-run-lstm-final-refit = "turbofan_anomaly.workflows.run_lstm_final_refit:main"
+turbofan-verify-lstm-final-refit = "turbofan_anomaly.workflows.verify_lstm_final_refit:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
