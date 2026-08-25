@@ -15,7 +15,7 @@ The current numbers are engine-disjoint **validation proxy diagnostics**, not ac
 | Isolation Forest | 0.78916934 |
 | PCA | 0.77240729 |
 
-Nine registered LSTM screening runs are complete. `balanced_64x16_l1 + P1/K=6` is the recommended screen candidate, with matched-seed median validation proxy PR-AUC `0.81088283`. It has **not** beaten LOF or One-Class SVM. Its final full-training refit has not run.
+Nine registered LSTM screening runs are complete. `balanced_64x16_l1 + P1/K=6` is the approved Gate 3 candidate, with matched-seed median validation proxy PR-AUC `0.81088283`. Its small screen advantage is not material evidence of architectural superiority, and it has **not** beaten LOF or One-Class SVM. The governed final-refit protocol is registered at `configs/lstm/fd002-lstm-final-refit-protocol-v1.json`; project-data execution has not run.
 
 FD002 provides run-to-failure trajectories but no physical per-cycle anomaly-onset labels. The late-life labels used here are declared evaluation proxies. PR-AUC is a ranking metric, not accuracy.
 
@@ -35,7 +35,7 @@ src/turbofan_anomaly/    reusable importable package
 tests/                   synthetic/unit and safety tests
 ```
 
-Raw data, processed arrays, and model binaries are intentionally not in this checkout. Their absence prevents notebook execution and full artifact reproduction; it does not invalidate structural/unit checks.
+Raw data, processed arrays, and model binaries are intentionally not in this checkout. In particular, the registered P1 training/validation sequences and window metadata required by the final-refit protocol are absent. Their absence blocks project-data training, notebook execution, and full artifact reproduction; it does not invalidate protocol registration, implementation, or synthetic/unit checks.
 
 ## Setup (Python 3.12.8)
 

@@ -1,0 +1,273 @@
+{
+  "schema_version": "1.0.0",
+  "study_id": "fd002-lstm-final-refit-v1",
+  "status": "registered_before_execution",
+  "registered_date": "2026-08-25",
+  "owner": "shivam",
+  "gate_3": {
+    "decision_status": "approved",
+    "owner_statement": "I approve Gate 3: the balanced 64×16 one-layer LSTM under P1/K=6 may proceed to the registered final-refit protocol. I understand that its architecture advantage was small and that it has not beaten LOF or OCSVM on validation.",
+    "approved_architecture_id": "balanced_64x16_l1",
+    "approved_pipeline": "p1_k6",
+    "interpretation": "fair_temporal_comparator_not_proof_that_deep_learning_is_best"
+  },
+  "evidence_boundary": {
+    "result_classification": "validation_proxy_diagnostic_not_test_performance",
+    "anomaly_labels": "normalized_life_proxies_not_physical_ground_truth",
+    "allowed_splits": [
+      "train",
+      "validation"
+    ],
+    "prohibited_inputs": [
+      "held_out_internal_test",
+      "official_nasa_test"
+    ],
+    "test_data_may_be_opened": false,
+    "validation_controls_gradient_updates": false,
+    "validation_controls_early_stopping": false,
+    "validation_controls_seed_choice": false,
+    "validation_controls_epoch_choice": false,
+    "threshold_selection_authorized": false,
+    "phase_5_authorized": false
+  },
+  "inputs": {
+    "split_manifest": {
+      "manifest_id": "fd002-primary-v1",
+      "path": "configs/splits/fd002-primary-v1.json",
+      "sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327",
+      "hash_form": "raw"
+    },
+    "preprocessing_selection": {
+      "decision_id": "fd002-preprocessing-selection-v1",
+      "path": "configs/preprocessing/fd002-preprocessing-selection-v1.json",
+      "sha256": "4b71af5fd51cea9b90feda09e8d85ba502690e31efb3469fe20ad19482565086",
+      "hash_form": "lf"
+    },
+    "screen_protocol": {
+      "study_id": "fd002-lstm-screen-v1",
+      "path": "configs/lstm/fd002-lstm-screen-protocol-v1.json",
+      "sha256": "1d938ffd16c1024e1ff9767ccf9fefbaadb89919f67850051b15d6796a87f509",
+      "hash_form": "lf"
+    },
+    "screen_results": {
+      "study_id": "fd002-lstm-screen-v1",
+      "path": "configs/lstm/fd002-lstm-screen-results-v1.json",
+      "sha256": "26d2e6e6215d9a3c3376642396754bfae0279c53f808b809672ffbc96db05694",
+      "hash_form": "raw"
+    },
+    "pipeline": "p1_k6",
+    "sequence_directory": "data/processed/sequences_v2",
+    "sequences": {
+      "train": {
+        "path": "data/processed/sequences_v2/p1_k6/train.npy",
+        "sha256": "b334c60a9f8280305874a8671ef6b43104e2644c5762eecb55b99b291769867e",
+        "hash_form": "raw"
+      },
+      "validation": {
+        "path": "data/processed/sequences_v2/p1_k6/validation.npy",
+        "sha256": "a3ed2d89d7ff36daba68fb6f8eaa69ee92e12ff1264d393cf904d0d698cb58ec",
+        "hash_form": "raw"
+      }
+    },
+    "metadata_directory": "data/processed",
+    "metadata": {
+      "train": {
+        "path": "data/processed/window_metadata_train.csv",
+        "sha256": "a6a006e3d2dd1e6200a8fb9cbfdd8aabb82526c027368af8fb6aa5cd46574f19",
+        "hash_form": "raw"
+      },
+      "validation": {
+        "path": "data/processed/window_metadata_validation.csv",
+        "sha256": "440fe967beb833f575379fd9f3d589e50858a5ae950da1a42ef469f93ef2618e",
+        "hash_form": "raw"
+      }
+    }
+  },
+  "window_contract": {
+    "shape": [
+      30,
+      21
+    ],
+    "eligible_training_windows": 5037,
+    "validation_windows": 9365,
+    "training_engines": 156,
+    "validation_engines": 52,
+    "train_validation_engine_overlap": 0
+  },
+  "healthy_training_assumption": {
+    "method": "window_endpoint_within_observed_training_engine_life_fraction",
+    "fraction": 0.3,
+    "other_training_windows_are_confirmed_anomalies": false
+  },
+  "architecture": {
+    "architecture_id": "balanced_64x16_l1",
+    "hidden_dim": 64,
+    "latent_dim": 16,
+    "num_layers": 1,
+    "dropout": 0.0,
+    "parameter_count": 59045
+  },
+  "convergence_selection": {
+    "purpose": "training_only_epoch_selection",
+    "method": "training_engine_disjoint_max_cycle_quintile_stratified",
+    "monitor_fraction": 0.2,
+    "n_strata": 5,
+    "assignment_random_state": 142,
+    "expected_development": {
+      "engine_count": 124,
+      "window_count": 3988,
+      "engine_ids_sha256": "aaa4c0c5246d60cd97cf1bf4b117ff33bf013abd2bba4a3a4d0e3cf41fdf3ba4"
+    },
+    "expected_monitor": {
+      "engine_count": 32,
+      "window_count": 1049,
+      "engine_ids_sha256": "f52a45dd2d1b55b2dcfa1bdf5630f7cc4411b8e2a6ee7c447650cf6b2ede373e"
+    },
+    "seeds": [
+      43,
+      44,
+      45
+    ],
+    "execution_order": "sequential",
+    "best_checkpoint_rule": "minimum_monitor_reconstruction_loss_per_seed",
+    "validation_may_be_scored_during_convergence_selection": false
+  },
+  "optimization": {
+    "optimizer": "AdamW",
+    "loss": "mean_squared_reconstruction_error",
+    "batch_size": 128,
+    "maximum_epochs": 150,
+    "minimum_epochs": 20,
+    "early_stopping_patience": 15,
+    "minimum_improvement": 0.00001,
+    "learning_rate": 0.001,
+    "weight_decay": 0.00001,
+    "gradient_clipping_norm": 1.0,
+    "dataloader": {
+      "num_workers": 0,
+      "seeded_shuffle": true,
+      "drop_last": false
+    },
+    "deterministic_pytorch_cuda": true
+  },
+  "epoch_lock": {
+    "rule": "median_of_three_convergence_best_epochs",
+    "expression": "median(best_epoch_seed43,best_epoch_seed44,best_epoch_seed45)",
+    "required_positive_integer_epoch_count": 3,
+    "rounding": "none"
+  },
+  "locked_refit": {
+    "seeds": [
+      43,
+      44,
+      45
+    ],
+    "training_population": "all_5037_eligible_training_windows",
+    "epoch_count": "locked_epoch_count",
+    "monitor_split_used": false,
+    "validation_consulted_during_training": false,
+    "calibration": {
+      "method": "empirical_cdf",
+      "fit_population": "per_seed_raw_scores_on_all_5037_eligible_training_windows",
+      "validation_or_test_refit_allowed": false,
+      "larger_calibrated_score_means_more_anomalous": true
+    }
+  },
+  "validation_diagnostics": {
+    "classification": "validation_proxy_diagnostic",
+    "expected_window_count": 9365,
+    "ranking_policies": [
+      "normalized_life_last_10pct_endpoint",
+      "normalized_life_last_20pct_endpoint",
+      "normalized_life_last_30pct_endpoint",
+      "normalized_life_last_20pct_full_window",
+      "normalized_life_last_30pct_full_window"
+    ],
+    "report_each_seed_separately": true,
+    "best_seed_selection_allowed": false,
+    "ensemble": {
+      "ensemble_id": "calibrated_mean_seed43_seed44_seed45",
+      "alignment_key": "window_id",
+      "alignment_must_be_exact": true,
+      "score": "arithmetic_mean_of_three_per_seed_calibrated_scores",
+      "raw_score_average_is_primary": false
+    }
+  },
+  "registered_classical_comparison": {
+    "classification": "validation_proxy_diagnostic",
+    "rerun_or_retune_classical_models": false,
+    "source_report": {
+      "path": "reports/baselines_v2/selected_models.csv",
+      "sha256": "c4ad604a12bb4cf376c474bf22bf25c49a35202b60f022eb49399e879dfdcc9a",
+      "hash_form": "raw"
+    },
+    "pipeline": "p1_k6",
+    "detectors": [
+      "lof",
+      "one_class_svm",
+      "isolation_forest",
+      "pca_reconstruction"
+    ],
+    "screen_context": {
+      "lstm_median_mean_pr_auc": 0.8108828308398239,
+      "lof_mean_pr_auc": 0.8496951349,
+      "one_class_svm_mean_pr_auc": 0.8328076731,
+      "architecture_advantage_over_compact_mean_pr_auc": 0.0018277573
+    }
+  },
+  "outputs": {
+    "model_directory": "models/lstm_final_v1",
+    "report_directory": "reports/lstm_final_v1",
+    "result_config": "configs/lstm/fd002-lstm-final-refit-results-v1.json",
+    "artifact_name_template": "fd002_lstm_final_v1_locked_p1_k6_balanced_64x16_l1_seed{seed}.pt",
+    "existing_output_policy": "refuse_without_explicit_safe_new_run_id_or_version",
+    "atomic_completion_rule": "publish_result_config_and_ledger_rows_only_after_all_artifacts_reports_and_reload_checks_succeed",
+    "model_artifacts_tracked_by_git": false
+  },
+  "reload_verification": {
+    "raw_scores": {
+      "relative_tolerance": 0.00001,
+      "absolute_tolerance": 0.000001
+    },
+    "calibrated_scores": {
+      "relative_tolerance": 0.0,
+      "absolute_tolerance": 0.000000000001
+    }
+  },
+  "runtime_provenance_required": [
+    "python_version",
+    "numpy_version",
+    "pandas_version",
+    "scikit_learn_version",
+    "torch_version",
+    "cuda_version",
+    "operating_system",
+    "device",
+    "gpu_name_when_available",
+    "start_timestamp",
+    "end_timestamp",
+    "duration_seconds",
+    "code_commit",
+    "code_branch",
+    "working_tree_clean",
+    "deterministic_flags",
+    "protocol_sha256",
+    "input_sha256",
+    "output_sha256"
+  ],
+  "execution_sequence": [
+    "verify_registered_protocol_and_allowed_inputs",
+    "run_three_sequential_training_only_convergence_selections",
+    "lock_epoch_count_by_registered_median_rule",
+    "run_three_sequential_fixed_epoch_refits_on_all_eligible_training_windows",
+    "fit_per_seed_training_score_empirical_cdfs",
+    "score_validation_for_each_seed",
+    "construct_window_id_aligned_calibrated_score_ensemble",
+    "compute_validation_proxy_diagnostics_and_registered_classical_comparison",
+    "write_versioned_reports_and_artifacts",
+    "reload_artifacts_and_reproduce_scores",
+    "atomically_write_result_config",
+    "append_schema_valid_ledger_records",
+    "update_decision_and_progress_evidence_status"
+  ]
+}

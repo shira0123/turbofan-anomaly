@@ -1,22 +1,22 @@
 # Progress — Turbofan Anomaly Project
 
-Last updated: 2026-08-24
+Last updated: 2026-08-25
 
 ## Current state
 
-The revised validation foundation and LSTM architecture screen are implemented. The project now has a deterministic engine-disjoint split, train-only preprocessing with an approved six-regime P1 treatment, explicit proxy-label policies, classical controls, and a nine-run validation-only LSTM screen. The validated implementation has been consolidated into the importable `turbofan_anomaly` package with thin CLIs, governed evidence manifests, a schema-versioned JSONL ledger, and a training/validation-only EDA contract. The balanced one-layer architecture and P1/K=6 pipeline are recommended at Gate 3 but are not frozen until owner approval. The held-out internal-test partition has not been transformed, scored, or used for model selection.
+The revised validation foundation and LSTM architecture screen are implemented. The project now has a deterministic engine-disjoint split, train-only preprocessing with an approved six-regime P1 treatment, explicit proxy-label policies, classical controls, and a nine-run validation-only LSTM screen. The clean-v3 refactor has been merged, and active work continues from that governed package layout. Gate 3 is formally approved for the balanced one-layer architecture under P1/K=6, and the longer final-refit protocol is registered before execution. The registered P1 training/validation sequences and window metadata are absent from this checkout, so no final-refit training, validation scoring, result config, report, or new ledger record exists yet. The held-out internal-test partition has not been transformed, scored, or used for model selection.
 
-Active branch: `refactor/clean-v3` at base commit `3aa9f0fd6b6f8f92395e3f4940b839859a84664d`
+Active implementation branch: `research/phase5-validation` at starting commit `7be49897a52a3e48969add71374d6ce169634aad`
 
 ## Roadmap status
 
 | Phase | Status | Evidence / next gate |
 |---|---|---|
-| 0. Evidence and reproducibility audit | Clean-v3 remediation complete; human diff review pending | Bible v3, 100-source evidence matrix, claims ledger, artifact/migration manifests, path/hash policy, and the 22-record current-protocol run ledger are present. |
+| 0. Evidence and reproducibility audit | Complete; clean-v3 merged | Bible v3, 100-source evidence matrix, claims ledger, artifact/migration manifests, path/hash policy, and the 22-record current-protocol run ledger are present. |
 | 1. Engine-disjoint data foundation | Complete | Versioned split manifest and aligned window metadata; 7 data-foundation tests are included in the full suite. |
 | 2. Preprocessing study | Complete | K=6 approved for P1; P0 global normalization retained as control. |
 | 3. Classical validation baselines | Complete | Eight selected P0/P1 model variants evaluated on validation proxies only. |
-| 4. LSTM autoencoder study | Screen complete; Gate 3 pending | Nine registered runs completed and verified; balanced one-layer architecture with P1/K=6 is recommended for the final training protocol. |
+| 4. LSTM autoencoder study | Gate 3 approved; final-refit protocol registered, execution blocked on missing allowed inputs | Nine screen runs completed and verified; balanced one-layer architecture with P1/K=6 is approved for the predeclared longer-convergence and locked-refit protocol. |
 | 5. Threshold and event-level evaluation | Pending | Freeze on validation only after model selection. |
 | 6. Held-out and external evaluation | Pending | Open internal test once; NASA supplied test remains the external evaluation set. |
 
@@ -99,6 +99,16 @@ Stage 2 matched-seed robustness:
 
 P1/K=6 is stable across the matched seeds and is recommended for the final LSTM training protocol. The LSTM does not automatically replace the classical controls: the selected P1 LOF and One-Class SVM validation diagnostics (`0.84970` and `0.83281` mean PR-AUC) remain higher than the LSTM screen median. Those comparisons are validation-proxy diagnostics, not held-out performance.
 
+## Gate 3 closure and final-refit registration — 2026-08-25
+
+- Owner approval: “I approve Gate 3: the balanced 64×16 one-layer LSTM under P1/K=6 may proceed to the registered final-refit protocol. I understand that its architecture advantage was small and that it has not beaten LOF or OCSVM on validation.”
+- Registered protocol: `configs/lstm/fd002-lstm-final-refit-protocol-v1.json`, status `registered_before_execution`.
+- Convergence selection is predeclared for seeds 43, 44, and 45 using only the registered 3,988-development/1,049-monitor training-engine split, with a 150-epoch maximum and monitor-loss early stopping.
+- Locked epoch count is the integer median of the three convergence best epochs. Each seed must then refit for exactly that count on all 5,037 eligible training windows, with no monitor split or validation feedback.
+- The frozen ensemble is the arithmetic mean of the three window-ID-aligned calibrated validation scores. Each empirical CDF is fitted only on that seed's 5,037 eligible training scores.
+- This is an implementation/protocol state, not executed evidence. The two P1 sequence arrays and two training/validation metadata files were absent at preflight, so no project-data run occurred and no result or ledger entry was created.
+- Phase 5 threshold, EWMA, persistence, fusion selection, and all internal/official test evaluation remain pending and unauthorized in this unit.
+
 ## Evaluation-policy counts
 
 | Policy | Healthy | Ambiguous | Anomalous |
@@ -160,4 +170,4 @@ Every experiment-producing phase must leave all of the following before it is co
 
 ## Next action
 
-First, review the complete `refactor/clean-v3` diff and decide whether clean-kernel EDA execution with restored allowed inputs is required before integration. Then make the Gate 3 decision: approve or revise the recommended balanced one-layer LSTM with P1/K=6. After approval, register a longer final-refit budget using all 5,037 eligible training windows, then freeze the model before threshold and event-level validation. No held-out test data will be opened before those choices are fixed.
+Complete and verify the registered final-refit implementation using synthetic tests. Restore the four registered training/validation inputs only through a separately approved provenance-preserving action, then rerun their exact hashes before any project-data execution. No held-out test data will be opened, and Phase 5 will not begin, before final-refit evidence and the detector freeze are complete.

@@ -114,3 +114,16 @@ This file records consequential research and implementation decisions. Each entr
 - **Safety boundary:** Metadata generation defaults to training and validation only. Internal-test metadata requires an explicit `--include-internal-test` flag, which was not exercised. The refactor did not open, transform, plot, score, or model the held-out internal test or official NASA test data.
 - **Verification:** All 41 synthetic/unit tests passed under Python 3.12.8 and PyTorch 2.5.1+cu121; six CLI `--help` checks passed; AST, JSON/JSONL, notebook structure, local links, path rejection, strict raw/LF/CRLF provenance, registered-byte immutability, and stale-active-reference checks passed. Notebook execution remains pending because allowed split data and registered P0/P1 model artifacts are absent from this checkout.
 - **Owner:** Shivam authorized the refactor; Codex implemented and verified it without committing, pushing, opening a PR, or merging.
+
+## 2026-08-25 — Approve Gate 3 and register the governed final LSTM refit
+
+- **Owner approval:** “I approve Gate 3: the balanced 64×16 one-layer LSTM under P1/K=6 may proceed to the registered final-refit protocol. I understand that its architecture advantage was small and that it has not beaten LOF or OCSVM on validation.”
+- **Decision:** Freeze `balanced_64x16_l1` under P1/K=6 for the registered final-refit protocol. This approves a fair temporal comparator; it does not declare the LSTM superior to the classical controls.
+- **Convergence rule:** Run seeds 43–45 sequentially on the registered engine-disjoint 3,988-development/1,049-monitor training-window assignment, with a 150-epoch maximum and monitor reconstruction loss as the only checkpoint criterion.
+- **Epoch lock:** Use the integer median of the three best convergence epochs. Do not replace that rule after validation is visible.
+- **Locked refit:** Reinitialize each seed and train for exactly the locked epoch count on all 5,037 eligible training windows. Fit each empirical CDF only on that seed's full-training reconstruction scores.
+- **Ensemble:** Average the three per-seed calibrated scores after exact `window_id` alignment. Do not choose a best seed after validation.
+- **Evidence boundary:** Validation proxy diagnostics occur only after every locked refit and calibrator exist. Validation does not control gradient updates, early stopping, seeds, or epoch choice. Thresholds, EWMA, persistence, fusion selection, held-out internal-test access, and official NASA-test access are outside this decision.
+- **Execution status:** Protocol registration is complete, but project-data training has not run because the four registered P1 training/validation sequence and metadata inputs are absent from this checkout. No result config, final-refit report, successful ledger row, or performance claim exists.
+- **Protocol:** `configs/lstm/fd002-lstm-final-refit-protocol-v1.json`.
+- **Owner:** Shivam.
