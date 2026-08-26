@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from pathlib import Path
 import subprocess
 import sys
@@ -25,6 +26,9 @@ from turbofan_anomaly.workflows.run_alert_policy_study import (
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PROTOCOL = (
     REPO_ROOT / "configs" / "alerting" / "fd002-alert-policy-study-protocol-v1.json"
+)
+PROTOCOL_V2 = (
+    REPO_ROOT / "configs" / "alerting" / "fd002-alert-policy-study-protocol-v2.json"
 )
 
 
@@ -75,6 +79,35 @@ def test_registered_protocol_round_trips_and_freezes_exact_grid() -> None:
     assert count == 1280
     assert count * len(protocol["proxy_policies"]) == 6400
     assert json.loads(json.dumps(protocol, sort_keys=True)) == protocol
+
+
+def test_v2_protocol_changes_only_governed_metadata_lineage() -> None:
+    v1_bytes = PROTOCOL.read_bytes()
+    assert hashlib.sha256(v1_bytes).hexdigest() == (
+        "9734c465071401387f7ad2fc79abfc207d0eeb0e8724685267f74b7528f8cb6c"
+    )
+    v1 = json.loads(v1_bytes)
+    v2 = json.loads(PROTOCOL_V2.read_text(encoding="utf-8"))
+    validate_alert_policy_protocol(v2)
+
+    lineage = v2["metadata_lineage_correction"]
+    assert lineage["blocked_protocol_v1"]["path"] == (
+        "configs/alerting/fd002-alert-policy-study-protocol-v1.json"
+    )
+    assert lineage["blocked_protocol_v1"]["sha256"] == hashlib.sha256(
+        v1_bytes
+    ).hexdigest()
+    assert lineage["window_context_semantics"] == (
+        "p1_k6_endpoint_cycle_mode_v1"
+    )
+    assert lineage["original_metadata_unchanged"] is True
+    assert lineage["test_data_accessed"] is False
+    assert lineage["threshold_selected"] is False
+
+    comparable_v2 = json.loads(json.dumps(v2))
+    comparable_v2.pop("metadata_lineage_correction")
+    comparable_v2["inputs"]["metadata"] = v1["inputs"]["metadata"]
+    assert comparable_v2 == v1
 
 
 def test_phase5_split_and_path_allow_list_rejects_test_like_inputs() -> None:

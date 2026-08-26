@@ -2,6 +2,10 @@
 
 from __future__ import annotations
 
+import hashlib
+import os
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 
@@ -22,6 +26,9 @@ WINDOW_METADATA_COLUMNS = [
     "label_policy_id",
     "label_state",
 ]
+
+P1_K6_ENDPOINT_CONTEXT_SEMANTICS = "p1_k6_endpoint_cycle_mode_v1"
+P1_K6_OPERATING_MODES = frozenset(range(6))
 
 
 def _validate_window_source(frame: pd.DataFrame) -> None:
@@ -145,3 +152,156 @@ def validate_window_metadata(
         expected_max = metadata["engine"].map(max_cycles).astype(int)
         if not np.array_equal(metadata["max_cycle"].to_numpy(), expected_max.to_numpy()):
             raise ValueError("Window max_cycle does not match the source engine")
+
+
+def assign_endpoint_operating_modes(
+    window_metadata: pd.DataFrame,
+    cycle_frame: pd.DataFrame,
+) -> pd.DataFrame:
+    """Derive P1/K=6 window context from the mode at each window endpoint.
+
+    The source metadata is copied and never mutated.  No sensor values participate in
+    the assignment: ``(engine, end_cycle)`` is joined directly to the registered
+    cycle-level ``(engine, cycle, op_mode)`` key.
+    """
+    required_windows = {"window_id", "engine", "end_cycle", "op_mode"}
+    missing_windows = required_windows - set(window_metadata.columns)
+    if missing_windows:
+        raise ValueError(
+            f"Missing window-context columns: {sorted(missing_windows)}"
+        )
+    required_cycles = {"engine", "cycle", "op_mode"}
+    missing_cycles = required_cycles - set(cycle_frame.columns)
+    if missing_cycles:
+        raise ValueError(f"Missing cycle-context columns: {sorted(missing_cycles)}")
+    if window_metadata.empty:
+        raise ValueError("Cannot derive endpoint context for empty window metadata")
+    if window_metadata["window_id"].isna().any() or window_metadata[
+        "window_id"
+    ].duplicated().any():
+        raise ValueError("Window IDs must be non-null and unique")
+    if not window_metadata["op_mode"].isna().all():
+        raise ValueError("Original window metadata must have an unassigned op_mode")
+    if cycle_frame.duplicated(["engine", "cycle"]).any():
+        raise ValueError("Cycle context contains duplicate endpoint keys")
+
+    numeric_modes = pd.to_numeric(cycle_frame["op_mode"], errors="coerce").to_numpy(
+        dtype=float
+    )
+    if not np.isfinite(numeric_modes).all() or not np.equal(
+        numeric_modes, np.floor(numeric_modes)
+    ).all():
+        raise ValueError("Cycle context operating modes must be finite integers")
+    integer_modes = numeric_modes.astype(int)
+    invalid_modes = set(integer_modes) - P1_K6_OPERATING_MODES
+    if invalid_modes:
+        raise ValueError(
+            f"Cycle context contains invalid P1/K=6 modes: {sorted(invalid_modes)}"
+        )
+
+    source_columns = list(window_metadata.columns)
+    windows = window_metadata.copy(deep=True)
+    windows["_window_context_order"] = np.arange(len(windows), dtype=np.int64)
+    endpoints = cycle_frame[["engine", "cycle"]].copy()
+    endpoints["_endpoint_op_mode"] = integer_modes
+    endpoints = endpoints.rename(columns={"cycle": "end_cycle"})
+    merged = windows.merge(
+        endpoints,
+        on=["engine", "end_cycle"],
+        how="left",
+        sort=False,
+        validate="many_to_one",
+        indicator=True,
+    )
+    if (merged["_merge"] != "both").any():
+        missing = int((merged["_merge"] != "both").sum())
+        raise ValueError(f"Window context is missing {missing} endpoint assignments")
+    merged = merged.sort_values("_window_context_order", kind="stable")
+    merged["op_mode"] = pd.array(merged["_endpoint_op_mode"], dtype="Int64")
+    result = merged[source_columns].reset_index(drop=True)
+    if result["window_id"].tolist() != window_metadata["window_id"].tolist():
+        raise RuntimeError("Endpoint assignment changed window ordering")
+    return result
+
+
+def validate_p1_k6_mode_coverage(
+    training_metadata: pd.DataFrame,
+    validation_metadata: pd.DataFrame,
+    eligible_training: np.ndarray | pd.Series,
+    *,
+    minimum_eligible_training_windows_per_mode: int = 100,
+    expected_eligible_training_windows: int | None = None,
+) -> dict[int, int]:
+    """Validate exact six-mode coverage and eligible-training occupancy."""
+    eligible = np.asarray(eligible_training, dtype=bool)
+    if eligible.shape != (len(training_metadata),):
+        raise ValueError("Eligible-training mask is not metadata-aligned")
+    if expected_eligible_training_windows is not None and int(eligible.sum()) != int(
+        expected_eligible_training_windows
+    ):
+        raise ValueError("Eligible-training window count differs from registration")
+    for metadata, split in (
+        (training_metadata, "train"),
+        (validation_metadata, "validation"),
+    ):
+        numeric = pd.to_numeric(metadata["op_mode"], errors="coerce").to_numpy(
+            dtype=float
+        )
+        if not np.isfinite(numeric).all() or not np.equal(
+            numeric, np.floor(numeric)
+        ).all():
+            raise ValueError(f"{split} operating modes must be finite integers")
+        modes = set(numeric.astype(int))
+        if modes != P1_K6_OPERATING_MODES:
+            raise ValueError(f"{split} must contain exactly the six P1/K=6 modes")
+    counts = (
+        training_metadata.loc[eligible, "op_mode"].astype(int).value_counts().to_dict()
+    )
+    if set(counts) != P1_K6_OPERATING_MODES:
+        raise ValueError("Eligible training must contain exactly the six P1/K=6 modes")
+    if min(counts.values()) < int(minimum_eligible_training_windows_per_mode):
+        raise ValueError("An eligible-training mode has insufficient window coverage")
+    return {int(mode): int(counts[mode]) for mode in sorted(counts)}
+
+
+def materialize_endpoint_window_context(
+    *,
+    original_metadata_path: Path,
+    cycle_frame_path: Path,
+    destination_path: Path,
+    expected_original_sha256: str,
+    expected_cycle_frame_sha256: str,
+) -> str:
+    """Write derived endpoint context atomically while preserving source bytes."""
+
+    def raw_sha256(path: Path) -> str:
+        return hashlib.sha256(path.read_bytes()).hexdigest()
+
+    original_path = Path(original_metadata_path)
+    cycle_path = Path(cycle_frame_path)
+    destination = Path(destination_path)
+    original_before = raw_sha256(original_path)
+    if original_before != expected_original_sha256:
+        raise ValueError("Original window-metadata hash differs from registration")
+    if raw_sha256(cycle_path) != expected_cycle_frame_sha256:
+        raise ValueError("P1/K=6 cycle-frame hash differs from registration")
+    if destination.exists():
+        raise FileExistsError(f"Refusing to overwrite derived metadata: {destination}")
+
+    derived = assign_endpoint_operating_modes(
+        pd.read_csv(original_path), pd.read_csv(cycle_path)
+    )
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    temporary = destination.with_name(f".{destination.name}.tmp")
+    if temporary.exists():
+        raise FileExistsError(f"Refusing stale derived-metadata temporary: {temporary}")
+    try:
+        derived.to_csv(temporary, index=False, lineterminator="\n")
+        os.replace(temporary, destination)
+    finally:
+        if temporary.exists():
+            temporary.unlink()
+    if raw_sha256(original_path) != original_before:
+        destination.unlink(missing_ok=True)
+        raise RuntimeError("Original window metadata changed during derivation")
+    return raw_sha256(destination)

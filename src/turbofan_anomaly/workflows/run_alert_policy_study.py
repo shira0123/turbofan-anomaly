@@ -34,6 +34,11 @@ from turbofan_anomaly.alerting.thresholds import (
     registered_threshold_rules,
 )
 from turbofan_anomaly.data.windows import summary_features
+from turbofan_anomaly.data.metadata import (
+    P1_K6_ENDPOINT_CONTEXT_SEMANTICS,
+    assign_endpoint_operating_modes,
+    validate_p1_k6_mode_coverage,
+)
 from turbofan_anomaly.evaluation.alerts import (
     aggregate_candidate_metrics,
     evaluate_alert_policy,
@@ -94,12 +99,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--protocol",
         type=Path,
-        default=Path("configs/alerting/fd002-alert-policy-study-protocol-v1.json"),
+        default=Path("configs/alerting/fd002-alert-policy-study-protocol-v2.json"),
     )
     parser.add_argument(
         "--run-id",
         required=True,
-        help="Explicit run ID; v1 requires fd002-alert-policy-study-v1",
+        help="Explicit run ID; the registered study requires fd002-alert-policy-study-v1",
     )
     parser.add_argument("--device", choices=["auto", "cpu", "cuda"], default="auto")
     parser.add_argument(
@@ -264,6 +269,25 @@ def validate_alert_policy_protocol(protocol: Mapping[str, Any]) -> None:
     for split in ALLOWED_SPLITS:
         validate_allowed_input_path(protocol["inputs"]["sequences"][split]["path"], split)
         validate_allowed_input_path(protocol["inputs"]["metadata"][split]["path"], split)
+    lineage = protocol.get("metadata_lineage_correction")
+    if lineage is not None:
+        if lineage.get("window_context_semantics") != P1_K6_ENDPOINT_CONTEXT_SEMANTICS:
+            raise RuntimeError("Phase 5 endpoint window-context semantics changed")
+        if lineage.get("original_metadata_unchanged") is not True:
+            raise RuntimeError("Phase 5 original-metadata preservation is not asserted")
+        if lineage.get("test_data_accessed") is not False:
+            raise RuntimeError("Phase 5 lineage correction claims test-data access")
+        if lineage.get("threshold_selected") is not False:
+            raise RuntimeError("Phase 5 lineage correction selected a threshold")
+        for split in ALLOWED_SPLITS:
+            validate_allowed_input_path(lineage["cycle_frames"][split]["path"], split)
+            validate_allowed_input_path(
+                lineage["original_window_metadata"][split]["path"], split
+            )
+            if lineage["derived_window_context_metadata"][split] != protocol[
+                "inputs"
+            ]["metadata"][split]:
+                raise RuntimeError("Phase 5 derived metadata registration differs")
 
 
 def _verify_reference(reference: Mapping[str, Any], repo_root: Path) -> Path:
@@ -299,6 +323,18 @@ def verify_pre_execution_references(
             resolved[f"{kind}:{split}"] = _verify_reference(reference, repo_root)
     for seed, reference in protocol["inputs"]["final_lstm_models"].items():
         resolved[f"lstm_model:{seed}"] = _verify_reference(reference, repo_root)
+    lineage = protocol.get("metadata_lineage_correction")
+    if lineage is not None:
+        resolved["blocked_protocol_v1"] = _verify_reference(
+            lineage["blocked_protocol_v1"], repo_root
+        )
+        for split in ALLOWED_SPLITS:
+            resolved[f"cycle_frame:{split}"] = _verify_reference(
+                lineage["cycle_frames"][split], repo_root
+            )
+            resolved[f"original_metadata:{split}"] = _verify_reference(
+                lineage["original_window_metadata"][split], repo_root
+            )
     return resolved
 
 
@@ -322,6 +358,29 @@ def load_allowed_inputs(
     )
     train_metadata = pd.read_csv(paths["metadata:train"])
     validation_metadata = pd.read_csv(paths["metadata:validation"])
+    lineage = protocol.get("metadata_lineage_correction")
+    if lineage is None:
+        raise RuntimeError(
+            "Blocked Phase 5 v1 metadata lineage cannot be used for execution"
+        )
+    for observed, split in (
+        (train_metadata, "train"),
+        (validation_metadata, "validation"),
+    ):
+        original = pd.read_csv(paths[f"original_metadata:{split}"])
+        cycle_frame = pd.read_csv(paths[f"cycle_frame:{split}"])
+        independently_derived = assign_endpoint_operating_modes(original, cycle_frame)
+        try:
+            pd.testing.assert_frame_equal(
+                observed.reset_index(drop=True),
+                independently_derived.reset_index(drop=True),
+                check_dtype=False,
+                check_exact=True,
+            )
+        except AssertionError as error:
+            raise RuntimeError(
+                f"{split} derived metadata does not reproduce endpoint lineage"
+            ) from error
     expected_shape = tuple(map(int, protocol["window_contract"]["shape"]))
     validate_sequence_collection(
         train_sequences,
@@ -374,9 +433,18 @@ def load_allowed_inputs(
         raise RuntimeError("Training and validation engines overlap")
     if len(train_engines) != 156 or len(validation_engines) != 52:
         raise RuntimeError("Unexpected train/validation engine counts")
-    validation_modes = set(validation_metadata["op_mode"].astype(int))
-    if len(validation_modes) != 6:
-        raise RuntimeError("Validation metadata must contain exactly six P1 modes")
+    eligible = training_eligible_windows(train_metadata, 0.30).to_numpy(dtype=bool)
+    validate_p1_k6_mode_coverage(
+        train_metadata,
+        validation_metadata,
+        eligible,
+        minimum_eligible_training_windows_per_mode=int(
+            protocol["window_contract"]["minimum_eligible_training_windows_per_mode"]
+        ),
+        expected_eligible_training_windows=int(
+            protocol["window_contract"]["eligible_training_windows"]
+        ),
+    )
     return train_sequences, validation_sequences, train_metadata, validation_metadata
 
 
@@ -1257,11 +1325,13 @@ def main() -> None:
     repo_root = find_repository_root(protocol_path.parent)
     protocol = _load_json(protocol_path)
     validate_alert_policy_protocol(protocol)
+    if protocol.get("metadata_lineage_correction") is None:
+        raise RuntimeError("The blocked Phase 5 v1 protocol may not be executed")
     if not _RUN_ID_PATTERN.fullmatch(args.run_id) or args.run_id != protocol["study_id"]:
-        raise ValueError("This v1 protocol requires its registered study ID as run-id")
+        raise ValueError("This protocol requires its registered study ID as run-id")
     ledger_path = args.ledger.resolve()
     if ledger_path != resolve_repo_path(protocol["outputs"]["ledger"], repo_root):
-        raise ValueError("Phase 5 v1 must use the registered ledger path")
+        raise ValueError("Phase 5 must use the registered ledger path")
     existing_ledger = load_run_ledger(ledger_path)
     reserved = set(expected_alert_policy_ledger_run_ids(protocol["study_id"]))
     if reserved & {record["run_id"] for record in existing_ledger}:
@@ -1378,6 +1448,21 @@ def main() -> None:
                     split: protocol["inputs"]["metadata"][split]["sha256"]
                     for split in ALLOWED_SPLITS
                 },
+                "original_window_metadata": {
+                    split: protocol["metadata_lineage_correction"][
+                        "original_window_metadata"
+                    ][split]["sha256"]
+                    for split in ALLOWED_SPLITS
+                },
+                "p1_k6_cycle_frames": {
+                    split: protocol["metadata_lineage_correction"]["cycle_frames"][
+                        split
+                    ]["sha256"]
+                    for split in ALLOWED_SPLITS
+                },
+                "window_context_semantics": protocol["metadata_lineage_correction"][
+                    "window_context_semantics"
+                ],
                 "final_lstm_models": {
                     seed: reference["sha256"]
                     for seed, reference in protocol["inputs"]["final_lstm_models"].items()
@@ -1493,6 +1578,12 @@ def main() -> None:
             "online_recalibration": False,
             "fusion_evaluated": False,
             "final_result": False,
+            "metadata_lineage": {
+                "window_context_semantics": protocol["metadata_lineage_correction"][
+                    "window_context_semantics"
+                ],
+                "original_metadata_unchanged": True,
+            },
         }
         _atomic_write_json(result, result_path)
         result_created = True
