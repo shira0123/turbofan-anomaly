@@ -1,0 +1,71 @@
+{
+  "code_branch": "research/phase5-validation",
+  "code_commit": "180eefb5585c3d994a9d68afa22f6f564cc21dd2",
+  "cuda_version": "12.1",
+  "device": "cuda",
+  "duration_seconds": 2237.848461000016,
+  "end_timestamp": "2026-08-26T21:11:34+00:00",
+  "fusion_evaluated": false,
+  "gpu_name_when_available": "NVIDIA GeForce GTX 1650",
+  "input_sha256": {
+    "final_lstm_models": {
+      "43": "7a0a84dc11a1d5e2c21d8ccdc4be0385a844d24146be4d27fb7d47b3df8cda2e",
+      "44": "9f8406e39eda123f8878bcf58cec5e99c478e6d2d34f7ebbfff73a9a116e40e5",
+      "45": "86f4a993fc5247cfb7bacdfb7680ce6cb3a8dceb7d0059bf1f445c5d80e1a2b4"
+    },
+    "metadata": {
+      "train": "78ad3855b62bdcda51d0232bfa78f0adf6c858475b7a6dd8a256debfcab2268f",
+      "validation": "318dfc7b303cd9b2dc29656b36211922464580a92c9520db06cf437d77b2a692"
+    },
+    "original_window_metadata": {
+      "train": "a6a006e3d2dd1e6200a8fb9cbfdd8aabb82526c027368af8fb6aa5cd46574f19",
+      "validation": "440fe967beb833f575379fd9f3d589e50858a5ae950da1a42ef469f93ef2618e"
+    },
+    "p1_k6_cycle_frames": {
+      "train": "dd58e35cc81289fbc372797896636cbe30ccf2bdac5c3b45439e754d1b586441",
+      "validation": "9918273195cedaaafe3287189256cc8042a7a50d6280e736c6278c5ba1e8d7e7"
+    },
+    "sequences": {
+      "train": "b334c60a9f8280305874a8671ef6b43104e2644c5762eecb55b99b291769867e",
+      "validation": "a3ed2d89d7ff36daba68fb6f8eaa69ee92e12ff1264d393cf904d0d698cb58ec"
+    },
+    "window_context_semantics": "p1_k6_endpoint_cycle_mode_v1"
+  },
+  "joblib_version": "1.5.3",
+  "numpy_version": "2.4.2",
+  "online_recalibration": false,
+  "operating_system": "Windows-11-10.0.26200-SP0",
+  "output_sha256": {
+    "model_bundles": {
+      "isolation_forest": "0c62302b2689c8b026bdd56227e0c6c181c57450c10d3abdbed52adfc2ae162a",
+      "lof": "58ec2509bf1827c70b408287991843a10f1043d02353af335812ab3f7ccd2610",
+      "lstm_calibrated_ensemble": "efae8c17a834d5837aef2b09281ded44f90da700b462978436965888c5932588",
+      "one_class_svm": "d21b4b441462a543e6288bb8f1e84b0b509c0cef406635dfe532a0d74affb384",
+      "pca_reconstruction": "d56a6d41e63c0781da763565f71c4a13b144eacd487a351428113c8ebf2ba9aa"
+    },
+    "reports_excluding_runtime_and_artifact_manifest": {
+      "best_policy_per_detector.csv": "91f97e39398c390841b5a0a2e5b41f84aa98aa32165ed7b6fc4fd416fc49517d",
+      "candidate_policy_metrics.csv": "da98b18f617fcbef3724764016671d62646dc613ceb4a7825b94325fe2a178e5",
+      "candidate_selection.csv": "5f895859745ae37546d55e68244ffc932598455c80bec9f5cd506d1f0d538477",
+      "candidates.csv": "26d4e3f99701de2ea8897413dd126cb9fdd03814773b7722d36e409492a47681",
+      "detector_complementarity.csv": "2bb9f0c4a7aa1adacf1e8bb435b1fb5b72bb23604fd6b24d954c889ea8a97153",
+      "overall_recommendation.csv": "420bc1f7c07af0f1e1133c8de95f80f88eb6ef24ea6f7678939438a8e6d5e0f2",
+      "per_engine_metrics.csv": "63e5b91800e6fcc319c8409610d7a0304fd3a91ee6eb99709c2584edff3deae9",
+      "selected_events.csv": "dc098034e793d0ca512bd2c6f7ca8474e7133fdb4fb233987483559e97c0f904",
+      "selected_validation_alert_trace.csv": "1db558a8026e7ea9841ff56c90215c3835aa1b95208c98b49a07d8221c07219c",
+      "target_attainment.csv": "72a34a1e3e39fccc68d2d5bee7694fe11c6c66bd3f68cdcb4ebb166fd7645a3d",
+      "threshold_table.csv": "c6e6a1e1d4f3842fa6e16bd41436e0a1c00764d1e32dcec0d304f3aa7164681e",
+      "training_score_reference_summary.csv": "162b7f8f1c48f82aa30a2b46b51a7d29c5f9bdc95bf19b888f92ddcf05e7d3de",
+      "validation_score_reproduction_summary.csv": "8d88352fb0b90ca95846e53edca8a7be8225716ad8b6aad767304a00723c5864",
+      "verification_summary.csv": "0da109ef11510641b95955307ffa015f39a5699c9eb0c28a6f688fb2a3e3e3a2"
+    }
+  },
+  "pandas_version": "3.0.1",
+  "protocol_sha256": "47f165b7c35b772ee776e938d10dffd4af24dc3d069f34581ee11391918d6ff5",
+  "python_version": "3.12.8",
+  "scikit_learn_version": "1.8.0",
+  "start_timestamp": "2026-08-26T20:34:16+00:00",
+  "test_data_opened": false,
+  "torch_version": "2.5.1+cu121",
+  "working_tree_clean": true
+}

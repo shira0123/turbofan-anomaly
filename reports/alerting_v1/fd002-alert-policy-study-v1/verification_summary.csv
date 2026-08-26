@@ -1,0 +1,2 @@
+score_sources_reproduced,training_rows_per_source,validation_rows_per_source,operating_modes,threshold_rows,candidate_rows,candidate_policy_rows,gate_4_status,test_data_opened,online_recalibration,fusion_evaluated
+5,5037,9365,6,280,1280,6400,recommended_pending_owner_approval,False,False,False

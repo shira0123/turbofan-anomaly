@@ -6,7 +6,7 @@ Last updated: 2026-08-25
 
 The revised validation foundation, LSTM architecture screen, and governed final LSTM refit are implemented and verified. The project has a deterministic engine-disjoint split, train-only preprocessing with an approved six-regime P1 treatment, explicit proxy-label policies, classical controls, and a frozen balanced one-layer LSTM ensemble under P1/K=6. The final-refit ensemble achieved mean validation-proxy PR-AUC `0.822121` and mean validation-proxy ROC-AUC `0.951289`; it beat every individual final-refit LSTM seed but did not beat LOF or One-Class SVM on mean PR-AUC and remained below LOF, One-Class SVM, and Isolation Forest on mean ROC-AUC. These are validation-proxy diagnostics, not final-test results. No threshold has been selected, and the held-out internal-test partition remains unopened.
 
-Active implementation branch: `research/phase5-validation`; final-refit implementation commit `f7ec571d8635e68ff7def8f3daa2bfe0f0354edc`
+Active implementation branch: `research/phase5-validation`; Phase 5 execution-code commit `180eefb5585c3d994a9d68afa22f6f564cc21dd2`
 
 ## Roadmap status
 
@@ -17,7 +17,7 @@ Active implementation branch: `research/phase5-validation`; final-refit implemen
 | 2. Preprocessing study | Complete | K=6 approved for P1; P0 global normalization retained as control. |
 | 3. Classical validation baselines | Complete | Eight selected P0/P1 model variants evaluated on validation proxies only. |
 | 4. LSTM autoencoder study | Complete; final refit verified | Nine screen runs plus three training-only convergence runs, three locked refits, and the calibrated ensemble are recorded. Locked epoch: 54. |
-| 5. Threshold and event-level evaluation | Pending Gate 4 | Freeze detector set and register threshold/EWMA/persistence evaluation on validation only. |
+| 5. Threshold and event-level evaluation | Complete; pending Gate 4 owner approval | Five score sources, 1,280 candidates, and 6,400 candidate-policy rows independently verified. PCA endpoint-mode policy recommended; not frozen for test use. |
 | 6. Held-out and external evaluation | Pending | Open internal test once; NASA supplied test remains the external evaluation set. |
 
 ## Phase 1 — Data foundation
@@ -118,6 +118,28 @@ P1/K=6 is stable across the matched seeds and is recommended for the final LSTM 
 - Independent reload verification reproduced three sets of 9,365 raw/calibrated scores and 9,365 aligned ensemble scores. Maximum differences were `7.11e-15` raw and `1.11e-16` calibrated; three artifacts, 13 reports, and seven new ledger records were hash/schema verified.
 - Result classification is `validation_proxy_diagnostic_not_test_performance`. No best seed was selected, no threshold was selected, and no held-out internal-test or official NASA-test data was opened.
 
+## Phase 5 metadata-lineage correction and alert-policy evidence — 2026-08-27
+
+- The original Phase 1 window metadata remains byte-for-byte unchanged with null `op_mode`; blocked protocol v1 is preserved at SHA-256 `9734c465071401387f7ad2fc79abfc207d0eeb0e8724685267f74b7528f8cb6c`.
+- Two registered P1/K=6 cycle frames were provisioned only after raw-hash verification. Derived train/validation window-context metadata assigns `op_mode` from `(engine, end_cycle)` using semantics `p1_k6_endpoint_cycle_mode_v1`; no reclustering, sensor inference, majority vote, or test access occurred.
+- Eligible training mode counts are mode 0: 756, 1: 768, 2: 719, 3: 765, 4: 747, and 5: 1,282. Both splits contain exactly modes 0–5, every mode exceeds the 100-window minimum, and train/validation engines remain disjoint.
+- Protocol v2 retained the five detectors, two threshold contexts, eight threshold rules, four EWMA states, four persistence values, five proxy policies, FAR constraint, event definitions, and selection order from v1. It evaluated 280 threshold rows, 1,280 candidates, and 6,400 candidate-policy rows.
+- All five score sources reproduced their registered validation ranking diagnostics. Maximum raw-score difference was `7.11e-15`, maximum calibrated-score difference `1.11e-16`, and maximum ranking-metric difference `1.11e-16`.
+
+Per-detector validation recommendations:
+
+| Detector | Recommended policy | Min / mean coverage | Worst FP endpoints / 1,000 | Median policy delay | Result note |
+|---|---|---:|---:|---:|---|
+| LOF | global, mean + 2 std, EWMA 0.20, persistence 1 | 0.00% / 0.00% | 0.000 | missing | Feasible but emitted no alerts; negative result. |
+| One-Class SVM | per-mode q=0.995, EWMA 0.20, persistence 8 | 46.15% / 78.85% | 45.802 | 20 cycles | Feasible; delay aspiration missed. |
+| Isolation Forest | global, mean + 2 std, EWMA 0.20, persistence 1 | 0.00% / 0.00% | 0.000 | missing | Feasible but emitted no alerts; negative result. |
+| PCA reconstruction | per-mode q=0.995, EWMA 0.20, persistence 8 | 57.69% / 78.21% | 44.711 | 23 cycles | Overall validation recommendation. |
+| LSTM calibrated ensemble | per-mode q=0.995, EWMA 0.20, persistence 3 | 53.85% / 80.13% | 41.318 | 18 cycles | Feasible; delay aspiration missed. |
+
+For the overall PCA recommendation, endpoint final-10%/20%/30% policies had engine coverage `57.69%`, `86.54%`, and `90.38%`; false-positive endpoints `44.711`, `15.342`, and `9.053` per 1,000 healthy endpoints; false-alert events `3.514`, `1.534`, and `0.658` per 1,000; false-alert-engine rates `44.23%`, `15.38%`, and `7.69%`; median delays `7`, `23`, and `38` cycles; and median leads `13`, `18`, and `22` cycles. All three FAR values satisfy the `<6%` endpoint target, but only the final-10% delay meets the `<=12`-cycle aspiration; the registered aggregate median delay is 23 cycles and therefore misses it.
+
+The full-window final-20% sensitivity policy excluded 1,505 ambiguous windows and yielded precision/recall/F1 `0.8435/0.8594/0.8514`. The full-window final-30% policy excluded 1,508 and yielded `0.9473/0.5544/0.6995`. Pairwise complementarity was recorded without evaluating fusion. Independent verification reproduced five score sources, all tables, 16 report hashes, five local bundle hashes, and six ledger rows. Gate 4 remains `recommended_pending_owner_approval`; no threshold is final-test-validated.
+
 ## Evaluation-policy counts
 
 | Policy | Healthy | Ambiguous | Anomalous |
@@ -164,7 +186,7 @@ These normalized-life policies are evaluation proxies, not physical anomaly grou
 - The final LSTM refit closed the longer-convergence question, but its ensemble still did not surpass the strongest P1 classical controls on the primary validation-proxy ranking objective.
 - The classical and LSTM families now use the same 5,037 eligible final-fit windows, but model-family comparisons remain validation-selected proxy diagnostics without engine-bootstrap uncertainty.
 - The Master Execution Bible v3 and validated 100-source evidence matrix are now present under `docs/research/`; earlier references to a missing v2 authority are superseded by the approved v3 research package.
-- Thresholds, event-level delay/coverage, false-alarm rates, final test metrics, and external-test metrics are not yet frozen.
+- Phase 5 produced a validation-only alert-policy recommendation, but owner Gate 4 approval, engine-bootstrap uncertainty, final internal-test metrics, and external-test metrics remain pending. The recommendation must not be described as frozen or final-test validated.
 
 ## Tracking protocol from this checkpoint
 
@@ -179,4 +201,4 @@ Every experiment-producing phase must leave all of the following before it is co
 
 ## Next action
 
-Close the detector freeze, then register the Gate 4 Phase 5 validation-only alert-policy study: detector set, calibration, global/per-mode threshold candidates, EWMA state, persistence, and operational selection objective. Keep the internal and official test sets unopened until that policy is selected and frozen.
+Owner review at Gate 4: accept, reject, or request a new pre-registered study for the PCA per-mode q=0.995 / EWMA 0.20 / persistence-8 validation recommendation. Do not access internal or official test data unless and until one policy is explicitly approved and frozen.

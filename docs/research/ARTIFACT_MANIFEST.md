@@ -88,8 +88,8 @@ The clean clone still omits raw and most processed data. Four final-refit traini
 | FD002 training source | `data/raw/train_FD002.txt` | `bc1d293b8dc6173c1bfb0fff64fe797c2cde35dbb1a1a075dae8ca1177b49a52` | current protocol input | no |
 | P0 training frame | `data/processed/preprocessing/p0_global/train.csv` | `5296840dbce62d1ed372c333fe3d990d9f2b55c798c77b092578f285bff34bc5` | current protocol input | no |
 | P0 validation frame | `data/processed/preprocessing/p0_global/validation.csv` | `b39bf1101f309f73c5b79c432f053bd7b0744b0ea9abdbebfada67ef1493c6bc` | validation input | no |
-| P1/K6 training frame | `data/processed/preprocessing/p1_k6/train.csv` | `dd58e35cc81289fbc372797896636cbe30ccf2bdac5c3b45439e754d1b586441` | current protocol input | no |
-| P1/K6 validation frame | `data/processed/preprocessing/p1_k6/validation.csv` | `9918273195cedaaafe3287189256cc8042a7a50d6280e736c6278c5ba1e8d7e7` | validation input | no |
+| P1/K6 training frame | `data/processed/preprocessing/p1_k6/train.csv` | `dd58e35cc81289fbc372797896636cbe30ccf2bdac5c3b45439e754d1b586441` | current protocol input | yes; local/ignored |
+| P1/K6 validation frame | `data/processed/preprocessing/p1_k6/validation.csv` | `9918273195cedaaafe3287189256cc8042a7a50d6280e736c6278c5ba1e8d7e7` | validation input | yes; local/ignored |
 | Training window metadata | `data/processed/window_metadata_train.csv` | `a6a006e3d2dd1e6200a8fb9cbfdd8aabb82526c027368af8fb6aa5cd46574f19` | current protocol input | yes; local/ignored |
 | Validation window metadata | `data/processed/window_metadata_validation.csv` | `440fe967beb833f575379fd9f3d589e50858a5ae950da1a42ef469f93ef2618e` | validation input | yes; local/ignored |
 | P0 training sequences | `data/processed/sequences_v2/p0_global/train.npy` | `0e19d1aaabd17f167ed65a0dab77ab7ae966fc45fba1edec0c99647008376582` | current protocol input | no |
@@ -122,6 +122,40 @@ The reports/configs register these raw hashes, but the checkpoint model files ar
 | fd002_lstm_v1_stage2_p1_k6_balanced_64x16_l1_seed43 | `models/lstm_v2/fd002_lstm_v1_stage2_p1_k6_balanced_64x16_l1_seed43.pt` | `afdcba8ccf1732e783ccb210c8d7f247b7f68479f7ce33e4a62f193f25484a45` | no |
 | fd002_lstm_v1_stage2_p1_k6_balanced_64x16_l1_seed44 | `models/lstm_v2/fd002_lstm_v1_stage2_p1_k6_balanced_64x16_l1_seed44.pt` | `68c2268d6b7bc4700195d965d15f367df0336f4279239ecf041b26948e5df9dd` | no |
 | fd002_lstm_v1_stage2_p1_k6_balanced_64x16_l1_seed45 | `models/lstm_v2/fd002_lstm_v1_stage2_p1_k6_balanced_64x16_l1_seed45.pt` | `c5e54fffbbeb459d57a6dd7fd908b2ac3beda78732374a2705c526a398bfc25f` | no |
+
+## Phase 5 alert-policy evidence — 2026-08-27
+
+Every result below is validation-proxy operational evidence, not final-test performance. The v1 protocol is preserved as blocked; v2 changes only window-context metadata lineage. Generated model bundles remain local and ignored.
+
+| Artifact | Path | Raw SHA-256 | Present | Tracking / role |
+|---|---|---|---:|---|
+| Blocked Phase 5 protocol v1 | `configs/alerting/fd002-alert-policy-study-protocol-v1.json` | `9734c465071401387f7ad2fc79abfc207d0eeb0e8724685267f74b7528f8cb6c` | yes | Tracked; blocked by missing window-context lineage |
+| Corrected Phase 5 protocol v2 | `configs/alerting/fd002-alert-policy-study-protocol-v2.json` | `47f165b7c35b772ee776e938d10dffd4af24dc3d069f34581ee11391918d6ff5` | yes | Tracked; registered before corrected execution |
+| Phase 5 result | `configs/alerting/fd002-alert-policy-study-results-v1.json` | `57080e52d05d6b95747c831fcf819a606d334cf874257421847a5c24aacb8ac2` | yes | Tracked validation-only result; Gate 4 pending |
+| P1/K6 endpoint-context train metadata | `data/processed/window_context/p1_k6/train.csv` | `78ad3855b62bdcda51d0232bfa78f0adf6c858475b7a6dd8a256debfcab2268f` | yes | Local/ignored; derived from registered endpoint modes |
+| P1/K6 endpoint-context validation metadata | `data/processed/window_context/p1_k6/validation.csv` | `318dfc7b303cd9b2dc29656b36211922464580a92c9520db06cf437d77b2a692` | yes | Local/ignored; derived from registered endpoint modes |
+| Report artifact manifest | `reports/alerting_v1/fd002-alert-policy-study-v1/artifact_manifest.csv` | `759b17a7e818f956e1abc3930ebf833988795402f8d8abe790d1ec983121edc2` | yes | Tracked evidence |
+| Per-detector winners | `reports/alerting_v1/fd002-alert-policy-study-v1/best_policy_per_detector.csv` | `91f97e39398c390841b5a0a2e5b41f84aa98aa32165ed7b6fc4fd416fc49517d` | yes | Tracked validation evidence |
+| Candidate-policy metrics | `reports/alerting_v1/fd002-alert-policy-study-v1/candidate_policy_metrics.csv` | `da98b18f617fcbef3724764016671d62646dc613ceb4a7825b94325fe2a178e5` | yes | Tracked exhaustive metric evidence |
+| Candidate selection trace | `reports/alerting_v1/fd002-alert-policy-study-v1/candidate_selection.csv` | `5f895859745ae37546d55e68244ffc932598455c80bec9f5cd506d1f0d538477` | yes | Tracked selection evidence |
+| Candidate registry | `reports/alerting_v1/fd002-alert-policy-study-v1/candidates.csv` | `26d4e3f99701de2ea8897413dd126cb9fdd03814773b7722d36e409492a47681` | yes | Tracked grid evidence |
+| Detector complementarity | `reports/alerting_v1/fd002-alert-policy-study-v1/detector_complementarity.csv` | `2bb9f0c4a7aa1adacf1e8bb435b1fb5b72bb23604fd6b24d954c889ea8a97153` | yes | Tracked; no fusion evaluated |
+| Overall recommendation | `reports/alerting_v1/fd002-alert-policy-study-v1/overall_recommendation.csv` | `420bc1f7c07af0f1e1133c8de95f80f88eb6ef24ea6f7678939438a8e6d5e0f2` | yes | Tracked; owner approval pending |
+| Per-engine metrics | `reports/alerting_v1/fd002-alert-policy-study-v1/per_engine_metrics.csv` | `63e5b91800e6fcc319c8409610d7a0304fd3a91ee6eb99709c2584edff3deae9` | yes | Tracked validation evidence |
+| Runtime provenance | `reports/alerting_v1/fd002-alert-policy-study-v1/runtime_provenance.json` | `b74fc74c80ddc739757b7e38911ffb20bda265bf35dfccb8f324995704dabc86` | yes | Tracked provenance; CUDA execution |
+| Selected events | `reports/alerting_v1/fd002-alert-policy-study-v1/selected_events.csv` | `dc098034e793d0ca512bd2c6f7ca8474e7133fdb4fb233987483559e97c0f904` | yes | Tracked event evidence |
+| Selected validation alert trace | `reports/alerting_v1/fd002-alert-policy-study-v1/selected_validation_alert_trace.csv` | `1db558a8026e7ea9841ff56c90215c3835aa1b95208c98b49a07d8221c07219c` | yes | Tracked validation-only trace |
+| Target attainment | `reports/alerting_v1/fd002-alert-policy-study-v1/target_attainment.csv` | `72a34a1e3e39fccc68d2d5bee7694fe11c6c66bd3f68cdcb4ebb166fd7645a3d` | yes | Tracked target evidence |
+| Threshold table | `reports/alerting_v1/fd002-alert-policy-study-v1/threshold_table.csv` | `c6e6a1e1d4f3842fa6e16bd41436e0a1c00764d1e32dcec0d304f3aa7164681e` | yes | Tracked training-derived thresholds |
+| Training score reference | `reports/alerting_v1/fd002-alert-policy-study-v1/training_score_reference_summary.csv` | `162b7f8f1c48f82aa30a2b46b51a7d29c5f9bdc95bf19b888f92ddcf05e7d3de` | yes | Tracked training-only reference |
+| Score reproduction | `reports/alerting_v1/fd002-alert-policy-study-v1/validation_score_reproduction_summary.csv` | `8d88352fb0b90ca95846e53edca8a7be8225716ad8b6aad767304a00723c5864` | yes | Tracked validation reproduction evidence |
+| Verification summary | `reports/alerting_v1/fd002-alert-policy-study-v1/verification_summary.csv` | `0da109ef11510641b95955307ffa015f39a5699c9eb0c28a6f688fb2a3e3e3a2` | yes | Tracked evidence |
+| Reproduced LOF bundle | `models/alerting_v1/fd002-alert-policy-study-v1/lof.joblib` | `58ec2509bf1827c70b408287991843a10f1043d02353af335812ab3f7ccd2610` | yes | Local/ignored; reproduction, not retuning |
+| Reproduced One-Class SVM bundle | `models/alerting_v1/fd002-alert-policy-study-v1/one_class_svm.joblib` | `d21b4b441462a543e6288bb8f1e84b0b509c0cef406635dfe532a0d74affb384` | yes | Local/ignored; reproduction, not retuning |
+| Reproduced Isolation Forest bundle | `models/alerting_v1/fd002-alert-policy-study-v1/isolation_forest.joblib` | `0c62302b2689c8b026bdd56227e0c6c181c57450c10d3abdbed52adfc2ae162a` | yes | Local/ignored; reproduction, not retuning |
+| Reproduced PCA bundle | `models/alerting_v1/fd002-alert-policy-study-v1/pca_reconstruction.joblib` | `d56a6d41e63c0781da763565f71c4a13b144eacd487a351428113c8ebf2ba9aa` | yes | Local/ignored; reproduction, not retuning |
+| LSTM ensemble bundle | `models/alerting_v1/fd002-alert-policy-study-v1/lstm_calibrated_ensemble.json` | `efae8c17a834d5837aef2b09281ded44f90da700b462978436965888c5932588` | yes | Local/ignored; frozen calibrated aggregation |
+| Run ledger after Phase 5 | `experiments/runs_v2.jsonl` | `22838b7321ed5d246852b95fd7f43880769bddb97ece30005c0e06bb8bdc23fe` | yes | Tracked; six Phase 5 rows appended |
 
 ## Access boundary
 

@@ -18,14 +18,16 @@ The current numbers are engine-disjoint **validation proxy diagnostics**, not ac
 
 Nine registered LSTM screening runs and the governed final refit are complete. The final `balanced_64x16_l1 + P1/K=6` convergence best epochs were 47, 54, and 59, locking all three refits to epoch 54. The predeclared calibrated-score ensemble beat every individual final-refit LSTM seed, but it did **not** beat LOF or One-Class SVM on mean validation-proxy PR-AUC and remained below LOF, One-Class SVM, and Isolation Forest on mean validation-proxy ROC-AUC. These results do not establish LSTM superiority.
 
+The governed Phase 5 validation-only alert-policy study is also complete. After correcting window-context lineage by assigning each window the registered P1/K=6 operating mode at its endpoint cycle, all five frozen score sources reproduced and all 1,280 alert candidates were evaluated across five proxy policies. The validation recommendation is `pca_reconstruction__per_mode__quantile_0.995__ewma_alpha_0.20__persistence_8`. Its worst primary-policy false-positive endpoint rate was `44.711/1,000` healthy endpoints and its minimum engine coverage was `57.69%`; however, its median-of-policy median delay was `23` cycles, missing the `<=12`-cycle aspiration. LOF and Isolation Forest selected conservative feasible policies that emitted no alerts and detected no engines. This is an operational validation recommendation, not a final-test result.
+
 FD002 provides run-to-failure trajectories but no physical per-cycle anomaly-onset labels. The late-life labels used here are declared evaluation proxies. PR-AUC is a ranking metric, not accuracy.
 
-**Frozen boundary:** do not open, inspect, transform, plot, score, or model the held-out internal-test data. The official NASA test set is also outside the current protocol. Phase 5 threshold/event evaluation and the one-time final internal-test evaluation are pending.
+**Frozen boundary:** do not open, inspect, transform, plot, score, or model the held-out internal-test data. The official NASA test set is also outside the current protocol. Phase 5 is verified, but Gate 4 remains `recommended_pending_owner_approval`; the recommended policy is not frozen for test use until the owner explicitly approves it.
 
 ## Repository map
 
 ```text
-configs/                 registered split, preprocessing, baseline, and LSTM protocols
+configs/                 registered split, preprocessing, model, and alert-policy protocols/results
 docs/research/           Bible v3, literature matrix, claims and provenance records
 docs/guides/             learner-oriented project guide
 experiments/runs_v2.jsonl schema-versioned current-protocol ledger
@@ -36,7 +38,7 @@ src/turbofan_anomaly/    reusable importable package
 tests/                   synthetic/unit and safety tests
 ```
 
-Raw data and most generated artifacts remain intentionally outside Git. The four registered P1/K=6 training/validation sequence and metadata inputs were provisioned locally with exact registered hashes for the final refit, and the three resulting model binaries remain local and ignored. Tracked evidence contains the completed result config, small reports, and ledger identities; it does not contain data arrays or checkpoints.
+Raw data and model artifacts remain intentionally outside Git. Registered train/validation sequences, P1/K=6 cycle frames, immutable original window metadata, derived endpoint-context metadata, the three final LSTM artifacts, and five reproduced Phase 5 bundles are local and ignored. Tracked evidence contains protocols, completed result configs, reports, and ledger identities; it does not contain data arrays, checkpoints, or joblib bundles.
 
 ## Setup (Python 3.12.8)
 
@@ -66,9 +68,11 @@ python -m scripts.run_lstm_screen --help
 python -m scripts.verify_lstm_screen --help
 python -m scripts.run_lstm_final_refit --help
 python -m scripts.verify_lstm_final_refit --help
+python -m scripts.run_alert_policy_study --help
+python -m scripts.verify_alert_policy_study --help
 ```
 
-The verification commands are read-only with respect to registered evidence. Historical screen reproduction still needs its absent registered checkpoints, while final-refit verification uses the three local ignored final artifacts. Commands that create splits, fit models, or rewrite reports are separated and governed; do not run them as a quick start.
+The verification commands are read-only with respect to registered evidence. Historical screen reproduction still needs its absent registered checkpoints, while final-refit and Phase 5 verification use governed local ignored artifacts. Commands that create splits, fit models, or rewrite reports are separated and governed; do not run them as a quick start.
 
 ## Research and governance
 
