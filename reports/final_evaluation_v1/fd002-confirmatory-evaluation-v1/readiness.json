@@ -1,0 +1,85 @@
+{
+  "artifact_checks": [
+    {
+      "artifact_id": "p1_k6_fitted_preprocessor",
+      "status": "blocked_missing_registered_hash"
+    },
+    {
+      "artifact_id": "pca_primary_bundle",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "lstm_comparator_bundle",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "lstm_seed_43",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "lstm_seed_44",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "lstm_seed_45",
+      "status": "hash_verified"
+    }
+  ],
+  "audit_date": "2026-08-30",
+  "authority_checks": [
+    {
+      "artifact_id": "split_manifest",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "preprocessing_study",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "preprocessing_selection",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "phase5_protocol_v1_blocked",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "phase5_protocol_v2",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "phase5_results",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "phase5_artifact_manifest",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "phase5_threshold_table",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "phase5_overall_recommendation",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "phase5_runtime_provenance",
+      "status": "hash_verified"
+    }
+  ],
+  "blockers": [
+    "p1_k6_fitted_preprocessor"
+  ],
+  "held_out_inputs_checked": 0,
+  "held_out_inputs_opened": false,
+  "official_nasa_test_checked": false,
+  "official_nasa_test_opened": false,
+  "protocol_id": "fd002-final-evaluation-protocol-v1",
+  "protocol_path": "configs/evaluation/fd002-final-evaluation-protocol-v1.json",
+  "protocol_sha256": "ed5d3ca6a847365256a238684086266fae8bab72a79ff6b4f9d8af3fa6a84133",
+  "ready_for_confirmatory_evaluation": false,
+  "schema_version": "1.0.0",
+  "status": "blocked_before_test_access",
+  "verification_scope": "protocol_authorities_and_training_fitted_artifacts_only"
+}

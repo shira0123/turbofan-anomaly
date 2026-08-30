@@ -22,7 +22,7 @@ The governed Phase 5 validation-only alert-policy study is also complete. After 
 
 FD002 provides run-to-failure trajectories but no physical per-cycle anomaly-onset labels. The late-life labels used here are declared evaluation proxies. PR-AUC is a ranking metric, not accuracy.
 
-**Frozen boundary:** do not open, inspect, transform, plot, score, or model the held-out internal-test data. The official NASA test set is also outside the current protocol. Phase 5 is verified, but Gate 4 remains `recommended_pending_owner_approval`; the recommended policy is not frozen for test use until the owner explicitly approves it.
+**Frozen boundary:** do not open, inspect, transform, plot, score, or model the held-out internal-test data. The official NASA test set is outside the protocol. Gate 4 approved and froze the PCA per-mode q=0.995 / EWMA 0.20 / persistence-8 policy, but confirmatory evaluation remains blocked before test access because the exact fitted P1/K=6 preprocessor is absent and has no registered artifact hash.
 
 ## Repository map
 

@@ -152,7 +152,7 @@ Threshold selection, EWMA, persistence, event extraction, sensitivity, and final
 - Gate 1, split: complete.
 - Gate 2, P1/K=6 preprocessing: complete.
 - Gate 3, balanced LSTM candidate: recommended but formal approval and final refit remain pending.
-- Gate 4, alert-policy freeze: pending.
+- Gate 4, alert-policy freeze: approved on 2026-08-30; confirmatory evaluation preregistered but blocked before test access by the missing, unhashed fitted P1/K=6 preprocessor.
 - Gate 5, sensitivity closure: pending.
 - Gate 6, one-time internal-test access: pending.
 

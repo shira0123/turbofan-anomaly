@@ -18,6 +18,7 @@ SCRIPT_NAMES = (
     "verify_lstm_final_refit.py",
     "run_alert_policy_study.py",
     "verify_alert_policy_study.py",
+    "verify_final_evaluation.py",
 )
 
 

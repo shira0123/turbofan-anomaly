@@ -153,3 +153,14 @@ This file records consequential research and implementation decisions. Each entr
 - **Decision status:** `recommended_pending_owner_approval`. Gate 4 is not approved, and the policy is not frozen for test use.
 - **Supersedes:** The earlier operational preference for LOF based solely on ranking PR-AUC. LOF remains the strongest ranking control; PCA is recommended only under the separately predeclared Phase 5 alert-policy objective.
 - **Owner:** Pending explicit Shivam Gate 4 decision.
+
+## 2026-08-30 — Approve Gate 4 and preregister confirmatory evaluation
+
+- **Owner approval:** Freeze `pca_reconstruction__per_mode__quantile_0.995__ewma_alpha_0.20__persistence_8` as the primary detector and alert policy for confirmatory evaluation.
+- **Evidence acknowledgement:** Approval is based only on validation proxies. All three endpoint proxies met the `<6%` false-positive endpoint target, while the registered aggregate median delay of `23` cycles missed the `<=12`-cycle aspiration. This is not final-test performance.
+- **Frozen lineage:** P1/K=6, the split and preprocessing decisions, 30×21 windows, 63 summary features, the reproduced PCA bundle and internal fingerprints, training-only empirical-CDF calibration, endpoint-cycle operating-mode context, six training-derived per-mode q=0.995 thresholds using NumPy `method="higher"`, EWMA alpha `0.20`, persistence `8`, strict threshold comparison, engine/gap reset rules, five proxy policies, exclusions, events, and metrics are fixed.
+- **Comparator:** The three-seed calibrated LSTM ensemble remains the frozen deep temporal comparator under its Phase 5 per-mode q=0.995 / EWMA 0.20 / persistence-3 policy. It is not the primary detector, and no score or decision fusion is approved.
+- **Protocol:** `configs/evaluation/fd002-final-evaluation-protocol-v1.json`, registered before any held-out access. The independent verifier checks frozen authority/model hashes and deliberately does not resolve held-out paths during readiness audit.
+- **Readiness decision:** Confirmatory evaluation is blocked. `models/preprocessing/p1_k6.joblib` is absent and no artifact hash was registered for it; the registered FD002 source needed for a training-only rebuild is also absent. The PCA bundle, LSTM ensemble bundle, and all three final LSTM checkpoints are present with matching hashes.
+- **Access boundary:** This decision does not authorize opening, preprocessing, scoring, or summarizing the held-out internal test. The official NASA test remains out of scope. No online recalibration, refit, candidate search, threshold change, fusion, or policy change is authorized.
+- **Owner:** Shivam.

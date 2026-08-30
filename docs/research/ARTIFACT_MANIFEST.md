@@ -131,7 +131,7 @@ Every result below is validation-proxy operational evidence, not final-test perf
 |---|---|---|---:|---|
 | Blocked Phase 5 protocol v1 | `configs/alerting/fd002-alert-policy-study-protocol-v1.json` | `9734c465071401387f7ad2fc79abfc207d0eeb0e8724685267f74b7528f8cb6c` | yes | Tracked; blocked by missing window-context lineage |
 | Corrected Phase 5 protocol v2 | `configs/alerting/fd002-alert-policy-study-protocol-v2.json` | `47f165b7c35b772ee776e938d10dffd4af24dc3d069f34581ee11391918d6ff5` | yes | Tracked; registered before corrected execution |
-| Phase 5 result | `configs/alerting/fd002-alert-policy-study-results-v1.json` | `57080e52d05d6b95747c831fcf819a606d334cf874257421847a5c24aacb8ac2` | yes | Tracked validation-only result; Gate 4 pending |
+| Phase 5 result | `configs/alerting/fd002-alert-policy-study-results-v1.json` | `57080e52d05d6b95747c831fcf819a606d334cf874257421847a5c24aacb8ac2` | yes | Tracked validation-only result; policy subsequently frozen at Gate 4 |
 | P1/K6 endpoint-context train metadata | `data/processed/window_context/p1_k6/train.csv` | `78ad3855b62bdcda51d0232bfa78f0adf6c858475b7a6dd8a256debfcab2268f` | yes | Local/ignored; derived from registered endpoint modes |
 | P1/K6 endpoint-context validation metadata | `data/processed/window_context/p1_k6/validation.csv` | `318dfc7b303cd9b2dc29656b36211922464580a92c9520db06cf437d77b2a692` | yes | Local/ignored; derived from registered endpoint modes |
 | Report artifact manifest | `reports/alerting_v1/fd002-alert-policy-study-v1/artifact_manifest.csv` | `759b17a7e818f956e1abc3930ebf833988795402f8d8abe790d1ec983121edc2` | yes | Tracked evidence |
@@ -140,7 +140,7 @@ Every result below is validation-proxy operational evidence, not final-test perf
 | Candidate selection trace | `reports/alerting_v1/fd002-alert-policy-study-v1/candidate_selection.csv` | `5f895859745ae37546d55e68244ffc932598455c80bec9f5cd506d1f0d538477` | yes | Tracked selection evidence |
 | Candidate registry | `reports/alerting_v1/fd002-alert-policy-study-v1/candidates.csv` | `26d4e3f99701de2ea8897413dd126cb9fdd03814773b7722d36e409492a47681` | yes | Tracked grid evidence |
 | Detector complementarity | `reports/alerting_v1/fd002-alert-policy-study-v1/detector_complementarity.csv` | `2bb9f0c4a7aa1adacf1e8bb435b1fb5b72bb23604fd6b24d954c889ea8a97153` | yes | Tracked; no fusion evaluated |
-| Overall recommendation | `reports/alerting_v1/fd002-alert-policy-study-v1/overall_recommendation.csv` | `420bc1f7c07af0f1e1133c8de95f80f88eb6ef24ea6f7678939438a8e6d5e0f2` | yes | Tracked; owner approval pending |
+| Overall recommendation | `reports/alerting_v1/fd002-alert-policy-study-v1/overall_recommendation.csv` | `420bc1f7c07af0f1e1133c8de95f80f88eb6ef24ea6f7678939438a8e6d5e0f2` | yes | Tracked; approved and frozen at Gate 4 |
 | Per-engine metrics | `reports/alerting_v1/fd002-alert-policy-study-v1/per_engine_metrics.csv` | `63e5b91800e6fcc319c8409610d7a0304fd3a91ee6eb99709c2584edff3deae9` | yes | Tracked validation evidence |
 | Runtime provenance | `reports/alerting_v1/fd002-alert-policy-study-v1/runtime_provenance.json` | `b74fc74c80ddc739757b7e38911ffb20bda265bf35dfccb8f324995704dabc86` | yes | Tracked provenance; CUDA execution |
 | Selected events | `reports/alerting_v1/fd002-alert-policy-study-v1/selected_events.csv` | `dc098034e793d0ca512bd2c6f7ca8474e7133fdb4fb233987483559e97c0f904` | yes | Tracked event evidence |
@@ -156,6 +156,19 @@ Every result below is validation-proxy operational evidence, not final-test perf
 | Reproduced PCA bundle | `models/alerting_v1/fd002-alert-policy-study-v1/pca_reconstruction.joblib` | `d56a6d41e63c0781da763565f71c4a13b144eacd487a351428113c8ebf2ba9aa` | yes | Local/ignored; reproduction, not retuning |
 | LSTM ensemble bundle | `models/alerting_v1/fd002-alert-policy-study-v1/lstm_calibrated_ensemble.json` | `efae8c17a834d5837aef2b09281ded44f90da700b462978436965888c5932588` | yes | Local/ignored; frozen calibrated aggregation |
 | Run ledger after Phase 5 | `experiments/runs_v2.jsonl` | `22838b7321ed5d246852b95fd7f43880769bddb97ece30005c0e06bb8bdc23fe` | yes | Tracked; six Phase 5 rows appended |
+
+## Gate 4 final-evaluation preregistration — 2026-08-30
+
+The readiness audit hashes only registered authorities and training-fitted model artifacts. It does not resolve, inspect, hash, open, preprocess, score, or summarize held-out or official-test inputs.
+
+| Artifact | Path | Raw SHA-256 | Present | Tracking / role |
+|---|---|---|---:|---|
+| Final-evaluation protocol v1 | `configs/evaluation/fd002-final-evaluation-protocol-v1.json` | `ed5d3ca6a847365256a238684086266fae8bab72a79ff6b4f9d8af3fa6a84133` | yes | Tracked; registered before test access; readiness blocked |
+| Final-evaluation readiness report | `reports/final_evaluation_v1/fd002-confirmatory-evaluation-v1/readiness.json` | `1e503b64da1d13651c9e233f92d2d42de81727cd2041b27537689f5320a62ef6` | yes | Tracked; 10 authority and 5 available model hashes verified; zero held-out inputs checked |
+| Frozen PCA primary bundle | `models/alerting_v1/fd002-alert-policy-study-v1/pca_reconstruction.joblib` | `d56a6d41e63c0781da763565f71c4a13b144eacd487a351428113c8ebf2ba9aa` | yes | Local/ignored; hash verified; primary detector and calibration bundle |
+| Frozen LSTM comparator bundle | `models/alerting_v1/fd002-alert-policy-study-v1/lstm_calibrated_ensemble.json` | `efae8c17a834d5837aef2b09281ded44f90da700b462978436965888c5932588` | yes | Local/ignored; hash verified; comparator only, no fusion |
+| Required fitted P1/K=6 preprocessor | `models/preprocessing/p1_k6.joblib` | not registered | no | Readiness blocker; do not substitute, infer, or access test data to reconstruct |
+| Registered FD002 source for reproducible preprocessing | `data/raw/train_FD002.txt` | `bc1d293b8dc6173c1bfb0fff64fe797c2cde35dbb1a1a075dae8ca1177b49a52` | no | Readiness blocker for an independent training-only preprocessor rebuild; contents not opened |
 
 ## Access boundary
 

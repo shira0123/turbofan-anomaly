@@ -1,0 +1,325 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_id": "fd002-final-evaluation-protocol-v1",
+  "evaluation_id": "fd002-confirmatory-evaluation-v1",
+  "registered_date": "2026-08-30",
+  "status": "registered_before_test_access_readiness_blocked",
+  "owner": "Shivam",
+  "gate_4_approval": {
+    "status": "approved",
+    "approved_candidate_id": "pca_reconstruction__per_mode__quantile_0.995__ewma_alpha_0.20__persistence_8",
+    "evidence_basis": "validation_proxy_only",
+    "endpoint_false_positive_target": "less_than_60_per_1000_healthy_endpoints",
+    "endpoint_false_positive_target_achieved_on_validation_proxies": true,
+    "aggregate_detection_delay_aspiration_cycles": 12,
+    "aggregate_detection_delay_aspiration_achieved": false,
+    "validation_aggregate_median_delay_cycles": 23,
+    "not_final_test_performance": true,
+    "online_recalibration_approved": false,
+    "score_or_decision_fusion_approved": false,
+    "lstm_role": "frozen_deep_temporal_comparator_not_primary"
+  },
+  "access_boundary": {
+    "allowed_before_separate_test_access_authorization": [
+      "train",
+      "validation",
+      "registered_configs",
+      "registered_reports",
+      "frozen_training_fitted_models"
+    ],
+    "held_out_internal_test_access_authorized": false,
+    "official_nasa_test_access_authorized": false,
+    "official_nasa_test_is_out_of_scope": true,
+    "test_data_opened_during_registration": false,
+    "test_data_preprocessed_during_registration": false,
+    "test_data_scored_during_registration": false,
+    "test_data_summarized_during_registration": false,
+    "threshold_refit_allowed": false,
+    "model_refit_allowed": false,
+    "calibration_refit_allowed": false,
+    "online_recalibration_allowed": false,
+    "score_or_decision_fusion_allowed": false,
+    "candidate_search_allowed": false,
+    "policy_change_allowed": false
+  },
+  "frozen_authorities": [
+    {
+      "artifact_id": "split_manifest",
+      "path": "configs/splits/fd002-primary-v1.json",
+      "sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327",
+      "hash_form": "raw"
+    },
+    {
+      "artifact_id": "preprocessing_study",
+      "path": "configs/preprocessing/fd002-preprocessing-study-v1.json",
+      "sha256": "a80a6b89b5af344662762567e390f0f9e8f712f822994596a06a952a3121612f",
+      "hash_form": "raw"
+    },
+    {
+      "artifact_id": "preprocessing_selection",
+      "path": "configs/preprocessing/fd002-preprocessing-selection-v1.json",
+      "sha256": "6ebb4ae018c154d970f9a7a3b64e96cc23b366ed4a269f720ccd6996fd5243c6",
+      "hash_form": "raw"
+    },
+    {
+      "artifact_id": "phase5_protocol_v1_blocked",
+      "path": "configs/alerting/fd002-alert-policy-study-protocol-v1.json",
+      "sha256": "9734c465071401387f7ad2fc79abfc207d0eeb0e8724685267f74b7528f8cb6c",
+      "hash_form": "raw"
+    },
+    {
+      "artifact_id": "phase5_protocol_v2",
+      "path": "configs/alerting/fd002-alert-policy-study-protocol-v2.json",
+      "sha256": "47f165b7c35b772ee776e938d10dffd4af24dc3d069f34581ee11391918d6ff5",
+      "hash_form": "raw"
+    },
+    {
+      "artifact_id": "phase5_results",
+      "path": "configs/alerting/fd002-alert-policy-study-results-v1.json",
+      "sha256": "57080e52d05d6b95747c831fcf819a606d334cf874257421847a5c24aacb8ac2",
+      "hash_form": "raw"
+    },
+    {
+      "artifact_id": "phase5_artifact_manifest",
+      "path": "reports/alerting_v1/fd002-alert-policy-study-v1/artifact_manifest.csv",
+      "sha256": "759b17a7e818f956e1abc3930ebf833988795402f8d8abe790d1ec983121edc2",
+      "hash_form": "raw"
+    },
+    {
+      "artifact_id": "phase5_threshold_table",
+      "path": "reports/alerting_v1/fd002-alert-policy-study-v1/threshold_table.csv",
+      "sha256": "c6e6a1e1d4f3842fa6e16bd41436e0a1c00764d1e32dcec0d304f3aa7164681e",
+      "hash_form": "raw"
+    },
+    {
+      "artifact_id": "phase5_overall_recommendation",
+      "path": "reports/alerting_v1/fd002-alert-policy-study-v1/overall_recommendation.csv",
+      "sha256": "420bc1f7c07af0f1e1133c8de95f80f88eb6ef24ea6f7678939438a8e6d5e0f2",
+      "hash_form": "raw"
+    },
+    {
+      "artifact_id": "phase5_runtime_provenance",
+      "path": "reports/alerting_v1/fd002-alert-policy-study-v1/runtime_provenance.json",
+      "sha256": "b74fc74c80ddc739757b7e38911ffb20bda265bf35dfccb8f324995704dabc86",
+      "hash_form": "raw"
+    }
+  ],
+  "preprocessing_lineage": {
+    "pipeline_id": "p1_k6",
+    "split_manifest_id": "fd002-primary-v1",
+    "preprocessing_decision_id": "fd002-preprocessing-selection-v1",
+    "source_dataset_sha256": "bc1d293b8dc6173c1bfb0fff64fe797c2cde35dbb1a1a075dae8ca1177b49a52",
+    "operating_setting_columns": ["op1", "op2", "op3"],
+    "sensor_count": 21,
+    "n_clusters": 6,
+    "random_state": 42,
+    "n_init": 20,
+    "healthy_fraction": 0.3,
+    "minimum_mode_fit_rows": 30,
+    "operating_setting_scaler_fit": "all_rows_of_training_engines_only",
+    "kmeans_fit": "all_rows_of_training_engines_only",
+    "per_mode_sensor_scaler_fit": "first_30_percent_of_each_training_engine_only",
+    "rare_mode_fallback": "global_healthy_training_sensor_scaler",
+    "window_shape": [30, 21],
+    "window_stride": 1,
+    "summary_feature_contract": "concatenate_per_sensor_mean_standard_deviation_and_endpoint_minus_start",
+    "summary_feature_count": 63,
+    "window_context_semantics": "p1_k6_endpoint_cycle_mode_v1",
+    "window_context_assignment": "window.op_mode = cycle_frame.op_mode[(engine, window.end_cycle)]",
+    "reclustering_allowed": false,
+    "sensor_mode_inference_allowed": false,
+    "majority_vote_allowed": false
+  },
+  "frozen_primary_detector": {
+    "detector_id": "pca_reconstruction",
+    "artifact": {
+      "path": "models/alerting_v1/fd002-alert-policy-study-v1/pca_reconstruction.joblib",
+      "sha256": "d56a6d41e63c0781da763565f71c4a13b144eacd487a351428113c8ebf2ba9aa",
+      "hash_form": "raw"
+    },
+    "model_detector_name": "pca",
+    "parameters": {"n_components": 0.9, "svd_solver": "full", "random_state": 42},
+    "fitted_component_count": 36,
+    "fitted_feature_count": 63,
+    "fit_window_count": 5037,
+    "fit_split": "train",
+    "feature_scaler_mean_sha256_float64_le": "3b351678e32e5ad6852e77425bc58133af148c3edc3f6dfb7ed1699a4148eab0",
+    "pca_components_sha256_float64_le": "c120c9aa04d0e6516b2186e9dc4f3824426cfff8e23a6087eb2c976dc11b0df7",
+    "raw_score": "mean_squared_reconstruction_error_in_standardized_summary_feature_space",
+    "score_direction": "larger_means_more_anomalous",
+    "calibration": {
+      "method": "training_empirical_cdf",
+      "reference_split": "train",
+      "reference_population": "all_5037_eligible_training_windows",
+      "reference_count": 5037,
+      "sorted_reference_sha256_float64_le": "b7daa56d0251263012f579d98bff9eb595141f915756087a0675d40b9f08efec",
+      "transform": "numpy.searchsorted(sorted_training_scores, score, side=right) / 5037",
+      "validation_or_test_statistics_allowed": false,
+      "online_update_allowed": false
+    }
+  },
+  "frozen_primary_alert_policy": {
+    "candidate_id": "pca_reconstruction__per_mode__quantile_0.995__ewma_alpha_0.20__persistence_8",
+    "threshold_context": "per_mode",
+    "threshold_rule_id": "quantile_0.995",
+    "threshold_fit_split": "train",
+    "threshold_quantile": 0.995,
+    "quantile_method": "higher",
+    "threshold_clipping": false,
+    "comparison": "strict_greater_than",
+    "thresholds": [
+      {"operating_mode": 0, "threshold": 0.9974190986698431, "reference_count": 756},
+      {"operating_mode": 1, "threshold": 0.9908675799086758, "reference_count": 768},
+      {"operating_mode": 2, "threshold": 0.9948381973396864, "reference_count": 719},
+      {"operating_mode": 3, "threshold": 0.9922572960095295, "reference_count": 765},
+      {"operating_mode": 4, "threshold": 0.996624975183641, "reference_count": 747},
+      {"operating_mode": 5, "threshold": 0.9932499503672821, "reference_count": 1282}
+    ],
+    "ewma_id": "alpha_0.20",
+    "ewma_alpha": 0.2,
+    "persistence": 8,
+    "state_contract": {
+      "chronology": "stable_sort_by_engine_then_end_cycle",
+      "ewma_initialization": "first_score",
+      "reset_on_engine_boundary": true,
+      "reset_on_nonconsecutive_end_cycle": true,
+      "reset_on_mode_change": false,
+      "persistence_counter": "consecutive_strict_threshold_violations",
+      "alert_begins": "eighth_violating_window_without_backdating",
+      "alert_remains_active": "only_while_violations_continue",
+      "first_non_violation": "close_event_and_reset_persistence_counter",
+      "point_adjustment": false,
+      "event_definition": "contiguous_active_alert_endpoints_within_engine_and_consecutive_end_cycles"
+    }
+  },
+  "frozen_deep_temporal_comparator": {
+    "detector_id": "lstm_calibrated_ensemble",
+    "role": "comparator_not_primary",
+    "bundle": {
+      "path": "models/alerting_v1/fd002-alert-policy-study-v1/lstm_calibrated_ensemble.json",
+      "sha256": "efae8c17a834d5837aef2b09281ded44f90da700b462978436965888c5932588",
+      "hash_form": "raw"
+    },
+    "aggregation": "arithmetic_mean_of_window_id_aligned_per_seed_calibrated_scores",
+    "raw_score_claim": false,
+    "source_models": [
+      {"seed": 43, "path": "models/lstm_final_v1/fd002-lstm-final-refit-v1/fd002_lstm_final_v1_locked_p1_k6_balanced_64x16_l1_seed43.pt", "sha256": "7a0a84dc11a1d5e2c21d8ccdc4be0385a844d24146be4d27fb7d47b3df8cda2e"},
+      {"seed": 44, "path": "models/lstm_final_v1/fd002-lstm-final-refit-v1/fd002_lstm_final_v1_locked_p1_k6_balanced_64x16_l1_seed44.pt", "sha256": "9f8406e39eda123f8878bcf58cec5e99c478e6d2d34f7ebbfff73a9a116e40e5"},
+      {"seed": 45, "path": "models/lstm_final_v1/fd002-lstm-final-refit-v1/fd002_lstm_final_v1_locked_p1_k6_balanced_64x16_l1_seed45.pt", "sha256": "86f4a993fc5247cfb7bacdfb7680ce6cb3a8dceb7d0059bf1f445c5d80e1a2b4"}
+    ],
+    "alert_policy": {
+      "candidate_id": "lstm_calibrated_ensemble__per_mode__quantile_0.995__ewma_alpha_0.20__persistence_3",
+      "threshold_context": "per_mode",
+      "threshold_rule_id": "quantile_0.995",
+      "quantile_method": "higher",
+      "thresholds": [
+        {"operating_mode": 0, "threshold": 0.9965587982264575, "reference_count": 756},
+        {"operating_mode": 1, "threshold": 0.9908014029514923, "reference_count": 768},
+        {"operating_mode": 2, "threshold": 0.9932499503672821, "reference_count": 719},
+        {"operating_mode": 3, "threshold": 0.9972867447554762, "reference_count": 765},
+        {"operating_mode": 4, "threshold": 0.992720534709814, "reference_count": 747},
+        {"operating_mode": 5, "threshold": 0.9947720203825029, "reference_count": 1282}
+      ],
+      "ewma_alpha": 0.2,
+      "persistence": 3
+    },
+    "fusion_with_primary_allowed": false
+  },
+  "proxy_and_metric_contract": {
+    "policies": [
+      {"policy_id": "normalized_life_last_10pct_endpoint", "onset_fraction": 0.1, "semantics": "endpoint", "primary": true},
+      {"policy_id": "normalized_life_last_20pct_endpoint", "onset_fraction": 0.2, "semantics": "endpoint", "primary": true},
+      {"policy_id": "normalized_life_last_30pct_endpoint", "onset_fraction": 0.3, "semantics": "endpoint", "primary": true},
+      {"policy_id": "normalized_life_last_20pct_full_window", "onset_fraction": 0.2, "semantics": "full_window", "primary": false},
+      {"policy_id": "normalized_life_last_30pct_full_window", "onset_fraction": 0.3, "semantics": "full_window", "primary": false}
+    ],
+    "onset_cycle": "floor(max_cycle * (1 - onset_fraction)) + 1",
+    "endpoint_healthy": "end_cycle < onset_cycle",
+    "endpoint_anomalous": "end_cycle >= onset_cycle",
+    "full_window_healthy": "end_cycle < onset_cycle",
+    "full_window_anomalous": "start_cycle >= onset_cycle",
+    "full_window_overlap": "ambiguous_and_excluded",
+    "valid_post_onset_detection": "first_event_with_confirmed_start_at_or_after_onset_cycle",
+    "crossing_event_detection": false,
+    "persistence_delay_included": true,
+    "zero_denominator": "missing_value_with_denominator_counts",
+    "window_endpoint_metrics": ["tp", "fp", "tn", "fn", "precision", "recall", "f1", "specificity", "false_positive_alerted_endpoints_per_1000_healthy_endpoints"],
+    "event_metrics": ["false_alert_events_per_1000_healthy_endpoints", "percent_engines_with_healthy_false_alert", "total_event_count", "median_event_duration", "event_fragmentation_per_engine", "events_crossing_proxy_onset"],
+    "engine_metrics": ["engine_detection_coverage", "missed_engine_rate", "first_alert_delay", "delay_median_and_iqr", "lead_cycles_before_observed_life_end", "lead_median_and_iqr", "per_engine_first_detection_false_events_and_miss"],
+    "selection_after_test_allowed": false,
+    "primary_and_comparator_reported_separately": true
+  },
+  "required_artifacts_before_test_access": [
+    {
+      "artifact_id": "p1_k6_fitted_preprocessor",
+      "path": "models/preprocessing/p1_k6.joblib",
+      "sha256": null,
+      "access_class": "training_fitted_model",
+      "readiness": "missing_and_hash_not_registered",
+      "required": true
+    },
+    {
+      "artifact_id": "pca_primary_bundle",
+      "path": "models/alerting_v1/fd002-alert-policy-study-v1/pca_reconstruction.joblib",
+      "sha256": "d56a6d41e63c0781da763565f71c4a13b144eacd487a351428113c8ebf2ba9aa",
+      "access_class": "training_fitted_model",
+      "readiness": "available_hash_verified",
+      "required": true
+    },
+    {
+      "artifact_id": "lstm_comparator_bundle",
+      "path": "models/alerting_v1/fd002-alert-policy-study-v1/lstm_calibrated_ensemble.json",
+      "sha256": "efae8c17a834d5837aef2b09281ded44f90da700b462978436965888c5932588",
+      "access_class": "training_fitted_model",
+      "readiness": "available_hash_verified",
+      "required": true
+    },
+    {
+      "artifact_id": "lstm_seed_43",
+      "path": "models/lstm_final_v1/fd002-lstm-final-refit-v1/fd002_lstm_final_v1_locked_p1_k6_balanced_64x16_l1_seed43.pt",
+      "sha256": "7a0a84dc11a1d5e2c21d8ccdc4be0385a844d24146be4d27fb7d47b3df8cda2e",
+      "access_class": "training_fitted_model",
+      "readiness": "available_hash_verified",
+      "required": true
+    },
+    {
+      "artifact_id": "lstm_seed_44",
+      "path": "models/lstm_final_v1/fd002-lstm-final-refit-v1/fd002_lstm_final_v1_locked_p1_k6_balanced_64x16_l1_seed44.pt",
+      "sha256": "9f8406e39eda123f8878bcf58cec5e99c478e6d2d34f7ebbfff73a9a116e40e5",
+      "access_class": "training_fitted_model",
+      "readiness": "available_hash_verified",
+      "required": true
+    },
+    {
+      "artifact_id": "lstm_seed_45",
+      "path": "models/lstm_final_v1/fd002-lstm-final-refit-v1/fd002_lstm_final_v1_locked_p1_k6_balanced_64x16_l1_seed45.pt",
+      "sha256": "86f4a993fc5247cfb7bacdfb7680ce6cb3a8dceb7d0059bf1f445c5d80e1a2b4",
+      "access_class": "training_fitted_model",
+      "readiness": "available_hash_verified",
+      "required": true
+    }
+  ],
+  "held_out_inputs_registered_but_not_accessed": [
+    {"artifact_id": "held_out_cycle_frame", "canonical_path": "data/splits/test.csv", "sha256": null},
+    {"artifact_id": "held_out_p1_k6_cycle_frame", "canonical_path": "data/processed/preprocessing/p1_k6/test.csv", "sha256": null},
+    {"artifact_id": "held_out_p1_k6_sequences", "canonical_path": "data/processed/sequences_v2/p1_k6/test.npy", "sha256": null},
+    {"artifact_id": "held_out_p1_k6_window_context", "canonical_path": "data/processed/window_context/p1_k6/test.csv", "sha256": null}
+  ],
+  "readiness_audit": {
+    "audit_date": "2026-08-30",
+    "test_paths_resolved_or_opened": false,
+    "available_and_hash_verified_before_test_access": [
+      "pca_primary_bundle",
+      "lstm_comparator_bundle",
+      "lstm_seed_43",
+      "lstm_seed_44",
+      "lstm_seed_45"
+    ],
+    "missing_frozen_artifacts": ["p1_k6_fitted_preprocessor"],
+    "missing_source_inputs": ["fd002_training_source_for_reproducible_preprocessor_rebuild"],
+    "held_out_artifact_availability": "not_inspected_without_test_access_authorization",
+    "ready_for_confirmatory_evaluation": false,
+    "blocking_reason": "The exact training-fitted P1/K=6 preprocessor is absent and has no registered artifact hash; the registered FD002 source is also absent, so it cannot be independently rebuilt before test access."
+  },
+  "execution_rule": "A later explicit held-out-access authorization and a new readiness record are required. The frozen policy may not change, and no test-derived statistic may fit or update preprocessing, calibration, thresholds, EWMA, persistence, proxies, or metrics."
+}
