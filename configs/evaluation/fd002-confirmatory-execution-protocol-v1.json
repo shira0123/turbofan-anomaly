@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_id": "fd002-confirmatory-execution-protocol-v1",
+  "evaluation_id": "fd002-confirmatory-internal-held-out-v1",
+  "registered_date": "2026-09-01",
+  "status": "registered_before_internal_held_out_access",
+  "authority": {
+    "final_evaluation_protocol_path": "configs/evaluation/fd002-final-evaluation-protocol-v2.json",
+    "final_evaluation_protocol_sha256": "77029d2aa9b4ac3059ece1409f6a8fc30d1be508593ef523dcf4910b2d269ede",
+    "readiness_path": "reports/final_evaluation_v2/fd002-confirmatory-evaluation-v2/readiness.json",
+    "readiness_sha256": "de8024ff03f0243353016035b0fa2cfe93ec6b198dacf43542a68de6b6cae56e",
+    "split_manifest_path": "configs/splits/fd002-primary-v1.json",
+    "split_manifest_sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327"
+  },
+  "partition": {
+    "source_path": "data/raw/train_FD002.txt",
+    "source_sha256": "dac6c4dbc4e7c1bdeb5747da3d313d05c395bb99801b44a002b26a2ba13d788f",
+    "source_size_bytes": 9082480,
+    "split_name": "test",
+    "reporting_name": "internal_held_out",
+    "engine_ids": [3, 4, 11, 15, 28, 31, 33, 34, 37, 38, 40, 43, 50, 55, 56, 64, 78, 79, 83, 99, 103, 107, 108, 111, 117, 124, 129, 132, 136, 145, 150, 153, 156, 158, 162, 169, 170, 186, 187, 192, 206, 208, 217, 221, 230, 231, 237, 238, 243, 245, 248, 251],
+    "engine_count": 52,
+    "expected_cycle_rows": 10779,
+    "expected_columns": 26,
+    "expected_windows": 9271,
+    "filter": "raw_source_rows_where_engine_is_in_exact_registered_engine_ids",
+    "ordering": "stable_sort_by_engine_then_cycle",
+    "required_key": ["engine", "cycle"],
+    "train_validation_overlap_allowed": false
+  },
+  "preprocessing": {
+    "artifact_path": "models/preprocessing/p1_k6.joblib",
+    "artifact_sha256": "c4f626743a8f6710dbca0487c12455169b819f928d847c6033f2ef365aa4a10a",
+    "operation": "transform_only",
+    "fit_allowed": false,
+    "window_shape": [30, 21],
+    "window_stride": 1,
+    "window_context_semantics": "p1_k6_endpoint_cycle_mode_v1",
+    "required_modes": [0, 1, 2, 3, 4, 5],
+    "reclustering_allowed": false
+  },
+  "primary": {
+    "candidate_id": "pca_reconstruction__per_mode__quantile_0.995__ewma_alpha_0.20__persistence_8",
+    "model_path": "models/alerting_v1/fd002-alert-policy-study-v1/pca_reconstruction.joblib",
+    "model_sha256": "d56a6d41e63c0781da763565f71c4a13b144eacd487a351428113c8ebf2ba9aa",
+    "calibration": "frozen_training_empirical_cdf",
+    "threshold_context": "per_mode",
+    "thresholds": {"0": 0.9974190986698431, "1": 0.9908675799086758, "2": 0.9948381973396864, "3": 0.9922572960095295, "4": 0.996624975183641, "5": 0.9932499503672821},
+    "comparison": "strict_greater_than",
+    "ewma_alpha": 0.2,
+    "persistence": 8
+  },
+  "comparator": {
+    "detector_id": "lstm_calibrated_ensemble",
+    "role": "frozen_unfused_nonprimary_comparator",
+    "bundle_path": "models/alerting_v1/fd002-alert-policy-study-v1/lstm_calibrated_ensemble.json",
+    "bundle_sha256": "efae8c17a834d5837aef2b09281ded44f90da700b462978436965888c5932588",
+    "seeds": [43, 44, 45],
+    "model_paths": ["models/lstm_final_v1/fd002-lstm-final-refit-v1/fd002_lstm_final_v1_locked_p1_k6_balanced_64x16_l1_seed43.pt", "models/lstm_final_v1/fd002-lstm-final-refit-v1/fd002_lstm_final_v1_locked_p1_k6_balanced_64x16_l1_seed44.pt", "models/lstm_final_v1/fd002-lstm-final-refit-v1/fd002_lstm_final_v1_locked_p1_k6_balanced_64x16_l1_seed45.pt"],
+    "model_sha256": ["7a0a84dc11a1d5e2c21d8ccdc4be0385a844d24146be4d27fb7d47b3df8cda2e", "9f8406e39eda123f8878bcf58cec5e99c478e6d2d34f7ebbfff73a9a116e40e5", "86f4a993fc5247cfb7bacdfb7680ce6cb3a8dceb7d0059bf1f445c5d80e1a2b4"],
+    "aggregation": "arithmetic_mean_of_window_id_aligned_per_seed_calibrated_scores",
+    "threshold_context": "per_mode",
+    "thresholds": {"0": 0.9965587982264575, "1": 0.9908014029514923, "2": 0.9932499503672821, "3": 0.9972867447554762, "4": 0.992720534709814, "5": 0.9947720203825029},
+    "ewma_alpha": 0.2,
+    "persistence": 3,
+    "fusion_allowed": false
+  },
+  "evaluation": {
+    "proxy_policy_ids": ["normalized_life_last_10pct_endpoint", "normalized_life_last_20pct_endpoint", "normalized_life_last_30pct_endpoint", "normalized_life_last_20pct_full_window", "normalized_life_last_30pct_full_window"],
+    "proxy_exclusions": "full_window_overlap_ambiguous_and_excluded",
+    "event_definition": "contiguous_active_alert_endpoints_within_engine_and_consecutive_end_cycles",
+    "metrics": ["pr_auc", "roc_auc", "tp", "fp", "tn", "fn", "precision", "recall", "f1", "specificity", "false_positive_alerted_endpoints_per_1000_healthy_endpoints", "endpoint_false_alert_rate_percent", "false_alert_events_per_1000_healthy_endpoints", "percent_engines_with_healthy_false_alert", "engine_detection_coverage", "missed_engine_rate", "first_alert_delay", "lead_cycles", "event_count", "event_duration", "event_fragmentation"],
+    "validation_targets": {"maximum_endpoint_false_alert_rate_percent": 6.0, "median_detection_delay_aspiration_cycles": 12},
+    "result_acceptance": "first_valid_completed_run_is_final_regardless_of_metric_values",
+    "selection_after_access_allowed": false
+  },
+  "local_derived_artifacts": {
+    "directory": "data/processed/confirmatory_internal_held_out_v1",
+    "cycle_frame": "data/processed/confirmatory_internal_held_out_v1/p1_k6_cycle_frame.csv",
+    "window_metadata": "data/processed/confirmatory_internal_held_out_v1/window_metadata.csv",
+    "window_context": "data/processed/confirmatory_internal_held_out_v1/window_context.csv",
+    "sequences": "data/processed/confirmatory_internal_held_out_v1/sequences.npy",
+    "tracking_policy": "ignored_and_untracked"
+  },
+  "reports": {
+    "directory": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1",
+    "result_manifest": "result.json",
+    "verification": "verification.json",
+    "required_csv": ["partition_summary.csv", "primary_score_alert_trace.csv", "comparator_score_alert_trace.csv", "detector_policy_metrics.csv", "per_engine_metrics.csv", "alert_events.csv", "ranking_metrics.csv", "target_attainment.csv", "artifact_manifest.csv"],
+    "required_json": ["authority_input_manifest.json", "runtime_provenance.json", "access_declaration.json", "summary.json"]
+  },
+  "verification": {
+    "independent_reproduction_required": true,
+    "absolute_tolerance": 1e-12,
+    "relative_tolerance": 1e-10,
+    "hash_exact_for_inputs_and_outputs": true
+  },
+  "access_boundary": {
+    "internal_held_out_access_authorized_after_pre_data_commits": true,
+    "official_nasa_test_access_authorized": false,
+    "official_test_paths_forbidden": ["data/raw/test_FD002.txt", "data/raw/RUL_FD002.txt"],
+    "held_out_used_for_fit_calibration_threshold_selection_or_model_selection": false,
+    "model_refit_allowed": false,
+    "preprocessor_fit_allowed": false,
+    "calibration_refit_allowed": false,
+    "threshold_refit_allowed": false,
+    "online_recalibration_allowed": false,
+    "score_or_decision_fusion_allowed": false,
+    "candidate_search_allowed": false
+  }
+}
