@@ -19,6 +19,8 @@ SCRIPT_NAMES = (
     "run_alert_policy_study.py",
     "verify_alert_policy_study.py",
     "verify_final_evaluation.py",
+    "recover_p1_preprocessor.py",
+    "verify_p1_preprocessor.py",
 )
 
 

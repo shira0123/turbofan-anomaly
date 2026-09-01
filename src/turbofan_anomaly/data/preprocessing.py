@@ -142,6 +142,9 @@ class RegimeSensorPreprocessor:
         self.sensor_scalers_per_mode_: dict[int, StandardScaler] = {}
         self.sensor_fit_rows_per_mode_: dict[int, int] = {}
         self.fallback_modes_: tuple[int, ...] = ()
+        self.canonical_mode_mapping_: dict[int, int] = {
+            mode: mode for mode in range(self.n_clusters)
+        }
         self.fit_engine_ids_: tuple[int, ...] = ()
         self.fit_row_count_: int = 0
         self.healthy_fit_row_count_: int = 0
@@ -201,7 +204,7 @@ class RegimeSensorPreprocessor:
         ):
             raise RuntimeError("Call fit() before using the preprocessor")
 
-    def predict_modes(self, frame: pd.DataFrame) -> np.ndarray:
+    def predict_raw_modes(self, frame: pd.DataFrame) -> np.ndarray:
         _validate_frame(frame)
         self._require_fitted()
         assert self.op_scaler_ is not None
@@ -211,16 +214,41 @@ class RegimeSensorPreprocessor:
         )
         return self.kmeans_.predict(scaled_settings).astype(int)
 
+    def set_canonical_mode_mapping(
+        self, mapping: dict[int, int]
+    ) -> "RegimeSensorPreprocessor":
+        """Register a fitted-training-only permutation of K-Means labels."""
+        self._require_fitted()
+        expected = set(range(self.n_clusters))
+        normalized = {int(raw): int(canonical) for raw, canonical in mapping.items()}
+        if set(normalized) != expected or set(normalized.values()) != expected:
+            raise ValueError("Canonical mode mapping must be a complete bijection")
+        self.canonical_mode_mapping_ = normalized
+        return self
+
+    def predict_modes(self, frame: pd.DataFrame) -> np.ndarray:
+        raw_modes = self.predict_raw_modes(frame)
+        return np.fromiter(
+            (self.canonical_mode_mapping_[int(mode)] for mode in raw_modes),
+            dtype=int,
+            count=len(raw_modes),
+        )
+
     def transform(self, frame: pd.DataFrame) -> pd.DataFrame:
         _validate_frame(frame)
         self._require_fitted()
-        modes = self.predict_modes(frame)
+        raw_modes = self.predict_raw_modes(frame)
+        modes = np.fromiter(
+            (self.canonical_mode_mapping_[int(mode)] for mode in raw_modes),
+            dtype=int,
+            count=len(raw_modes),
+        )
         transformed = frame.astype(
             {sensor: "float64" for sensor in SENSOR_COLUMNS}
         ).copy()
 
         for mode in range(self.n_clusters):
-            mode_mask = modes == mode
+            mode_mask = raw_modes == mode
             if not mode_mask.any():
                 continue
             scaler = self.sensor_scalers_per_mode_.get(
@@ -239,8 +267,12 @@ class RegimeSensorPreprocessor:
         assert self.kmeans_ is not None
         centroids = self.op_scaler_.inverse_transform(self.kmeans_.cluster_centers_)
         result = pd.DataFrame(centroids, columns=[f"centroid_{c}" for c in OP_COLUMNS])
-        result.insert(0, "op_mode", np.arange(self.n_clusters, dtype=int))
-        return result
+        result.insert(
+            0,
+            "op_mode",
+            [self.canonical_mode_mapping_[mode] for mode in range(self.n_clusters)],
+        )
+        return result.sort_values("op_mode").reset_index(drop=True)
 
     def fit_metadata(self) -> dict[str, Any]:
         self._require_fitted()
@@ -256,8 +288,14 @@ class RegimeSensorPreprocessor:
             "operating_scaler_fit_rows": self.fit_row_count_,
             "kmeans_fit_rows": self.fit_row_count_,
             "sensor_scaler_fit_rows": self.healthy_fit_row_count_,
-            "sensor_fit_rows_per_mode": self.sensor_fit_rows_per_mode_,
-            "fallback_modes": list(self.fallback_modes_),
+            "sensor_fit_rows_per_mode": {
+                self.canonical_mode_mapping_[mode]: rows
+                for mode, rows in self.sensor_fit_rows_per_mode_.items()
+            },
+            "fallback_modes": sorted(
+                self.canonical_mode_mapping_[mode] for mode in self.fallback_modes_
+            ),
+            "canonical_mode_mapping": self.canonical_mode_mapping_,
             "fit_engine_count": len(self.fit_engine_ids_),
             "fit_engine_ids_sha256": _engine_id_digest(self.fit_engine_ids_),
         }
