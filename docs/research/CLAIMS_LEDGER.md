@@ -29,6 +29,12 @@ This ledger controls proposed scientific wording. A supported row is bounded by 
 
 ## Prohibited upgrades
 
-Lifecycle note: CLM-009's statement that threshold/event evaluation was incomplete and CLM-011's former no-threshold limitation were accurate at final-refit completion but are superseded by CLM-012. CLM-013 remains the preserved v1 blocked-readiness record and is superseded operationally, not rewritten, by CLM-014 and protocol v2. None of these claims supersedes the no-held-out-result boundary.
+Lifecycle note: CLM-009's statement that threshold/event evaluation was incomplete and CLM-011's former no-threshold limitation were accurate at final-refit completion but are superseded by CLM-012. CLM-013 remains the preserved v1 blocked-readiness record and is superseded operationally, not rewritten, by CLM-014 and protocol v2. CLM-015 supersedes the former no-internal-held-out-result boundary only for the first valid frozen confirmatory run; it does not authorize official NASA-test, physical-onset, production, or post-test selection claims.
 
 Do not rewrite these claims as “85% accuracy,” final test performance, physical fault-onset detection, production readiness, algorithmic novelty, or LSTM superiority. Any future claim must add its frozen run/config, population, policy, metric definition, engine-level uncertainty, artifact hashes, and decision-gate status before it can become supported.
+
+## Final post-confirmatory claims audit - 2026-09-01
+
+The versioned [`FINAL_CLAIMS_AUDIT.md`](FINAL_CLAIMS_AUDIT.md) and machine-readable [`final_claims_audit.json`](final_claims_audit.json) apply the final evidence classifications after the first valid frozen confirmatory run. They preserve the historical lifecycle rows above rather than rewriting them.
+
+Of 17 intended paper claims, 13 are supported within confirmatory, validation-only, or implementation boundaries; one is partially supported; two implementation claims are not supported; and novelty/superiority wording is prohibited. No claim is authorized as official NASA-test, observed physical-onset, production, real-aircraft, state-of-the-art, first-ever, or literature-outperformance evidence.

@@ -227,3 +227,11 @@ Obtain separate explicit authorization for confirmatory held-out provisioning an
 - Completed and independently verified the first valid frozen run: 10,779 cycles, 9,271 P1/K=6 windows, six modes, PCA primary, and unfused LSTM comparator.
 - All three primary endpoint proxy FARs met the <6% target; aggregate median delay was 25 cycles and missed the 12-cycle aspiration.
 - No preprocessing/model/calibration/threshold fitting, online recalibration, candidate search, policy change, or fusion occurred. Official NASA test data remained unopened.
+
+## Literature comparability, final claims, and roadmap - 2026-09-01
+
+- Audited all 100 unique v3 literature records into a versioned v4 derivative while preserving Bible v3 and matrix v3 byte-for-byte.
+- Applied strict numerical-evidence and A/B/C/D comparability rules. The audit found zero Category A protocol-equivalent published comparators; numerical literature rows are limited to three fully verified papers and carry non-equivalence boundaries.
+- Froze a 17-claim audit: 13 supported within bounded evidence classes, one partially supported, two not supported, and one prohibited-wording claim.
+- Recorded the immutable confirmatory-result rule and separated remaining research work, required inference/explainability implementation, and optional future studies in the post-confirmatory roadmap.
+- The next implementation milestone is faithful PCA sensor-level reconstruction attribution followed by the frozen preprocessing-to-alert inference integration. No model run, tuning, held-out access, official-test access, or remote operation occurred in this documentation phase.

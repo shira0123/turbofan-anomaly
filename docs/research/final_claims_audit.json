@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.0.0",
+  "audit_id": "fd002-final-claims-audit-v1",
+  "audit_date": "2026-09-01",
+  "metric_authority": "configs/evaluation/fd002-confirmatory-results-v1.json",
+  "literature_authority": "docs/research/LITERATURE_EVIDENCE_MATRIX_V4.json",
+  "strongest_defensible_contribution": "A governed, condition-aware, engine-disjoint FD002 anomaly-alert pipeline that froze preprocessing, detector, calibration, and alert policy before internal held-out access and transparently reports proxy-sensitive FAR, coverage, and delay with independent reproduction.",
+  "status_counts": {
+    "not_supported": 2,
+    "partially_supported": 1,
+    "prohibited_wording": 1,
+    "supported_confirmatory": 8,
+    "supported_implementation": 3,
+    "supported_validation_only": 2
+  },
+  "claims": [
+    {
+      "claim_id": "FCA-001",
+      "topic": "engine-disjoint evaluation",
+      "proposed_paper_wording": "Development and confirmatory evaluation used deterministic, engine-disjoint FD002 partitions.",
+      "evidence_sources": [
+        "configs/splits/fd002-primary-v1.json",
+        "configs/evaluation/fd002-confirmatory-results-v1.json",
+        "tests/test_engine_splits.py"
+      ],
+      "evidence_classification": "supported_confirmatory",
+      "limitations": "One fixed 60/20/20 split does not estimate split-to-split variability.",
+      "permitted_wording": "A deterministic engine-disjoint split was used, with 156 training, 52 validation, and 52 internal held-out engines.",
+      "prohibited_or_exaggerated_wording": "Randomized robustness across many fleet splits was established."
+    },
+    {
+      "claim_id": "FCA-002",
+      "topic": "P1/K=6 preprocessing",
+      "proposed_paper_wording": "A training-fitted P1/K=6 condition-aware preprocessing pipeline was implemented and reproduced.",
+      "evidence_sources": [
+        "configs/preprocessing/fd002-preprocessing-selection-v1.json",
+        "reports/preprocessing_recovery/fd002-p1-k6-recovery-v1/result.json",
+        "src/turbofan_anomaly/data/preprocessing.py"
+      ],
+      "evidence_classification": "supported_implementation",
+      "limitations": "K=6 is a validation-selected context representation, not proof of six causal physical regimes.",
+      "permitted_wording": "P1/K=6 scales sensors with training-fitted, operating-mode-aware state and assigns endpoint mode from registered cycle context.",
+      "prohibited_or_exaggerated_wording": "The method discovered six true physical operating regimes or introduced a novel clustering algorithm."
+    },
+    {
+      "claim_id": "FCA-003",
+      "topic": "multiple detector comparison",
+      "proposed_paper_wording": "Multiple classical and deep anomaly detectors were compared under registered validation protocols.",
+      "evidence_sources": [
+        "configs/baselines/fd002-classical-baselines-v1.json",
+        "configs/lstm/fd002-lstm-screen-results-v1.json",
+        "configs/alerting/fd002-alert-policy-study-results-v1.json"
+      ],
+      "evidence_classification": "supported_validation_only",
+      "limitations": "Model selection and the 1,280-policy study used validation proxy evidence; cross-family uncertainty is limited.",
+      "permitted_wording": "PCA, LOF, One-Class SVM, Isolation Forest, and an LSTM autoencoder were compared on registered validation proxies.",
+      "prohibited_or_exaggerated_wording": "The project exhaustively proved one detector family is universally best."
+    },
+    {
+      "claim_id": "FCA-004",
+      "topic": "three-seed LSTM ensemble",
+      "proposed_paper_wording": "A frozen three-seed calibrated LSTM ensemble was evaluated as the unfused confirmatory comparator.",
+      "evidence_sources": [
+        "configs/lstm/fd002-lstm-final-refit-results-v1.json",
+        "configs/evaluation/fd002-confirmatory-results-v1.json",
+        "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/detector_policy_metrics.csv"
+      ],
+      "evidence_classification": "supported_confirmatory",
+      "limitations": "Three seeds do not characterize all training variance; the LSTM was a comparator, not the selected primary detector.",
+      "permitted_wording": "The pre-registered three-seed LSTM ensemble was evaluated without score or decision fusion.",
+      "prohibited_or_exaggerated_wording": "The LSTM was selected after held-out access, was the primary model, or proved deep-learning superiority."
+    },
+    {
+      "claim_id": "FCA-005",
+      "topic": "frozen alert-policy grid",
+      "proposed_paper_wording": "A predeclared threshold, EWMA, and persistence grid containing 1,280 candidates was studied on validation proxies.",
+      "evidence_sources": [
+        "configs/alerting/fd002-alert-policy-study-protocol-v2.json",
+        "configs/alerting/fd002-alert-policy-study-results-v1.json",
+        "reports/alerting_v1/fd002-alert-policy-study-v1/candidates.csv"
+      ],
+      "evidence_classification": "supported_validation_only",
+      "limitations": "The grid was not searched on internal held-out results, and its coverage is bounded by its registered candidate set.",
+      "permitted_wording": "The frozen validation study evaluated 1,280 registered alert candidates across five proxy policies.",
+      "prohibited_or_exaggerated_wording": "The held-out split was searched to optimize the alert policy."
+    },
+    {
+      "claim_id": "FCA-006",
+      "topic": "endpoint FAR target",
+      "proposed_paper_wording": "The frozen PCA policy achieved endpoint false-alert rates below 6% for all three registered internal held-out endpoint proxies.",
+      "evidence_sources": [
+        "configs/evaluation/fd002-confirmatory-results-v1.json",
+        "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/detector_policy_metrics.csv"
+      ],
+      "evidence_classification": "supported_confirmatory",
+      "limitations": "The rates are proxy-labelled internal held-out results, not physical-onset, official-test, or production estimates.",
+      "permitted_wording": "Endpoint FAR was 3.2440%, 0.9443%, and 0.5153% for final-10%, final-20%, and final-30% proxies, respectively.",
+      "prohibited_or_exaggerated_wording": "Operational false-alarm probability is below 6% in real aircraft."
+    },
+    {
+      "claim_id": "FCA-007",
+      "topic": "delay aspiration",
+      "proposed_paper_wording": "The aggregate median 12-cycle detection-delay aspiration was not achieved.",
+      "evidence_sources": [
+        "configs/evaluation/fd002-confirmatory-results-v1.json",
+        "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/target_attainment.csv"
+      ],
+      "evidence_classification": "supported_confirmatory",
+      "limitations": "Delay is measured from heuristic normalized-life proxy onsets; missed engines and proxy choice affect interpretation.",
+      "permitted_wording": "Aggregate median held-out delay was 25 cycles; only final-10% had median delay exactly 12 cycles.",
+      "prohibited_or_exaggerated_wording": "The system reliably detects degradation within 12 cycles."
+    },
+    {
+      "claim_id": "FCA-008",
+      "topic": "proxy sensitivity",
+      "proposed_paper_wording": "Coverage, ranking, FAR, and delay varied materially with the registered proxy anomaly-onset definition.",
+      "evidence_sources": [
+        "configs/evaluation/fd002-confirmatory-results-v1.json",
+        "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/ranking_metrics.csv"
+      ],
+      "evidence_classification": "supported_confirmatory",
+      "limitations": "The proxies are three late-life fractions, not independent physical onset annotations.",
+      "permitted_wording": "Results are proxy-sensitive: PCA coverage ranged from 51.92% to 84.62% and median delay from 12 to 42.5 cycles.",
+      "prohibited_or_exaggerated_wording": "The metrics estimate accuracy against true fault onset."
+    },
+    {
+      "claim_id": "FCA-009",
+      "topic": "PCA held-out trade-off",
+      "proposed_paper_wording": "On every frozen endpoint proxy, PCA produced lower false-alert rates than the LSTM comparator, with lower engine coverage and longer median delay.",
+      "evidence_sources": [
+        "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/detector_policy_metrics.csv",
+        "docs/research/LITERATURE_TO_PROJECT_METRIC_COMPARISON.md"
+      ],
+      "evidence_classification": "supported_confirmatory",
+      "limitations": "This is a two-detector internal held-out trade-off, not general superiority or external generalization.",
+      "permitted_wording": "The PCA policy generalized from validation selection to a lower-FAR but lower-coverage and later-alert internal held-out profile than the frozen LSTM comparator.",
+      "prohibited_or_exaggerated_wording": "PCA is superior, safer, or more accurate than LSTM in general."
+    },
+    {
+      "claim_id": "FCA-010",
+      "topic": "LSTM complementarity",
+      "proposed_paper_wording": "The LSTM comparator showed a distinct coverage-delay-FAR trade-off that may be complementary to PCA.",
+      "evidence_sources": [
+        "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/detector_policy_metrics.csv",
+        "configs/evaluation/fd002-confirmatory-results-v1.json"
+      ],
+      "evidence_classification": "partially_supported",
+      "limitations": "No score fusion, decision fusion, incremental-utility test, or new pre-registered fusion study was performed.",
+      "permitted_wording": "The LSTM had higher coverage and slightly earlier median alerts, but also higher FAR, on each registered endpoint proxy.",
+      "prohibited_or_exaggerated_wording": "PCA-LSTM fusion improves performance or their errors are independently complementary."
+    },
+    {
+      "claim_id": "FCA-011",
+      "topic": "no post-test reselection",
+      "proposed_paper_wording": "No model, calibration, threshold, alert policy, or fusion choice was changed after internal held-out access.",
+      "evidence_sources": [
+        "configs/evaluation/fd002-confirmatory-results-v1.json",
+        "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/result.json",
+        "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/access_declaration.json"
+      ],
+      "evidence_classification": "supported_confirmatory",
+      "limitations": "This statement applies to the governed first valid run and its frozen protocol.",
+      "permitted_wording": "The first valid confirmatory run used the pre-registered frozen PCA primary and unfused LSTM comparator without reselection.",
+      "prohibited_or_exaggerated_wording": "The confirmatory result validates future tuning choices or authorizes retroactive candidate selection."
+    },
+    {
+      "claim_id": "FCA-012",
+      "topic": "official NASA test boundary",
+      "proposed_paper_wording": "The official NASA test set was not evaluated in this project protocol.",
+      "evidence_sources": [
+        "configs/evaluation/fd002-confirmatory-results-v1.json",
+        "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/access_declaration.json"
+      ],
+      "evidence_classification": "supported_confirmatory",
+      "limitations": "The internal held-out partition is not the official NASA truncated test set.",
+      "permitted_wording": "No official NASA-test result is reported.",
+      "prohibited_or_exaggerated_wording": "The internal held-out metrics are NASA official-test performance."
+    },
+    {
+      "claim_id": "FCA-013",
+      "topic": "fault-onset annotations",
+      "proposed_paper_wording": "FD002 does not provide observed physical per-cycle fault-onset annotations; late-life labels are declared proxies.",
+      "evidence_sources": [
+        "docs/research/MASTER_EXECUTION_BIBLE_V3_RESEARCH_IMPLEMENTATION_2026-08-23.md",
+        "docs/research/LITERATURE_EVIDENCE_MATRIX_V4.json",
+        "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json"
+      ],
+      "evidence_classification": "supported_implementation",
+      "limitations": "Run-to-failure degradation is present, but the exact physical onset is not annotated for this classification task.",
+      "permitted_wording": "The study evaluates final-10%, final-20%, and final-30% normalized-life proxy onsets.",
+      "prohibited_or_exaggerated_wording": "The reported delays are measured from true physical fault onset."
+    },
+    {
+      "claim_id": "FCA-014",
+      "topic": "reproducible prototype",
+      "proposed_paper_wording": "The repository is a governed, reproducible research prototype with versioned protocols, hashes, synthetic contracts, and independently verified reports.",
+      "evidence_sources": [
+        "pyproject.toml",
+        "docs/research/ARTIFACT_MANIFEST.md",
+        "tests",
+        "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/verification.json"
+      ],
+      "evidence_classification": "supported_implementation",
+      "limitations": "Raw data and model bundles are local/ignored; there is no lockfile, production service, or external replication package yet.",
+      "permitted_wording": "The work is a reproducible research prototype within its registered local artifact and environment boundaries.",
+      "prohibited_or_exaggerated_wording": "The repository is production-ready, independently replicated by an external team, or fully reproducible without governed local artifacts."
+    },
+    {
+      "claim_id": "FCA-015",
+      "topic": "explainability status",
+      "proposed_paper_wording": "Faithful detector explainability has not yet been implemented.",
+      "evidence_sources": [
+        "docs/research/MIGRATION_MANIFEST.md",
+        "docs/research/POST_CONFIRMATORY_IMPLEMENTATION_ROADMAP.md"
+      ],
+      "evidence_classification": "not_supported",
+      "limitations": "The guide specifies a reconstruction-contribution contract, but specification is not implementation.",
+      "permitted_wording": "Explainability is planned; no current output should be called SHAP or causal fault attribution.",
+      "prohibited_or_exaggerated_wording": "Explainability, SHAP, root-cause diagnosis, or validated sensor attribution is implemented."
+    },
+    {
+      "claim_id": "FCA-016",
+      "topic": "API and deployment status",
+      "proposed_paper_wording": "No production API, deployment service, or frozen end-to-end inference interface is implemented.",
+      "evidence_sources": [
+        "docs/research/MIGRATION_MANIFEST.md",
+        "docs/research/POST_CONFIRMATORY_IMPLEMENTATION_ROADMAP.md"
+      ],
+      "evidence_classification": "not_supported",
+      "limitations": "Research workflow CLIs exist, but they are not a production inference API or deployment bundle.",
+      "permitted_wording": "A governed inference interface remains implementation work.",
+      "prohibited_or_exaggerated_wording": "The system is deployed, production-ready, real-time validated, or exposed through a supported API."
+    },
+    {
+      "claim_id": "FCA-017",
+      "topic": "novelty and superiority language",
+      "proposed_paper_wording": "The evidence does not authorize first, state-of-the-art, superior, or outperforms claims.",
+      "evidence_sources": [
+        "docs/research/LITERATURE_EVIDENCE_MATRIX_V4.json",
+        "docs/research/LITERATURE_TO_PROJECT_METRIC_COMPARISON.md"
+      ],
+      "evidence_classification": "prohibited_wording",
+      "limitations": "No Category A protocol-equivalent published comparator was found; absence of one in this set does not prove novelty.",
+      "permitted_wording": "The defensible contribution is a governed, condition-aware, engine-disjoint FD002 anomaly-alert pipeline with frozen pre-test choices and transparent proxy-sensitive results.",
+      "prohibited_or_exaggerated_wording": "First-ever; state of the art; superior to existing methods; outperforms the literature; production-ready."
+    }
+  ]
+}

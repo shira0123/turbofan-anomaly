@@ -145,16 +145,17 @@ frozen calibrated score in engine-cycle order
     -> one internal-test evaluation
 ```
 
-Threshold selection, EWMA, persistence, event extraction, sensitivity, and final internal-test evaluation have **not** started under the current protocol. Equations later in this guide describe the registered plan, not completed evidence.
+Threshold selection, EWMA, persistence, event extraction, registered proxy sensitivity, and the one-time internal held-out evaluation are complete under frozen protocols. The equations later in this guide describe the implemented state machine. Remaining uncertainty and failure analysis belong in the paper limitations and any new study; they cannot revise the confirmatory result.
 
 ### 4.3 Human decision gates
 
 - Gate 1, split: complete.
 - Gate 2, P1/K=6 preprocessing: complete.
-- Gate 3, balanced LSTM candidate: recommended but formal approval and final refit remain pending.
-- Gate 4, alert-policy freeze: approved on 2026-08-30; confirmatory evaluation preregistered but blocked before test access by the missing, unhashed fitted P1/K=6 preprocessor.
-- Gate 5, sensitivity closure: pending.
-- Gate 6, one-time internal-test access: pending.
+- Gate 3, balanced LSTM candidate: approved; governed three-seed final refit complete.
+- Gate 4, alert-policy freeze: approved on 2026-08-30; frozen PCA primary and unfused LSTM comparator preserved.
+- Gate 5, registered sensitivity closure: complete for the five Phase 5 proxy policies used to authorize confirmatory evaluation; broader uncertainty analysis remains a limitation/future study.
+- Gate 6, one-time internal held-out evaluation: complete; first valid frozen run independently verified.
+- Gate 7, external evaluation and paper: pending; no official NASA-test result exists.
 
 ## 5. Active file and folder map
 
@@ -674,9 +675,9 @@ The operational questions are engine-oriented:
 
 Confidence intervals must resample engines, not individual overlapping windows.
 
-## 12. Planned threshold, EWMA, and persistence behavior
+## 12. Frozen threshold, EWMA, and persistence behavior
 
-This section explains the registered plan. It is **not current verified implementation or evidence**.
+This behavior is implemented, covered by synthetic state-machine tests, selected on validation, frozen before internal held-out access, and independently verified in the first valid confirmatory run.
 
 A global threshold uses one boundary; a per-mode threshold uses the frozen operating regime. Candidate rules are healthy-score quantiles and \(\mu+k\sigma\), selected on validation under a predeclared objective.
 
@@ -698,7 +699,7 @@ c_{t-1}+1,&z_t>\tau(\text{mode}_t),\\
 \text{alert}_t=\mathbf{1}[c_t\geq m].
 \]
 
-Persistence can suppress isolated spikes but necessarily adds delay. The registered study considers `m` in `{1,3,5,8}`, a small predeclared EWMA alpha set, and online recalibration **off**. Mode changes, missing cycles, reset behavior, and event boundaries require synthetic state-machine tests before use.
+Persistence can suppress isolated spikes but necessarily adds delay. The registered validation study considered `m` in `{1,3,5,8}`, a small predeclared EWMA alpha set, and online recalibration **off**. Gate 4 froze PCA reconstruction with per-mode q=0.995, EWMA alpha 0.20, and persistence 8. Mode changes, missing cycles, reset behavior, and event boundaries are protected by synthetic state-machine tests. The confirmatory run did not refit or reselect this policy.
 
 ## 13. Current verified results and their boundaries
 
@@ -739,24 +740,24 @@ At the audited checkpoint, 26 automated tests passed. Nine checkpoint hashes and
 
 The safe summary is:
 
-> The project has a deterministic engine-disjoint FD002 foundation, a selected six-regime condition-aware preprocessing treatment, four classical detector families evaluated under P0 and P1, and a registered nine-run LSTM screen. P1 improved all matched classical parameter pairs and was stable across matched LSTM seeds on validation proxy policies. LOF and One-Class SVM are the strongest current validation controls. The balanced one-layer LSTM is recommended for a controlled final refit but is not yet superior. Threshold/event evaluation, sensitivity, and the untouched internal test remain pending.
+> The project has a deterministic engine-disjoint FD002 foundation, a selected six-regime condition-aware preprocessing treatment, four classical detector families, a governed three-seed LSTM refit, and a frozen PCA alert policy. On the first valid frozen internal held-out run, all three endpoint FAR proxies were below 6%, while aggregate median delay was 25 cycles and missed the 12-cycle aspiration. Results are proxy-sensitive, the LSTM remains an unfused comparator, and no official NASA-test or physical-onset result is reported.
 
 Do not shorten this to “our model achieved 85% accuracy.” That changes the metric, evidence class, and meaning, and is false.
 
 ## 14. What remains incomplete
 
-- formal owner closure of Gate 3;
-- longer convergence selection and locked LSTM refit on all 5,037 eligible training windows;
-- detector freeze before alert-policy selection;
-- Phase 5 global/per-mode thresholds, EWMA, persistence, and event metrics;
-- healthy-fraction and onset-policy sensitivity;
+- owner approval of the final manuscript wording in the claims audit;
+- faithful PCA per-sensor reconstruction-contribution attribution and explanation validation;
+- a frozen preprocessing-to-alert inference service plus CLI/API interface;
+- engine timeline and alert/contribution visualization;
+- validation-only ablation synthesis and threats-to-validity section;
 - engine-level bootstrap uncertainty and failure analysis;
-- optional fusion only if complementarity justifies it;
-- one frozen internal-test evaluation;
+- optional fusion only under a new pre-registered study;
 - separately specified official-test/external evaluation;
-- a reproducible environment lockfile.
+- a reproducibility package and environment lockfile;
+- final manuscript tables, figures, paper, and presentation.
 
-The raw data, processed arrays, and model checkpoint directories are absent from this checkout. In particular, notebook execution needs `data/splits/train.csv`, `data/splits/validation.csv`, `models/preprocessing/p0_global.joblib`, and `models/preprocessing/p1_k6.joblib`; they are absent. Some optional/runtime dependencies may also be absent before setup. Those facts block notebook execution, artifact reproduction, and experiment workflows. Do not fabricate substitutes or download data silently.
+Raw data, processed arrays, and model bundles remain local/ignored rather than committed. Their registered hashes and governed acquisition/recovery history determine whether a workflow may use them. Do not bundle, fabricate, silently download, or substitute them. Future implementation should use synthetic contracts and frozen hash-checked artifacts without rerunning the confirmatory study.
 
 ## 15. Configs, reports, models, hashes, and ledger
 
@@ -959,7 +960,7 @@ No. PR-AUC summarizes precision/recall ranking across thresholds under a declare
 On the current engine-disjoint validation proxy, P1 LOF has the highest mean PR-AUC, followed by P1 OCSVM. That is a validation control result, not final performance.
 
 **Did the LSTM win?**
-No. The recommended P1 balanced LSTM screen candidate has median matched-seed mean PR-AUC 0.81088283 and has not beaten LOF or OCSVM. Its final controlled refit is pending.
+No. The final three-seed LSTM ensemble remained the frozen unfused comparator. On internal held-out endpoint proxies it had higher coverage and slightly earlier median alerts than PCA, but also higher FAR. That trade-off is not proof of superiority or fusion benefit.
 
 **Why keep simple models?**
 Simple controls can be strong, cheaper, and easier to audit. A complex model must show a fair, useful benefit in ranking, temporal behavior, explanations, or operational trade-offs.
@@ -968,13 +969,13 @@ Simple controls can be strong, cheaper, and easier to audit. A complex model mus
 The empirical CDF is fitted on declared training scores only and then frozen for validation/test transforms.
 
 **What does persistence trade?**
-It suppresses isolated violations but delays alert onset by requiring multiple consecutive exceedances. That trade-off has not yet been evaluated here.
+It suppresses isolated violations but delays alert onset by requiring multiple consecutive exceedances. The validation study evaluated this trade-off and froze persistence 8 for the PCA policy before confirmatory access; the confirmatory aggregate 12-cycle delay aspiration was missed.
 
 **Why no production API?**
-The research pipeline, calibration, threshold, persistence, and frozen bundle are incomplete. Prototype API code would overstate readiness and is not required for the paper.
+The scientific pipeline, calibration, threshold, persistence, and artifacts are frozen, but the hash-checked end-to-end inference service, input contracts, supported interface, visualization, integration tests, and deployment monitoring are not implemented. Research workflow CLIs are not a production API.
 
 **What is the internal-test policy?**
-Do not open or score it until preprocessing, detector, calibration, alert policy, sensitivity, code, and configs are frozen and all owner gates are closed. Then evaluate once.
+The authorized first valid frozen confirmatory run is complete. Do not reopen it for tuning, model/policy reselection, fusion, or retrospective optimization. Future studies need a new protocol and cannot alter the registered result. The official NASA test remains outside this task.
 
 **Can we call sensor deviation SHAP?**
 No. SHAP means the actual SHAP algorithm was used and its explanation fidelity was evaluated. Native reconstruction contributions should be named accurately.

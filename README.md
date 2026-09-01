@@ -6,7 +6,7 @@ This repository studies whether operating-condition-aware preprocessing improves
 
 The frozen primary split is deterministic and engine-disjoint: 156 training, 52 validation, and 52 held-out internal-test engines (60/20/20, seed 42), with zero engine overlap. P0 is global sensor preprocessing. P1/K=6 is condition-aware preprocessing: scaled operating settings, six K-Means regimes, and per-regime sensor scaling. **P1 is preprocessing, not the LSTM.**
 
-The current numbers are engine-disjoint **validation proxy diagnostics**, not accuracy and not final-test performance:
+The following development numbers are engine-disjoint **validation proxy diagnostics**, not accuracy and not confirmatory performance:
 
 | P1/K=6 detector | Mean PR-AUC | Mean ROC-AUC |
 |---|---:|---:|
@@ -18,11 +18,21 @@ The current numbers are engine-disjoint **validation proxy diagnostics**, not ac
 
 Nine registered LSTM screening runs and the governed final refit are complete. The final `balanced_64x16_l1 + P1/K=6` convergence best epochs were 47, 54, and 59, locking all three refits to epoch 54. The predeclared calibrated-score ensemble beat every individual final-refit LSTM seed, but it did **not** beat LOF or One-Class SVM on mean validation-proxy PR-AUC and remained below LOF, One-Class SVM, and Isolation Forest on mean validation-proxy ROC-AUC. These results do not establish LSTM superiority.
 
+The first valid frozen internal held-out confirmatory run is complete. Under the primary PCA policy `pca_reconstruction__per_mode__quantile_0.995__ewma_alpha_0.20__persistence_8`, the registered results were:
+
+| Endpoint proxy | FAR/1,000 | FAR percentage | Engine coverage | Median delay |
+|---|---:|---:|---:|---:|
+| Final 10% | 32.440 | 3.2440% | 51.92% | 12 cycles |
+| Final 20% | 9.443 | 0.9443% | 78.85% | 25 cycles |
+| Final 30% | 5.153 | 0.5153% | 84.62% | 42.5 cycles |
+
+All three endpoint FAR percentages were below 6%, while the aggregate median delay was 25 cycles and missed the 12-cycle aspiration. These are proxy-labelled internal held-out results, not official NASA-test, observed physical-onset, production, or real-aircraft estimates.
+
 The governed Phase 5 validation-only alert-policy study is also complete. After correcting window-context lineage by assigning each window the registered P1/K=6 operating mode at its endpoint cycle, all five frozen score sources reproduced and all 1,280 alert candidates were evaluated across five proxy policies. The validation recommendation is `pca_reconstruction__per_mode__quantile_0.995__ewma_alpha_0.20__persistence_8`. Its worst primary-policy false-positive endpoint rate was `44.711/1,000` healthy endpoints and its minimum engine coverage was `57.69%`; however, its median-of-policy median delay was `23` cycles, missing the `<=12`-cycle aspiration. LOF and Isolation Forest selected conservative feasible policies that emitted no alerts and detected no engines. This is an operational validation recommendation, not a final-test result.
 
 FD002 provides run-to-failure trajectories but no physical per-cycle anomaly-onset labels. The late-life labels used here are declared evaluation proxies. PR-AUC is a ranking metric, not accuracy.
 
-**Frozen boundary:** do not open, inspect, transform, plot, score, or model the held-out internal-test data without separate explicit authorization. The official NASA test set is outside the protocol. Gate 4 approved and froze the PCA per-mode q=0.995 / EWMA 0.20 / persistence-8 policy. The missing P1/K=6 preprocessor has now been deterministically recovered from the owner-authorized local source using only the frozen 156-engine training allowlist and independently verified against the registered train/validation P1, PCA, and Phase 5 evidence. Final-evaluation protocol v2 is ready only for separately authorized held-out provisioning; no held-out availability check or confirmatory evaluation has occurred.
+**Frozen boundary:** Gate 4 approved and froze the PCA per-mode q=0.995 / EWMA 0.20 / persistence-8 policy before internal held-out access. The recovered P1/K=6 preprocessor and first valid confirmatory run were independently verified under the registered protocol. Do not rerun, tune, select, fuse, or reinterpret models on the internal held-out partition. The official NASA test set remains outside this protocol and was not accessed.
 
 ## Repository map
 
@@ -83,7 +93,11 @@ The verification commands are read-only with respect to registered evidence. His
 
 - [Master Execution Bible v3](docs/research/MASTER_EXECUTION_BIBLE_V3_RESEARCH_IMPLEMENTATION_2026-08-23.md)
 - [100-source literature evidence matrix](docs/research/Turbofan_Literature_Evidence_Matrix_100_Sources_v3.xlsx)
+- [Audited literature evidence matrix v4](docs/research/LITERATURE_EVIDENCE_MATRIX_V4.md)
+- [Literature-to-project metric comparison](docs/research/LITERATURE_TO_PROJECT_METRIC_COMPARISON.md)
 - [Claims ledger](docs/research/CLAIMS_LEDGER.md)
+- [Final claims audit](docs/research/FINAL_CLAIMS_AUDIT.md)
+- [Post-confirmatory implementation roadmap](docs/research/POST_CONFIRMATORY_IMPLEMENTATION_ROADMAP.md)
 - [Decision log](DECISION_LOG.md)
 - [Progress log](PROGRESS.md)
 - [Confirmatory internal held-out result](configs/evaluation/fd002-confirmatory-results-v1.json)

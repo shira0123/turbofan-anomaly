@@ -193,3 +193,16 @@ Protocol/readiness v1 remain preserved at the hashes above. The recovery used th
 | Confirmatory execution protocol v1 | `configs/evaluation/fd002-confirmatory-execution-protocol-v1.json` | `594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758` | yes | Tracked and committed before held-out access |
 | Confirmatory result manifest | `reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/result.json` | `70d6be0d608cb833b27924430a57f8534c31b35d115a953ac199b93cc1305d5d` | yes | Tracked internal held-out proxy evidence; not official NASA test |
 | Confirmatory verification | `reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/verification.json` | `5195ccd96f9ab89e13bb5ef4cf78334334255397a6b98cfbf14a0d599d4fded7` | yes | Independent partition, transform, mode, window, score, alert, metric, contract, and report-hash reproduction |
+
+## Literature comparison and final claims governance - 2026-09-01
+
+These are versioned research/documentation derivatives. Bible v3, literature matrix v3, confirmatory configs, and confirmatory reports remain unchanged.
+
+| Artifact | Path | Canonical LF SHA-256 | Tracking / role |
+|---|---|---|---|
+| Literature evidence matrix v4 JSON | `docs/research/LITERATURE_EVIDENCE_MATRIX_V4.json` | `7e78011c3feeaf6b96eae56d45ee3ae073046daaccf44d7ecfd5aa32a1792a86` | Audits all 100 v3 records; v3 source preserved |
+| Literature/project comparison JSON | `docs/research/literature_to_project_metric_comparison.json` | `9bc9920d05b77a0841cb698d87b98ba0ce519bcb113a99860c17fbb2983dcb5b` | Exact project metrics copied from committed authority; zero Category A comparators |
+| Literature audit summary | `docs/research/literature_audit_summary.json` | `ba60ed5801840fcf78074335859b52b46c011516cd83900595d95ce378dcb69f` | Category, access, verification, and missing-evidence counts |
+| Final claims audit Markdown | `docs/research/FINAL_CLAIMS_AUDIT.md` | `3ac5147f005a6eddc945cf80d2410a157bef76578b3a9baeb5ae32ebde154384` | Human-readable permitted/prohibited claim boundary |
+| Final claims audit JSON | `docs/research/final_claims_audit.json` | `f10cdeb3288d70ab43b99cee7eeb8bd4685b02f3f57e1e07108c63fb322f444c` | Machine-readable 17-claim audit |
+| Post-confirmatory roadmap | `docs/research/POST_CONFIRMATORY_IMPLEMENTATION_ROADMAP.md` | `3d84223d5618f2c6b0948d7c92ffc89371d44c32440550f26e103064377dbee8` | Immutable-result rule and remaining research/implementation/future work |
