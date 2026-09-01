@@ -235,3 +235,9 @@ Obtain separate explicit authorization for confirmatory held-out provisioning an
 - Froze a 17-claim audit: 13 supported within bounded evidence classes, one partially supported, two not supported, and one prohibited-wording claim.
 - Recorded the immutable confirmatory-result rule and separated remaining research work, required inference/explainability implementation, and optional future studies in the post-confirmatory roadmap.
 - The next implementation milestone is faithful PCA sensor-level reconstruction attribution followed by the frozen preprocessing-to-alert inference integration. No model run, tuning, held-out access, official-test access, or remote operation occurred in this documentation phase.
+
+## Frozen PCA explanation and inference integration - 2026-09-01
+
+- Pre-registered faithful attribution for the actual frozen 63-feature PCA representation; no unfaithful `(30,21)` PCA reconstruction claim is made.
+- Added a fail-closed P1/K=6 and PCA artifact loader, deterministic batch inference CLI, and a synthetic-only SVG layer.
+- Validation-only regression reproduced 9,365 registered windows, scores, thresholds, EWMA, persistence, alerts, and deduplicated events within the frozen numerical tolerance. No fit, selection, held-out access, or official-test access occurred.

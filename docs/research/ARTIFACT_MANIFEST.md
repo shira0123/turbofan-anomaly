@@ -205,4 +205,11 @@ These are versioned research/documentation derivatives. Bible v3, literature mat
 | Literature audit summary | `docs/research/literature_audit_summary.json` | `ba60ed5801840fcf78074335859b52b46c011516cd83900595d95ce378dcb69f` | Category, access, verification, and missing-evidence counts |
 | Final claims audit Markdown | `docs/research/FINAL_CLAIMS_AUDIT.md` | `3ac5147f005a6eddc945cf80d2410a157bef76578b3a9baeb5ae32ebde154384` | Human-readable permitted/prohibited claim boundary |
 | Final claims audit JSON | `docs/research/final_claims_audit.json` | `f10cdeb3288d70ab43b99cee7eeb8bd4685b02f3f57e1e07108c63fb322f444c` | Machine-readable 17-claim audit |
-| Post-confirmatory roadmap | `docs/research/POST_CONFIRMATORY_IMPLEMENTATION_ROADMAP.md` | `3d84223d5618f2c6b0948d7c92ffc89371d44c32440550f26e103064377dbee8` | Immutable-result rule and remaining research/implementation/future work |
+| Post-confirmatory roadmap | `docs/research/POST_CONFIRMATORY_IMPLEMENTATION_ROADMAP.md` | `6b663f779ff343e900933632f1c79155b34361c5de805a59309305821fa200ab` | Immutable-result rule and remaining research/implementation/future work |
+
+## Frozen inference and explanation implementation - 2026-09-01
+
+| Artifact | Path | Raw SHA-256 | Tracking / role |
+|---|---|---|---|
+| Frozen inference/attribution protocol | `configs/inference/fd002-frozen-inference-protocol-v1.json` | `1c5f68d818405126655b298b9010de2255a42f5740aa4d75068be67c110d03e8` | Tracked; pre-registered semantics, artifact identities, and frozen policy |
+| Validation-only regression | `reports/inference_validation_v1/validation_regression.json` | `31df347a0892e5399640dd469d8802659c8e64dab22a2ca4e60e3248d04dee96` | Tracked; compact score/alert parity evidence, no input rows |

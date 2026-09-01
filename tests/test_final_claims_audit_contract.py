@@ -138,7 +138,7 @@ def test_registered_governance_derivative_hashes_match_manifest():
         "literature_audit_summary.json": "ba60ed5801840fcf78074335859b52b46c011516cd83900595d95ce378dcb69f",
         "FINAL_CLAIMS_AUDIT.md": "3ac5147f005a6eddc945cf80d2410a157bef76578b3a9baeb5ae32ebde154384",
         "final_claims_audit.json": "f10cdeb3288d70ab43b99cee7eeb8bd4685b02f3f57e1e07108c63fb322f444c",
-        "POST_CONFIRMATORY_IMPLEMENTATION_ROADMAP.md": "3d84223d5618f2c6b0948d7c92ffc89371d44c32440550f26e103064377dbee8",
+        "POST_CONFIRMATORY_IMPLEMENTATION_ROADMAP.md": "6b663f779ff343e900933632f1c79155b34361c5de805a59309305821fa200ab",
     }
     manifest = (RESEARCH / "ARTIFACT_MANIFEST.md").read_text(encoding="utf-8")
 

@@ -1005,3 +1005,7 @@ For ordinary development, activate the Python 3.12.8 environment, run the import
 For research-producing work, first obtain the relevant owner-gate approval. Register the config before execution, verify training/validation input hashes, record environment and seeds, write new versioned outputs, verify reload and reproduction, append the JSONL ledger, update governance documents, and only then prepare an atomic commit for human review.
 
 The next research step is not another open-ended model search. It is formal Gate 3 closure, a registered controlled LSTM final-refit protocol, then Phase 5 validation-only alert-policy work. The internal test remains frozen throughout.
+
+## 23. Frozen delivery layer
+
+The frozen PCA policy is now delivered through [the batch inference guide](FROZEN_FD002_INFERENCE_GUIDE.md). Its local explanation decomposes only the PCA reconstruction score's three normalized summary-feature residuals per sensor. It is not a causal or physical explanation, and streaming delivery remains deliberately pending rather than approximated.

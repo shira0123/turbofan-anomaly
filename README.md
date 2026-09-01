@@ -91,6 +91,10 @@ The verification commands are read-only with respect to registered evidence. His
 
 ## Research and governance
 
+## Frozen inference and explanation
+
+The frozen PCA primary policy now has a transform-only, hash-checked batch interface and a faithful local sensor-contribution decomposition. See the [inference guide](docs/guides/FROZEN_FD002_INFERENCE_GUIDE.md), [attribution method](docs/research/PCA_SENSOR_ATTRIBUTION_METHOD_V1.md), and [synthetic demonstration guide](docs/guides/SYNTHETIC_INFERENCE_DEMO.md). These are implementation capabilities, not new performance evidence.
+
 - [Master Execution Bible v3](docs/research/MASTER_EXECUTION_BIBLE_V3_RESEARCH_IMPLEMENTATION_2026-08-23.md)
 - [100-source literature evidence matrix](docs/research/Turbofan_Literature_Evidence_Matrix_100_Sources_v3.xlsx)
 - [Audited literature evidence matrix v4](docs/research/LITERATURE_EVIDENCE_MATRIX_V4.md)

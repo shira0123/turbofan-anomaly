@@ -69,3 +69,7 @@ No online recalibration, score fusion, threshold selection, model fitting, or fa
 2. Implement I3 with frozen artifact loading and deterministic parity tests.
 3. Add I4 CLI, errors, visualization, integration tests, and a synthetic demonstration.
 4. Finish R2-R7 from committed evidence; do not rerun or reinterpret the confirmatory result.
+
+## Completed frozen delivery work
+
+I1 through I4 are complete: the registered PCA policy now has faithful local reconstruction-error contributions, fail-closed artifact loading, deterministic batch inference, a restricted CLI, synthetic-only SVG export, and validation-only regression evidence. Streaming, production adapters, and monitoring remain future work and must not alter the frozen policy.

@@ -38,3 +38,7 @@ Do not rewrite these claims as “85% accuracy,” final test performance, physi
 The versioned [`FINAL_CLAIMS_AUDIT.md`](FINAL_CLAIMS_AUDIT.md) and machine-readable [`final_claims_audit.json`](final_claims_audit.json) apply the final evidence classifications after the first valid frozen confirmatory run. They preserve the historical lifecycle rows above rather than rewriting them.
 
 Of 17 intended paper claims, 13 are supported within confirmatory, validation-only, or implementation boundaries; one is partially supported; two implementation claims are not supported; and novelty/superiority wording is prohibited. No claim is authorized as official NASA-test, observed physical-onset, production, real-aircraft, state-of-the-art, first-ever, or literature-outperformance evidence.
+
+## Explanation and inference addendum - 2026-09-01
+
+[`EXPLANATION_AND_INFERENCE_CLAIMS_ADDENDUM_V1.md`](EXPLANATION_AND_INFERENCE_CLAIMS_ADDENDUM_V1.md) records the bounded implementation claim for faithful normalized PCA reconstruction-error contributions. It does not alter final-evaluation or confirmatory claims, metric classifications, or test-access boundaries.

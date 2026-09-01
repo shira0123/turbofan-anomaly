@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "status": "validation_only_frozen_inference_regression_passed",
+  "input": "data/splits/validation.csv",
+  "input_sha256": "7587a365edda0d95f7e6e681a900220f18bfb619954b47cb2c61fce5330fe9ad",
+  "registered_trace": "reports/alerting_v1/fd002-alert-policy-study-v1/selected_validation_alert_trace.csv",
+  "windows": 9365,
+  "maximum_raw_score_difference": 1.7763568394002505e-15,
+  "maximum_calibrated_score_difference": 1.1102230246251565e-16,
+  "maximum_threshold_difference": 1.1102230246251565e-16,
+  "maximum_ewma_difference": 1.1102230246251565e-16,
+  "maximum_attribution_completeness_difference": 7.105427357601002e-15,
+  "threshold_violation_exact": true,
+  "persistence_exact": true,
+  "alert_exact": true,
+  "events_exact_after_proxy_row_deduplication": true,
+  "fitting_or_selection_performed": false,
+  "held_out_or_official_test_accessed": false
+}
