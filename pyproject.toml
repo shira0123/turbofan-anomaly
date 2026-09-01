@@ -41,6 +41,8 @@ turbofan-verify-alert-policy-study = "turbofan_anomaly.workflows.verify_alert_po
 turbofan-verify-final-evaluation = "turbofan_anomaly.workflows.verify_final_evaluation:main"
 turbofan-recover-p1-preprocessor = "turbofan_anomaly.workflows.recover_p1_preprocessor:main"
 turbofan-verify-p1-preprocessor = "turbofan_anomaly.workflows.verify_p1_preprocessor:main"
+turbofan-run-confirmatory-evaluation = "turbofan_anomaly.workflows.run_confirmatory_evaluation:main"
+turbofan-verify-confirmatory-evaluation = "turbofan_anomaly.workflows.verify_confirmatory_evaluation:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
