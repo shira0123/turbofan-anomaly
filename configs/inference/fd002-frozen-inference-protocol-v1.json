@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_id": "fd002-frozen-inference-and-pca-attribution-v1",
+  "status": "registered_before_validation_artifact_regression",
+  "frozen_primary_policy": "pca_reconstruction__per_mode__quantile_0.995__ewma_alpha_0.20__persistence_8",
+  "access_boundary": {
+    "allowed_splits": ["train", "validation"],
+    "prohibited_inputs": ["held_out_internal_test", "official_nasa_test"],
+    "no_test_access": true,
+    "no_fitting_tuning_recalibration_fusion_or_reselection": true
+  },
+  "windowing": {
+    "window_size": 30,
+    "sensor_order": ["sensor_1", "sensor_2", "sensor_3", "sensor_4", "sensor_5", "sensor_6", "sensor_7", "sensor_8", "sensor_9", "sensor_10", "sensor_11", "sensor_12", "sensor_13", "sensor_14", "sensor_15", "sensor_16", "sensor_17", "sensor_18", "sensor_19", "sensor_20", "sensor_21"],
+    "window_context_semantics": "p1_k6_endpoint_cycle_mode_v1",
+    "cycle_gaps": "reject_non_consecutive",
+    "engine_boundary_state": "reset_before_next_engine"
+  },
+  "pca_score_and_attribution": {
+    "explanation_type": "pca_reconstruction_error_contribution",
+    "scope": "local_model_fidelity_explanation",
+    "feature_space": "normalized_feature_space",
+    "causality": "non_causal",
+    "shap": "not_shap",
+    "frozen_feature_representation": "summary_features_63: sensor_mean[21], sensor_std[21], endpoint_minus_start_slope[21]",
+    "residual_shape": [63],
+    "window_reshape_supported": false,
+    "window_reshape_reason": "The frozen PCA consumes 63 summary features, not a flattened 30x21 sensor-time grid; claiming a 30x21 PCA reconstruction would be unfaithful.",
+    "raw_score_formula": "mean((z - inverse_transform(transform(z))) ** 2, axis=features)",
+    "sensor_contribution_formula": "((residual_squared[mean_sensor] + residual_squared[std_sensor] + residual_squared[slope_sensor]) / 63)",
+    "completeness_abs_tolerance": 1e-12,
+    "top_k": 3,
+    "tie_break": "descending contribution, then ascending registered sensor index",
+    "zero_score": "zero contributions and shares; registered sensor order determines ranks"
+  },
+  "frozen_policy": {
+    "calibration": "training_fitted_empirical_cdf_embedded_in_pca_bundle",
+    "threshold_context": "per_mode",
+    "threshold_rule": "quantile_0.995",
+    "thresholds": {"0": 0.9974190986698431, "1": 0.9908675799086758, "2": 0.9948381973396864, "3": 0.9922572960095295, "4": 0.996624975183641, "5": 0.9932499503672821},
+    "ewma_alpha": 0.2,
+    "persistence": 8,
+    "threshold_comparison": "strict_greater_than"
+  },
+  "registered_artifacts": {
+    "preprocessor": {"path": "models/preprocessing/p1_k6.joblib", "sha256": "c4f626743a8f6710dbca0487c12455169b819f928d847c6033f2ef365aa4a10a"},
+    "pca_bundle": {"path": "models/alerting_v1/fd002-alert-policy-study-v1/pca_reconstruction.joblib", "sha256": "d56a6d41e63c0781da763565f71c4a13b144eacd487a351428113c8ebf2ba9aa"},
+    "phase5_results": {"path": "configs/alerting/fd002-alert-policy-study-results-v1.json", "sha256": "57080e52d05d6b95747c831fcf819a606d334cf874257421847a5c24aacb8ac2"},
+    "final_evaluation_protocol_v2": {"path": "configs/evaluation/fd002-final-evaluation-protocol-v2.json", "sha256": "77029d2aa9b4ac3059ece1409f6a8fc30d1be508593ef523dcf4910b2d269ede"},
+    "confirmatory_results": {"path": "configs/evaluation/fd002-confirmatory-results-v1.json", "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"}
+  },
+  "delivery": {
+    "batch_inference": "supported",
+    "streaming_inference": "pending; batch-only because no pre-registered online state serialization exists",
+    "cli_protocol_path": "configs/inference/fd002-frozen-inference-protocol-v1.json",
+    "visualization_label": "synthetic_interface_demonstration_not_research_evidence"
+  }
+}
