@@ -301,6 +301,68 @@ def _verify_reference(reference: Mapping[str, Any], repo_root: Path) -> Path:
     return path
 
 
+PHASE5_PROTOCOL_V2_PATH = "configs/alerting/fd002-alert-policy-study-protocol-v2.json"
+PHASE5_PROTOCOL_V2_SHA256 = "47f165b7c35b772ee776e938d10dffd4af24dc3d069f34581ee11391918d6ff5"
+PHASE5_ERRATUM_PATH = "configs/evaluation/fd002-phase5-protected-authority-erratum-v1.json"
+LIVING_DOCUMENTATION_PATH = "docs/guides/PROJECT_UNDERSTANDING_GUIDE.md"
+LIVING_DOCUMENTATION_REGISTERED_SHA256 = "d1a19ef6645c1ac2c690909754c111d7003845f51bf81c30c0913d3b02f529a2"
+
+
+def validate_phase5_protected_authority_erratum(
+    erratum: Mapping[str, Any],
+) -> None:
+    """Fail closed unless the one approved living-documentation scope is exact."""
+    required = {
+        "schema_version",
+        "erratum_id",
+        "authorization_date",
+        "repository_commit_context",
+        "original_protocol",
+        "affected_path",
+        "original_registered_sha256",
+        "original_registered_hash_form",
+        "correction",
+        "classification",
+        "reason",
+        "scientific_impact",
+        "excluded_from_immutable_scientific_authority_hashing",
+        "boundary_statement",
+    }
+    if set(erratum) != required:
+        raise RuntimeError("Phase 5 authority erratum has an unauthorized schema")
+    if erratum["schema_version"] != "1.0.0" or erratum["erratum_id"] != "fd002-phase5-protected-authority-scope-erratum-v1":
+        raise RuntimeError("Phase 5 authority erratum identity differs")
+    if erratum["affected_path"] != LIVING_DOCUMENTATION_PATH:
+        raise RuntimeError("Phase 5 authority erratum affects an unauthorized path")
+    if erratum["original_registered_sha256"] != LIVING_DOCUMENTATION_REGISTERED_SHA256 or erratum["original_registered_hash_form"] != "raw":
+        raise RuntimeError("Phase 5 authority erratum guide registration differs")
+    if erratum["correction"] != "reclassify_as_living_documentation" or erratum["classification"] != "living_documentation" or erratum["scientific_impact"] != "none":
+        raise RuntimeError("Phase 5 authority erratum classification differs")
+    if erratum["excluded_from_immutable_scientific_authority_hashing"] != [LIVING_DOCUMENTATION_PATH]:
+        raise RuntimeError("Phase 5 authority erratum exclusion scope differs")
+    original = erratum["original_protocol"]
+    if not isinstance(original, Mapping) or original != {"path": PHASE5_PROTOCOL_V2_PATH, "sha256": PHASE5_PROTOCOL_V2_SHA256, "hash_form": "raw"}:
+        raise RuntimeError("Phase 5 authority erratum original protocol differs")
+    if not isinstance(erratum["reason"], str) or not isinstance(erratum["boundary_statement"], str):
+        raise RuntimeError("Phase 5 authority erratum narrative fields are invalid")
+
+
+def load_phase5_protected_authority_erratum(repo_root: Path) -> None:
+    """Verify the immutable original protocol and its sole approved scope erratum."""
+    original_protocol = resolve_repo_path(PHASE5_PROTOCOL_V2_PATH, repo_root)
+    verification = verify_registered_hash(original_protocol, PHASE5_PROTOCOL_V2_SHA256)
+    if verification.match_form != "raw":
+        raise RuntimeError("Original Phase 5 protocol raw hash differs")
+    erratum_path = resolve_repo_path(PHASE5_ERRATUM_PATH, repo_root)
+    if not erratum_path.is_file():
+        raise RuntimeError("Phase 5 protected-authority erratum is missing")
+    try:
+        erratum = _load_json(erratum_path)
+    except (OSError, json.JSONDecodeError) as error:
+        raise RuntimeError("Phase 5 protected-authority erratum is unreadable") from error
+    validate_phase5_protected_authority_erratum(erratum)
+
+
 def verify_pre_execution_references(
     protocol: Mapping[str, Any],
     repo_root: Path,
@@ -308,9 +370,14 @@ def verify_pre_execution_references(
     verify_lifecycle_authorities: bool = True,
 ) -> dict[str, Path]:
     """Verify every registered authority, report, array, metadata, and model input."""
+    load_phase5_protected_authority_erratum(repo_root)
     resolved: dict[str, Path] = {}
     for reference in protocol["authorities"]:
         if reference["lifecycle_update_after_execution"] and not verify_lifecycle_authorities:
+            continue
+        if reference["path"] == LIVING_DOCUMENTATION_PATH:
+            if reference.get("authority_id") != "project_understanding_guide":
+                raise RuntimeError("Living-documentation exclusion identity differs")
             continue
         resolved[str(reference["authority_id"])] = _verify_reference(reference, repo_root)
     for family in ("registered_classical_reports", "registered_final_refit_reports"):
