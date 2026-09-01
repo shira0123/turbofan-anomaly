@@ -17,6 +17,9 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 PROTOCOL_PATH = (
     REPO_ROOT / "configs/evaluation/fd002-final-evaluation-protocol-v1.json"
 )
+PROTOCOL_V2_PATH = (
+    REPO_ROOT / "configs/evaluation/fd002-final-evaluation-protocol-v2.json"
+)
 
 
 def _protocol() -> dict:
@@ -52,6 +55,32 @@ def _synthetic_audit_protocol(tmp_path: Path) -> dict:
 
 def test_registered_protocol_validates() -> None:
     verifier.validate_final_evaluation_protocol(_protocol())
+
+
+def test_v2_changes_only_recovered_preprocessing_provenance_and_readiness() -> None:
+    registered = json.loads(PROTOCOL_V2_PATH.read_text(encoding="utf-8"))
+    effective = verifier.materialize_final_evaluation_protocol(registered, REPO_ROOT)
+    verifier.validate_final_evaluation_protocol(effective)
+    base = _protocol()
+    assert effective["frozen_primary_detector"] == base["frozen_primary_detector"]
+    assert effective["frozen_primary_alert_policy"] == base["frozen_primary_alert_policy"]
+    assert effective["frozen_deep_temporal_comparator"] == base[
+        "frozen_deep_temporal_comparator"
+    ]
+    assert effective["proxy_and_metric_contract"] == base[
+        "proxy_and_metric_contract"
+    ]
+    assert effective["required_artifacts_before_test_access"][0]["sha256"] == (
+        "c4f626743a8f6710dbca0487c12455169b819f928d847c6033f2ef365aa4a10a"
+    )
+    report = verifier.audit_final_evaluation_readiness(effective, REPO_ROOT)
+    assert report["pre_test_training_fitted_artifacts_ready"]
+    assert report["ready_for_separately_authorized_held_out_provisioning"]
+    assert not report["ready_for_confirmatory_evaluation"]
+    assert report["held_out_inputs_checked"] == 0
+    assert report["status"] == (
+        "ready_except_for_separately_authorized_held_out_provisioning"
+    )
 
 
 def test_gate4_primary_policy_is_exactly_frozen() -> None:

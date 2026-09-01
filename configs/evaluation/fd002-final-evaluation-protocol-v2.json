@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_id": "fd002-final-evaluation-protocol-v2",
+  "evaluation_id": "fd002-confirmatory-evaluation-v2",
+  "registered_date": "2026-09-01",
+  "status": "ready_except_for_separately_authorized_held_out_provisioning",
+  "final_result": false,
+  "inheritance": {
+    "base_protocol_path": "configs/evaluation/fd002-final-evaluation-protocol-v1.json",
+    "base_protocol_sha256": "ed5d3ca6a847365256a238684086266fae8bab72a79ff6b4f9d8af3fa6a84133",
+    "base_readiness_path": "reports/final_evaluation_v1/fd002-confirmatory-evaluation-v1/readiness.json",
+    "base_readiness_sha256": "1e503b64da1d13651c9e233f92d2d42de81727cd2041b27537689f5320a62ef6",
+    "inherit_all_frozen_detector_policy_calibration_proxy_metric_and_comparator_contracts": true,
+    "allowed_effective_changes": [
+      "protocol_identity_and_lifecycle_status",
+      "preprocessing_source_provenance",
+      "p1_k6_fitted_preprocessor_artifact_registration",
+      "readiness_blocker_resolution"
+    ]
+  },
+  "preprocessing_source_provenance": {
+    "pipeline_id": "p1_k6",
+    "recovery_protocol_path": "configs/preprocessing/fd002-p1-k6-recovery-protocol-v1.json",
+    "recovery_protocol_sha256": "45a72d077f07225fa77beeb83029c426b75084cfb0a396ffb7f3a58f861e7225",
+    "recovery_result_path": "reports/preprocessing_recovery/fd002-p1-k6-recovery-v1/result.json",
+    "recovery_result_sha256": "3307c0407729352fa13dc7999a131be30729ac7ff80f4ad757c32d5000ec6371",
+    "independent_verification_path": "reports/preprocessing_recovery/fd002-p1-k6-recovery-v1/verification.json",
+    "independent_verification_sha256": "911c3c9c77c54fbad04c1ad2ffa830f6cb4e4ca312c5e1133df7ad86946ca544",
+    "unavailable_historical_source_sha256": "bc1d293b8dc6173c1bfb0fff64fe797c2cde35dbb1a1a075dae8ca1177b49a52",
+    "authorized_local_source_path": "data/raw/train_FD002.txt",
+    "authorized_local_source_size_bytes": 9082480,
+    "authorized_local_source_sha256": "dac6c4dbc4e7c1bdeb5747da3d313d05c395bb99801b44a002b26a2ba13d788f",
+    "split_manifest_path": "configs/splits/fd002-primary-v1.json",
+    "split_manifest_sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327",
+    "reconstructed_training_csv_sha256": "cf8850d04c83f115874e99b11ae4b0ddc01f04820733c0b964b439dd495c0afc",
+    "recovery_route": "route_b_governed_semantic_reconstruction",
+    "validation_csv_sha256": "7587a365edda0d95f7e6e681a900220f18bfb619954b47cb2c61fce5330fe9ad",
+    "canonical_mode_mapping": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5
+    },
+    "window_context_semantics": "p1_k6_endpoint_cycle_mode_v1"
+  },
+  "recovered_preprocessor": {
+    "artifact_id": "p1_k6_fitted_preprocessor",
+    "path": "models/preprocessing/p1_k6.joblib",
+    "sha256": "c4f626743a8f6710dbca0487c12455169b819f928d847c6033f2ef365aa4a10a",
+    "size_bytes": 135914,
+    "class": "turbofan_anomaly.data.preprocessing.RegimeSensorPreprocessor",
+    "state_fingerprints_sha256_canonical_json": "4a28643734459ea76232d5a910f9defb2c75e363eeed774ffac700f9b7b4a93e",
+    "split_manifest_id": "fd002-primary-v1",
+    "fitted_split": "train",
+    "readiness": "available_hash_and_state_verified",
+    "ignored_and_untracked": true
+  },
+  "readiness_override": {
+    "pre_test_training_fitted_artifacts_ready": true,
+    "missing_frozen_artifacts": [],
+    "missing_source_inputs": [],
+    "held_out_artifact_availability": "not_inspected_without_separate_test_access_authorization",
+    "held_out_inputs_checked": 0,
+    "held_out_inputs_opened": false,
+    "official_nasa_test_checked": false,
+    "official_nasa_test_opened": false,
+    "confirmatory_evaluation_executed": false,
+    "ready_for_confirmatory_evaluation": false,
+    "ready_for_separately_authorized_held_out_provisioning": true,
+    "status": "ready_except_for_separately_authorized_held_out_provisioning"
+  },
+  "unchanged_freeze_assertions": {
+    "gate_4_candidate": "pca_reconstruction__per_mode__quantile_0.995__ewma_alpha_0.20__persistence_8",
+    "pca_bundle_sha256": "d56a6d41e63c0781da763565f71c4a13b144eacd487a351428113c8ebf2ba9aa",
+    "calibration": "training_empirical_cdf",
+    "threshold_context": "per_mode",
+    "threshold_quantile": 0.995,
+    "quantile_method": "higher",
+    "ewma_alpha": 0.2,
+    "persistence": 8,
+    "threshold_refit_allowed": false,
+    "model_refit_allowed": false,
+    "calibration_refit_allowed": false,
+    "online_recalibration_allowed": false,
+    "score_or_decision_fusion_allowed": false,
+    "candidate_search_allowed": false,
+    "policy_change_allowed": false,
+    "lstm_role": "frozen_deep_temporal_comparator_not_primary",
+    "proxy_policies_unchanged": true,
+    "event_definitions_unchanged": true,
+    "metrics_unchanged": true
+  },
+  "access_boundary": {
+    "held_out_internal_test_access_authorized": false,
+    "official_nasa_test_access_authorized": false,
+    "held_out_inputs_checked_during_recovery": 0,
+    "held_out_inputs_opened_during_recovery": false,
+    "official_nasa_test_opened_during_recovery": false,
+    "confirmatory_evaluation_executed": false
+  }
+}

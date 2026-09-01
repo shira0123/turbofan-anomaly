@@ -22,7 +22,7 @@ The governed Phase 5 validation-only alert-policy study is also complete. After 
 
 FD002 provides run-to-failure trajectories but no physical per-cycle anomaly-onset labels. The late-life labels used here are declared evaluation proxies. PR-AUC is a ranking metric, not accuracy.
 
-**Frozen boundary:** do not open, inspect, transform, plot, score, or model the held-out internal-test data. The official NASA test set is outside the protocol. Gate 4 approved and froze the PCA per-mode q=0.995 / EWMA 0.20 / persistence-8 policy, but confirmatory evaluation remains blocked before test access because the exact fitted P1/K=6 preprocessor is absent and has no registered artifact hash.
+**Frozen boundary:** do not open, inspect, transform, plot, score, or model the held-out internal-test data without separate explicit authorization. The official NASA test set is outside the protocol. Gate 4 approved and froze the PCA per-mode q=0.995 / EWMA 0.20 / persistence-8 policy. The missing P1/K=6 preprocessor has now been deterministically recovered from the owner-authorized local source using only the frozen 156-engine training allowlist and independently verified against the registered train/validation P1, PCA, and Phase 5 evidence. Final-evaluation protocol v2 is ready only for separately authorized held-out provisioning; no held-out availability check or confirmatory evaluation has occurred.
 
 ## Repository map
 
@@ -38,7 +38,7 @@ src/turbofan_anomaly/    reusable importable package
 tests/                   synthetic/unit and safety tests
 ```
 
-Raw data and model artifacts remain intentionally outside Git. Registered train/validation sequences, P1/K=6 cycle frames, immutable original window metadata, derived endpoint-context metadata, the three final LSTM artifacts, and five reproduced Phase 5 bundles are local and ignored. Tracked evidence contains protocols, completed result configs, reports, and ledger identities; it does not contain data arrays, checkpoints, or joblib bundles.
+Raw data and model artifacts remain intentionally outside Git. Registered train/validation sequences, P1/K=6 cycle frames, immutable original window metadata, derived endpoint-context metadata, the recovered P1/K=6 preprocessor, the three final LSTM artifacts, and five reproduced Phase 5 bundles are local and ignored. Tracked evidence contains protocols, compact recovery/readiness reports, completed result configs, reports, and ledger identities; it does not contain data arrays, checkpoints, or joblib bundles.
 
 ## Setup (Python 3.12.8)
 
@@ -70,6 +70,9 @@ python -m scripts.run_lstm_final_refit --help
 python -m scripts.verify_lstm_final_refit --help
 python -m scripts.run_alert_policy_study --help
 python -m scripts.verify_alert_policy_study --help
+python -m scripts.recover_p1_preprocessor --help
+python -m scripts.verify_p1_preprocessor --help
+python -m scripts.verify_final_evaluation --help
 ```
 
 The verification commands are read-only with respect to registered evidence. Historical screen reproduction still needs its absent registered checkpoints, while final-refit and Phase 5 verification use governed local ignored artifacts. Commands that create splits, fit models, or rewrite reports are separated and governed; do not run them as a quick start.

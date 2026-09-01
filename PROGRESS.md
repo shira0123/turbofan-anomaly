@@ -4,7 +4,7 @@ Last updated: 2026-08-30
 
 ## Current state
 
-The revised validation foundation, LSTM architecture screen, governed final LSTM refit, and validation-only alert-policy study are implemented and verified. Gate 4 froze the PCA reconstruction per-mode q=0.995 / EWMA 0.20 / persistence-8 policy for confirmatory evaluation, with the calibrated LSTM ensemble retained as the nonprimary deep comparator. These are validation-proxy decisions, not final-test results. The held-out internal-test partition remains unopened, and evaluation is blocked before access because the exact fitted P1/K=6 preprocessor is absent and unhashed.
+The revised validation foundation, LSTM architecture screen, governed final LSTM refit, validation-only alert-policy study, and deterministic P1/K=6 preprocessor recovery are implemented and verified. Gate 4 froze the PCA reconstruction per-mode q=0.995 / EWMA 0.20 / persistence-8 policy for confirmatory evaluation, with the calibrated LSTM ensemble retained as the nonprimary deep comparator. These are validation-proxy decisions, not final-test results. The held-out internal-test partition remains unopened. Final-evaluation protocol v2 is ready only for separately authorized held-out provisioning.
 
 Active implementation branch: `research/phase5-validation`; Phase 5 execution-code commit `180eefb5585c3d994a9d68afa22f6f564cc21dd2`
 
@@ -196,6 +196,16 @@ These normalized-life policies are evaluation proxies, not physical anomaly grou
 - Readiness is blocked before test access because `models/preprocessing/p1_k6.joblib` is absent and has no registered artifact hash. The registered FD002 source needed to reproduce that fitted preprocessor is also absent. No substitute was built or inferred.
 - Held-out availability and hashes remain deliberately uninspected. A later explicit test-access authorization plus a new readiness record are required; the frozen policy cannot change.
 
+## Deterministic P1/K=6 preprocessor recovery and v2 readiness - 2026-09-01
+
+- Preserved the unavailable historical source-copy digest `bc1d293b...a52` as blocked provenance and registered the owner-authorized local LF source copy: 9,082,480 bytes, SHA-256 `dac6c4db...d788f`.
+- Read the complete run-to-failure source only for structural partition reconstruction, immediately retaining the frozen 156-engine training allowlist. The source contained 260 engines and 53,759 structurally valid rows; the retained frame contained exactly 32,107 rows. Non-training rows were not retained, summarized, exported, fitted, selected, scored, or evaluated.
+- Accepted Route B governed semantic reconstruction. The reconstructed training CSV hash is `cf8850d0...c0afc`; the missing legacy split digest remains unchanged and was not reinterpreted.
+- Recovered `models/preprocessing/p1_k6.joblib` under a one-native-thread deterministic runtime. Two isolated processes produced the same 135,914-byte artifact and SHA-256 `c4f62674...a10a`. K-Means labels required the identity one-to-one mapping.
+- Reproduced train/validation cycle frames within maximum absolute difference `3.55e-15`, both float32 sequence arrays exactly, endpoint context exactly, PCA raw scores within `1.78e-15`, calibrated scores within `1.11e-16`, ranking metrics within `1.11e-16`, and the frozen Phase 5 selected-policy trace within `1.78e-15`. No threshold was refitted or selected.
+- Final-evaluation protocol v1 and readiness v1 remain byte-identical. Protocol v2 changes only preprocessing/source provenance and reports `ready_except_for_separately_authorized_held_out_provisioning`; its verifier checked zero held-out inputs.
+- No internal held-out split artifact or official NASA test artifact was opened. No confirmatory evaluation ran.
+
 ## Tracking protocol from this checkpoint
 
 Every experiment-producing phase must leave all of the following before it is considered complete:
@@ -209,4 +219,4 @@ Every experiment-producing phase must leave all of the following before it is co
 
 ## Next action
 
-Provision and hash-register the exact training-fitted P1/K=6 preprocessor without accessing test data, then create a new readiness record. Do not access the held-out internal test without a separate explicit authorization. Do not access the official NASA test.
+Obtain separate explicit authorization for confirmatory held-out provisioning and evaluation under final-evaluation protocol v2. Do not inspect or open the held-out internal test before that authorization, and do not access the official NASA test.

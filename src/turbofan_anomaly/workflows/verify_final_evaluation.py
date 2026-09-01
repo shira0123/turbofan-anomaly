@@ -7,6 +7,7 @@ inputs.  It verifies only registered authorities and training-fitted artifacts.
 from __future__ import annotations
 
 import argparse
+from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
@@ -16,7 +17,7 @@ from turbofan_anomaly.evaluation.provenance import find_repository_root
 
 
 DEFAULT_PROTOCOL = Path(
-    "configs/evaluation/fd002-final-evaluation-protocol-v1.json"
+    "configs/evaluation/fd002-final-evaluation-protocol-v2.json"
 )
 EXPECTED_PRIMARY_CANDIDATE = (
     "pca_reconstruction__per_mode__quantile_0.995__"
@@ -88,11 +89,120 @@ def _require(condition: bool, message: str) -> None:
         raise RuntimeError(message)
 
 
+def materialize_final_evaluation_protocol(
+    registered: dict[str, Any], repo_root: Path
+) -> dict[str, Any]:
+    """Resolve the v2 provenance-only overlay onto protected protocol v1."""
+    if registered.get("protocol_id") == "fd002-final-evaluation-protocol-v1":
+        return registered
+    _require(
+        registered.get("protocol_id") == "fd002-final-evaluation-protocol-v2",
+        "Unknown final-evaluation protocol identity",
+    )
+    inheritance = registered.get("inheritance", {})
+    _require(
+        inheritance.get("inherit_all_frozen_detector_policy_calibration_proxy_metric_and_comparator_contracts")
+        is True,
+        "V2 does not inherit the complete frozen contract",
+    )
+    _require(
+        set(inheritance.get("allowed_effective_changes", []))
+        == {
+            "protocol_identity_and_lifecycle_status",
+            "preprocessing_source_provenance",
+            "p1_k6_fitted_preprocessor_artifact_registration",
+            "readiness_blocker_resolution",
+        },
+        "V2 effective-change allowlist changed",
+    )
+    base_path = _repo_path(repo_root, inheritance["base_protocol_path"])
+    _require(_sha256(base_path) == EXPECTED_PROTOCOL_SHA256, "Protected protocol v1 changed")
+    _require(
+        inheritance.get("base_protocol_sha256") == EXPECTED_PROTOCOL_SHA256,
+        "V2 base protocol hash changed",
+    )
+    base_readiness = _repo_path(repo_root, inheritance["base_readiness_path"])
+    _require(
+        _sha256(base_readiness)
+        == "1e503b64da1d13651c9e233f92d2d42de81727cd2041b27537689f5320a62ef6"
+        == inheritance.get("base_readiness_sha256"),
+        "Protected readiness v1 changed",
+    )
+    provenance = registered.get("preprocessing_source_provenance", {})
+    registered_references = (
+        ("recovery_protocol_path", "recovery_protocol_sha256"),
+        ("recovery_result_path", "recovery_result_sha256"),
+        ("independent_verification_path", "independent_verification_sha256"),
+    )
+    for path_field, hash_field in registered_references:
+        path = _repo_path(repo_root, provenance[path_field])
+        _require(path.is_file(), f"V2 provenance input missing: {path_field}")
+        _require(_sha256(path) == provenance[hash_field], f"V2 provenance hash changed: {path_field}")
+    _require(
+        provenance.get("unavailable_historical_source_sha256")
+        == "bc1d293b8dc6173c1bfb0fff64fe797c2cde35dbb1a1a075dae8ca1177b49a52",
+        "Historical source provenance changed",
+    )
+    recovered = registered.get("recovered_preprocessor", {})
+    _require(
+        recovered.get("sha256")
+        == "c4f626743a8f6710dbca0487c12455169b819f928d847c6033f2ef365aa4a10a",
+        "Recovered preprocessor registration changed",
+    )
+    _require(recovered.get("ignored_and_untracked") is True, "Recovered model tracking policy changed")
+    readiness_override = registered.get("readiness_override", {})
+    _require(
+        readiness_override.get("status")
+        == "ready_except_for_separately_authorized_held_out_provisioning",
+        "V2 readiness status changed",
+    )
+    _require(readiness_override.get("held_out_inputs_checked") == 0, "Held-out availability was inspected")
+    _require(readiness_override.get("held_out_inputs_opened") is False, "Held-out input was opened")
+    _require(readiness_override.get("confirmatory_evaluation_executed") is False, "Confirmatory evaluation ran")
+
+    effective = deepcopy(json.loads(base_path.read_text(encoding="utf-8")))
+    effective["protocol_id"] = registered["protocol_id"]
+    effective["evaluation_id"] = registered["evaluation_id"]
+    effective["registered_date"] = registered["registered_date"]
+    effective["status"] = registered["status"]
+    effective["final_result"] = False
+    effective["version_overlay"] = registered
+    effective["preprocessing_lineage"]["source_dataset_sha256"] = provenance[
+        "authorized_local_source_sha256"
+    ]
+    effective["preprocessing_lineage"]["source_lineage_correction"] = provenance
+    for artifact in effective["required_artifacts_before_test_access"]:
+        if artifact["artifact_id"] == "p1_k6_fitted_preprocessor":
+            artifact.update(
+                {
+                    "path": recovered["path"],
+                    "sha256": recovered["sha256"],
+                    "readiness": recovered["readiness"],
+                }
+            )
+    effective["readiness_audit"].update(
+        {
+            "audit_date": registered["registered_date"],
+            "missing_frozen_artifacts": [],
+            "missing_source_inputs": [],
+            "held_out_artifact_availability": readiness_override[
+                "held_out_artifact_availability"
+            ],
+            "ready_for_confirmatory_evaluation": False,
+            "ready_for_separately_authorized_held_out_provisioning": True,
+            "status": readiness_override["status"],
+            "blocking_reason": None,
+        }
+    )
+    return effective
+
+
 def validate_final_evaluation_protocol(protocol: dict[str, Any]) -> None:
     """Reject any drift from the owner-approved Gate 4 freeze."""
     _require(protocol.get("schema_version") == "1.0.0", "Protocol schema changed")
     _require(
-        protocol.get("protocol_id") == "fd002-final-evaluation-protocol-v1",
+        protocol.get("protocol_id")
+        in {"fd002-final-evaluation-protocol-v1", "fd002-final-evaluation-protocol-v2"},
         "Final-evaluation protocol identity changed",
     )
     approval = protocol.get("gate_4_approval", {})
@@ -245,21 +355,36 @@ def validate_final_evaluation_protocol(protocol: dict[str, Any]) -> None:
         None,
     )
     _require(preprocessor is not None, "Fitted P1/K=6 preprocessor requirement missing")
-    _require(
-        preprocessor.get("sha256") is None
-        and preprocessor.get("readiness") == "missing_and_hash_not_registered",
-        "Missing preprocessor readiness gap was concealed",
-    )
+    if protocol["protocol_id"].endswith("v1"):
+        _require(
+            preprocessor.get("sha256") is None
+            and preprocessor.get("readiness") == "missing_and_hash_not_registered",
+            "Missing preprocessor readiness gap was concealed",
+        )
+    else:
+        _require(
+            preprocessor.get("sha256")
+            == "c4f626743a8f6710dbca0487c12455169b819f928d847c6033f2ef365aa4a10a"
+            and preprocessor.get("readiness") == "available_hash_and_state_verified",
+            "Recovered preprocessor registration changed",
+        )
     held_out = protocol.get("held_out_inputs_registered_but_not_accessed", [])
     _require(len(held_out) == 4, "Held-out input contract changed")
     _require(all(item.get("sha256") is None for item in held_out), "Held-out content was hashed")
     readiness = protocol.get("readiness_audit", {})
     _require(readiness.get("test_paths_resolved_or_opened") is False, "Test path access claimed")
-    _require(readiness.get("ready_for_confirmatory_evaluation") is False, "Readiness gap hidden")
-    _require(
-        readiness.get("missing_frozen_artifacts") == ["p1_k6_fitted_preprocessor"],
-        "Missing frozen artifact record changed",
-    )
+    _require(readiness.get("ready_for_confirmatory_evaluation") is False, "Separate test authorization boundary changed")
+    if protocol["protocol_id"].endswith("v1"):
+        _require(
+            readiness.get("missing_frozen_artifacts") == ["p1_k6_fitted_preprocessor"],
+            "Missing frozen artifact record changed",
+        )
+    else:
+        _require(readiness.get("missing_frozen_artifacts") == [], "Recovered artifact remains blocked")
+        _require(
+            readiness.get("ready_for_separately_authorized_held_out_provisioning") is True,
+            "V2 provisioning readiness changed",
+        )
 
 
 def audit_final_evaluation_readiness(
@@ -305,6 +430,8 @@ def audit_final_evaluation_readiness(
             {"artifact_id": artifact["artifact_id"], "status": status}
         )
 
+    pre_test_ready = not blockers
+    is_v2 = protocol["protocol_id"].endswith("v2")
     return {
         "schema_version": "1.0.0",
         "protocol_id": protocol["protocol_id"],
@@ -317,8 +444,16 @@ def audit_final_evaluation_readiness(
         "official_nasa_test_checked": False,
         "official_nasa_test_opened": False,
         "blockers": blockers,
-        "ready_for_confirmatory_evaluation": not blockers,
-        "status": "ready" if not blockers else "blocked_before_test_access",
+        "pre_test_training_fitted_artifacts_ready": pre_test_ready,
+        "ready_for_confirmatory_evaluation": False if is_v2 else pre_test_ready,
+        "ready_for_separately_authorized_held_out_provisioning": bool(
+            is_v2 and pre_test_ready
+        ),
+        "status": (
+            "ready_except_for_separately_authorized_held_out_provisioning"
+            if is_v2 and pre_test_ready
+            else "blocked_before_test_access"
+        ),
     }
 
 
@@ -388,7 +523,8 @@ def main() -> None:
     args = parse_args()
     repo_root = find_repository_root(Path.cwd())
     protocol_path = _repo_path(repo_root, args.protocol.as_posix())
-    protocol = json.loads(protocol_path.read_text(encoding="utf-8"))
+    registered_protocol = json.loads(protocol_path.read_text(encoding="utf-8"))
+    protocol = materialize_final_evaluation_protocol(registered_protocol, repo_root)
     report = audit_final_evaluation_readiness(protocol, repo_root)
     report["protocol_path"] = args.protocol.as_posix()
     report["protocol_sha256"] = _sha256(protocol_path)
@@ -401,7 +537,7 @@ def main() -> None:
     if args.output is not None:
         _atomic_write_json(report, _repo_path(repo_root, args.output.as_posix()))
     print(json.dumps(report, indent=2, sort_keys=True))
-    if args.require_ready and not report["ready_for_confirmatory_evaluation"]:
+    if args.require_ready and not report["pre_test_training_fitted_artifacts_ready"]:
         raise SystemExit(2)
 
 

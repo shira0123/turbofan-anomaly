@@ -12,7 +12,7 @@ A present report is not automatically a final result. Evidence class and result 
 |---|---|---|---:|---|
 | bible-v3 | `docs/research/MASTER_EXECUTION_BIBLE_V3_RESEARCH_IMPLEMENTATION_2026-08-23.md` | `f7bea8ad60cd7ba53dd40ea3a877914bd2b845a4d183080c5f75853828d778af` | yes | Exact byte copy of the 2026-08-23 research authority |
 | literature-matrix-v3 | `docs/research/Turbofan_Literature_Evidence_Matrix_100_Sources_v3.xlsx` | `ae173e281fbcbccae7da91920980f4d208a908d2f1a6a6dcfb54af5ebdf05ac3` | yes | Exact byte copy of the 100-source evidence matrix |
-| claims-ledger-v1 | `docs/research/CLAIMS_LEDGER.md` | `4e18895c4eed31a653691b1f9a6ae182df8bb2b7a84251ebf55429b67cb440cb` | yes | Claim-to-run/config/evidence register, including bounded final-refit validation evidence |
+| claims-ledger-v1 | `docs/research/CLAIMS_LEDGER.md` | `1918fd226f77b3cd903eaeb83d3b2d157405b91eca72a98c0de09944536e8ffa` | yes | Claim-to-run/config/evidence register, including bounded recovery and v2 readiness evidence |
 | path-hash-policy-v1 | `docs/research/PATH_AND_HASH_POLICY.md` | `a232a24a9f4c5011fc37ce6849d0e36a71c29d882f1b09804c96cd0dfea79690` | yes | Canonical path, strict newline-equivalent hash rules, and registered-evidence attribute policy |
 | runs-v2 | `experiments/runs_v2.jsonl` | `15869481cb757d8a9c6485f47084bf96906f51fe2c8e72f43f5127b0a5e56970` | yes | 29 current-protocol records, schema 2.0.0; seven final-refit records added |
 | fd002-eda-v1 | `configs/evaluation/fd002-eda-v1.json` | `55b265de76c493529e4649e268ea7a773bc117b085f4a42c690dfa55b6bb1003` | yes | Training/validation-only descriptive EDA contract |
@@ -173,3 +173,20 @@ The readiness audit hashes only registered authorities and training-fitted model
 ## Access boundary
 
 No held-out internal-test contents and no official NASA test data were opened, summarized, transformed, plotted, scored, or modeled while producing this manifest.
+
+## P1/K=6 preprocessor recovery and final-evaluation v2 readiness - 2026-09-01
+
+Protocol/readiness v1 remain preserved at the hashes above. The recovery used the complete authorized local run-to-failure source only for structural partition reconstruction and immediately retained the frozen training allowlist. No existing internal held-out split artifact or official NASA test artifact was opened or checked.
+
+| Artifact | Path | Raw SHA-256 | Present | Tracking / role |
+|---|---|---|---:|---|
+| Recovery protocol v1 | `configs/preprocessing/fd002-p1-k6-recovery-protocol-v1.json` | `45a72d077f07225fa77beeb83029c426b75084cfb0a396ffb7f3a58f861e7225` | yes | Tracked; committed before project-data fitting |
+| Recovery result | `reports/preprocessing_recovery/fd002-p1-k6-recovery-v1/result.json` | `3307c0407729352fa13dc7999a131be30729ac7ff80f4ad757c32d5000ec6371` | yes | Tracked compact provenance and reproduction evidence |
+| Independent recovery verification | `reports/preprocessing_recovery/fd002-p1-k6-recovery-v1/verification.json` | `911c3c9c77c54fbad04c1ad2ffa830f6cb4e4ca312c5e1133df7ad86946ca544` | yes | Tracked; state, lineage, PCA, and Phase 5 reproduction verified |
+| Authorized local source | `data/raw/train_FD002.txt` | `dac6c4dbc4e7c1bdeb5747da3d313d05c395bb99801b44a002b26a2ba13d788f` | yes | Local/ignored; 9,082,480-byte source-lineage correction |
+| Unavailable historical source copy | historical reference only | `bc1d293b8dc6173c1bfb0fff64fe797c2cde35dbb1a1a075dae8ca1177b49a52` | no | Preserved blocked provenance; not rewritten or reinterpreted |
+| Reconstructed training split | `data/splits/train.csv` | `cf8850d04c83f115874e99b11ae4b0ddc01f04820733c0b964b439dd495c0afc` | yes | Local/ignored; Route B semantic reconstruction, 32,107 rows/156 engines |
+| Registered validation split | `data/splits/validation.csv` | `7587a365edda0d95f7e6e681a900220f18bfb619954b47cb2c61fce5330fe9ad` | yes | Local/ignored; diagnostics only after state freeze |
+| Recovered P1/K=6 preprocessor | `models/preprocessing/p1_k6.joblib` | `c4f626743a8f6710dbca0487c12455169b819f928d847c6033f2ef365aa4a10a` | yes | Local/ignored; 135,914 bytes; identical across two isolated recovery processes |
+| Final-evaluation protocol v2 | `configs/evaluation/fd002-final-evaluation-protocol-v2.json` | `77029d2aa9b4ac3059ece1409f6a8fc30d1be508593ef523dcf4910b2d269ede` | yes | Tracked provenance-only overlay; frozen Gate 4 contract unchanged |
+| Final-evaluation readiness v2 | `reports/final_evaluation_v2/fd002-confirmatory-evaluation-v2/readiness.json` | `de8024ff03f0243353016035b0fa2cfe93ec6b198dacf43542a68de6b6cae56e` | yes | Tracked; ready for separately authorized held-out provisioning; zero held-out inputs checked |

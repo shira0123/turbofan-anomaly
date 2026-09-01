@@ -1,0 +1,85 @@
+{
+  "artifact_checks": [
+    {
+      "artifact_id": "p1_k6_fitted_preprocessor",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "pca_primary_bundle",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "lstm_comparator_bundle",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "lstm_seed_43",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "lstm_seed_44",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "lstm_seed_45",
+      "status": "hash_verified"
+    }
+  ],
+  "audit_date": "2026-09-01",
+  "authority_checks": [
+    {
+      "artifact_id": "split_manifest",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "preprocessing_study",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "preprocessing_selection",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "phase5_protocol_v1_blocked",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "phase5_protocol_v2",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "phase5_results",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "phase5_artifact_manifest",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "phase5_threshold_table",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "phase5_overall_recommendation",
+      "status": "hash_verified"
+    },
+    {
+      "artifact_id": "phase5_runtime_provenance",
+      "status": "hash_verified"
+    }
+  ],
+  "blockers": [],
+  "held_out_inputs_checked": 0,
+  "held_out_inputs_opened": false,
+  "official_nasa_test_checked": false,
+  "official_nasa_test_opened": false,
+  "pre_test_training_fitted_artifacts_ready": true,
+  "protocol_id": "fd002-final-evaluation-protocol-v2",
+  "protocol_path": "configs/evaluation/fd002-final-evaluation-protocol-v2.json",
+  "protocol_sha256": "77029d2aa9b4ac3059ece1409f6a8fc30d1be508593ef523dcf4910b2d269ede",
+  "ready_for_confirmatory_evaluation": false,
+  "ready_for_separately_authorized_held_out_provisioning": true,
+  "schema_version": "1.0.0",
+  "status": "ready_except_for_separately_authorized_held_out_provisioning",
+  "verification_scope": "protocol_authorities_and_training_fitted_artifacts_only"
+}

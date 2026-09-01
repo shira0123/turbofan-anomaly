@@ -105,6 +105,17 @@ This file records consequential research and implementation decisions. Each entr
 - **Evidence:** `reports/lstm_v2/` and `configs/lstm/fd002-lstm-screen-results-v1.json`.
 - **Owner:** Shivam.
 
+## 2026-09-01 — Recover the deterministic P1/K=6 preprocessor and advance readiness to v2
+
+- **Source-lineage correction:** Preserve `bc1d293b8dc6173c1bfb0fff64fe797c2cde35dbb1a1a075dae8ca1177b49a52` as an unavailable historical source-copy reference. Accept the owner-authorized local `data/raw/train_FD002.txt` only at 9,082,480 bytes and raw SHA-256 `dac6c4dbc4e7c1bdeb5747da3d313d05c395bb99801b44a002b26a2ba13d788f`.
+- **Partition rule:** Read the complete local run-to-failure source solely for structural reconstruction, immediately filter through the exact frozen 156-engine training allowlist, and forbid retention, summary, export, fitting, selection, scoring, or evaluation of non-training rows.
+- **Recovery route:** Use Route B governed semantic reconstruction because the deterministic training CSV hash `cf8850d04c83f115874e99b11ae4b0ddc01f04820733c0b964b439dd495c0afc` does not equal the unavailable legacy split digest. Do not reinterpret or replace the legacy digest.
+- **Recovered state:** Freeze the deterministic 135,914-byte `models/preprocessing/p1_k6.joblib` artifact at SHA-256 `c4f626743a8f6710dbca0487c12455169b819f928d847c6033f2ef365aa4a10a`. The canonical K-Means label mapping is identity; no validation label constructed it.
+- **Scientific equivalence:** Registered P1 train/validation cycle frames, both sequence arrays, endpoint modes, frozen PCA scores/ranking, and the selected Phase 5 alert-policy trace/metrics reproduced within preregistered tolerances. The Gate 4 policy, thresholds, calibration, EWMA, persistence, proxies, events, metrics, and comparator roles did not change; no threshold was refitted or selected.
+- **Lifecycle:** Preserve final-evaluation protocol/readiness v1 byte-for-byte. Adopt protocol v2 as a provenance-only overlay and readiness status `ready_except_for_separately_authorized_held_out_provisioning`.
+- **Access boundary:** The existing internal held-out split artifact and official NASA test artifacts were not opened or checked. No confirmatory evaluation ran. Separate owner authorization remains mandatory before held-out provisioning or evaluation.
+- **Owner:** Shivam authorized the complete-source reconstruction and deterministic recovery under these boundaries.
+
 ## 2026-08-24 — Consolidate the validated path on `refactor/clean-v3`
 
 - **Decision:** Replace the mixed legacy/prototype layout with one importable `turbofan_anomaly` package, six thin CLI wrappers, governed research documentation, a schema-versioned JSONL run ledger, and an output-cleared training/validation-only EDA notebook.
