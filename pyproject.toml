@@ -43,6 +43,7 @@ turbofan-recover-p1-preprocessor = "turbofan_anomaly.workflows.recover_p1_prepro
 turbofan-verify-p1-preprocessor = "turbofan_anomaly.workflows.verify_p1_preprocessor:main"
 turbofan-run-confirmatory-evaluation = "turbofan_anomaly.workflows.run_confirmatory_evaluation:main"
 turbofan-verify-confirmatory-evaluation = "turbofan_anomaly.workflows.verify_confirmatory_evaluation:main"
+turbofan-infer = "turbofan_anomaly.workflows.infer_frozen_fd002:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
