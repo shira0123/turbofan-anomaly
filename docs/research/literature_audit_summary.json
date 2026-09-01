@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "audit_date": "2026-09-01",
+  "total_unique_papers": 100,
+  "duplicates_removed": 0,
+  "invalid_records_removed": 0,
+  "direct_numerical_comparison_count": 0,
+  "full_text_equivalent_count": 69,
+  "category_counts": {
+    "A": 0,
+    "B": 2,
+    "C": 23,
+    "D": 75
+  },
+  "evidence_access_counts": {
+    "abstract_only": 27,
+    "author_manuscript_verified": 1,
+    "authoritative_html_full_text_verified": 1,
+    "full_text_verified": 67,
+    "metadata_only": 4
+  },
+  "verification_status_counts": {
+    "screening_only_no_numeric_use": 31,
+    "verified_for_context_only_metrics_not_reextracted": 66,
+    "verified_for_numeric_extraction": 3
+  },
+  "missing_evidence_counts": {
+    "authors_NR": 94,
+    "split_strategy_NR": 97,
+    "evaluation_unit_NR": 96,
+    "label_definition_NR": 96,
+    "exact_metric_values_NR": 97,
+    "code_or_data_availability_NR": 100
+  }
+}
