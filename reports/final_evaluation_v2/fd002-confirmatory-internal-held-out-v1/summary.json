@@ -1,0 +1,17 @@
+{
+  "access": {
+    "confirmatory_evaluation_executed": true,
+    "held_out_used_for_fit_calibration_threshold_selection_or_model_selection": false,
+    "internal_held_out_opened": true,
+    "official_nasa_test_opened": false,
+    "raw_source_opened_for_confirmatory_partitioning": true
+  },
+  "comparator_role": "frozen_unfused_nonprimary_comparator",
+  "partition": {
+    "engines": 52,
+    "rows": 10779,
+    "windows": 9271
+  },
+  "primary_candidate_id": "pca_reconstruction__per_mode__quantile_0.995__ewma_alpha_0.20__persistence_8",
+  "status": "complete_first_valid_run"
+}

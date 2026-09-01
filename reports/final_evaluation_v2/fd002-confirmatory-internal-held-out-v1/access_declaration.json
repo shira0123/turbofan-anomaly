@@ -1,0 +1,7 @@
+{
+  "confirmatory_evaluation_executed": true,
+  "held_out_used_for_fit_calibration_threshold_selection_or_model_selection": false,
+  "internal_held_out_opened": true,
+  "official_nasa_test_opened": false,
+  "raw_source_opened_for_confirmatory_partitioning": true
+}

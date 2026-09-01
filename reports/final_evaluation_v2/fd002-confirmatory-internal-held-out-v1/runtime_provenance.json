@@ -1,0 +1,10 @@
+{
+  "cuda_available": true,
+  "device": "cuda",
+  "git_head": "6c6486f3ba10816734aa3ce132b23344a2e5ebdd",
+  "new_research_experiment": false,
+  "numpy": "2.4.2",
+  "pandas": "3.0.1",
+  "python": "3.12.8",
+  "torch": "2.5.1+cu121"
+}

@@ -73,6 +73,8 @@ python -m scripts.verify_alert_policy_study --help
 python -m scripts.recover_p1_preprocessor --help
 python -m scripts.verify_p1_preprocessor --help
 python -m scripts.verify_final_evaluation --help
+python -m scripts.run_confirmatory_evaluation --help
+python -m scripts.verify_confirmatory_evaluation --help
 ```
 
 The verification commands are read-only with respect to registered evidence. Historical screen reproduction still needs its absent registered checkpoints, while final-refit and Phase 5 verification use governed local ignored artifacts. Commands that create splits, fit models, or rewrite reports are separated and governed; do not run them as a quick start.
@@ -84,4 +86,5 @@ The verification commands are read-only with respect to registered evidence. His
 - [Claims ledger](docs/research/CLAIMS_LEDGER.md)
 - [Decision log](DECISION_LOG.md)
 - [Progress log](PROGRESS.md)
+- [Confirmatory internal held-out result](configs/evaluation/fd002-confirmatory-results-v1.json)
 - [Project understanding guide](docs/guides/PROJECT_UNDERSTANDING_GUIDE.md)

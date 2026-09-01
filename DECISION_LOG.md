@@ -105,6 +105,12 @@ This file records consequential research and implementation decisions. Each entr
 - **Evidence:** `reports/lstm_v2/` and `configs/lstm/fd002-lstm-screen-results-v1.json`.
 - **Owner:** Shivam.
 
+## 2026-09-01 — Record the frozen internal held-out confirmatory result
+
+- The first valid frozen run evaluated exactly 52 registered internal held-out engines (10,779 cycles; 9,271 windows). The primary remained PCA per-mode q=0.995 / EWMA 0.20 / persistence 8; no refit, recalibration, reselection, or fusion occurred.
+- Primary endpoint false-alert rates for final-10%/20%/30% proxies were 3.244%/0.944%/0.515%, meeting the <6% target. Detection coverage was 51.92%/78.85%/84.62%; median delays were 12/25/42.5 cycles, so the aggregate 25-cycle delay missed the 12-cycle aspiration.
+- The frozen LSTM ensemble was reported separately as a nonprimary comparator. This evidence is internal held-out proxy performance, not official NASA-test or physical-onset performance. Official NASA test data was not accessed.
+
 ## 2026-09-01 — Recover the deterministic P1/K=6 preprocessor and advance readiness to v2
 
 - **Source-lineage correction:** Preserve `bc1d293b8dc6173c1bfb0fff64fe797c2cde35dbb1a1a075dae8ca1177b49a52` as an unavailable historical source-copy reference. Accept the owner-authorized local `data/raw/train_FD002.txt` only at 9,082,480 bytes and raw SHA-256 `dac6c4dbc4e7c1bdeb5747da3d313d05c395bb99801b44a002b26a2ba13d788f`.

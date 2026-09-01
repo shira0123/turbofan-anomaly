@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "result_id": "fd002-confirmatory-internal-held-out-v1",
+  "protocol_path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+  "protocol_sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758",
+  "status": "complete_first_valid_run",
+  "evidence_class": "confirmatory_internal_held_out_test_result",
+  "population": {"engines": 52, "cycle_rows": 10779, "windows": 9271},
+  "primary_candidate_id": "pca_reconstruction__per_mode__quantile_0.995__ewma_alpha_0.20__persistence_8",
+  "primary_endpoint_results": [
+    {"policy_id": "normalized_life_last_10pct_endpoint", "pr_auc": 0.6026705075624872, "roc_auc": 0.9476205805711868, "endpoint_false_alert_rate_percent": 3.2439711102950177, "engine_detection_coverage_percent": 51.92307692307692, "median_delay_cycles": 12.0},
+    {"policy_id": "normalized_life_last_20pct_endpoint", "pr_auc": 0.8097437092694553, "roc_auc": 0.926731911712888, "endpoint_false_alert_rate_percent": 0.9443269908386187, "engine_detection_coverage_percent": 78.84615384615384, "median_delay_cycles": 25.0},
+    {"policy_id": "normalized_life_last_30pct_endpoint", "pr_auc": 0.8274519039746946, "roc_auc": 0.8675761206164003, "endpoint_false_alert_rate_percent": 0.5152925531914894, "engine_detection_coverage_percent": 84.61538461538461, "median_delay_cycles": 42.5}
+  ],
+  "target_attainment": {"endpoint_false_alert_target_met_all_primary_endpoint_policies": true, "aggregate_median_delay_cycles": 25.0, "delay_aspiration_cycles": 12, "aggregate_delay_aspiration_met": false},
+  "comparator_role": "frozen_unfused_nonprimary_comparator",
+  "result_manifest_path": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/result.json",
+  "result_manifest_sha256": "70d6be0d608cb833b27924430a57f8534c31b35d115a953ac199b93cc1305d5d",
+  "verification_path": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/verification.json",
+  "verification_sha256": "c9f1c139a4e0b49b193b721235c66c03e740d797990a7ac117f76bc59bf0376a",
+  "official_nasa_test_accessed": false,
+  "model_preprocessor_calibration_threshold_or_policy_changed": false,
+  "score_or_decision_fusion": false
+}

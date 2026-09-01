@@ -25,12 +25,13 @@ def test_current_protocol_ledger_round_trips_and_preserves_boundaries() -> None:
         "current_protocol",
         "validation_only",
         "validation_proxy_only",
+        "confirmatory_internal_held_out_test_result",
     }
-    assert all(record["evidence_boundary"]["final_result"] is False for record in records)
-    assert all(
-        record["evidence_boundary"]["held_out_internal_test_accessed"] is False
-        for record in records
-    )
+    confirmatory = [record for record in records if record["evidence_class"] == "confirmatory_internal_held_out_test_result"]
+    assert len(confirmatory) == 2
+    assert all(record["evidence_boundary"]["final_result"] is True for record in confirmatory)
+    assert all(record["evidence_boundary"]["held_out_internal_test_accessed"] is True for record in confirmatory)
+    assert all(record["evidence_boundary"]["official_nasa_test_accessed"] is False for record in confirmatory)
     final_refit_ids = set(
         expected_final_refit_ledger_run_ids("fd002-lstm-final-refit-v1")
     )

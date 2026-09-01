@@ -220,3 +220,10 @@ Every experiment-producing phase must leave all of the following before it is co
 ## Next action
 
 Obtain separate explicit authorization for confirmatory held-out provisioning and evaluation under final-evaluation protocol v2. Do not inspect or open the held-out internal test before that authorization, and do not access the official NASA test.
+
+## Confirmatory internal held-out evaluation - 2026-09-01
+
+- Pre-registered the exact 52-engine execution and committed the workflow/verifier before access.
+- Completed and independently verified the first valid frozen run: 10,779 cycles, 9,271 P1/K=6 windows, six modes, PCA primary, and unfused LSTM comparator.
+- All three primary endpoint proxy FARs met the <6% target; aggregate median delay was 25 cycles and missed the 12-cycle aspiration.
+- No preprocessing/model/calibration/threshold fitting, online recalibration, candidate search, policy change, or fusion occurred. Official NASA test data remained unopened.

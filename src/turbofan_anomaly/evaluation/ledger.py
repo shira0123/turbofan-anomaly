@@ -51,7 +51,12 @@ def validate_run_record(record: Mapping[str, Any]) -> None:
         if not isinstance(boundary.get(field), bool):
             raise ValueError(f"Evidence boundary {field} must be boolean")
     if boundary["held_out_internal_test_accessed"]:
-        raise ValueError("Active development ledger may not claim internal-test access")
+        if record["evidence_class"] != "confirmatory_internal_held_out_test_result":
+            raise ValueError("Only confirmatory result records may claim internal-test access")
+        if boundary["final_result"] is not True:
+            raise ValueError("A confirmatory held-out record must be final")
+        if boundary.get("official_nasa_test_accessed") is not False:
+            raise ValueError("Confirmatory records must explicitly deny official-test access")
     for identity in ("split", "config", "artifact"):
         value = record[identity]
         if not isinstance(value, Mapping):
