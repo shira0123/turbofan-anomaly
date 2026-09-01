@@ -99,6 +99,11 @@ def verify_recovery_result(
     pca = reproduction.get("pca", {})
     _require(pca.get("bundle_sha256") == protocol["registered_reproduction_targets"]["frozen_pca_bundle"]["sha256"], "PCA bundle changed")
     _require(pca.get("maximum_ranking_metric_difference", 1.0) <= protocol["reproduction_tolerances"]["pca_scores"]["atol"], "PCA metrics changed")
+    phase5 = reproduction.get("phase5_alert_policy", {})
+    _require(phase5.get("candidate_id") == protocol["frozen_gate_4_candidate"], "Phase 5 policy changed")
+    _require(phase5.get("thresholds_exact") is True, "Frozen thresholds changed")
+    _require(phase5.get("maximum_alert_metric_difference", 1.0) <= protocol["reproduction_tolerances"]["pca_scores"]["atol"], "Phase 5 alert metrics changed")
+    _require(phase5.get("threshold_refitted_or_selected") is False, "Phase 5 threshold was refitted")
     _require(reproduction.get("frozen_gate_4_candidate") == protocol["frozen_gate_4_candidate"], "Gate 4 policy changed")
     _require(reproduction.get("threshold_refitted_or_selected") is False, "Threshold was refitted")
     return {

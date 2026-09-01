@@ -19,6 +19,7 @@ from turbofan_anomaly.workflows.recover_p1_preprocessor import (
     DEFAULT_PROTOCOL,
     compare_arrays,
     compare_cycle_frames,
+    compare_endpoint_context,
     derive_canonical_mode_mapping,
     reconstruct_training_partition,
     select_recovery_route,
@@ -207,3 +208,16 @@ def test_transformed_frame_and_sequence_tolerances_are_fail_closed() -> None:
     changed_array[0, 0, 0] += 1e-3
     with pytest.raises(RuntimeError, match="exceed tolerance"):
         compare_arrays(changed_array, array, rtol=1e-7, atol=1e-7)
+
+
+def test_endpoint_context_accepts_only_integer_dtype_representation_difference() -> None:
+    observed = pd.DataFrame(
+        {"window_id": ["w1", "w2"], "op_mode": pd.array([0, 5], dtype="Int64")}
+    )
+    registered = pd.DataFrame(
+        {"window_id": ["w1", "w2"], "op_mode": np.array([0, 5], dtype=np.int64)}
+    )
+    compare_endpoint_context(observed, registered)
+    registered.loc[1, "op_mode"] = 4
+    with pytest.raises(RuntimeError, match="operating modes"):
+        compare_endpoint_context(observed, registered)

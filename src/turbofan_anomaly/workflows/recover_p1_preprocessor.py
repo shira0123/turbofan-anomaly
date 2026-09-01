@@ -11,16 +11,24 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import platform
 from pathlib import Path
 import subprocess
 from typing import Any, Mapping
+
+# K-Means reduction order must be stable across repeated recovery processes.
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
 
 import joblib
 import numpy as np
 import pandas as pd
 import sklearn
 
+from turbofan_anomaly.alerting.persistence import apply_alert_policy
+from turbofan_anomaly.alerting.thresholds import FittedThresholds
 from turbofan_anomaly.data.io import FD002_COLUMNS, validate_fd002_frame
 from turbofan_anomaly.data.metadata import (
     assign_endpoint_operating_modes,
@@ -43,6 +51,7 @@ from turbofan_anomaly.evaluation.proxies import (
     registered_validation_policies,
     training_eligible_windows,
 )
+from turbofan_anomaly.evaluation.alerts import evaluate_alert_policy
 from turbofan_anomaly.evaluation.ranking import proxy_ranking_metrics
 from turbofan_anomaly.models.classical import load_baseline_artifact
 
@@ -315,6 +324,27 @@ def compare_arrays(
     }
 
 
+def compare_endpoint_context(
+    observed: pd.DataFrame, registered: pd.DataFrame
+) -> None:
+    """Require exact metadata values while accepting nullable integer dtype."""
+    _require(observed.shape == registered.shape, "Endpoint context shape changed")
+    _require(
+        observed.columns.tolist() == registered.columns.tolist(),
+        "Endpoint context columns changed",
+    )
+    for column in observed.columns:
+        if column == "op_mode":
+            left = pd.to_numeric(observed[column], errors="raise").to_numpy(dtype=int)
+            right = pd.to_numeric(registered[column], errors="raise").to_numpy(dtype=int)
+            _require(np.array_equal(left, right), "Endpoint operating modes changed")
+        else:
+            _require(
+                observed[column].equals(registered[column]),
+                f"Endpoint context values changed: {column}",
+            )
+
+
 def select_recovery_route(
     reconstructed_sha256: str, legacy_sha256: str
 ) -> str:
@@ -346,6 +376,120 @@ def preprocessor_state_fingerprints(preprocessor: RegimeSensorPreprocessor) -> d
         "canonical_mode_mapping": {str(k): v for k, v in sorted(preprocessor.canonical_mode_mapping_.items())},
         "global_sensor_mean_sha256_float64_le": _sha256_array(preprocessor.global_sensor_scaler_.mean_, "<f8"),
         "per_mode_sensor_scalers": scalers,
+    }
+
+
+def verify_frozen_phase5_policy(
+    validation_metadata: pd.DataFrame,
+    raw_scores: np.ndarray,
+    calibrated_scores: np.ndarray,
+    repo_root: Path,
+    *,
+    atol: float,
+) -> dict[str, Any]:
+    """Apply the already frozen Gate 4 policy without refitting thresholds."""
+    final_protocol_path = repo_root / "configs/evaluation/fd002-final-evaluation-protocol-v1.json"
+    _require(
+        sha256_file(final_protocol_path)
+        == "ed5d3ca6a847365256a238684086266fae8bab72a79ff6b4f9d8af3fa6a84133",
+        "Protected final-evaluation v1 protocol changed",
+    )
+    final_protocol = json.loads(final_protocol_path.read_text(encoding="utf-8"))
+    policy = final_protocol["frozen_primary_alert_policy"]
+    threshold_rows = policy["thresholds"]
+    thresholds = FittedThresholds(
+        context="per_mode",
+        rule_id="quantile_0.995",
+        values={int(row["operating_mode"]): float(row["threshold"]) for row in threshold_rows},
+        reference_counts={int(row["operating_mode"]): int(row["reference_count"]) for row in threshold_rows},
+    )
+    score_frame = validation_metadata[
+        ["window_id", "engine", "start_cycle", "end_cycle", "max_cycle", "op_mode"]
+    ].copy()
+    score_frame["raw_score"] = np.asarray(raw_scores, dtype=float)
+    score_frame["alert_score"] = np.asarray(calibrated_scores, dtype=float)
+    score_frame["detector_id"] = "pca_reconstruction"
+    score_frame["pipeline_id"] = "p1_k6"
+    score_frame["split"] = "validation"
+    trace = apply_alert_policy(
+        score_frame,
+        thresholds,
+        ewma_alpha=float(policy["ewma_alpha"]),
+        persistence=int(policy["persistence"]),
+    )
+    trace.insert(0, "candidate_id", policy["candidate_id"])
+
+    results_path = repo_root / "configs/alerting/fd002-alert-policy-study-results-v1.json"
+    _require(
+        sha256_file(results_path)
+        == "57080e52d05d6b95747c831fcf819a606d334cf874257421847a5c24aacb8ac2",
+        "Registered Phase 5 results authority changed",
+    )
+    results = json.loads(results_path.read_text(encoding="utf-8"))
+    report_dir = repo_root / "reports/alerting_v1/fd002-alert-policy-study-v1"
+    report_hashes = results["outputs"]["report_sha256"]
+    for filename in (
+        "candidate_policy_metrics.csv",
+        "overall_recommendation.csv",
+        "selected_validation_alert_trace.csv",
+        "target_attainment.csv",
+    ):
+        _require(
+            sha256_file(report_dir / filename) == report_hashes[filename],
+            f"Registered Phase 5 report changed: {filename}",
+        )
+    registered_trace = pd.read_csv(report_dir / "selected_validation_alert_trace.csv")
+    _require(trace.columns.tolist() == registered_trace.columns.tolist(), "Selected alert trace columns changed")
+    maximum_float_difference = 0.0
+    for column in trace.columns:
+        if pd.api.types.is_float_dtype(registered_trace[column]):
+            left = trace[column].to_numpy(dtype=float)
+            right = registered_trace[column].to_numpy(dtype=float)
+            difference = float(np.max(np.abs(left - right)))
+            maximum_float_difference = max(maximum_float_difference, difference)
+            _require(np.allclose(left, right, rtol=0.0, atol=atol), f"Selected alert trace changed: {column}")
+        else:
+            _require(
+                trace[column].astype(str).tolist()
+                == registered_trace[column].astype(str).tolist(),
+                f"Selected alert trace changed: {column}",
+            )
+
+    registered_metrics = pd.read_csv(report_dir / "candidate_policy_metrics.csv")
+    registered_metrics = registered_metrics[
+        registered_metrics["candidate_id"] == policy["candidate_id"]
+    ].set_index("policy_id")
+    maximum_metric_difference = 0.0
+    for proxy in registered_validation_policies():
+        policy_frame = proxy.apply(validation_metadata)
+        observed_metric, _, _ = evaluate_alert_policy(trace, policy_frame)
+        registered = registered_metrics.loc[observed_metric["policy_id"]]
+        for key, value in observed_metric.items():
+            expected = registered.name if key == "policy_id" else registered[key]
+            if isinstance(value, (int, float, np.integer, np.floating)) and not isinstance(value, (bool, np.bool_)):
+                if pd.isna(value) and pd.isna(expected):
+                    continue
+                difference = abs(float(value) - float(expected))
+                maximum_metric_difference = max(maximum_metric_difference, difference)
+                _require(difference <= atol, f"Phase 5 alert metric changed: {key}")
+            else:
+                _require(value == expected, f"Phase 5 alert metric changed: {key}")
+    recommendation = pd.read_csv(report_dir / "overall_recommendation.csv")
+    target = pd.read_csv(report_dir / "target_attainment.csv")
+    _require(len(recommendation) == 1, "Registered Phase 5 recommendation changed")
+    _require(recommendation.iloc[0]["candidate_id"] == policy["candidate_id"], "Phase 5 selected candidate changed")
+    _require(set(target["candidate_id"]) == {policy["candidate_id"]}, "Phase 5 target evidence changed")
+    return {
+        "candidate_id": policy["candidate_id"],
+        "threshold_source": "frozen_final_evaluation_protocol_v1_no_refit",
+        "thresholds_exact": True,
+        "selected_trace_rows": len(trace),
+        "maximum_selected_trace_float_difference": maximum_float_difference,
+        "maximum_alert_metric_difference": maximum_metric_difference,
+        "candidate_policy_count": len(registered_metrics),
+        "overall_recommendation_exact": True,
+        "target_attainment_exact": True,
+        "threshold_refitted_or_selected": False,
     }
 
 
@@ -474,8 +618,8 @@ def execute_recovery(
     observed_validation_context = assign_endpoint_operating_modes(original_validation_metadata, transformed_validation)
     registered_train_context = pd.read_csv(targets["training_endpoint_context"])
     registered_validation_context = pd.read_csv(targets["validation_endpoint_context"])
-    _require(observed_train_context.equals(registered_train_context), "Training endpoint context changed")
-    _require(observed_validation_context.equals(registered_validation_context), "Validation endpoint context changed")
+    compare_endpoint_context(observed_train_context, registered_train_context)
+    compare_endpoint_context(observed_validation_context, registered_validation_context)
     eligible_context = training_eligible_windows(
         observed_train_context, frozen["healthy_fraction"]
     ).to_numpy(dtype=bool)
@@ -534,6 +678,13 @@ def execute_recovery(
     expected_metrics = protocol["registered_phase5_pca_metrics"]
     metric_diff = max(abs(mean_pr - expected_metrics["mean_pr_auc"]), abs(mean_roc - expected_metrics["mean_roc_auc"]))
     _require(metric_diff <= score_tolerance["atol"], "PCA ranking metrics exceed tolerance")
+    phase5_policy = verify_frozen_phase5_policy(
+        observed_validation_context,
+        observed_raw,
+        observed_scores,
+        repo_root,
+        atol=score_tolerance["atol"],
+    )
 
     result = {
         "schema_version": "1.0.0",
@@ -577,6 +728,7 @@ def execute_recovery(
                 "training_score_count": len(observed_train_raw),
                 "validation_score_count": len(observed_raw),
             },
+            "phase5_alert_policy": phase5_policy,
             "frozen_gate_4_candidate": protocol["frozen_gate_4_candidate"],
             "threshold_refitted_or_selected": False,
         },
@@ -587,6 +739,7 @@ def execute_recovery(
             "scikit_learn": sklearn.__version__,
             "joblib": joblib.__version__,
             "platform": platform.platform(),
+            "native_math_threads": 1,
         },
     }
     result_path = resolve_repo_path(protocol["outputs"]["result_path"], repo_root)

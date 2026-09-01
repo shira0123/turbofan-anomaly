@@ -1,0 +1,226 @@
+{
+  "access_audit": {
+    "confirmatory_evaluation_executed": false,
+    "held_out_rows_exported": false,
+    "held_out_rows_retained": false,
+    "held_out_rows_summarized": false,
+    "held_out_rows_used_for_fit_selection_or_evaluation": false,
+    "internal_held_out_split_artifact_opened": false,
+    "official_nasa_test_artifact_opened": false,
+    "raw_run_to_failure_source_opened_for_partition_reconstruction": true,
+    "retained_training_engines": 156,
+    "retained_training_rows": 32107,
+    "source_engine_count": 260,
+    "source_rows_structurally_validated": 53759
+  },
+  "preprocessor": {
+    "class": "turbofan_anomaly.data.preprocessing.RegimeSensorPreprocessor",
+    "metadata": {
+      "canonical_mode_mapping": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5
+      },
+      "fallback_modes": [],
+      "fit_engine_count": 156,
+      "fit_engine_ids_sha256": "50a687c48e117a5499d4f68931d29ec0d3ef5201e8797f247436f3f5b43af25d",
+      "fit_rows_all_cycles": 32107,
+      "healthy_fraction": 0.3,
+      "kmeans_fit_rows": 32107,
+      "method": "p1_regime",
+      "min_mode_fit_rows": 30,
+      "n_clusters": 6,
+      "n_init": 20,
+      "operating_scaler_fit_rows": 32107,
+      "random_state": 42,
+      "sensor_fit_rows_per_mode": {
+        "0": 1443,
+        "1": 1449,
+        "2": 1342,
+        "3": 1431,
+        "4": 1439,
+        "5": 2457
+      },
+      "sensor_scaler_fit_rows": 9561,
+      "split_manifest_id": "fd002-primary-v1"
+    },
+    "path": "models/preprocessing/p1_k6.joblib",
+    "reload_maximum_absolute_difference": 0.0,
+    "sha256": "c4f626743a8f6710dbca0487c12455169b819f928d847c6033f2ef365aa4a10a",
+    "size_bytes": 135914,
+    "state_fingerprints": {
+      "canonical_mode_mapping": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5
+      },
+      "global_sensor_mean_sha256_float64_le": "49af5e8484cdb57352dc1137b2c90e3e5c50be6bebdc08ac8309dafd514c79fa",
+      "kmeans_centers_sha256_float64_le": "e46f131f67e70c1591a9fcd1b065e7f8c8f2bae1de5900b2e5a03ade482b3460",
+      "kmeans_inertia": 0.13998684521396956,
+      "operating_scaler_mean_sha256_float64_le": "cd69cb012caa6d7425d8c3bcea751d992ba1d556276f02ed5d9a8d2af7d23370",
+      "operating_scaler_scale_sha256_float64_le": "7f35e7c293f4307ba7d223eb92a9658cc1f32a794399b1a7a459e6d0d7b9884e",
+      "per_mode_sensor_scalers": {
+        "0": {
+          "mean_sha256_float64_le": "b634db86aeb7f2008a9726ae7dbe78eb5943fd2bb0b786ab5b7136241ccdedc3",
+          "sample_count": 1443,
+          "scale_sha256_float64_le": "f589a7e4a83f44d167e28a5ef1f00d66a8e2728774e60b3902a1630c8fca3e62",
+          "variance_sha256_float64_le": "150e51546d89e831a43c5efdc341b380455e43089539a81f9a7b10f2677cde51"
+        },
+        "1": {
+          "mean_sha256_float64_le": "dd6bd8188a8650e43634bde777f4b1aa3a894d7d379ae39ffb01d8d698213e87",
+          "sample_count": 1449,
+          "scale_sha256_float64_le": "ce8476e2e708d6b4cee7352f057c0ee263e2a98a65a803d480eca35059ff7ec6",
+          "variance_sha256_float64_le": "ee22563e84174f4e42e4ec57fb907bc107255cb6e9469bb2adde4b6740abe25b"
+        },
+        "2": {
+          "mean_sha256_float64_le": "c801c5d5286828d2dee53db58e82067db19b9d3d60efb73f9c51311171d7a044",
+          "sample_count": 1342,
+          "scale_sha256_float64_le": "037d3a9c7a4defee0de02a94a4a5782d0dc221456447079bed3e86056ec6fbd6",
+          "variance_sha256_float64_le": "c6bd8d29ff56499d1c6fee78d7a2abdb8494e977d06ac4beeb2d6ebde776e23c"
+        },
+        "3": {
+          "mean_sha256_float64_le": "4686b20791832622d4c17e62ced03a48d623248f1091b0face6801ead62584a2",
+          "sample_count": 1431,
+          "scale_sha256_float64_le": "35049db6360be0f0f31b2b82d359fd815ea4076d0fc1566c751f714d8e59e5ff",
+          "variance_sha256_float64_le": "4c4f487d069f008a7e436d7bf5ff50cf9d8065d34ff811b5155cdd078e056d48"
+        },
+        "4": {
+          "mean_sha256_float64_le": "c0d0b5ddb0c4d2e7d829b9b4551ddee291a903541a28e751851c7d156f81a515",
+          "sample_count": 1439,
+          "scale_sha256_float64_le": "1bbb2f6964d51934974451c3cd56f8b8a11cc0088bdf0d4c679603cd1c2dbde3",
+          "variance_sha256_float64_le": "9b1da8d7c0dc48b58e4ffdeb51621210216eae38195ba4ed7e21b5dc63e9671b"
+        },
+        "5": {
+          "mean_sha256_float64_le": "710194cd9e071312c8f96573f2d6f8a33ebdd947986575ded1bb5a44fccbb8e3",
+          "sample_count": 2457,
+          "scale_sha256_float64_le": "f7a2682381082a114e911949a91fd669d3b7084c58851c0c2b9c6ce8426441db",
+          "variance_sha256_float64_le": "6d4333fb3094a77a3d92e067647dd4ac3e371be96d55dad315b83575d73617f8"
+        }
+      }
+    }
+  },
+  "protocol_id": "fd002-p1-k6-recovery-protocol-v1",
+  "protocol_sha256": "45a72d077f07225fa77beeb83029c426b75084cfb0a396ffb7f3a58f861e7225",
+  "reproduction": {
+    "endpoint_context_exact": {
+      "train": true,
+      "validation": true
+    },
+    "frozen_gate_4_candidate": "pca_reconstruction__per_mode__quantile_0.995__ewma_alpha_0.20__persistence_8",
+    "mode_coverage": {
+      "0": 756,
+      "1": 768,
+      "2": 719,
+      "3": 765,
+      "4": 747,
+      "5": 1282
+    },
+    "pca": {
+      "bundle_sha256": "d56a6d41e63c0781da763565f71c4a13b144eacd487a351428113c8ebf2ba9aa",
+      "maximum_calibrated_score_difference": 1.1102230246251565e-16,
+      "maximum_ranking_metric_difference": 1.1102230246251565e-16,
+      "maximum_raw_score_difference": 3.552713678800501e-15,
+      "metadata": {
+        "artifact_role": "phase5_reproduction_not_retuning",
+        "detector_id": "pca_reconstruction",
+        "fit_window_count": 5037,
+        "historical_serialization_hash_expected_to_match": false,
+        "parameters": {
+          "n_components": 0.9
+        },
+        "pipeline": "p1_k6",
+        "preprocessing_decision_id": "fd002-preprocessing-selection-v1",
+        "random_state": 42,
+        "score_calibration": "empirical_cdf_fitted_on_eligible_training_scores",
+        "split_manifest_id": "fd002-primary-v1",
+        "study_id": "fd002-alert-policy-study-v1",
+        "test_data_opened": false
+      },
+      "selection_mean_pr_auc": 0.7724072946895637,
+      "selection_mean_roc_auc": 0.9250344981872701,
+      "training_score_count": 5037,
+      "validation_score_count": 9365
+    },
+    "phase5_alert_policy": {
+      "candidate_id": "pca_reconstruction__per_mode__quantile_0.995__ewma_alpha_0.20__persistence_8",
+      "candidate_policy_count": 5,
+      "maximum_alert_metric_difference": 1.4210854715202004e-14,
+      "maximum_selected_trace_float_difference": 3.552713678800501e-15,
+      "overall_recommendation_exact": true,
+      "selected_trace_rows": 9365,
+      "target_attainment_exact": true,
+      "threshold_refitted_or_selected": false,
+      "threshold_source": "frozen_final_evaluation_protocol_v1_no_refit",
+      "thresholds_exact": true
+    },
+    "threshold_refitted_or_selected": false,
+    "training_cycle_frame": {
+      "maximum_absolute_sensor_difference": 3.552713678800501e-15,
+      "mode_counts": {
+        "0": 4828,
+        "1": 4771,
+        "2": 4755,
+        "3": 4849,
+        "4": 4838,
+        "5": 8066
+      },
+      "rows": 32107
+    },
+    "training_sequences": {
+      "exact": true,
+      "maximum_absolute_difference": 0.0,
+      "shape": [
+        27583,
+        30,
+        21
+      ]
+    },
+    "validation_cycle_frame": {
+      "maximum_absolute_sensor_difference": 3.552713678800501e-15,
+      "mode_counts": {
+        "0": 1598,
+        "1": 1627,
+        "2": 1611,
+        "3": 1670,
+        "4": 1655,
+        "5": 2712
+      },
+      "rows": 10873
+    },
+    "validation_sequences": {
+      "exact": true,
+      "maximum_absolute_difference": 0.0,
+      "shape": [
+        9365,
+        30,
+        21
+      ]
+    }
+  },
+  "runtime": {
+    "joblib": "1.5.3",
+    "native_math_threads": 1,
+    "numpy": "2.4.2",
+    "pandas": "3.0.1",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "scikit_learn": "1.8.0"
+  },
+  "schema_version": "1.0.0",
+  "selected_recovery_route": "route_b_governed_semantic_reconstruction",
+  "source_lineage": {
+    "authorized_local_source_sha256": "dac6c4dbc4e7c1bdeb5747da3d313d05c395bb99801b44a002b26a2ba13d788f",
+    "authorized_local_source_size_bytes": 9082480,
+    "reconstructed_training_csv_sha256": "cf8850d04c83f115874e99b11ae4b0ddc01f04820733c0b964b439dd495c0afc",
+    "split_manifest_sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327",
+    "unavailable_historical_source_sha256": "bc1d293b8dc6173c1bfb0fff64fe797c2cde35dbb1a1a075dae8ca1177b49a52",
+    "validation_csv_sha256": "7587a365edda0d95f7e6e681a900220f18bfb619954b47cb2c61fce5330fe9ad"
+  },
+  "status": "verified_recovery_complete_before_test_access"
+}

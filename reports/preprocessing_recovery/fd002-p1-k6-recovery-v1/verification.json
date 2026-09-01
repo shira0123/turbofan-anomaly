@@ -1,0 +1,13 @@
+{
+  "confirmatory_evaluation_executed": false,
+  "downstream_reproduction_verified": true,
+  "held_out_inputs_checked": 0,
+  "held_out_inputs_opened": false,
+  "official_nasa_test_opened": false,
+  "protocol_id": "fd002-p1-k6-recovery-protocol-v1",
+  "recovered_preprocessor_sha256": "c4f626743a8f6710dbca0487c12455169b819f928d847c6033f2ef365aa4a10a",
+  "schema_version": "1.0.0",
+  "source_lineage_verified": true,
+  "state_fingerprints_verified": true,
+  "status": "verified_before_test_access"
+}
