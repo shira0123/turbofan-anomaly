@@ -1,7 +1,16 @@
 {
+  "cycle_rows": 10779,
+  "fit_or_recalibration_performed": false,
   "frozen_primary_verified": true,
+  "independent_reproduction": true,
+  "maximum_comparator_score_difference": 1.1102230246251565e-16,
+  "maximum_metric_difference": 3.552713678800501e-15,
+  "maximum_primary_score_difference": 1.7763568394002505e-15,
   "metric_rows": 10,
+  "modes": 6,
   "official_nasa_test_opened": false,
   "output_count": 13,
-  "verified": true
+  "partition_engines": 52,
+  "verified": true,
+  "windows": 9271
 }
