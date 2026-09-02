@@ -241,3 +241,13 @@ Obtain separate explicit authorization for confirmatory held-out provisioning an
 - Pre-registered faithful attribution for the actual frozen 63-feature PCA representation; no unfaithful `(30,21)` PCA reconstruction claim is made.
 - Added a fail-closed P1/K=6 and PCA artifact loader, deterministic batch inference CLI, and a synthetic-only SVG layer.
 - Validation-only regression reproduced 9,365 registered windows, scores, thresholds, EWMA, persistence, alerts, and deduplicated events within the frozen numerical tolerance. No fit, selection, held-out access, or official-test access occurred.
+
+## Manuscript-grade core literature extraction - 2026-09-03
+
+- Pre-registered a 20-paper core set and fixed reserve order before new numerical extraction. `LIT-019` lacked legally accessible complete methodology and was replaced by reserve 1 (`LIT-051`) without using result favorability.
+- Deeply inspected 20 legal full texts: 9 publisher versions, 7 arXiv manuscripts, 1 author manuscript, and 3 institutional/NASA copies. Temporary PDFs remain outside Git.
+- Recorded complete identities, dataset/task/method/split/label/condition/threshold/explanation fields, 43 precisely located numerical values, and 36 explicitly unresolved paper-field pairs.
+- Strict comparability remained A/B/C/D = 0/2/11/7. `LIT-013` is the strongest partial comparator, but its within-engine split, heuristic onset, and alert policy prohibit direct numerical comparison.
+- Copied frozen project metrics only from committed confirmatory authorities. The literature conclusion remains: no directly protocol-equivalent published comparator was identified.
+- Assessed official FD002 use without opening local official-test files. A future preregistered secondary RUL-proxy evaluation is recommended as an external robustness check, subject to separate authorization and no retuning.
+- No modeling, tuning, recalibration, held-out/official-test access, dependency operation, or remote Git operation occurred.

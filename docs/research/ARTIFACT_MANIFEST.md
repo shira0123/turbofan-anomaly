@@ -213,3 +213,21 @@ These are versioned research/documentation derivatives. Bible v3, literature mat
 |---|---|---|---|
 | Frozen inference/attribution protocol | `configs/inference/fd002-frozen-inference-protocol-v1.json` | `1c5f68d818405126655b298b9010de2255a42f5740aa4d75068be67c110d03e8` | Tracked; pre-registered semantics, artifact identities, and frozen policy |
 | Validation-only regression | `reports/inference_validation_v1/validation_regression.json` | `31df347a0892e5399640dd469d8802659c8e64dab22a2ca4e60e3248d04dee96` | Tracked; compact score/alert parity evidence, no input rows |
+
+## Manuscript-grade core literature evidence - 2026-09-03
+
+These are focused derivatives of the preserved 100-paper v4 register. They do not alter the literature matrix, final claims audit, scientific protocols, or confirmatory results. Source manuscripts remain temporary and untracked outside the repository.
+
+| Artifact | Path | Canonical LF SHA-256 | Tracking / role |
+|---|---|---|---|
+| Core evidence Markdown | `docs/research/CORE_MANUSCRIPT_EVIDENCE_V1.md` | `680ab4cfbfab75c4b72845311324b49cdc88651c5c5e2972afbbb89f353c9d39` | Human-readable 20-paper full-text extraction |
+| Core evidence CSV | `docs/research/CORE_MANUSCRIPT_EVIDENCE_V1.csv` | `3537e82f4eae9db8cec4149e3bb0bc32c6b8b374dd4c94b793cd96daea35fc81` | Paper-level machine-readable extraction |
+| Core evidence JSON | `docs/research/CORE_MANUSCRIPT_EVIDENCE_V1.json` | `a82cd444f16b521a328f8e87bb38423d59edb890122ce25d59d39c3062ff5099` | Complete fields and 43 located numerical values |
+| Extraction summary | `docs/research/core_manuscript_extraction_summary_v1.json` | `f26f2c2a34f4fb5636e0858795c302674322f9eb3555f630c74e9f44b770bdc1` | Counts, replacement, and evidence boundary |
+| Source verification | `docs/research/CORE_LITERATURE_SOURCE_VERIFICATION_V1.md` | `49faf477b440cce0125e5af549dd027d068613ae88ec6bca7dd381345ff8dbdf` | Legal source/version/hash record; PDFs excluded from Git |
+| Core BibTeX | `docs/research/MANUSCRIPT_CORE_CITATIONS_V1.bib` | `b02b5ecd59269ec8135d0573868589133dd7f49ca25ceda16bbe99a858f2b716` | Twenty verified unique identities |
+| Comparability Markdown | `docs/research/CORE_LITERATURE_COMPARABILITY_V1.md` | `b5f987b5823ca123889e045e917d04e00e56d47a30dd15b18d30491fbb821178` | Strict A/B/C/D assessment; zero Category A |
+| Comparability CSV | `docs/research/core_literature_comparability_v1.csv` | `a2cf51b0b2e234643f636ac7e20d849bca23a26138347d1aa043d4879a016ffd` | Twenty paper-level comparison decisions |
+| Comparability JSON | `docs/research/core_literature_comparability_v1.json` | `c8276c4524474119c073b1f217baa941931de563699caf8f05840558c5ef221d` | Machine-readable comparison contract |
+| Official-test literature assessment | `docs/research/FD002_OFFICIAL_TEST_LITERATURE_ASSESSMENT_V1.md` | `aecb55a7ee8f4db6be78a251730ac57241ce7507a08f9f06396feebadee03251` | Recommends a separately authorized preregistered RUL-proxy study |
+| Claims implications | `docs/research/CORE_LITERATURE_CLAIMS_IMPLICATIONS_V1.md` | `4631e603c56746d0d2214efe0ce88ad103fbc1e849c34a4c5fb04e086d92c3c6` | Proposed synthesis guidance; final claims audit preserved |
