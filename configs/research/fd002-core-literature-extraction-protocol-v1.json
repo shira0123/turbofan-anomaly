@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_id": "fd002-core-literature-extraction-v1",
+  "status": "registered_before_new_full_text_numerical_extraction",
+  "registered_date": "2026-09-03",
+  "repository_commit_context": "6892f3ca9cdbd19ad96b1043e0dcd9f063d81998",
+  "scope": "manuscript_grade_core_literature_derivative",
+  "scientific_boundary": {
+    "project_metrics_source": "committed_confirmatory_authorities_only",
+    "held_out_internal_test_access": false,
+    "official_nasa_test_access": false,
+    "modeling_tuning_recalibration_or_reselection": false,
+    "paywall_or_access_control_bypass": false,
+    "pdf_commit_permitted": false
+  },
+  "preserved_authorities": [
+    {"path": "docs/research/LITERATURE_EVIDENCE_MATRIX_V4.md", "sha256": "c76a9bca9ac224c0d8b4e14ae3ea28a42eef0b2ecd00380219729b0478913a38"},
+    {"path": "docs/research/LITERATURE_EVIDENCE_MATRIX_V4.csv", "sha256": "34ac423eea2fb64b60ace6ad717ae19de5513e52c4aa1e363f9bc3e1c3a046df"},
+    {"path": "docs/research/LITERATURE_EVIDENCE_MATRIX_V4.json", "sha256": "bb6ab8b1f4d05c52ad309664b6fa46e5e1a1453e56ec649ace6be465493fd487"},
+    {"path": "docs/research/LITERATURE_TO_PROJECT_METRIC_COMPARISON.md", "sha256": "2850d38f9c2ef7d2019d2c8e06ebf032659b61647a3806f59aa8ded7c531bc16"},
+    {"path": "docs/research/LITERATURE_SOURCE_VERIFICATION_REPORT.md", "sha256": "963a98aac5e44b2a9453d773b11088ac598d05d66c4320702706e0272df9bfc7"},
+    {"path": "docs/research/FINAL_CLAIMS_AUDIT.md", "sha256": "e365d0acdf56758d2fd25ccf8187d2bdb686bd101883fb939373fd2c86fe9257"},
+    {"path": "docs/research/final_claims_audit.json", "sha256": "54240b02faa5884574ac2fea65f65bd88a2cc85d60ab0a4b96366f5b476499d2"}
+  ],
+  "selection_rubric": {
+    "criteria": [
+      "FD002 dataset alignment",
+      "anomaly or degradation detection alignment",
+      "engine-disjoint or official-test evaluation",
+      "unsupervised, one-class, or healthy-only training",
+      "operating-condition or regime treatment",
+      "label/onset and metric comparability",
+      "PCA or LSTM-autoencoder reconstruction relevance",
+      "alert threshold, EWMA, persistence, or event relevance",
+      "reconstruction-error explanation relevance",
+      "C-MAPSS dataset or evaluation foundations",
+      "legal full-text availability"
+    ],
+    "category_a_rule": "FD002 anomaly/degradation detection with engine-disjoint or equivalent held-out evaluation, unsupervised/one-class/healthy-only training, compatible onset and metrics, and clearly reported held-out results",
+    "replacement_rule": "Use the ordered reserve list only when a selected paper lacks legally accessible full text; never replace based on favorable results"
+  },
+  "selected_core": [
+    {"order": 1, "paper_id": "LIT-010", "role": "FD002 anomaly and RUL study"},
+    {"order": 2, "paper_id": "LIT-013", "role": "FD002 unsupervised LSTM-autoencoder early-fault study"},
+    {"order": 3, "paper_id": "LIT-019", "role": "FD002 operating-regime scaling study"},
+    {"order": 4, "paper_id": "LIT-007", "role": "C-MAPSS healthy-only autoencoder anomaly study"},
+    {"order": 5, "paper_id": "LIT-008", "role": "one-class calibration and change-point study"},
+    {"order": 6, "paper_id": "LIT-009", "role": "variable-condition change-point and RUL study"},
+    {"order": 7, "paper_id": "LIT-012", "role": "C-MAPSS temporal autoencoder anomaly study"},
+    {"order": 8, "paper_id": "LIT-014", "role": "operating-effect residual modeling and event evaluation"},
+    {"order": 9, "paper_id": "LIT-017", "role": "time-varying-condition normalization"},
+    {"order": 10, "paper_id": "LIT-018", "role": "C-MAPSS regime clustering and normalization"},
+    {"order": 11, "paper_id": "LIT-021", "role": "dynamic-regime baselining"},
+    {"order": 12, "paper_id": "LIT-006", "role": "C-MAPSS unsupervised LSTM encoder-decoder health index"},
+    {"order": 13, "paper_id": "LIT-003", "role": "C-MAPSS benchmark comparability"},
+    {"order": 14, "paper_id": "LIT-004", "role": "C-MAPSS review and operating-condition treatment"},
+    {"order": 15, "paper_id": "LIT-001", "role": "C-MAPSS run-to-failure simulator foundation"},
+    {"order": 16, "paper_id": "LIT-005", "role": "healthy-sequence LSTM reconstruction foundation"},
+    {"order": 17, "paper_id": "LIT-026", "role": "temporal errors and dynamic thresholding"},
+    {"order": 18, "paper_id": "LIT-034", "role": "multivariate anomaly detection evaluation"},
+    {"order": 19, "paper_id": "LIT-036", "role": "rigorous time-series anomaly evaluation"},
+    {"order": 20, "paper_id": "LIT-055", "role": "sensor-wise reconstruction residual explanation"}
+  ],
+  "ordered_reserve": [
+    {"order": 1, "paper_id": "LIT-051", "role": "aero-engine LSTM-autoencoder fault detection"},
+    {"order": 2, "paper_id": "LIT-056", "role": "C-MAPSS residual fault detection"},
+    {"order": 3, "paper_id": "LIT-057", "role": "operating-condition-invariant turbofan prognostics"},
+    {"order": 4, "paper_id": "LIT-035", "role": "range-aware precision and recall"},
+    {"order": 5, "paper_id": "LIT-040", "role": "time-series anomaly metric taxonomy"}
+  ],
+  "retrieval_preference": [
+    "publisher_open_access",
+    "arxiv",
+    "institutional_repository",
+    "accepted_author_manuscript",
+    "official_author_manuscript"
+  ],
+  "access_levels": [
+    "publisher_full_text_verified",
+    "author_manuscript_verified",
+    "arxiv_full_text_verified",
+    "institutional_repository_verified",
+    "authoritative_html_verified",
+    "abstract_only",
+    "metadata_only",
+    "full_text_unavailable"
+  ],
+  "comparison_categories": ["A", "B", "C", "D"],
+  "temporary_pdf_directory": "C:/tmp/turbofan-core-literature-v1",
+  "required_output_prefix": "CORE_MANUSCRIPT_EVIDENCE_V1"
+}
