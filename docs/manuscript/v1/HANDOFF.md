@@ -2,11 +2,11 @@
 
 ## Current stage
 
-The evidence foundation and detailed outline are complete. The full manuscript, diagrams, plots, and final tables have not been created. The next task is to generate the planned figures, diagrams, and tables from committed aggregate authorities only.
+The evidence foundation, detailed outline, five figures, two editable diagram sources, four cross-format tables, self-contained captions, reproducible build scripts, and artifact provenance are complete. The full manuscript has not been written. The next task is full manuscript synthesis from the verified foundation and generated assets, with registered citation keys and claim boundaries preserved.
 
 Repository branch: `research/manuscript-v1`.
 
-Verified base commit: `8e3dd9d16a42dad815395e541645afceb8617bbf`. At preparation time, fetched `origin/main`, `origin/research/phase5-validation`, the pre-existing local manuscript branch, and starting `HEAD` all resolved to this commit.
+Artifact-generation starting commit: `4bcab1d13a1d44dccbedb0cecd7aa99ddea7ade1`. No remote reference was fetched or changed during artifact generation.
 
 ## Protected boundaries
 
@@ -28,6 +28,26 @@ Figures and tables must read only committed aggregate configs/reports and must n
 - `docs/manuscript/v1/FIGURE_TABLE_PLAN.md`
 - `docs/manuscript/v1/OPEN_QUESTIONS.md`
 - `docs/manuscript/v1/HANDOFF.md`
+- `docs/manuscript/v1/figures/`: five SVG figures and five matching 300-dpi PNG previews
+- `docs/manuscript/v1/figure_sources/figure_specs.json`: shared deterministic vector/raster specification
+- `docs/manuscript/v1/figure_sources/system_architecture.dot`
+- `docs/manuscript/v1/figure_sources/experimental_protocol.dot`
+- `docs/manuscript/v1/tables/`: four tables, each in CSV, Markdown, and LaTeX
+- `docs/manuscript/v1/CAPTIONS.md`
+- `docs/manuscript/v1/BUILD.md`
+- `docs/manuscript/v1/ARTIFACT_PROVENANCE.json`
+- `scripts/manuscript/generate_manuscript_v1_assets.py`
+- `scripts/manuscript/render_manuscript_v1_previews.ps1`
+- `scripts/manuscript/verify_manuscript_v1_assets.py`
+
+Regenerate and verify from the repository root:
+
+```powershell
+python scripts/manuscript/generate_manuscript_v1_assets.py --repo-root .
+python scripts/manuscript/verify_manuscript_v1_assets.py --repo-root .
+```
+
+The verifier confirms exact registered values; CSV/Markdown/LaTeX consistency; eight selected literature citation keys; five well-formed SVG/PNG pairs; 300-dpi PNG metadata; allowlisted source hashes; and generated-artifact hashes. All five previews were visually inspected. Graphviz, Matplotlib, an SVG converter, and a LaTeX engine were unavailable, so DOT and LaTeX sources were retained without tool-specific rendering/compilation. No dependency was installed.
 
 ## Primary source authorities
 
@@ -110,10 +130,9 @@ Before final manuscript approval, the author should authorize a new claims-audit
 
 ## Next action
 
-1. Obtain author decisions on title, venue, author metadata, and placement of delivery/attribution material.
-2. Generate Figure 1 (architecture) and Figure 2 (experimental protocol) as editable vectors.
-3. Generate the three-panel FAR/coverage/delay figure and optional PR-AUC/ROC-AUC figure from aggregate committed values.
-4. Generate the frozen result, metric-definition, and literature-comparability tables.
-5. Validate all paths, citation keys, units, captions, and values against `EVIDENCE_MAP.md` before drafting full prose.
+1. Resolve title, venue, author metadata, and delivery/attribution placement decisions recorded in `OPEN_QUESTIONS.md`.
+2. Draft the full manuscript in Markdown from `OUTLINE.md`, inserting the generated figures/tables and citing only registered keys from `MANUSCRIPT_CORE_CITATIONS_V1.bib`.
+3. Verify every numerical and methodological sentence against `EVIDENCE_MAP.md` and `ARTIFACT_PROVENANCE.json`.
+4. After author review, create a venue-specific LaTeX manuscript without changing claim scope or silently converting incompatible literature metrics.
 
-Do not write the full manuscript until those assets and publication choices are reviewed.
+Do not create or revise the claims-audit addendum as part of artifact generation. Preserve the proxy-labelled internal held-out and deferred official-test boundaries during manuscript synthesis.

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="190mm" height="125mm" viewBox="0 0 2200 1450" role="img" aria-labelledby="title desc">
+<title id="title">Experimental protocol and evaluation boundaries</title>
+<desc id="desc">Diagram shows the engine-disjoint train, validation, and internal held-out partitions; training-only fitting, validation selection, policy freeze, completed held-out evaluation, and deferred official NASA test.</desc>
+<style>text{font-family:Arial,Helvetica,sans-serif} .dash{stroke-dasharray:12 9}</style>
+<rect x="0" y="0" width="2200" height="1450" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="1100.0" y="55" font-size="38" font-weight="600" text-anchor="middle" fill="#222222">Experimental protocol and evaluation boundaries</text>
+<rect x="790" y="105" width="620" height="135" rx="12" fill="#F3F4F6" stroke="#0072B2" stroke-width="3"/>
+<text x="1100.0" y="143" font-size="28" font-weight="600" text-anchor="middle" fill="#222222">FD002 run-to-failure source</text>
+<text x="1100.0" y="180" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">260 engines; deterministic whole-engine split</text>
+<text x="1100.0" y="275" font-size="25" font-weight="600" text-anchor="middle" fill="#0072B2">Engine-disjoint: zero engine overlap</text>
+<rect x="90" y="340" width="480" height="170" rx="12" fill="#FFFFFF" stroke="#0072B2" stroke-width="3"/>
+<text x="330.0" y="378" font-size="28" font-weight="600" text-anchor="middle" fill="#222222">Training partition</text>
+<text x="330.0" y="415" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">156 engines · 32,107 cycle rows ·</text>
+<text x="330.0" y="443" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">27,583 windows</text>
+<rect x="720" y="340" width="480" height="170" rx="12" fill="#FFFFFF" stroke="#009E73" stroke-width="3"/>
+<text x="960.0" y="378" font-size="28" font-weight="600" text-anchor="middle" fill="#222222">Validation partition</text>
+<text x="960.0" y="415" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">52 engines · 10,873 cycle rows · 9,365</text>
+<text x="960.0" y="443" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">windows</text>
+<rect x="1350" y="340" width="480" height="170" rx="12" fill="#FFFFFF" stroke="#D55E00" stroke-width="3"/>
+<text x="1590.0" y="378" font-size="28" font-weight="600" text-anchor="middle" fill="#222222">Internal held-out partition</text>
+<text x="1590.0" y="415" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">52 engines · 10,779 cycle rows · 9,271</text>
+<text x="1590.0" y="443" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">windows</text>
+<line x1="900.0" y1="240.0" x2="330.0" y2="340.0" stroke="#0072B2" stroke-width="4"/>
+<polygon points="330.0,340.0 347.4648469496266,326.62169214638413 350.97583577112454,346.6343284289227" fill="#0072B2"/>
+<line x1="1100.0" y1="240.0" x2="960.0" y2="340.0" stroke="#009E73" stroke-width="4"/>
+<polygon points="960.0,340.0 969.9742227984765,320.39094903963087 981.7839853295848,336.9246165831825" fill="#009E73"/>
+<line x1="1300.0" y1="240.0" x2="1590.0" y2="340.0" stroke="#D55E00" stroke-width="4"/>
+<polygon points="1590.0,340.0 1568.2403116361215,343.24283245125207 1574.8638828311289,324.03447598573086" fill="#D55E00"/>
+<rect x="90" y="610" width="480" height="240" rx="12" fill="#F3F4F6" stroke="#0072B2" stroke-width="3"/>
+<text x="330.0" y="648" font-size="28" font-weight="600" text-anchor="middle" fill="#222222">Training-only fitting</text>
+<text x="330.0" y="685" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">Fit operating scaler/K-Means, sensor</text>
+<text x="330.0" y="713" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">scalers, detectors, empirical CDFs, and</text>
+<text x="330.0" y="741" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">threshold references. Healthy eligibility</text>
+<text x="330.0" y="769" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">ends at first 30% of life.</text>
+<rect x="720" y="610" width="480" height="240" rx="12" fill="#F3F4F6" stroke="#009E73" stroke-width="3"/>
+<text x="960.0" y="648" font-size="28" font-weight="600" text-anchor="middle" fill="#222222">Validation selection</text>
+<text x="960.0" y="685" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">Select K and candidates; compare score</text>
+<text x="960.0" y="713" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">sources; evaluate 1,280 policies under</text>
+<text x="960.0" y="741" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">registered proxies. No learned-state</text>
+<text x="960.0" y="769" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">fitting.</text>
+<rect x="1350" y="610" width="480" height="240" rx="12" fill="#F3F4F6" stroke="#D55E00" stroke-width="3"/>
+<text x="1590.0" y="648" font-size="28" font-weight="600" text-anchor="middle" fill="#222222">Held-out boundary</text>
+<text x="1590.0" y="685" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">Unavailable to fitting/selection. Access</text>
+<text x="1590.0" y="713" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">only after complete policy freeze; first</text>
+<text x="1590.0" y="741" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">valid run accepted regardless of values.</text>
+<line x1="330.0" y1="510.0" x2="330.0" y2="610.0" stroke="#0072B2" stroke-width="4"/>
+<polygon points="330.0,610.0 319.84085813808736,590.4861116988558 340.15914186191264,590.4861116988558" fill="#0072B2"/>
+<line x1="960.0" y1="510.0" x2="960.0" y2="610.0" stroke="#009E73" stroke-width="4"/>
+<polygon points="960.0,610.0 949.8408581380874,590.4861116988558 970.1591418619126,590.4861116988558" fill="#009E73"/>
+<line x1="1590.0" y1="510.0" x2="1590.0" y2="610.0" stroke="#D55E00" stroke-width="4"/>
+<polygon points="1590.0,610.0 1579.8408581380875,590.4861116988558 1600.1591418619125,590.4861116988558" fill="#D55E00"/>
+<rect x="520" y="950" width="520" height="175" rx="12" fill="#FFFFFF" stroke="#D55E00" stroke-width="3"/>
+<text x="780.0" y="988" font-size="28" font-weight="600" text-anchor="middle" fill="#222222">Gate 4 policy freeze</text>
+<text x="780.0" y="1025" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">P1/K=6 + PCA + training empirical CDF + six</text>
+<text x="780.0" y="1053" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">per-mode q=0.995 thresholds + EWMA 0.20 +</text>
+<text x="780.0" y="1081" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">persistence 8</text>
+<line x1="330.0" y1="850.0" x2="640.0" y2="950.0" stroke="#0072B2" stroke-width="4"/>
+<polygon points="640.0,950.0 618.3095795445474,953.6777249034807 624.5473491310211,934.3406391854123" fill="#0072B2"/>
+<line x1="960.0" y1="850.0" x2="900.0" y2="950.0" stroke="#009E73" stroke-width="4"/>
+<polygon points="900.0,950.0 901.3284204249253,928.0401434618839 918.7512049807258,938.4938141953642" fill="#009E73"/>
+<rect x="1230" y="950" width="600" height="175" rx="12" fill="#FFFFFF" stroke="#D55E00" stroke-width="3"/>
+<text x="1530.0" y="988" font-size="28" font-weight="600" text-anchor="middle" fill="#222222">Completed internal held-out evaluation</text>
+<text x="1530.0" y="1025" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">First valid frozen run; no refit, recalibration,</text>
+<text x="1530.0" y="1053" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">reselection, online update, or fusion</text>
+<line x1="1040.0" y1="1035.0" x2="1230.0" y2="1035.0" stroke="#D55E00" stroke-width="4"/>
+<polygon points="1230.0,1035.0 1210.4861116988557,1045.1591418619125 1210.4861116988557,1024.8408581380875" fill="#D55E00"/>
+<line x1="1590.0" y1="850.0" x2="1530.0" y2="950.0" stroke="#D55E00" stroke-width="4"/>
+<polygon points="1530.0,950.0 1531.3284204249253,928.0401434618839 1548.7512049807258,938.4938141953642" fill="#D55E00"/>
+<rect x="520" y="1220" width="520" height="135" rx="12" fill="#FFFFFF" stroke="#009E73" stroke-width="3"/>
+<text x="780.0" y="1258" font-size="28" font-weight="600" text-anchor="middle" fill="#222222">Validation evidence</text>
+<text x="780.0" y="1295" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">Model/policy selection only—not held-out</text>
+<text x="780.0" y="1323" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">performance</text>
+<rect x="1230" y="1220" width="600" height="135" rx="12" fill="#FFFFFF" stroke="#D55E00" stroke-width="3"/>
+<text x="1530.0" y="1258" font-size="28" font-weight="600" text-anchor="middle" fill="#222222">Confirmatory evidence</text>
+<text x="1530.0" y="1295" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">Proxy-labelled internal held-out results—not</text>
+<text x="1530.0" y="1323" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">physical onset</text>
+<line x1="780.0" y1="1125.0" x2="780.0" y2="1220.0" stroke="#009E73" stroke-width="4"/>
+<polygon points="780.0,1220.0 769.8408581380874,1200.4861116988557 790.1591418619126,1200.4861116988557" fill="#009E73"/>
+<line x1="1530.0" y1="1125.0" x2="1530.0" y2="1220.0" stroke="#D55E00" stroke-width="4"/>
+<polygon points="1530.0,1220.0 1519.8408581380875,1200.4861116988557 1540.1591418619125,1200.4861116988557" fill="#D55E00"/>
+<rect x="1870" y="340" width="260" height="340" rx="12" fill="#FFFFFF" stroke="#6B7280" stroke-width="3" class="dash"/>
+<text x="2000.0" y="378" font-size="28" font-weight="600" text-anchor="middle" fill="#222222">Official NASA test</text>
+<text x="2000.0" y="415" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">Separate truncated-</text>
+<text x="2000.0" y="443" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">trajectory external</text>
+<text x="2000.0" y="471" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">protocol</text>
+<text x="2000.0" y="499" font-size="23" font-weight="400" text-anchor="middle" fill="#222222"></text>
+<text x="2000.0" y="527" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">Not accessed</text>
+<text x="2000.0" y="555" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">Not completed</text>
+<text x="2000.0" y="583" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">Future preregistration</text>
+<text x="2000.0" y="611" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">required</text>
+<rect x="1870" y="820" width="260" height="220" rx="12" fill="#F3F4F6" stroke="#6B7280" stroke-width="3" class="dash"/>
+<text x="2000.0" y="858" font-size="28" font-weight="600" text-anchor="middle" fill="#222222">Outside study</text>
+<text x="2000.0" y="895" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">Outside the completed</text>
+<text x="2000.0" y="923" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">study: no official-test,</text>
+<text x="2000.0" y="951" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">production, or real-</text>
+<text x="2000.0" y="979" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">aircraft result</text>
+<line x1="2000.0" y1="680.0" x2="2000.0" y2="820.0" stroke="#6B7280" stroke-width="4" class="dash"/>
+<polygon points="2000.0,820.0 1989.8408581380875,800.4861116988558 2010.1591418619125,800.4861116988558" fill="#6B7280"/>
+<text x="1100.0" y="1410" font-size="24" font-weight="600" text-anchor="middle" fill="#6B7280">Proxy onsets are normalized-life evaluation rules, not observed physical fault-onset annotations.</text>
+</svg>

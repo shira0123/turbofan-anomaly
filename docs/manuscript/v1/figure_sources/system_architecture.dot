@@ -1,0 +1,43 @@
+digraph SystemArchitecture {
+  graph [rankdir=LR, splines=ortho, nodesep=0.35, ranksep=0.6, fontname="Arial", label="Implemented FD002 condition-aware anomaly-alert architecture", labelloc=t];
+  node [shape=box, style="rounded", fontname="Arial"];
+  edge [fontname="Arial"];
+  subgraph cluster_fit {
+    label="Training-only fitting and validation selection";
+    train [label="156 training engines"];
+    p1fit [label="Fit P1/K=6\nop scaler/K-Means: all train rows\nsensor scalers: early-life rows"];
+    windows [label="30×21 training windows"];
+    pca63 [label="PCA: 63 summaries"];
+    lstmseq [label="LSTM: full 30×21 sequences"];
+    pcastate [label="Fit feature scaler, PCA, empirical CDF,\nsix q=0.995 thresholds"];
+    lstmstate [label="Three fixed-epoch LSTMs;\naligned calibrated-score mean"];
+    validation [label="52 validation engines"];
+    selection [label="Registered model and alert-policy selection"];
+    freeze [label="Gate 4 freeze"];
+    train -> p1fit -> windows;
+    windows -> pca63 -> pcastate;
+    windows -> lstmseq -> lstmstate;
+    pcastate -> selection;
+    lstmstate -> selection;
+    validation -> selection -> freeze;
+  }
+  subgraph cluster_frozen {
+    label="Frozen primary transformation and alert path";
+    input [label="Cycle rows"];
+    transform [label="Frozen P1/K=6 transform\nendpoint-cycle mode assignment"];
+    window [label="30×21 windows"];
+    summary [label="63 ordered summaries"];
+    score [label="Raw PCA MSE"];
+    calibration [label="Frozen empirical-CDF calibration"];
+    ewma [label="EWMA α=0.20"];
+    compare [label="Strict comparison with current-mode\nfrozen q=0.995 threshold"];
+    persistence [label="Persistence 8"];
+    events [label="Alert events"];
+    attribution [label="PCA reconstruction-error contribution\nnon-causal; not physical localization"];
+    input -> transform -> window -> summary -> score -> calibration -> ewma -> compare -> persistence -> events;
+    score -> attribution [style=dashed];
+  }
+  freeze -> input;
+  nofusion [shape=note, label="PCA–LSTM fusion not implemented"];
+  lstmstate -> nofusion [style=dashed, arrowhead=none];
+}

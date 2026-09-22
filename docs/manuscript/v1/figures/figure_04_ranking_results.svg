@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="180mm" height="92mm" viewBox="0 0 1800 920" role="img" aria-labelledby="title desc">
+<title id="title">Frozen PCA ranking results</title>
+<desc id="desc">Two panels show PR-AUC and ROC-AUC for the same three normalized-life endpoint proxies.</desc>
+<style>text{font-family:Arial,Helvetica,sans-serif} .dash{stroke-dasharray:12 9}</style>
+<rect x="0" y="0" width="1800" height="920" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="900.0" y="55" font-size="38" font-weight="600" text-anchor="middle" fill="#222222">Frozen PCA threshold-free ranking by onset proxy</text>
+<text x="900.0" y="95" font-size="25" font-weight="400" text-anchor="middle" fill="#6B7280">Internal held-out window endpoints; metrics are not accuracy</text>
+<text x="470.0" y="145" font-size="31" font-weight="600" text-anchor="middle" fill="#222222">PR-AUC</text>
+<line x1="210" y1="180" x2="210" y2="740" stroke="#222222" stroke-width="3"/>
+<line x1="210" y1="740" x2="795" y2="740" stroke="#222222" stroke-width="3"/>
+<line x1="210" y1="740.0" x2="795" y2="740.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="195" y="748.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">0.0</text>
+<line x1="210" y1="628.0" x2="795" y2="628.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="195" y="636.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">0.2</text>
+<line x1="210" y1="516.0" x2="795" y2="516.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="195" y="524.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">0.4</text>
+<line x1="210" y1="404.0" x2="795" y2="404.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="195" y="412.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">0.6</text>
+<line x1="210" y1="292.0" x2="795" y2="292.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="195" y="300.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">0.8</text>
+<line x1="210" y1="180.0" x2="795" y2="180.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="195" y="188.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">1.0</text>
+<circle cx="307.5" cy="402.50451576500717" r="16" fill="#0072B2" stroke="#222222" stroke-width="2"/>
+<text x="307.5" y="378.50451576500717" font-size="22" font-weight="600" text-anchor="middle" fill="#222222">0.60267</text>
+<text x="307.5" y="780" font-size="21" font-weight="400" text-anchor="middle" fill="#222222"><tspan x="307.5" dy="0">Final</tspan><tspan x="307.5" dy="26">10%</tspan></text>
+<circle cx="502.5" cy="286.54352280910507" r="16" fill="#0072B2" stroke="#222222" stroke-width="2"/>
+<text x="502.5" y="262.54352280910507" font-size="22" font-weight="600" text-anchor="middle" fill="#222222">0.80974</text>
+<text x="502.5" y="780" font-size="21" font-weight="400" text-anchor="middle" fill="#222222"><tspan x="502.5" dy="0">Final</tspan><tspan x="502.5" dy="26">20%</tspan></text>
+<circle cx="697.5" cy="276.62693377417105" r="16" fill="#0072B2" stroke="#222222" stroke-width="2"/>
+<text x="697.5" y="252.62693377417105" font-size="22" font-weight="600" text-anchor="middle" fill="#222222">0.82745</text>
+<text x="697.5" y="780" font-size="21" font-weight="400" text-anchor="middle" fill="#222222"><tspan x="697.5" dy="0">Final</tspan><tspan x="697.5" dy="26">30%</tspan></text>
+<text x="470.0" y="832" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">Onset proxy</text>
+<text x="1310.0" y="145" font-size="31" font-weight="600" text-anchor="middle" fill="#222222">ROC-AUC</text>
+<line x1="1050" y1="180" x2="1050" y2="740" stroke="#222222" stroke-width="3"/>
+<line x1="1050" y1="740" x2="1635" y2="740" stroke="#222222" stroke-width="3"/>
+<line x1="1050" y1="740.0" x2="1635" y2="740.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1035" y="748.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">0.0</text>
+<line x1="1050" y1="628.0" x2="1635" y2="628.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1035" y="636.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">0.2</text>
+<line x1="1050" y1="516.0" x2="1635" y2="516.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1035" y="524.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">0.4</text>
+<line x1="1050" y1="404.0" x2="1635" y2="404.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1035" y="412.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">0.6</text>
+<line x1="1050" y1="292.0" x2="1635" y2="292.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1035" y="300.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">0.8</text>
+<line x1="1050" y1="180.0" x2="1635" y2="180.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1035" y="188.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">1.0</text>
+<circle cx="1147.5" cy="209.33247488013535" r="16" fill="#CC79A7" stroke="#222222" stroke-width="2"/>
+<text x="1147.5" y="185.33247488013535" font-size="22" font-weight="600" text-anchor="middle" fill="#222222">0.94762</text>
+<text x="1147.5" y="780" font-size="21" font-weight="400" text-anchor="middle" fill="#222222"><tspan x="1147.5" dy="0">Final</tspan><tspan x="1147.5" dy="26">10%</tspan></text>
+<circle cx="1342.5" cy="221.03012944078273" r="16" fill="#CC79A7" stroke="#222222" stroke-width="2"/>
+<text x="1342.5" y="197.03012944078273" font-size="22" font-weight="600" text-anchor="middle" fill="#222222">0.92673</text>
+<text x="1342.5" y="780" font-size="21" font-weight="400" text-anchor="middle" fill="#222222"><tspan x="1342.5" dy="0">Final</tspan><tspan x="1342.5" dy="26">20%</tspan></text>
+<circle cx="1537.5" cy="254.1573724548158" r="16" fill="#CC79A7" stroke="#222222" stroke-width="2"/>
+<text x="1537.5" y="230.1573724548158" font-size="22" font-weight="600" text-anchor="middle" fill="#222222">0.86758</text>
+<text x="1537.5" y="780" font-size="21" font-weight="400" text-anchor="middle" fill="#222222"><tspan x="1537.5" dy="0">Final</tspan><tspan x="1537.5" dy="26">30%</tspan></text>
+<text x="1310.0" y="832" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">Onset proxy</text>
+<text x="900.0" y="860" font-size="22" font-weight="400" text-anchor="middle" fill="#6B7280">PR-AUC and ROC-AUC are pooled-window ranking metrics under explicit proxy labels; no curves or uncertainty intervals are inferred.</text>
+</svg>

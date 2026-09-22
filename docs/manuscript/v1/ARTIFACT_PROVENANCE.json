@@ -1,0 +1,1123 @@
+{
+  "allowlisted_inputs": [
+    {
+      "path": "docs/manuscript/v1/EVIDENCE_MAP.md",
+      "sha256": "53fd13d5e4a901dd7496a5565c95aa31840f28031fc4109b3f98c2b4c5e617e8"
+    },
+    {
+      "path": "docs/manuscript/v1/FIGURE_TABLE_PLAN.md",
+      "sha256": "a9e1eedb34a901145fe91b7871135b8c3925df4e6517e199da613155d59cf4dc"
+    },
+    {
+      "path": "configs/splits/fd002-primary-v1.json",
+      "sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327"
+    },
+    {
+      "path": "configs/baselines/fd002-classical-baselines-v1.json",
+      "sha256": "c565bc1ab540da4416deabc64d43bdc9bcb43f222f42325e9cd1157b5e67c697"
+    },
+    {
+      "path": "configs/lstm/fd002-lstm-final-refit-results-v1.json",
+      "sha256": "7567d86b9f78fa2913a3d83025a1d5a71af1c887d6f4ec296d7527a1947bd09e"
+    },
+    {
+      "path": "configs/alerting/fd002-alert-policy-study-protocol-v2.json",
+      "sha256": "47f165b7c35b772ee776e938d10dffd4af24dc3d069f34581ee11391918d6ff5"
+    },
+    {
+      "path": "configs/alerting/fd002-alert-policy-study-results-v1.json",
+      "sha256": "57080e52d05d6b95747c831fcf819a606d334cf874257421847a5c24aacb8ac2"
+    },
+    {
+      "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+      "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+    },
+    {
+      "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+      "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+    },
+    {
+      "path": "configs/inference/fd002-frozen-inference-protocol-v1.json",
+      "sha256": "1c5f68d818405126655b298b9010de2255a42f5740aa4d75068be67c110d03e8"
+    },
+    {
+      "path": "reports/baselines_v2/selected_models.csv",
+      "sha256": "c4ad604a12bb4cf376c474bf22bf25c49a35202b60f022eb49399e879dfdcc9a"
+    },
+    {
+      "path": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/detector_policy_metrics.csv",
+      "sha256": "e8be6f21bab19a1cd4723481d84db82885940641b79275da49d7b6202190f89e"
+    },
+    {
+      "path": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/ranking_metrics.csv",
+      "sha256": "4200bb89ddaa57a4e129db2dba723198a5e603b298988d7d87516df2f2ec679b"
+    },
+    {
+      "path": "docs/research/CORE_MANUSCRIPT_EVIDENCE_V1.json",
+      "sha256": "57e80c8a0f1f917170047e82d5b8757aa44f33e1127c97bbc9e751d75046c38b"
+    },
+    {
+      "path": "docs/research/core_literature_comparability_v1.json",
+      "sha256": "ee3ae56ade7a9525b5180ea1f8ff0c3ff4c46586213439a2d52f19399e381701"
+    },
+    {
+      "path": "docs/research/MANUSCRIPT_CORE_CITATIONS_V1.bib",
+      "sha256": "6fdf7284e3883b28329852b89b3de1b9c86ab181a63d112d5c4825c06177fa13"
+    },
+    {
+      "path": "src/turbofan_anomaly/data/preprocessing.py",
+      "sha256": "6c46b7d2e91f143a27fcc5ecc5b7abd8ac55ddc9403ee8e26aa6bc24f6d10b83"
+    },
+    {
+      "path": "src/turbofan_anomaly/data/metadata.py",
+      "sha256": "78f4dcb4c57c66a4b056184ba55f18ee81dad916e4527be2c749d62b9b95b317"
+    },
+    {
+      "path": "src/turbofan_anomaly/data/windows.py",
+      "sha256": "7062c993b8be26521dd2783fcbb591e8f66ca5377cf1395c76cb2bbe5b39472a"
+    },
+    {
+      "path": "src/turbofan_anomaly/models/classical.py",
+      "sha256": "6b01badcac5f47c46414956e439d13060d84d143859fb74a8a8b31fd742f66ad"
+    },
+    {
+      "path": "src/turbofan_anomaly/models/lstm_training.py",
+      "sha256": "60574bb62b990eeaf198421efa3591beadb076029de8c1a48f64a68689ed05c8"
+    },
+    {
+      "path": "src/turbofan_anomaly/alerting/calibration.py",
+      "sha256": "9834b20ac27308bc7f727176ca9aa268da3b4d8506cf3b0fbe9ae3ebe04bf804"
+    },
+    {
+      "path": "src/turbofan_anomaly/alerting/thresholds.py",
+      "sha256": "62c97d8a5cfe52f9b0872760b822b122d7195215633dac09d2a4c5a7efb3e9b9"
+    },
+    {
+      "path": "src/turbofan_anomaly/alerting/persistence.py",
+      "sha256": "83588062395a26cf8530d6d3620847364bdaaf26d558d6d845f0066c284a62a5"
+    },
+    {
+      "path": "src/turbofan_anomaly/evaluation/alerts.py",
+      "sha256": "9fe6855d2d81c1746fa953cd06dbfb7c2eec92fd2de14291ccfd50c6a50f6905"
+    },
+    {
+      "path": "src/turbofan_anomaly/evaluation/proxies.py",
+      "sha256": "d6a8cabafb17416c925a40e7fa7e3279ec6345f35f966cbf5445840bb41e50a7"
+    },
+    {
+      "path": "src/turbofan_anomaly/evaluation/ranking.py",
+      "sha256": "c99c0f773b93707b4094023c98807f0cb3f7a41e2fd8ee2402b8726ceed88cd4"
+    },
+    {
+      "path": "src/turbofan_anomaly/explainability/pca_attribution.py",
+      "sha256": "27770be0f43dfdd2e17def953b778f4d3c0e25b2adc9ca4ef6377b32eb8e7d16"
+    },
+    {
+      "path": "src/turbofan_anomaly/inference/pipeline.py",
+      "sha256": "dea5d4c4b1d84bc5868f9deb4b2cb61af29265e349551835486d78758b175a79"
+    }
+  ],
+  "artifacts": [
+    {
+      "bytes": 2363,
+      "path": "docs/manuscript/v1/BUILD.md",
+      "sha256": "79b18d2b54fe12fce26ec8f5e033590aa983e0fcf477d6abd442250d3b2cdf23",
+      "sources": [
+        {
+          "path": "docs/manuscript/v1/EVIDENCE_MAP.md",
+          "selector": "manuscript artifact requirements and evidence routing",
+          "sha256": "53fd13d5e4a901dd7496a5565c95aa31840f28031fc4109b3f98c2b4c5e617e8"
+        },
+        {
+          "path": "docs/manuscript/v1/FIGURE_TABLE_PLAN.md",
+          "selector": "manuscript artifact requirements and evidence routing",
+          "sha256": "a9e1eedb34a901145fe91b7871135b8c3925df4e6517e199da613155d59cf4dc"
+        }
+      ]
+    },
+    {
+      "bytes": 5820,
+      "path": "docs/manuscript/v1/CAPTIONS.md",
+      "sha256": "8d0c36a13152cf313023d048552bad95e5a77f3de940ba341a6c7ed95846f92b",
+      "sources": [
+        {
+          "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+          "selector": "preprocessing, primary, comparator, evaluation",
+          "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+        },
+        {
+          "path": "configs/inference/fd002-frozen-inference-protocol-v1.json",
+          "selector": "windowing, pca_score_and_attribution, frozen_policy",
+          "sha256": "1c5f68d818405126655b298b9010de2255a42f5740aa4d75068be67c110d03e8"
+        },
+        {
+          "path": "src/turbofan_anomaly/data/preprocessing.py",
+          "selector": "RegimeSensorPreprocessor.fit/transform",
+          "sha256": "6c46b7d2e91f143a27fcc5ecc5b7abd8ac55ddc9403ee8e26aa6bc24f6d10b83"
+        },
+        {
+          "path": "src/turbofan_anomaly/data/metadata.py",
+          "selector": "assign_endpoint_operating_modes",
+          "sha256": "78f4dcb4c57c66a4b056184ba55f18ee81dad916e4527be2c749d62b9b95b317"
+        },
+        {
+          "path": "src/turbofan_anomaly/data/windows.py",
+          "selector": "summary_features",
+          "sha256": "7062c993b8be26521dd2783fcbb591e8f66ca5377cf1395c76cb2bbe5b39472a"
+        },
+        {
+          "path": "src/turbofan_anomaly/models/classical.py",
+          "selector": "ClassicalAnomalyModel.fit/_raw_scores_scaled/score",
+          "sha256": "6b01badcac5f47c46414956e439d13060d84d143859fb74a8a8b31fd742f66ad"
+        },
+        {
+          "path": "src/turbofan_anomaly/alerting/calibration.py",
+          "selector": "EmpiricalCDFCalibrator",
+          "sha256": "9834b20ac27308bc7f727176ca9aa268da3b4d8506cf3b0fbe9ae3ebe04bf804"
+        },
+        {
+          "path": "src/turbofan_anomaly/alerting/persistence.py",
+          "selector": "apply_alert_policy",
+          "sha256": "83588062395a26cf8530d6d3620847364bdaaf26d558d6d845f0066c284a62a5"
+        },
+        {
+          "path": "src/turbofan_anomaly/explainability/pca_attribution.py",
+          "selector": "attribute_pca_reconstruction",
+          "sha256": "27770be0f43dfdd2e17def953b778f4d3c0e25b2adc9ca4ef6377b32eb8e7d16"
+        },
+        {
+          "path": "src/turbofan_anomaly/models/lstm_training.py",
+          "selector": "aligned_calibrated_score_ensemble",
+          "sha256": "60574bb62b990eeaf198421efa3591beadb076029de8c1a48f64a68689ed05c8"
+        },
+        {
+          "path": "configs/splits/fd002-primary-v1.json",
+          "selector": "split and engines",
+          "sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327"
+        },
+        {
+          "path": "configs/alerting/fd002-alert-policy-study-protocol-v2.json",
+          "selector": "selection_objective, state_contract, metric_contract",
+          "sha256": "47f165b7c35b772ee776e938d10dffd4af24dc3d069f34581ee11391918d6ff5"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+          "selector": "partition, access_boundary, primary",
+          "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "status, population, boundary booleans",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results, target_attainment",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        },
+        {
+          "path": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/detector_policy_metrics.csv",
+          "selector": "pca_reconstruction endpoint rows",
+          "sha256": "e8be6f21bab19a1cd4723481d84db82885940641b79275da49d7b6202190f89e"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results.pr_auc/roc_auc",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        },
+        {
+          "path": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/ranking_metrics.csv",
+          "selector": "pca_reconstruction endpoint rows",
+          "sha256": "4200bb89ddaa57a4e129db2dba723198a5e603b298988d7d87516df2f2ec679b"
+        },
+        {
+          "path": "src/turbofan_anomaly/evaluation/ranking.py",
+          "selector": "proxy_ranking_metrics",
+          "sha256": "c99c0f773b93707b4094023c98807f0cb3f7a41e2fd8ee2402b8726ceed88cd4"
+        },
+        {
+          "path": "configs/alerting/fd002-alert-policy-study-results-v1.json",
+          "selector": "score_reproduction",
+          "sha256": "57080e52d05d6b95747c831fcf819a606d334cf874257421847a5c24aacb8ac2"
+        },
+        {
+          "path": "configs/alerting/fd002-alert-policy-study-protocol-v2.json",
+          "selector": "score_sources, selection_objective",
+          "sha256": "47f165b7c35b772ee776e938d10dffd4af24dc3d069f34581ee11391918d6ff5"
+        },
+        {
+          "path": "configs/splits/fd002-primary-v1.json",
+          "selector": "split.counts, engines[].cycle_count",
+          "sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327"
+        },
+        {
+          "path": "configs/baselines/fd002-classical-baselines-v1.json",
+          "selector": "sequence_shapes.p1_k6",
+          "sha256": "c565bc1ab540da4416deabc64d43bdc9bcb43f222f42325e9cd1157b5e67c697"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "population",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+          "selector": "preprocessing, primary, comparator",
+          "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+        },
+        {
+          "path": "docs/research/core_literature_comparability_v1.json",
+          "selector": "rows for LIT-010,013,007,008,009,012,018,006",
+          "sha256": "ee3ae56ade7a9525b5180ea1f8ff0c3ff4c46586213439a2d52f19399e381701"
+        },
+        {
+          "path": "docs/research/CORE_MANUSCRIPT_EVIDENCE_V1.json",
+          "selector": "papers and numerical_values for selected rows",
+          "sha256": "57e80c8a0f1f917170047e82d5b8757aa44f33e1127c97bbc9e751d75046c38b"
+        },
+        {
+          "path": "docs/research/MANUSCRIPT_CORE_CITATIONS_V1.bib",
+          "selector": "core010, core013, core007, core008, core009, core012, core018, core006",
+          "sha256": "6fdf7284e3883b28329852b89b3de1b9c86ab181a63d112d5c4825c06177fa13"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        }
+      ]
+    },
+    {
+      "bytes": 1422,
+      "path": "docs/manuscript/v1/figure_sources/experimental_protocol.dot",
+      "sha256": "445ff1806c13791a9158b1a1e6749b5d215e78e6361810e283a5a700adae941b",
+      "sources": [
+        {
+          "path": "configs/splits/fd002-primary-v1.json",
+          "selector": "split and engines",
+          "sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327"
+        },
+        {
+          "path": "configs/alerting/fd002-alert-policy-study-protocol-v2.json",
+          "selector": "selection_objective, state_contract, metric_contract",
+          "sha256": "47f165b7c35b772ee776e938d10dffd4af24dc3d069f34581ee11391918d6ff5"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+          "selector": "partition, access_boundary, primary",
+          "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "status, population, boundary booleans",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        }
+      ]
+    },
+    {
+      "bytes": 107149,
+      "path": "docs/manuscript/v1/figure_sources/figure_specs.json",
+      "sha256": "711250da5e55124cba7c0457281b42358f1e5cef75d0a0ff4ae3a8e63afb3419",
+      "sources": [
+        {
+          "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+          "selector": "preprocessing, primary, comparator, evaluation",
+          "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+        },
+        {
+          "path": "configs/inference/fd002-frozen-inference-protocol-v1.json",
+          "selector": "windowing, pca_score_and_attribution, frozen_policy",
+          "sha256": "1c5f68d818405126655b298b9010de2255a42f5740aa4d75068be67c110d03e8"
+        },
+        {
+          "path": "src/turbofan_anomaly/data/preprocessing.py",
+          "selector": "RegimeSensorPreprocessor.fit/transform",
+          "sha256": "6c46b7d2e91f143a27fcc5ecc5b7abd8ac55ddc9403ee8e26aa6bc24f6d10b83"
+        },
+        {
+          "path": "src/turbofan_anomaly/data/metadata.py",
+          "selector": "assign_endpoint_operating_modes",
+          "sha256": "78f4dcb4c57c66a4b056184ba55f18ee81dad916e4527be2c749d62b9b95b317"
+        },
+        {
+          "path": "src/turbofan_anomaly/data/windows.py",
+          "selector": "summary_features",
+          "sha256": "7062c993b8be26521dd2783fcbb591e8f66ca5377cf1395c76cb2bbe5b39472a"
+        },
+        {
+          "path": "src/turbofan_anomaly/models/classical.py",
+          "selector": "ClassicalAnomalyModel.fit/_raw_scores_scaled/score",
+          "sha256": "6b01badcac5f47c46414956e439d13060d84d143859fb74a8a8b31fd742f66ad"
+        },
+        {
+          "path": "src/turbofan_anomaly/alerting/calibration.py",
+          "selector": "EmpiricalCDFCalibrator",
+          "sha256": "9834b20ac27308bc7f727176ca9aa268da3b4d8506cf3b0fbe9ae3ebe04bf804"
+        },
+        {
+          "path": "src/turbofan_anomaly/alerting/persistence.py",
+          "selector": "apply_alert_policy",
+          "sha256": "83588062395a26cf8530d6d3620847364bdaaf26d558d6d845f0066c284a62a5"
+        },
+        {
+          "path": "src/turbofan_anomaly/explainability/pca_attribution.py",
+          "selector": "attribute_pca_reconstruction",
+          "sha256": "27770be0f43dfdd2e17def953b778f4d3c0e25b2adc9ca4ef6377b32eb8e7d16"
+        },
+        {
+          "path": "src/turbofan_anomaly/models/lstm_training.py",
+          "selector": "aligned_calibrated_score_ensemble",
+          "sha256": "60574bb62b990eeaf198421efa3591beadb076029de8c1a48f64a68689ed05c8"
+        },
+        {
+          "path": "configs/splits/fd002-primary-v1.json",
+          "selector": "split and engines",
+          "sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327"
+        },
+        {
+          "path": "configs/alerting/fd002-alert-policy-study-protocol-v2.json",
+          "selector": "selection_objective, state_contract, metric_contract",
+          "sha256": "47f165b7c35b772ee776e938d10dffd4af24dc3d069f34581ee11391918d6ff5"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+          "selector": "partition, access_boundary, primary",
+          "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "status, population, boundary booleans",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results, target_attainment",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        },
+        {
+          "path": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/detector_policy_metrics.csv",
+          "selector": "pca_reconstruction endpoint rows",
+          "sha256": "e8be6f21bab19a1cd4723481d84db82885940641b79275da49d7b6202190f89e"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results.pr_auc/roc_auc",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        },
+        {
+          "path": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/ranking_metrics.csv",
+          "selector": "pca_reconstruction endpoint rows",
+          "sha256": "4200bb89ddaa57a4e129db2dba723198a5e603b298988d7d87516df2f2ec679b"
+        },
+        {
+          "path": "src/turbofan_anomaly/evaluation/ranking.py",
+          "selector": "proxy_ranking_metrics",
+          "sha256": "c99c0f773b93707b4094023c98807f0cb3f7a41e2fd8ee2402b8726ceed88cd4"
+        },
+        {
+          "path": "configs/alerting/fd002-alert-policy-study-results-v1.json",
+          "selector": "score_reproduction",
+          "sha256": "57080e52d05d6b95747c831fcf819a606d334cf874257421847a5c24aacb8ac2"
+        },
+        {
+          "path": "configs/alerting/fd002-alert-policy-study-protocol-v2.json",
+          "selector": "score_sources, selection_objective",
+          "sha256": "47f165b7c35b772ee776e938d10dffd4af24dc3d069f34581ee11391918d6ff5"
+        },
+        {
+          "path": "configs/splits/fd002-primary-v1.json",
+          "selector": "split.counts, engines[].cycle_count",
+          "sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327"
+        },
+        {
+          "path": "configs/baselines/fd002-classical-baselines-v1.json",
+          "selector": "sequence_shapes.p1_k6",
+          "sha256": "c565bc1ab540da4416deabc64d43bdc9bcb43f222f42325e9cd1157b5e67c697"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "population",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+          "selector": "preprocessing, primary, comparator",
+          "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+        },
+        {
+          "path": "docs/research/core_literature_comparability_v1.json",
+          "selector": "rows for LIT-010,013,007,008,009,012,018,006",
+          "sha256": "ee3ae56ade7a9525b5180ea1f8ff0c3ff4c46586213439a2d52f19399e381701"
+        },
+        {
+          "path": "docs/research/CORE_MANUSCRIPT_EVIDENCE_V1.json",
+          "selector": "papers and numerical_values for selected rows",
+          "sha256": "57e80c8a0f1f917170047e82d5b8757aa44f33e1127c97bbc9e751d75046c38b"
+        },
+        {
+          "path": "docs/research/MANUSCRIPT_CORE_CITATIONS_V1.bib",
+          "selector": "core010, core013, core007, core008, core009, core012, core018, core006",
+          "sha256": "6fdf7284e3883b28329852b89b3de1b9c86ab181a63d112d5c4825c06177fa13"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        }
+      ]
+    },
+    {
+      "bytes": 2135,
+      "path": "docs/manuscript/v1/figure_sources/system_architecture.dot",
+      "sha256": "a510d32c74afde90a28f21e5f4d60798e7ab7d9e491669407231f501306c7a9c",
+      "sources": [
+        {
+          "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+          "selector": "preprocessing, primary, comparator, evaluation",
+          "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+        },
+        {
+          "path": "configs/inference/fd002-frozen-inference-protocol-v1.json",
+          "selector": "windowing, pca_score_and_attribution, frozen_policy",
+          "sha256": "1c5f68d818405126655b298b9010de2255a42f5740aa4d75068be67c110d03e8"
+        },
+        {
+          "path": "src/turbofan_anomaly/data/preprocessing.py",
+          "selector": "RegimeSensorPreprocessor.fit/transform",
+          "sha256": "6c46b7d2e91f143a27fcc5ecc5b7abd8ac55ddc9403ee8e26aa6bc24f6d10b83"
+        },
+        {
+          "path": "src/turbofan_anomaly/data/metadata.py",
+          "selector": "assign_endpoint_operating_modes",
+          "sha256": "78f4dcb4c57c66a4b056184ba55f18ee81dad916e4527be2c749d62b9b95b317"
+        },
+        {
+          "path": "src/turbofan_anomaly/data/windows.py",
+          "selector": "summary_features",
+          "sha256": "7062c993b8be26521dd2783fcbb591e8f66ca5377cf1395c76cb2bbe5b39472a"
+        },
+        {
+          "path": "src/turbofan_anomaly/models/classical.py",
+          "selector": "ClassicalAnomalyModel.fit/_raw_scores_scaled/score",
+          "sha256": "6b01badcac5f47c46414956e439d13060d84d143859fb74a8a8b31fd742f66ad"
+        },
+        {
+          "path": "src/turbofan_anomaly/alerting/calibration.py",
+          "selector": "EmpiricalCDFCalibrator",
+          "sha256": "9834b20ac27308bc7f727176ca9aa268da3b4d8506cf3b0fbe9ae3ebe04bf804"
+        },
+        {
+          "path": "src/turbofan_anomaly/alerting/persistence.py",
+          "selector": "apply_alert_policy",
+          "sha256": "83588062395a26cf8530d6d3620847364bdaaf26d558d6d845f0066c284a62a5"
+        },
+        {
+          "path": "src/turbofan_anomaly/explainability/pca_attribution.py",
+          "selector": "attribute_pca_reconstruction",
+          "sha256": "27770be0f43dfdd2e17def953b778f4d3c0e25b2adc9ca4ef6377b32eb8e7d16"
+        },
+        {
+          "path": "src/turbofan_anomaly/models/lstm_training.py",
+          "selector": "aligned_calibrated_score_ensemble",
+          "sha256": "60574bb62b990eeaf198421efa3591beadb076029de8c1a48f64a68689ed05c8"
+        }
+      ]
+    },
+    {
+      "bytes": 200020,
+      "path": "docs/manuscript/v1/figures/figure_01_system_architecture.png",
+      "sha256": "382d57be17b6295b2ef4fb0ae8c968ee5c602fe94bfdf481b8f52b60bc2039ee",
+      "sources": [
+        {
+          "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+          "selector": "preprocessing, primary, comparator, evaluation",
+          "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+        },
+        {
+          "path": "configs/inference/fd002-frozen-inference-protocol-v1.json",
+          "selector": "windowing, pca_score_and_attribution, frozen_policy",
+          "sha256": "1c5f68d818405126655b298b9010de2255a42f5740aa4d75068be67c110d03e8"
+        },
+        {
+          "path": "src/turbofan_anomaly/data/preprocessing.py",
+          "selector": "RegimeSensorPreprocessor.fit/transform",
+          "sha256": "6c46b7d2e91f143a27fcc5ecc5b7abd8ac55ddc9403ee8e26aa6bc24f6d10b83"
+        },
+        {
+          "path": "src/turbofan_anomaly/data/metadata.py",
+          "selector": "assign_endpoint_operating_modes",
+          "sha256": "78f4dcb4c57c66a4b056184ba55f18ee81dad916e4527be2c749d62b9b95b317"
+        },
+        {
+          "path": "src/turbofan_anomaly/data/windows.py",
+          "selector": "summary_features",
+          "sha256": "7062c993b8be26521dd2783fcbb591e8f66ca5377cf1395c76cb2bbe5b39472a"
+        },
+        {
+          "path": "src/turbofan_anomaly/models/classical.py",
+          "selector": "ClassicalAnomalyModel.fit/_raw_scores_scaled/score",
+          "sha256": "6b01badcac5f47c46414956e439d13060d84d143859fb74a8a8b31fd742f66ad"
+        },
+        {
+          "path": "src/turbofan_anomaly/alerting/calibration.py",
+          "selector": "EmpiricalCDFCalibrator",
+          "sha256": "9834b20ac27308bc7f727176ca9aa268da3b4d8506cf3b0fbe9ae3ebe04bf804"
+        },
+        {
+          "path": "src/turbofan_anomaly/alerting/persistence.py",
+          "selector": "apply_alert_policy",
+          "sha256": "83588062395a26cf8530d6d3620847364bdaaf26d558d6d845f0066c284a62a5"
+        },
+        {
+          "path": "src/turbofan_anomaly/explainability/pca_attribution.py",
+          "selector": "attribute_pca_reconstruction",
+          "sha256": "27770be0f43dfdd2e17def953b778f4d3c0e25b2adc9ca4ef6377b32eb8e7d16"
+        },
+        {
+          "path": "src/turbofan_anomaly/models/lstm_training.py",
+          "selector": "aligned_calibrated_score_ensemble",
+          "sha256": "60574bb62b990eeaf198421efa3591beadb076029de8c1a48f64a68689ed05c8"
+        }
+      ]
+    },
+    {
+      "bytes": 18549,
+      "path": "docs/manuscript/v1/figures/figure_01_system_architecture.svg",
+      "sha256": "44ef30120c35d23111b746b649d631ce136e4716ed05069e3c3f3cf76ca9ad15",
+      "sources": [
+        {
+          "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+          "selector": "preprocessing, primary, comparator, evaluation",
+          "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+        },
+        {
+          "path": "configs/inference/fd002-frozen-inference-protocol-v1.json",
+          "selector": "windowing, pca_score_and_attribution, frozen_policy",
+          "sha256": "1c5f68d818405126655b298b9010de2255a42f5740aa4d75068be67c110d03e8"
+        },
+        {
+          "path": "src/turbofan_anomaly/data/preprocessing.py",
+          "selector": "RegimeSensorPreprocessor.fit/transform",
+          "sha256": "6c46b7d2e91f143a27fcc5ecc5b7abd8ac55ddc9403ee8e26aa6bc24f6d10b83"
+        },
+        {
+          "path": "src/turbofan_anomaly/data/metadata.py",
+          "selector": "assign_endpoint_operating_modes",
+          "sha256": "78f4dcb4c57c66a4b056184ba55f18ee81dad916e4527be2c749d62b9b95b317"
+        },
+        {
+          "path": "src/turbofan_anomaly/data/windows.py",
+          "selector": "summary_features",
+          "sha256": "7062c993b8be26521dd2783fcbb591e8f66ca5377cf1395c76cb2bbe5b39472a"
+        },
+        {
+          "path": "src/turbofan_anomaly/models/classical.py",
+          "selector": "ClassicalAnomalyModel.fit/_raw_scores_scaled/score",
+          "sha256": "6b01badcac5f47c46414956e439d13060d84d143859fb74a8a8b31fd742f66ad"
+        },
+        {
+          "path": "src/turbofan_anomaly/alerting/calibration.py",
+          "selector": "EmpiricalCDFCalibrator",
+          "sha256": "9834b20ac27308bc7f727176ca9aa268da3b4d8506cf3b0fbe9ae3ebe04bf804"
+        },
+        {
+          "path": "src/turbofan_anomaly/alerting/persistence.py",
+          "selector": "apply_alert_policy",
+          "sha256": "83588062395a26cf8530d6d3620847364bdaaf26d558d6d845f0066c284a62a5"
+        },
+        {
+          "path": "src/turbofan_anomaly/explainability/pca_attribution.py",
+          "selector": "attribute_pca_reconstruction",
+          "sha256": "27770be0f43dfdd2e17def953b778f4d3c0e25b2adc9ca4ef6377b32eb8e7d16"
+        },
+        {
+          "path": "src/turbofan_anomaly/models/lstm_training.py",
+          "selector": "aligned_calibrated_score_ensemble",
+          "sha256": "60574bb62b990eeaf198421efa3591beadb076029de8c1a48f64a68689ed05c8"
+        }
+      ]
+    },
+    {
+      "bytes": 173576,
+      "path": "docs/manuscript/v1/figures/figure_02_experimental_protocol.png",
+      "sha256": "cde70b767232aef24fb67b1ab94293bd466e79350336c2528791502b9dbdfd2c",
+      "sources": [
+        {
+          "path": "configs/splits/fd002-primary-v1.json",
+          "selector": "split and engines",
+          "sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327"
+        },
+        {
+          "path": "configs/alerting/fd002-alert-policy-study-protocol-v2.json",
+          "selector": "selection_objective, state_contract, metric_contract",
+          "sha256": "47f165b7c35b772ee776e938d10dffd4af24dc3d069f34581ee11391918d6ff5"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+          "selector": "partition, access_boundary, primary",
+          "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "status, population, boundary booleans",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        }
+      ]
+    },
+    {
+      "bytes": 11924,
+      "path": "docs/manuscript/v1/figures/figure_02_experimental_protocol.svg",
+      "sha256": "8983382014b9cc247849a88790ce9cdce5831cbecfda5fa67938bf0f2e5b2fd6",
+      "sources": [
+        {
+          "path": "configs/splits/fd002-primary-v1.json",
+          "selector": "split and engines",
+          "sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327"
+        },
+        {
+          "path": "configs/alerting/fd002-alert-policy-study-protocol-v2.json",
+          "selector": "selection_objective, state_contract, metric_contract",
+          "sha256": "47f165b7c35b772ee776e938d10dffd4af24dc3d069f34581ee11391918d6ff5"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+          "selector": "partition, access_boundary, primary",
+          "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "status, population, boundary booleans",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        }
+      ]
+    },
+    {
+      "bytes": 72833,
+      "path": "docs/manuscript/v1/figures/figure_03_operational_results.png",
+      "sha256": "dfb92d0983a3130eadb717b82d89c6177c4efe75323dd6fc093843270ec01163",
+      "sources": [
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results, target_attainment",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        },
+        {
+          "path": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/detector_policy_metrics.csv",
+          "selector": "pca_reconstruction endpoint rows",
+          "sha256": "e8be6f21bab19a1cd4723481d84db82885940641b79275da49d7b6202190f89e"
+        }
+      ]
+    },
+    {
+      "bytes": 9994,
+      "path": "docs/manuscript/v1/figures/figure_03_operational_results.svg",
+      "sha256": "5ed421bb588e652afe2a7f5f76b550edbfeb69ff45a71c84a8634230f088f52b",
+      "sources": [
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results, target_attainment",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        },
+        {
+          "path": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/detector_policy_metrics.csv",
+          "selector": "pca_reconstruction endpoint rows",
+          "sha256": "e8be6f21bab19a1cd4723481d84db82885940641b79275da49d7b6202190f89e"
+        }
+      ]
+    },
+    {
+      "bytes": 63788,
+      "path": "docs/manuscript/v1/figures/figure_04_ranking_results.png",
+      "sha256": "9b494a838a3c139addb7d0d83e8f629b993586a9d6a3cfa7a6f3021baf7f8ca0",
+      "sources": [
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results.pr_auc/roc_auc",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        },
+        {
+          "path": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/ranking_metrics.csv",
+          "selector": "pca_reconstruction endpoint rows",
+          "sha256": "4200bb89ddaa57a4e129db2dba723198a5e603b298988d7d87516df2f2ec679b"
+        },
+        {
+          "path": "src/turbofan_anomaly/evaluation/ranking.py",
+          "selector": "proxy_ranking_metrics",
+          "sha256": "c99c0f773b93707b4094023c98807f0cb3f7a41e2fd8ee2402b8726ceed88cd4"
+        }
+      ]
+    },
+    {
+      "bytes": 6444,
+      "path": "docs/manuscript/v1/figures/figure_04_ranking_results.svg",
+      "sha256": "28c10c2da68ba14068cbb2e7561979e91e543d767ab9733c45ef4efc59e8f631",
+      "sources": [
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results.pr_auc/roc_auc",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        },
+        {
+          "path": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/ranking_metrics.csv",
+          "selector": "pca_reconstruction endpoint rows",
+          "sha256": "4200bb89ddaa57a4e129db2dba723198a5e603b298988d7d87516df2f2ec679b"
+        },
+        {
+          "path": "src/turbofan_anomaly/evaluation/ranking.py",
+          "selector": "proxy_ranking_metrics",
+          "sha256": "c99c0f773b93707b4094023c98807f0cb3f7a41e2fd8ee2402b8726ceed88cd4"
+        }
+      ]
+    },
+    {
+      "bytes": 100101,
+      "path": "docs/manuscript/v1/figures/figure_05_validation_model_comparison.png",
+      "sha256": "13a63722aff1f26f5321e432d2299ae95514ccf62a6f662e00ac0720bcc042e8",
+      "sources": [
+        {
+          "path": "configs/alerting/fd002-alert-policy-study-results-v1.json",
+          "selector": "score_reproduction",
+          "sha256": "57080e52d05d6b95747c831fcf819a606d334cf874257421847a5c24aacb8ac2"
+        },
+        {
+          "path": "configs/alerting/fd002-alert-policy-study-protocol-v2.json",
+          "selector": "score_sources, selection_objective",
+          "sha256": "47f165b7c35b772ee776e938d10dffd4af24dc3d069f34581ee11391918d6ff5"
+        }
+      ]
+    },
+    {
+      "bytes": 7697,
+      "path": "docs/manuscript/v1/figures/figure_05_validation_model_comparison.svg",
+      "sha256": "a2adbe85a13bb0a6482729947ab25143b079a72bdbb866b5feb6bbeb2f885029",
+      "sources": [
+        {
+          "path": "configs/alerting/fd002-alert-policy-study-results-v1.json",
+          "selector": "score_reproduction",
+          "sha256": "57080e52d05d6b95747c831fcf819a606d334cf874257421847a5c24aacb8ac2"
+        },
+        {
+          "path": "configs/alerting/fd002-alert-policy-study-protocol-v2.json",
+          "selector": "score_sources, selection_objective",
+          "sha256": "47f165b7c35b772ee776e938d10dffd4af24dc3d069f34581ee11391918d6ff5"
+        }
+      ]
+    },
+    {
+      "bytes": 724,
+      "path": "docs/manuscript/v1/tables/table_01_dataset_protocol_summary.csv",
+      "sha256": "d08b68f8f4a049bb92251fc0b44c309c71ad674be4aafa98479325bd42c05b51",
+      "sources": [
+        {
+          "path": "configs/splits/fd002-primary-v1.json",
+          "selector": "split.counts, engines[].cycle_count",
+          "sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327"
+        },
+        {
+          "path": "configs/baselines/fd002-classical-baselines-v1.json",
+          "selector": "sequence_shapes.p1_k6",
+          "sha256": "c565bc1ab540da4416deabc64d43bdc9bcb43f222f42325e9cd1157b5e67c697"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "population",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        }
+      ]
+    },
+    {
+      "bytes": 1160,
+      "path": "docs/manuscript/v1/tables/table_01_dataset_protocol_summary.md",
+      "sha256": "dc079eff831cf54714a083b5677e045612733e7dfcd5fd7518617be05ad5a51f",
+      "sources": [
+        {
+          "path": "configs/splits/fd002-primary-v1.json",
+          "selector": "split.counts, engines[].cycle_count",
+          "sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327"
+        },
+        {
+          "path": "configs/baselines/fd002-classical-baselines-v1.json",
+          "selector": "sequence_shapes.p1_k6",
+          "sha256": "c565bc1ab540da4416deabc64d43bdc9bcb43f222f42325e9cd1157b5e67c697"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "population",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        }
+      ]
+    },
+    {
+      "bytes": 1411,
+      "path": "docs/manuscript/v1/tables/table_01_dataset_protocol_summary.tex",
+      "sha256": "9f43df0ce3adcf205abb08c615cf62785b18f053b524b0246e92eaa502ec4baa",
+      "sources": [
+        {
+          "path": "configs/splits/fd002-primary-v1.json",
+          "selector": "split.counts, engines[].cycle_count",
+          "sha256": "953f6bee71022a644fc0e3e155f4c212bb2cc9a10794c2665c9d7d9cb6594327"
+        },
+        {
+          "path": "configs/baselines/fd002-classical-baselines-v1.json",
+          "selector": "sequence_shapes.p1_k6",
+          "sha256": "c565bc1ab540da4416deabc64d43bdc9bcb43f222f42325e9cd1157b5e67c697"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "population",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        }
+      ]
+    },
+    {
+      "bytes": 2798,
+      "path": "docs/manuscript/v1/tables/table_02_frozen_primary_policy.csv",
+      "sha256": "1f43b07a9c59f7a68ee8cf529ef642b220506303246454c976d34c520037e43a",
+      "sources": [
+        {
+          "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+          "selector": "preprocessing, primary, comparator",
+          "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+        },
+        {
+          "path": "configs/inference/fd002-frozen-inference-protocol-v1.json",
+          "selector": "windowing, pca_score_and_attribution, frozen_policy",
+          "sha256": "1c5f68d818405126655b298b9010de2255a42f5740aa4d75068be67c110d03e8"
+        },
+        {
+          "path": "src/turbofan_anomaly/alerting/persistence.py",
+          "selector": "apply_alert_policy",
+          "sha256": "83588062395a26cf8530d6d3620847364bdaaf26d558d6d845f0066c284a62a5"
+        }
+      ]
+    },
+    {
+      "bytes": 3278,
+      "path": "docs/manuscript/v1/tables/table_02_frozen_primary_policy.md",
+      "sha256": "b48ead71716dae0dad9754dd79e668070111b21b9072fd4fddb03f6de046815d",
+      "sources": [
+        {
+          "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+          "selector": "preprocessing, primary, comparator",
+          "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+        },
+        {
+          "path": "configs/inference/fd002-frozen-inference-protocol-v1.json",
+          "selector": "windowing, pca_score_and_attribution, frozen_policy",
+          "sha256": "1c5f68d818405126655b298b9010de2255a42f5740aa4d75068be67c110d03e8"
+        },
+        {
+          "path": "src/turbofan_anomaly/alerting/persistence.py",
+          "selector": "apply_alert_policy",
+          "sha256": "83588062395a26cf8530d6d3620847364bdaaf26d558d6d845f0066c284a62a5"
+        }
+      ]
+    },
+    {
+      "bytes": 3631,
+      "path": "docs/manuscript/v1/tables/table_02_frozen_primary_policy.tex",
+      "sha256": "83ddfa8c640ae0f0b835f4fe7d33744a17ef4ffab0abba7d0a2e550f3fc61455",
+      "sources": [
+        {
+          "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
+          "selector": "preprocessing, primary, comparator",
+          "sha256": "594278a3e81a8d98a979c946b33bebdadf7b51ae6301006d39ddaa84a77fe758"
+        },
+        {
+          "path": "configs/inference/fd002-frozen-inference-protocol-v1.json",
+          "selector": "windowing, pca_score_and_attribution, frozen_policy",
+          "sha256": "1c5f68d818405126655b298b9010de2255a42f5740aa4d75068be67c110d03e8"
+        },
+        {
+          "path": "src/turbofan_anomaly/alerting/persistence.py",
+          "selector": "apply_alert_policy",
+          "sha256": "83588062395a26cf8530d6d3620847364bdaaf26d558d6d845f0066c284a62a5"
+        }
+      ]
+    },
+    {
+      "bytes": 891,
+      "path": "docs/manuscript/v1/tables/table_03_confirmatory_results.csv",
+      "sha256": "ee252f2f44c41bcb782db54f8c4120a442f4605bcf9d5cd5f36dc7be298241eb",
+      "sources": [
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results, target_attainment",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        },
+        {
+          "path": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/detector_policy_metrics.csv",
+          "selector": "pca_reconstruction endpoint rows",
+          "sha256": "e8be6f21bab19a1cd4723481d84db82885940641b79275da49d7b6202190f89e"
+        }
+      ]
+    },
+    {
+      "bytes": 944,
+      "path": "docs/manuscript/v1/tables/table_03_confirmatory_results.md",
+      "sha256": "4833202fc0e551b3f32a00f6199609be71da6e7af7ca9325224fde64a5995ad7",
+      "sources": [
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results, target_attainment",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        },
+        {
+          "path": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/detector_policy_metrics.csv",
+          "selector": "pca_reconstruction endpoint rows",
+          "sha256": "e8be6f21bab19a1cd4723481d84db82885940641b79275da49d7b6202190f89e"
+        }
+      ]
+    },
+    {
+      "bytes": 1323,
+      "path": "docs/manuscript/v1/tables/table_03_confirmatory_results.tex",
+      "sha256": "d1061d54db9caac46b8ff9550b74b038ac1df1359500b80f192289296f1e429e",
+      "sources": [
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results, target_attainment",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        },
+        {
+          "path": "reports/final_evaluation_v2/fd002-confirmatory-internal-held-out-v1/detector_policy_metrics.csv",
+          "selector": "pca_reconstruction endpoint rows",
+          "sha256": "e8be6f21bab19a1cd4723481d84db82885940641b79275da49d7b6202190f89e"
+        }
+      ]
+    },
+    {
+      "bytes": 8834,
+      "path": "docs/manuscript/v1/tables/table_04_literature_comparison.csv",
+      "sha256": "7ce07c7416b2857d655e295f96481850e65ab0412bacc31ec05989f06e7ac65f",
+      "sources": [
+        {
+          "path": "docs/research/core_literature_comparability_v1.json",
+          "selector": "rows for LIT-010,013,007,008,009,012,018,006",
+          "sha256": "ee3ae56ade7a9525b5180ea1f8ff0c3ff4c46586213439a2d52f19399e381701"
+        },
+        {
+          "path": "docs/research/CORE_MANUSCRIPT_EVIDENCE_V1.json",
+          "selector": "papers and numerical_values for selected rows",
+          "sha256": "57e80c8a0f1f917170047e82d5b8757aa44f33e1127c97bbc9e751d75046c38b"
+        },
+        {
+          "path": "docs/research/MANUSCRIPT_CORE_CITATIONS_V1.bib",
+          "selector": "core010, core013, core007, core008, core009, core012, core018, core006",
+          "sha256": "6fdf7284e3883b28329852b89b3de1b9c86ab181a63d112d5c4825c06177fa13"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        }
+      ]
+    },
+    {
+      "bytes": 7956,
+      "path": "docs/manuscript/v1/tables/table_04_literature_comparison.md",
+      "sha256": "cb8f4c19c05491a2b52228dcb43b105b53b5c2b2369a21845e0c30cfab66e71b",
+      "sources": [
+        {
+          "path": "docs/research/core_literature_comparability_v1.json",
+          "selector": "rows for LIT-010,013,007,008,009,012,018,006",
+          "sha256": "ee3ae56ade7a9525b5180ea1f8ff0c3ff4c46586213439a2d52f19399e381701"
+        },
+        {
+          "path": "docs/research/CORE_MANUSCRIPT_EVIDENCE_V1.json",
+          "selector": "papers and numerical_values for selected rows",
+          "sha256": "57e80c8a0f1f917170047e82d5b8757aa44f33e1127c97bbc9e751d75046c38b"
+        },
+        {
+          "path": "docs/research/MANUSCRIPT_CORE_CITATIONS_V1.bib",
+          "selector": "core010, core013, core007, core008, core009, core012, core018, core006",
+          "sha256": "6fdf7284e3883b28329852b89b3de1b9c86ab181a63d112d5c4825c06177fa13"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        }
+      ]
+    },
+    {
+      "bytes": 8397,
+      "path": "docs/manuscript/v1/tables/table_04_literature_comparison.tex",
+      "sha256": "88263bcf05cd92a8e120ccdd8e62a3ce874f283d798887caea80de38c88d7130",
+      "sources": [
+        {
+          "path": "docs/research/core_literature_comparability_v1.json",
+          "selector": "rows for LIT-010,013,007,008,009,012,018,006",
+          "sha256": "ee3ae56ade7a9525b5180ea1f8ff0c3ff4c46586213439a2d52f19399e381701"
+        },
+        {
+          "path": "docs/research/CORE_MANUSCRIPT_EVIDENCE_V1.json",
+          "selector": "papers and numerical_values for selected rows",
+          "sha256": "57e80c8a0f1f917170047e82d5b8757aa44f33e1127c97bbc9e751d75046c38b"
+        },
+        {
+          "path": "docs/research/MANUSCRIPT_CORE_CITATIONS_V1.bib",
+          "selector": "core010, core013, core007, core008, core009, core012, core018, core006",
+          "sha256": "6fdf7284e3883b28329852b89b3de1b9c86ab181a63d112d5c4825c06177fa13"
+        },
+        {
+          "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
+          "selector": "primary_endpoint_results",
+          "sha256": "3d733e0333fa2b815a130d5e5224a7e54004b9fb0bf161b1094897348cf91502"
+        }
+      ]
+    }
+  ],
+  "display_rounding": {
+    "coverage_percent_decimals": 2,
+    "delay_cycles": "integer unless half-cycle median",
+    "far_per_1000_decimals": 3,
+    "far_percent_decimals": 4,
+    "pr_auc_decimals": 5,
+    "roc_auc_decimals": 5
+  },
+  "evidence_base_commit": "4bcab1d13a1d44dccbedb0cecd7aa99ddea7ade1",
+  "generation_command": "python scripts/manuscript/generate_manuscript_v1_assets.py --repo-root .",
+  "generator_files": [
+    {
+      "path": "scripts/manuscript/generate_manuscript_v1_assets.py",
+      "sha256": "551e572a6f08ca14b3f7a5f5374236bb829650de17ad2d8825f952bd4be50c9c"
+    },
+    {
+      "path": "scripts/manuscript/render_manuscript_v1_previews.ps1",
+      "sha256": "b13842701ac9912784c0b10ba1e65e0926471b9b567bff3debd453471d8c2ea7"
+    },
+    {
+      "path": "scripts/manuscript/verify_manuscript_v1_assets.py",
+      "sha256": "c4910af4216dea2850238f383d6faa8ce4cc2a1009981bac7a9cb3aad7772a30"
+    }
+  ],
+  "png_renderer_log": "Rendered C:\\Users\\shiva_lajayge\\turbofan-clean-v3\\docs\\manuscript\\v1\\figures\\figure_01_system_architecture.png [2244x1476, 300 dpi]\nRendered C:\\Users\\shiva_lajayge\\turbofan-clean-v3\\docs\\manuscript\\v1\\figures\\figure_02_experimental_protocol.png [2244x1476, 300 dpi]\nRendered C:\\Users\\shiva_lajayge\\turbofan-clean-v3\\docs\\manuscript\\v1\\figures\\figure_03_operational_results.png [2244x921, 300 dpi]\nRendered C:\\Users\\shiva_lajayge\\turbofan-clean-v3\\docs\\manuscript\\v1\\figures\\figure_04_ranking_results.png [2126x1087, 300 dpi]\nRendered C:\\Users\\shiva_lajayge\\turbofan-clean-v3\\docs\\manuscript\\v1\\figures\\figure_05_validation_model_comparison.png [2244x1276, 300 dpi]",
+  "schema_version": "1.0.0",
+  "scientific_boundary": {
+    "datasets_opened": false,
+    "dependencies_changed": false,
+    "inference_or_training_run": false,
+    "metrics_recomputed_from_observations_or_score_traces": false,
+    "model_artifacts_opened": false,
+    "remote_refs_changed": false
+  },
+  "scope": "manuscript artifact generation from committed aggregate authorities only",
+  "self_record": {
+    "path": "docs/manuscript/v1/ARTIFACT_PROVENANCE.json",
+    "reason": "Self-hash omitted to avoid recursive content; verify this file through Git and git diff --check.",
+    "sha256": null
+  },
+  "software": {
+    "graphviz": "unavailable; DOT sources retained but not used for rendering",
+    "latex_engine": "unavailable; table fragments not compiled",
+    "matplotlib": "unavailable; not installed",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "png_renderer": "System.Drawing at 300 dpi",
+    "powershell": "5.1.26100.9444",
+    "python": "3.12.8",
+    "python_implementation": "CPython",
+    "svg_renderer": "Python standard library primitive renderer",
+    "system_drawing": "4.0.0.0"
+  }
+}

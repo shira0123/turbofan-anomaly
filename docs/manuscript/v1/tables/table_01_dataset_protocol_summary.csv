@@ -1,0 +1,5 @@
+partition,manifest_name,engines,cycle_rows,length_30_windows,role,fitting_allowed,evidence_status
+Training,train,156,32107,27583,"Fit preprocessing, detectors, calibrators, and training-reference thresholds",Yes—only registered training populations,Development/fitting
+Validation,validation,52,10873,9365,"Select K, models, and alert policy under registered proxies",No learned-state fitting,Validation/model selection
+Internal held-out,test,52,10779,9271,First valid frozen confirmatory evaluation,"No refit, recalibration, reselection, or fusion",Completed internal held-out
+Official NASA test,external/deferred,NR,NR,NR,Separately preregistered future external evaluation,Outside completed study,Not accessed; deferred

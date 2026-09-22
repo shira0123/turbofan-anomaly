@@ -1,0 +1,4 @@
+policy_id,proxy,false_positive_endpoints,healthy_endpoints,fp_over_healthy,far_per_1000,far_percent,detected_engines,engine_count,detected_over_engines,coverage_percent,median_delay_cycles,pr_auc,roc_auc,delay_population
+normalized_life_last_10pct_endpoint,Final 10%,265,8169,265/8169,32.43971110295018,3.2439711102950177,27,52,27/52,51.92307692307692,12.0,0.6026705075624872,0.9476205805711868,detected engines only; misses retained in coverage
+normalized_life_last_20pct_endpoint,Final 20%,67,7095,67/7095,9.443269908386187,0.9443269908386187,41,52,41/52,78.84615384615384,25.0,0.8097437092694553,0.926731911712888,detected engines only; misses retained in coverage
+normalized_life_last_30pct_endpoint,Final 30%,31,6016,31/6016,5.152925531914893,0.5152925531914894,44,52,44/52,84.61538461538461,42.5,0.8274519039746946,0.8675761206164003,detected engines only; misses retained in coverage

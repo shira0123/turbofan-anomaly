@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="190mm" height="78mm" viewBox="0 0 2400 980" role="img" aria-labelledby="title desc">
+<title id="title">Frozen PCA internal held-out operational results</title>
+<desc id="desc">Three panels show endpoint FAR percentage, engine coverage percentage, and median delay cycles for final-10%, final-20%, and final-30% endpoint proxies.</desc>
+<style>text{font-family:Arial,Helvetica,sans-serif} .dash{stroke-dasharray:12 9}</style>
+<rect x="0" y="0" width="2400" height="980" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="1200.0" y="55" font-size="38" font-weight="600" text-anchor="middle" fill="#222222">Frozen PCA internal held-out operational results</text>
+<text x="1200.0" y="95" font-size="25" font-weight="400" text-anchor="middle" fill="#6B7280">Normalized-life endpoint proxies; 52 engines</text>
+<text x="445.0" y="150" font-size="29" font-weight="600" text-anchor="middle" fill="#222222">Endpoint FAR (%)</text>
+<line x1="200" y1="220" x2="200" y2="750" stroke="#222222" stroke-width="3"/>
+<line x1="200" y1="750" x2="755" y2="750" stroke="#222222" stroke-width="3"/>
+<line x1="200" y1="750.0" x2="755" y2="750.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="185" y="758.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">0.0</text>
+<line x1="200" y1="617.5" x2="755" y2="617.5" stroke="#E5E7EB" stroke-width="2"/>
+<text x="185" y="625.5" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">1.6</text>
+<line x1="200" y1="485.0" x2="755" y2="485.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="185" y="493.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">3.2</text>
+<line x1="200" y1="352.5" x2="755" y2="352.5" stroke="#E5E7EB" stroke-width="2"/>
+<text x="185" y="360.5" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">4.9</text>
+<line x1="200" y1="220.0" x2="755" y2="220.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="185" y="228.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">6.5</text>
+<line x1="200" y1="260.7692307692308" x2="755" y2="260.7692307692308" stroke="#D55E00" stroke-width="3" class="dash"/>
+<text x="750" y="248.76923076923077" font-size="19" font-weight="600" text-anchor="end" fill="#D55E00">FAR objective: 6%</text>
+<rect x="237.5" y="485.49158639132935" width="110" height="264.50841360867065" rx="0" fill="#0072B2" stroke="#0072B2" stroke-width="0"/>
+<text x="292.5" y="471.49158639132935" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">3.2440%</text>
+<text x="292.5" y="788" font-size="21" font-weight="400" text-anchor="middle" fill="#222222"><tspan x="292.5" dy="0">Final</tspan><tspan x="292.5" dy="26">10%</tspan></text>
+<rect x="422.5" y="673.0010299777741" width="110" height="76.99897002222588" rx="0" fill="#0072B2" stroke="#0072B2" stroke-width="0"/>
+<text x="477.5" y="659.0010299777741" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">0.9443%</text>
+<text x="477.5" y="788" font-size="21" font-weight="400" text-anchor="middle" fill="#222222"><tspan x="477.5" dy="0">Final</tspan><tspan x="477.5" dy="26">20%</tspan></text>
+<rect x="607.5" y="707.9838379705401" width="110" height="42.016162029459906" rx="0" fill="#0072B2" stroke="#0072B2" stroke-width="0"/>
+<text x="662.5" y="693.9838379705401" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">0.5153%</text>
+<text x="662.5" y="788" font-size="21" font-weight="400" text-anchor="middle" fill="#222222"><tspan x="662.5" dy="0">Final</tspan><tspan x="662.5" dy="26">30%</tspan></text>
+<text x="445.0" y="840" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">Onset proxy</text>
+<text x="1215.0" y="150" font-size="29" font-weight="600" text-anchor="middle" fill="#222222">Engine coverage (%)</text>
+<line x1="970" y1="220" x2="970" y2="750" stroke="#222222" stroke-width="3"/>
+<line x1="970" y1="750" x2="1525" y2="750" stroke="#222222" stroke-width="3"/>
+<line x1="970" y1="750.0" x2="1525" y2="750.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="955" y="758.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">0</text>
+<line x1="970" y1="644.0" x2="1525" y2="644.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="955" y="652.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">20</text>
+<line x1="970" y1="538.0" x2="1525" y2="538.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="955" y="546.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">40</text>
+<line x1="970" y1="432.0" x2="1525" y2="432.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="955" y="440.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">60</text>
+<line x1="970" y1="326.0" x2="1525" y2="326.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="955" y="334.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">80</text>
+<line x1="970" y1="220.0" x2="1525" y2="220.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="955" y="228.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">100</text>
+<rect x="1007.5" y="474.8076923076923" width="110" height="275.1923076923077" rx="0" fill="#009E73" stroke="#009E73" stroke-width="0"/>
+<text x="1062.5" y="460.8076923076923" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">51.92%</text>
+<text x="1062.5" y="788" font-size="21" font-weight="400" text-anchor="middle" fill="#222222"><tspan x="1062.5" dy="0">Final</tspan><tspan x="1062.5" dy="26">10%</tspan></text>
+<rect x="1192.5" y="332.1153846153847" width="110" height="417.8846153846153" rx="0" fill="#009E73" stroke="#009E73" stroke-width="0"/>
+<text x="1247.5" y="318.1153846153847" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">78.85%</text>
+<text x="1247.5" y="788" font-size="21" font-weight="400" text-anchor="middle" fill="#222222"><tspan x="1247.5" dy="0">Final</tspan><tspan x="1247.5" dy="26">20%</tspan></text>
+<rect x="1377.5" y="301.53846153846155" width="110" height="448.46153846153845" rx="0" fill="#009E73" stroke="#009E73" stroke-width="0"/>
+<text x="1432.5" y="287.53846153846155" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">84.62%</text>
+<text x="1432.5" y="788" font-size="21" font-weight="400" text-anchor="middle" fill="#222222"><tspan x="1432.5" dy="0">Final</tspan><tspan x="1432.5" dy="26">30%</tspan></text>
+<text x="1215.0" y="840" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">Onset proxy</text>
+<text x="1985.0" y="150" font-size="29" font-weight="600" text-anchor="middle" fill="#222222">Median detection delay (cycles)</text>
+<line x1="1740" y1="220" x2="1740" y2="750" stroke="#222222" stroke-width="3"/>
+<line x1="1740" y1="750" x2="2295" y2="750" stroke="#222222" stroke-width="3"/>
+<line x1="1740" y1="750.0" x2="2295" y2="750.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1725" y="758.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">0</text>
+<line x1="1740" y1="644.0" x2="2295" y2="644.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1725" y="652.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">10</text>
+<line x1="1740" y1="538.0" x2="2295" y2="538.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1725" y="546.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">20</text>
+<line x1="1740" y1="432.0" x2="2295" y2="432.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1725" y="440.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">30</text>
+<line x1="1740" y1="326.0" x2="2295" y2="326.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1725" y="334.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">40</text>
+<line x1="1740" y1="220.0" x2="2295" y2="220.0" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1725" y="228.0" font-size="21" font-weight="400" text-anchor="end" fill="#6B7280">50</text>
+<line x1="1740" y1="622.8" x2="2295" y2="622.8" stroke="#D55E00" stroke-width="3" class="dash"/>
+<text x="1985.0" y="180" font-size="18" font-weight="600" text-anchor="middle" fill="#D55E00">Aggregate aspiration: ≤12 cycles</text>
+<text x="1985.0" y="203" font-size="18" font-weight="600" text-anchor="middle" fill="#D55E00">(not proxy-wise pass/fail)</text>
+<rect x="1777.5" y="622.8" width="110" height="127.20000000000005" rx="0" fill="#E69F00" stroke="#E69F00" stroke-width="0"/>
+<text x="1832.5" y="608.8" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">12</text>
+<text x="1832.5" y="788" font-size="21" font-weight="400" text-anchor="middle" fill="#222222"><tspan x="1832.5" dy="0">Final</tspan><tspan x="1832.5" dy="26">10%</tspan></text>
+<rect x="1962.5" y="485.0" width="110" height="265.0" rx="0" fill="#E69F00" stroke="#E69F00" stroke-width="0"/>
+<text x="2017.5" y="471.0" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">25</text>
+<text x="2017.5" y="788" font-size="21" font-weight="400" text-anchor="middle" fill="#222222"><tspan x="2017.5" dy="0">Final</tspan><tspan x="2017.5" dy="26">20%</tspan></text>
+<rect x="2147.5" y="299.5" width="110" height="450.5" rx="0" fill="#E69F00" stroke="#E69F00" stroke-width="0"/>
+<text x="2202.5" y="285.5" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">42.5</text>
+<text x="2202.5" y="788" font-size="21" font-weight="400" text-anchor="middle" fill="#222222"><tspan x="2202.5" dy="0">Final</tspan><tspan x="2202.5" dy="26">30%</tspan></text>
+<text x="1985.0" y="840" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">Onset proxy</text>
+<text x="1200.0" y="900" font-size="24" font-weight="400" text-anchor="middle" fill="#6B7280">Delay medians condition on detected engines; missed engines remain in coverage.</text>
+<text x="1200.0" y="938" font-size="24" font-weight="600" text-anchor="middle" fill="#222222">Registered aggregate delay = median of proxy medians (12, 25, 42.5) = 25 cycles.</text>
+</svg>

@@ -2,7 +2,7 @@
 
 ## Purpose and scope
 
-This directory prepares the evidence foundation and detailed outline for a first manuscript about the FD002 context-aware anomaly-alert study. It does not contain a full manuscript, generated figures, or new scientific results.
+This directory contains the verified evidence foundation, detailed outline, and reproducible figure/table bundle for a first manuscript about the FD002 context-aware anomaly-alert study. It does not yet contain the full manuscript and introduces no new scientific results.
 
 The intended paper reports a governed, engine-disjoint study of operating-condition-aware preprocessing and frozen anomaly-alert behavior on an internal held-out partition. The reported endpoint labels are normalized-life proxies. They are not observed physical fault onsets, and the results are not official NASA-test, operational, production, or real-aircraft estimates.
 
@@ -12,9 +12,15 @@ This work is documentation and evidence synthesis only. It must not trigger data
 
 - `EVIDENCE_MAP.md` maps proposed numerical and methodological claims to exact repository authorities, JSON keys, tables, and code symbols.
 - `OUTLINE.md` provides title options and the detailed manuscript structure.
-- `FIGURE_TABLE_PLAN.md` defines future editable diagrams, scientific plots, and tables without generating them.
+- `FIGURE_TABLE_PLAN.md` defines the editable diagrams, scientific plots, and tables implemented by the artifact bundle.
 - `OPEN_QUESTIONS.md` separates blockers for manuscript drafting/publication from optional improvements and future studies.
 - `HANDOFF.md` gives a self-contained continuation brief for a new session.
+- `figures/` contains five SVG publication figures and matching 300-dpi PNG previews.
+- `figure_sources/` contains the shared editable JSON specification and DOT diagram sources.
+- `tables/` contains synchronized CSV, Markdown, and LaTeX versions of four manuscript tables.
+- `CAPTIONS.md` contains self-contained figure and table captions.
+- `ARTIFACT_PROVENANCE.json` records artifact/source hashes, source selectors, commands, software versions, and scientific-boundary declarations.
+- `BUILD.md` records exact regeneration and verification commands plus renderer limitations.
 
 ## Evidence hierarchy
 
@@ -73,25 +79,21 @@ Historical prose does not override a registered protocol or implementation. In p
 
 ## Workflow to manuscript V1
 
-1. Obtain the author's decisions recorded as blockers in `OPEN_QUESTIONS.md`.
-2. Generate the planned editable SVG diagrams and script-generated plots strictly from committed aggregate authorities.
-3. Validate every plotted value and table cell against `EVIDENCE_MAP.md`.
-4. Draft the manuscript in Markdown using `OUTLINE.md`.
-5. Convert the approved text to the target venue's LaTeX template without changing claim scope.
-6. Reuse `docs/research/MANUSCRIPT_CORE_CITATIONS_V1.bib` as the citation authority; create a venue-specific BibTeX derivative only if required, preserving the existing keys.
-7. Run path, citation-key, numerical-claim, and cross-format consistency checks before review.
+1. Evidence foundation and outline: complete.
+2. Reproducible figures, diagrams, tables, captions, and provenance: complete.
+3. Next: resolve the manuscript decisions in `OPEN_QUESTIONS.md` and synthesize the full Markdown manuscript from `OUTLINE.md` with verified citations.
+4. Convert approved text to the target venue's LaTeX template without changing claim scope.
+5. Reuse `docs/research/MANUSCRIPT_CORE_CITATIONS_V1.bib` as the citation authority; create a venue-specific BibTeX derivative only if required, preserving the existing keys.
+6. Run path, citation-key, numerical-claim, and cross-format consistency checks before review.
 
-## Planned outputs
+## Generated artifact bundle
 
-The next stage may add the following under this directory, subject to author and venue decisions:
+- Architecture, protocol, operational-results, ranking-results, and validation-comparison figures are in `figures/` as SVG and 300-dpi PNG.
+- Editable figure sources are in `figure_sources/figure_specs.json`, `figure_sources/system_architecture.dot`, and `figure_sources/experimental_protocol.dot`.
+- Dataset/protocol, frozen-policy, confirmatory-result, and focused-literature tables are in `tables/` as CSV, Markdown, and LaTeX.
+- Run `python scripts/manuscript/generate_manuscript_v1_assets.py --repo-root .` to regenerate the complete bundle.
+- Run `python scripts/manuscript/verify_manuscript_v1_assets.py --repo-root .` to verify exact registered values, cross-format digests, citations, vector/raster structure, 300-dpi metadata, and provenance hashes.
 
-- `MANUSCRIPT_V1.md`: complete prose draft.
-- `latex/main.tex`: venue-formatted LaTeX source.
-- `latex/references.bib`: a mechanically derived, key-preserving copy or subset of the registered core bibliography.
-- `figures/*.svg`: editable vector architecture and experimental-protocol diagrams.
-- `figures/*.pdf`: publication exports of the editable diagrams.
-- `plots/*.svg` and `plots/*.pdf`: script-generated scientific plots from committed aggregate values.
-- `tables/*.md` and `tables/*.tex`: synchronized result and literature-comparison tables.
-- `scripts/`: deterministic, non-scientific rendering scripts that read only committed aggregate authorities.
+Graphviz, Matplotlib, an SVG converter, and a LaTeX engine were unavailable; no dependency was installed. The committed SVGs are produced by a deterministic standard-library primitive renderer, while PNG previews use Windows `System.Drawing`. DOT sources remain available for later Graphviz rendering, and LaTeX table fragments remain uncompiled.
 
-No planned plot may reconstruct score traces, invent curves, derive confidence intervals, or rerun evaluation.
+No artifact reconstructs score traces, invents curves or intervals, or reruns evaluation. The next-stage prose draft must preserve the same boundary.

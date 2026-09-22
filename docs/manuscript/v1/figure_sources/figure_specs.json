@@ -1,0 +1,4477 @@
+{
+  "evidence_base_commit": "4bcab1d13a1d44dccbedb0cecd7aa99ddea7ade1",
+  "figures": [
+    {
+      "data": {
+        "comparator": "LSTM calibrated ensemble",
+        "fusion": false,
+        "primary": "PCA"
+      },
+      "description": "Two-lane diagram distinguishes training/validation fitting and selection from the frozen PCA transformation, calibration, EWMA, threshold comparison, persistence, event, and attribution path.",
+      "filename": "figure_01_system_architecture",
+      "height": 1580,
+      "height_mm": 125,
+      "primitives": [
+        {
+          "fill": "#FFFFFF",
+          "height": 1580,
+          "stroke": "#FFFFFF",
+          "stroke_width": 0,
+          "type": "rect",
+          "width": 2400,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 38,
+          "text": "Implemented FD002 condition-aware anomaly-alert architecture",
+          "type": "text",
+          "weight": 600,
+          "x": 1200.0,
+          "y": 52
+        },
+        {
+          "anchor": "start",
+          "color": "#0072B2",
+          "size": 28,
+          "text": "A. Training-only fitting and validation selection (completed before held-out access)",
+          "type": "text",
+          "weight": 600,
+          "x": 55,
+          "y": 112
+        },
+        {
+          "dash": false,
+          "fill": "#F3F4F6",
+          "height": 145,
+          "radius": 12,
+          "stroke": "#0072B2",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 300,
+          "x": 55,
+          "y": 145
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Training engines",
+          "type": "text",
+          "weight": 600,
+          "x": 205.0,
+          "y": 183
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "156 engines",
+          "type": "text",
+          "weight": 400,
+          "x": 205.0,
+          "y": 220
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "registered split",
+          "type": "text",
+          "weight": 400,
+          "x": 205.0,
+          "y": 248
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 175,
+          "radius": 12,
+          "stroke": "#0072B2",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 420,
+          "x": 415,
+          "y": 130
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Fit P1/K=6",
+          "type": "text",
+          "weight": 600,
+          "x": 625.0,
+          "y": 168
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Operating scaler + K-Means: all",
+          "type": "text",
+          "weight": 400,
+          "x": 625.0,
+          "y": 205
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "training rows",
+          "type": "text",
+          "weight": 400,
+          "x": 625.0,
+          "y": 233
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Per-mode sensor scalers: early-",
+          "type": "text",
+          "weight": 400,
+          "x": 625.0,
+          "y": 261
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "life rows",
+          "type": "text",
+          "weight": 400,
+          "x": 625.0,
+          "y": 289
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 175,
+          "radius": 12,
+          "stroke": "#0072B2",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 330,
+          "x": 900,
+          "y": 130
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Training windows",
+          "type": "text",
+          "weight": 600,
+          "x": 1065.0,
+          "y": 168
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "30 cycles × 21 sensors",
+          "type": "text",
+          "weight": 400,
+          "x": 1065.0,
+          "y": 205
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "stride 1",
+          "type": "text",
+          "weight": 400,
+          "x": 1065.0,
+          "y": 233
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 145,
+          "radius": 12,
+          "stroke": "#0072B2",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 360,
+          "x": 1290,
+          "y": 85
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "PCA branch",
+          "type": "text",
+          "weight": 600,
+          "x": 1470.0,
+          "y": 123
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "63 summaries: means, population",
+          "type": "text",
+          "weight": 400,
+          "x": 1470.0,
+          "y": 160
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "SDs, endpoint−start",
+          "type": "text",
+          "weight": 400,
+          "x": 1470.0,
+          "y": 188
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 145,
+          "radius": 12,
+          "stroke": "#CC79A7",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 360,
+          "x": 1290,
+          "y": 255
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "LSTM branch",
+          "type": "text",
+          "weight": 600,
+          "x": 1470.0,
+          "y": 293
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Full 30 × 21 sequence input",
+          "type": "text",
+          "weight": 400,
+          "x": 1470.0,
+          "y": 330
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "seeds 43–45",
+          "type": "text",
+          "weight": 400,
+          "x": 1470.0,
+          "y": 358
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 175,
+          "radius": 12,
+          "stroke": "#0072B2",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 410,
+          "x": 1720,
+          "y": 70
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Fit PCA state",
+          "type": "text",
+          "weight": 600,
+          "x": 1925.0,
+          "y": 108
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Feature scaler + PCA (90% variance) +",
+          "type": "text",
+          "weight": 400,
+          "x": 1925.0,
+          "y": 145
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "training empirical CDF + six q=0.995",
+          "type": "text",
+          "weight": 400,
+          "x": 1925.0,
+          "y": 173
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "thresholds",
+          "type": "text",
+          "weight": 400,
+          "x": 1925.0,
+          "y": 201
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 165,
+          "radius": 12,
+          "stroke": "#CC79A7",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 410,
+          "x": 1720,
+          "y": 250
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Fit comparator",
+          "type": "text",
+          "weight": 600,
+          "x": 1925.0,
+          "y": 288
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Three fixed-epoch LSTMs; aligned",
+          "type": "text",
+          "weight": 400,
+          "x": 1925.0,
+          "y": 325
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "calibrated-score arithmetic mean",
+          "type": "text",
+          "weight": 400,
+          "x": 1925.0,
+          "y": 353
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 355,
+          "x2": 415,
+          "y1": 217,
+          "y2": 217
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 835,
+          "x2": 900,
+          "y1": 217,
+          "y2": 217
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1230,
+          "x2": 1290,
+          "y1": 195,
+          "y2": 155
+        },
+        {
+          "dash": false,
+          "stroke": "#CC79A7",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1230,
+          "x2": 1290,
+          "y1": 240,
+          "y2": 325
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1650,
+          "x2": 1720,
+          "y1": 155,
+          "y2": 155
+        },
+        {
+          "dash": false,
+          "stroke": "#CC79A7",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1650,
+          "x2": 1720,
+          "y1": 325,
+          "y2": 325
+        },
+        {
+          "dash": false,
+          "fill": "#F3F4F6",
+          "height": 135,
+          "radius": 12,
+          "stroke": "#009E73",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 300,
+          "x": 55,
+          "y": 455
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Validation engines",
+          "type": "text",
+          "weight": 600,
+          "x": 205.0,
+          "y": 493
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "52 unseen engines",
+          "type": "text",
+          "weight": 400,
+          "x": 205.0,
+          "y": 530
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "proxy labels only",
+          "type": "text",
+          "weight": 400,
+          "x": 205.0,
+          "y": 558
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 185,
+          "radius": 12,
+          "stroke": "#009E73",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 760,
+          "x": 460,
+          "y": 430
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Registered validation comparison",
+          "type": "text",
+          "weight": 600,
+          "x": 840.0,
+          "y": 468
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Select K/model candidates; compare five score sources; evaluate",
+          "type": "text",
+          "weight": 400,
+          "x": 840.0,
+          "y": 505
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "1,280 alert candidates under five proxies and a predeclared",
+          "type": "text",
+          "weight": 400,
+          "x": 840.0,
+          "y": 533
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "lexicographic objective",
+          "type": "text",
+          "weight": 400,
+          "x": 840.0,
+          "y": 561
+        },
+        {
+          "dash": false,
+          "fill": "#F3F4F6",
+          "height": 145,
+          "radius": 12,
+          "stroke": "#D55E00",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 300,
+          "x": 1325,
+          "y": 450
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Gate 4 freeze",
+          "type": "text",
+          "weight": 600,
+          "x": 1475.0,
+          "y": 488
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Primary policy locked",
+          "type": "text",
+          "weight": 400,
+          "x": 1475.0,
+          "y": 525
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "before held-out access",
+          "type": "text",
+          "weight": 400,
+          "x": 1475.0,
+          "y": 553
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 185,
+          "radius": 12,
+          "stroke": "#D55E00",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 410,
+          "x": 1730,
+          "y": 430
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Frozen roles",
+          "type": "text",
+          "weight": 600,
+          "x": 1935.0,
+          "y": 468
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Primary: PCA per-mode q=0.995 / EWMA",
+          "type": "text",
+          "weight": 400,
+          "x": 1935.0,
+          "y": 505
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "0.20 / persistence 8",
+          "type": "text",
+          "weight": 400,
+          "x": 1935.0,
+          "y": 533
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Comparator: LSTM ensemble; no fusion",
+          "type": "text",
+          "weight": 400,
+          "x": 1935.0,
+          "y": 561
+        },
+        {
+          "dash": false,
+          "stroke": "#009E73",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 355,
+          "x2": 460,
+          "y1": 522,
+          "y2": 522
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "line",
+          "x1": 1720,
+          "x2": 1688,
+          "y1": 155,
+          "y2": 155
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "line",
+          "x1": 1688,
+          "x2": 1688,
+          "y1": 155,
+          "y2": 420
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "line",
+          "x1": 1688,
+          "x2": 1100,
+          "y1": 420,
+          "y2": 420
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1100,
+          "x2": 1100,
+          "y1": 420,
+          "y2": 430
+        },
+        {
+          "dash": false,
+          "stroke": "#CC79A7",
+          "stroke_width": 4,
+          "type": "line",
+          "x1": 1720,
+          "x2": 1665,
+          "y1": 325,
+          "y2": 325
+        },
+        {
+          "dash": false,
+          "stroke": "#CC79A7",
+          "stroke_width": 4,
+          "type": "line",
+          "x1": 1665,
+          "x2": 1665,
+          "y1": 325,
+          "y2": 440
+        },
+        {
+          "dash": false,
+          "stroke": "#CC79A7",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1665,
+          "x2": 1220,
+          "y1": 440,
+          "y2": 440
+        },
+        {
+          "dash": false,
+          "stroke": "#D55E00",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1220,
+          "x2": 1325,
+          "y1": 522,
+          "y2": 522
+        },
+        {
+          "dash": false,
+          "stroke": "#D55E00",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1625,
+          "x2": 1730,
+          "y1": 522,
+          "y2": 522
+        },
+        {
+          "anchor": "middle",
+          "color": "#D55E00",
+          "size": 24,
+          "text": "No PCA–LSTM score or decision fusion was implemented.",
+          "type": "text",
+          "weight": 600,
+          "x": 1930,
+          "y": 650
+        },
+        {
+          "dash": false,
+          "stroke": "#6B7280",
+          "stroke_width": 3,
+          "type": "line",
+          "x1": 40,
+          "x2": 2360,
+          "y1": 700,
+          "y2": 700
+        },
+        {
+          "anchor": "start",
+          "color": "#0072B2",
+          "size": 28,
+          "text": "B. Frozen primary transformation and alert path",
+          "type": "text",
+          "weight": 600,
+          "x": 55,
+          "y": 750
+        },
+        {
+          "dash": false,
+          "fill": "#F3F4F6",
+          "height": 140,
+          "radius": 12,
+          "stroke": "#0072B2",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 280,
+          "x": 40,
+          "y": 790
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Cycle rows",
+          "type": "text",
+          "weight": 600,
+          "x": 180.0,
+          "y": 828
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "engine, cycle, 3",
+          "type": "text",
+          "weight": 400,
+          "x": 180.0,
+          "y": 865
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "settings, 21 sensors",
+          "type": "text",
+          "weight": 400,
+          "x": 180.0,
+          "y": 893
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 180,
+          "radius": 12,
+          "stroke": "#0072B2",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 390,
+          "x": 370,
+          "y": 770
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Frozen P1/K=6 transform",
+          "type": "text",
+          "weight": 600,
+          "x": 565.0,
+          "y": 808
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Assign row modes; scale sensors by",
+          "type": "text",
+          "weight": 400,
+          "x": 565.0,
+          "y": 845
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "mode; window mode = mode at",
+          "type": "text",
+          "weight": 400,
+          "x": 565.0,
+          "y": 873
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "endpoint cycle",
+          "type": "text",
+          "weight": 400,
+          "x": 565.0,
+          "y": 901
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 140,
+          "radius": 12,
+          "stroke": "#0072B2",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 300,
+          "x": 810,
+          "y": 790
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Engine-local windows",
+          "type": "text",
+          "weight": 600,
+          "x": 960.0,
+          "y": 828
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "30 × 21, stride 1",
+          "type": "text",
+          "weight": 400,
+          "x": 960.0,
+          "y": 865
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 140,
+          "radius": 12,
+          "stroke": "#0072B2",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 300,
+          "x": 1160,
+          "y": 790
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "PCA input",
+          "type": "text",
+          "weight": 600,
+          "x": 1310.0,
+          "y": 828
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "63 ordered summary",
+          "type": "text",
+          "weight": 400,
+          "x": 1310.0,
+          "y": 865
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "features",
+          "type": "text",
+          "weight": 400,
+          "x": 1310.0,
+          "y": 893
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 140,
+          "radius": 12,
+          "stroke": "#0072B2",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 300,
+          "x": 1510,
+          "y": 790
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Raw PCA score",
+          "type": "text",
+          "weight": 600,
+          "x": 1660.0,
+          "y": 828
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Mean squared residual in",
+          "type": "text",
+          "weight": 400,
+          "x": 1660.0,
+          "y": 865
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "standardized feature space",
+          "type": "text",
+          "weight": 400,
+          "x": 1660.0,
+          "y": 893
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 140,
+          "radius": 12,
+          "stroke": "#0072B2",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 420,
+          "x": 1860,
+          "y": 790
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Frozen calibration",
+          "type": "text",
+          "weight": 600,
+          "x": 2070.0,
+          "y": 828
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Training empirical-CDF percentile",
+          "type": "text",
+          "weight": 400,
+          "x": 2070.0,
+          "y": 865
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 320,
+          "x2": 370,
+          "y1": 860,
+          "y2": 860
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 760,
+          "x2": 810,
+          "y1": 860,
+          "y2": 860
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1110,
+          "x2": 1160,
+          "y1": 860,
+          "y2": 860
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1460,
+          "x2": 1510,
+          "y1": 860,
+          "y2": 860
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1810,
+          "x2": 1860,
+          "y1": 860,
+          "y2": 860
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 135,
+          "radius": 12,
+          "stroke": "#E69F00",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 420,
+          "x": 1860,
+          "y": 1060
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "EWMA",
+          "type": "text",
+          "weight": 600,
+          "x": 2070.0,
+          "y": 1098
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "α=0.20 on calibrated scores",
+          "type": "text",
+          "weight": 400,
+          "x": 2070.0,
+          "y": 1135
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 175,
+          "radius": 12,
+          "stroke": "#E69F00",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 430,
+          "x": 1360,
+          "y": 1040
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Strict threshold comparison",
+          "type": "text",
+          "weight": 600,
+          "x": 1575.0,
+          "y": 1078
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Compare smoothed score to frozen",
+          "type": "text",
+          "weight": 400,
+          "x": 1575.0,
+          "y": 1115
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "q=0.995 threshold for current endpoint",
+          "type": "text",
+          "weight": 400,
+          "x": 1575.0,
+          "y": 1143
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "mode",
+          "type": "text",
+          "weight": 400,
+          "x": 1575.0,
+          "y": 1171
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 135,
+          "radius": 12,
+          "stroke": "#E69F00",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 320,
+          "x": 970,
+          "y": 1060
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Persistence",
+          "type": "text",
+          "weight": 600,
+          "x": 1130.0,
+          "y": 1098
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Eight consecutive",
+          "type": "text",
+          "weight": 400,
+          "x": 1130.0,
+          "y": 1135
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "violations; no backdating",
+          "type": "text",
+          "weight": 400,
+          "x": 1130.0,
+          "y": 1163
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 135,
+          "radius": 12,
+          "stroke": "#E69F00",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 330,
+          "x": 570,
+          "y": 1060
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Alert events",
+          "type": "text",
+          "weight": 600,
+          "x": 735.0,
+          "y": 1098
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Contiguous active endpoints",
+          "type": "text",
+          "weight": 400,
+          "x": 735.0,
+          "y": 1135
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "within engine",
+          "type": "text",
+          "weight": 400,
+          "x": 735.0,
+          "y": 1163
+        },
+        {
+          "dash": false,
+          "fill": "#F3F4F6",
+          "height": 155,
+          "radius": 12,
+          "stroke": "#D55E00",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 430,
+          "x": 1360,
+          "y": 1270
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Frozen threshold reference",
+          "type": "text",
+          "weight": 600,
+          "x": 1575.0,
+          "y": 1308
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Six per-mode training thresholds; no",
+          "type": "text",
+          "weight": 400,
+          "x": 1575.0,
+          "y": 1345
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "online recalibration",
+          "type": "text",
+          "weight": 400,
+          "x": 1575.0,
+          "y": 1373
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 190,
+          "radius": 12,
+          "stroke": "#009E73",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 430,
+          "x": 55,
+          "y": 1215
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "PCA attribution",
+          "type": "text",
+          "weight": 600,
+          "x": 270.0,
+          "y": 1253
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Per-sensor mean/std/slope residual",
+          "type": "text",
+          "weight": 400,
+          "x": 270.0,
+          "y": 1290
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "contribution ÷ 63; local model fidelity",
+          "type": "text",
+          "weight": 400,
+          "x": 270.0,
+          "y": 1318
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "only—not physical fault localization",
+          "type": "text",
+          "weight": 400,
+          "x": 270.0,
+          "y": 1346
+        },
+        {
+          "dash": false,
+          "stroke": "#E69F00",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 2070,
+          "x2": 2070,
+          "y1": 930,
+          "y2": 1060
+        },
+        {
+          "dash": false,
+          "stroke": "#E69F00",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1860,
+          "x2": 1790,
+          "y1": 1128,
+          "y2": 1128
+        },
+        {
+          "dash": false,
+          "stroke": "#E69F00",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1360,
+          "x2": 1290,
+          "y1": 1128,
+          "y2": 1128
+        },
+        {
+          "dash": false,
+          "stroke": "#E69F00",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 970,
+          "x2": 900,
+          "y1": 1128,
+          "y2": 1128
+        },
+        {
+          "dash": false,
+          "stroke": "#D55E00",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1575,
+          "x2": 1575,
+          "y1": 1270,
+          "y2": 1215
+        },
+        {
+          "dash": true,
+          "stroke": "#009E73",
+          "stroke_width": 4,
+          "type": "line",
+          "x1": 1660,
+          "x2": 1660,
+          "y1": 930,
+          "y2": 1000
+        },
+        {
+          "dash": true,
+          "stroke": "#009E73",
+          "stroke_width": 4,
+          "type": "line",
+          "x1": 1660,
+          "x2": 510,
+          "y1": 1000,
+          "y2": 1000
+        },
+        {
+          "dash": true,
+          "stroke": "#009E73",
+          "stroke_width": 4,
+          "type": "line",
+          "x1": 510,
+          "x2": 510,
+          "y1": 1000,
+          "y2": 1320
+        },
+        {
+          "dash": true,
+          "stroke": "#009E73",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 510,
+          "x2": 485,
+          "y1": 1320,
+          "y2": 1320
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 24,
+          "text": "State resets at engine boundaries or endpoint gaps, not at mode changes. Official NASA-test evaluation is not part of this completed path.",
+          "type": "text",
+          "weight": 400,
+          "x": 1200.0,
+          "y": 1515
+        }
+      ],
+      "title": "Implemented system architecture",
+      "width": 2400,
+      "width_mm": 190
+    },
+    {
+      "data": {
+        "held_out_engines": 52,
+        "official_test_completed": false,
+        "train_engines": 156,
+        "validation_engines": 52
+      },
+      "description": "Diagram shows the engine-disjoint train, validation, and internal held-out partitions; training-only fitting, validation selection, policy freeze, completed held-out evaluation, and deferred official NASA test.",
+      "filename": "figure_02_experimental_protocol",
+      "height": 1450,
+      "height_mm": 125,
+      "primitives": [
+        {
+          "fill": "#FFFFFF",
+          "height": 1450,
+          "stroke": "#FFFFFF",
+          "stroke_width": 0,
+          "type": "rect",
+          "width": 2200,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 38,
+          "text": "Experimental protocol and evaluation boundaries",
+          "type": "text",
+          "weight": 600,
+          "x": 1100.0,
+          "y": 55
+        },
+        {
+          "dash": false,
+          "fill": "#F3F4F6",
+          "height": 135,
+          "radius": 12,
+          "stroke": "#0072B2",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 620,
+          "x": 790,
+          "y": 105
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "FD002 run-to-failure source",
+          "type": "text",
+          "weight": 600,
+          "x": 1100.0,
+          "y": 143
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "260 engines; deterministic whole-engine split",
+          "type": "text",
+          "weight": 400,
+          "x": 1100.0,
+          "y": 180
+        },
+        {
+          "anchor": "middle",
+          "color": "#0072B2",
+          "size": 25,
+          "text": "Engine-disjoint: zero engine overlap",
+          "type": "text",
+          "weight": 600,
+          "x": 1100.0,
+          "y": 275
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 170,
+          "radius": 12,
+          "stroke": "#0072B2",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 480,
+          "x": 90,
+          "y": 340
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Training partition",
+          "type": "text",
+          "weight": 600,
+          "x": 330.0,
+          "y": 378
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "156 engines · 32,107 cycle rows ·",
+          "type": "text",
+          "weight": 400,
+          "x": 330.0,
+          "y": 415
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "27,583 windows",
+          "type": "text",
+          "weight": 400,
+          "x": 330.0,
+          "y": 443
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 170,
+          "radius": 12,
+          "stroke": "#009E73",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 480,
+          "x": 720,
+          "y": 340
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Validation partition",
+          "type": "text",
+          "weight": 600,
+          "x": 960.0,
+          "y": 378
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "52 engines · 10,873 cycle rows · 9,365",
+          "type": "text",
+          "weight": 400,
+          "x": 960.0,
+          "y": 415
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "windows",
+          "type": "text",
+          "weight": 400,
+          "x": 960.0,
+          "y": 443
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 170,
+          "radius": 12,
+          "stroke": "#D55E00",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 480,
+          "x": 1350,
+          "y": 340
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Internal held-out partition",
+          "type": "text",
+          "weight": 600,
+          "x": 1590.0,
+          "y": 378
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "52 engines · 10,779 cycle rows · 9,271",
+          "type": "text",
+          "weight": 400,
+          "x": 1590.0,
+          "y": 415
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "windows",
+          "type": "text",
+          "weight": 400,
+          "x": 1590.0,
+          "y": 443
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 900,
+          "x2": 330,
+          "y1": 240,
+          "y2": 340
+        },
+        {
+          "dash": false,
+          "stroke": "#009E73",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1100,
+          "x2": 960,
+          "y1": 240,
+          "y2": 340
+        },
+        {
+          "dash": false,
+          "stroke": "#D55E00",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1300,
+          "x2": 1590,
+          "y1": 240,
+          "y2": 340
+        },
+        {
+          "dash": false,
+          "fill": "#F3F4F6",
+          "height": 240,
+          "radius": 12,
+          "stroke": "#0072B2",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 480,
+          "x": 90,
+          "y": 610
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Training-only fitting",
+          "type": "text",
+          "weight": 600,
+          "x": 330.0,
+          "y": 648
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Fit operating scaler/K-Means, sensor",
+          "type": "text",
+          "weight": 400,
+          "x": 330.0,
+          "y": 685
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "scalers, detectors, empirical CDFs, and",
+          "type": "text",
+          "weight": 400,
+          "x": 330.0,
+          "y": 713
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "threshold references. Healthy eligibility",
+          "type": "text",
+          "weight": 400,
+          "x": 330.0,
+          "y": 741
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "ends at first 30% of life.",
+          "type": "text",
+          "weight": 400,
+          "x": 330.0,
+          "y": 769
+        },
+        {
+          "dash": false,
+          "fill": "#F3F4F6",
+          "height": 240,
+          "radius": 12,
+          "stroke": "#009E73",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 480,
+          "x": 720,
+          "y": 610
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Validation selection",
+          "type": "text",
+          "weight": 600,
+          "x": 960.0,
+          "y": 648
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Select K and candidates; compare score",
+          "type": "text",
+          "weight": 400,
+          "x": 960.0,
+          "y": 685
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "sources; evaluate 1,280 policies under",
+          "type": "text",
+          "weight": 400,
+          "x": 960.0,
+          "y": 713
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "registered proxies. No learned-state",
+          "type": "text",
+          "weight": 400,
+          "x": 960.0,
+          "y": 741
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "fitting.",
+          "type": "text",
+          "weight": 400,
+          "x": 960.0,
+          "y": 769
+        },
+        {
+          "dash": false,
+          "fill": "#F3F4F6",
+          "height": 240,
+          "radius": 12,
+          "stroke": "#D55E00",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 480,
+          "x": 1350,
+          "y": 610
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Held-out boundary",
+          "type": "text",
+          "weight": 600,
+          "x": 1590.0,
+          "y": 648
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Unavailable to fitting/selection. Access",
+          "type": "text",
+          "weight": 400,
+          "x": 1590.0,
+          "y": 685
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "only after complete policy freeze; first",
+          "type": "text",
+          "weight": 400,
+          "x": 1590.0,
+          "y": 713
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "valid run accepted regardless of values.",
+          "type": "text",
+          "weight": 400,
+          "x": 1590.0,
+          "y": 741
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 330,
+          "x2": 330,
+          "y1": 510,
+          "y2": 610
+        },
+        {
+          "dash": false,
+          "stroke": "#009E73",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 960,
+          "x2": 960,
+          "y1": 510,
+          "y2": 610
+        },
+        {
+          "dash": false,
+          "stroke": "#D55E00",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1590,
+          "x2": 1590,
+          "y1": 510,
+          "y2": 610
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 175,
+          "radius": 12,
+          "stroke": "#D55E00",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 520,
+          "x": 520,
+          "y": 950
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Gate 4 policy freeze",
+          "type": "text",
+          "weight": 600,
+          "x": 780.0,
+          "y": 988
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "P1/K=6 + PCA + training empirical CDF + six",
+          "type": "text",
+          "weight": 400,
+          "x": 780.0,
+          "y": 1025
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "per-mode q=0.995 thresholds + EWMA 0.20 +",
+          "type": "text",
+          "weight": 400,
+          "x": 780.0,
+          "y": 1053
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "persistence 8",
+          "type": "text",
+          "weight": 400,
+          "x": 780.0,
+          "y": 1081
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 330,
+          "x2": 640,
+          "y1": 850,
+          "y2": 950
+        },
+        {
+          "dash": false,
+          "stroke": "#009E73",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 960,
+          "x2": 900,
+          "y1": 850,
+          "y2": 950
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 175,
+          "radius": 12,
+          "stroke": "#D55E00",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 600,
+          "x": 1230,
+          "y": 950
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Completed internal held-out evaluation",
+          "type": "text",
+          "weight": 600,
+          "x": 1530.0,
+          "y": 988
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "First valid frozen run; no refit, recalibration,",
+          "type": "text",
+          "weight": 400,
+          "x": 1530.0,
+          "y": 1025
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "reselection, online update, or fusion",
+          "type": "text",
+          "weight": 400,
+          "x": 1530.0,
+          "y": 1053
+        },
+        {
+          "dash": false,
+          "stroke": "#D55E00",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1040,
+          "x2": 1230,
+          "y1": 1035,
+          "y2": 1035
+        },
+        {
+          "dash": false,
+          "stroke": "#D55E00",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1590,
+          "x2": 1530,
+          "y1": 850,
+          "y2": 950
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 135,
+          "radius": 12,
+          "stroke": "#009E73",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 520,
+          "x": 520,
+          "y": 1220
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Validation evidence",
+          "type": "text",
+          "weight": 600,
+          "x": 780.0,
+          "y": 1258
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Model/policy selection only—not held-out",
+          "type": "text",
+          "weight": 400,
+          "x": 780.0,
+          "y": 1295
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "performance",
+          "type": "text",
+          "weight": 400,
+          "x": 780.0,
+          "y": 1323
+        },
+        {
+          "dash": false,
+          "fill": "#FFFFFF",
+          "height": 135,
+          "radius": 12,
+          "stroke": "#D55E00",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 600,
+          "x": 1230,
+          "y": 1220
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Confirmatory evidence",
+          "type": "text",
+          "weight": 600,
+          "x": 1530.0,
+          "y": 1258
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Proxy-labelled internal held-out results—not",
+          "type": "text",
+          "weight": 400,
+          "x": 1530.0,
+          "y": 1295
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "physical onset",
+          "type": "text",
+          "weight": 400,
+          "x": 1530.0,
+          "y": 1323
+        },
+        {
+          "dash": false,
+          "stroke": "#009E73",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 780,
+          "x2": 780,
+          "y1": 1125,
+          "y2": 1220
+        },
+        {
+          "dash": false,
+          "stroke": "#D55E00",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 1530,
+          "x2": 1530,
+          "y1": 1125,
+          "y2": 1220
+        },
+        {
+          "dash": true,
+          "fill": "#FFFFFF",
+          "height": 340,
+          "radius": 12,
+          "stroke": "#6B7280",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 260,
+          "x": 1870,
+          "y": 340
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Official NASA test",
+          "type": "text",
+          "weight": 600,
+          "x": 2000.0,
+          "y": 378
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Separate truncated-",
+          "type": "text",
+          "weight": 400,
+          "x": 2000.0,
+          "y": 415
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "trajectory external",
+          "type": "text",
+          "weight": 400,
+          "x": 2000.0,
+          "y": 443
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "protocol",
+          "type": "text",
+          "weight": 400,
+          "x": 2000.0,
+          "y": 471
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "",
+          "type": "text",
+          "weight": 400,
+          "x": 2000.0,
+          "y": 499
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Not accessed",
+          "type": "text",
+          "weight": 400,
+          "x": 2000.0,
+          "y": 527
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Not completed",
+          "type": "text",
+          "weight": 400,
+          "x": 2000.0,
+          "y": 555
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Future preregistration",
+          "type": "text",
+          "weight": 400,
+          "x": 2000.0,
+          "y": 583
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "required",
+          "type": "text",
+          "weight": 400,
+          "x": 2000.0,
+          "y": 611
+        },
+        {
+          "dash": true,
+          "fill": "#F3F4F6",
+          "height": 220,
+          "radius": 12,
+          "stroke": "#6B7280",
+          "stroke_width": 3,
+          "type": "rect",
+          "width": 260,
+          "x": 1870,
+          "y": 820
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 28,
+          "text": "Outside study",
+          "type": "text",
+          "weight": 600,
+          "x": 2000.0,
+          "y": 858
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Outside the completed",
+          "type": "text",
+          "weight": 400,
+          "x": 2000.0,
+          "y": 895
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "study: no official-test,",
+          "type": "text",
+          "weight": 400,
+          "x": 2000.0,
+          "y": 923
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "production, or real-",
+          "type": "text",
+          "weight": 400,
+          "x": 2000.0,
+          "y": 951
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "aircraft result",
+          "type": "text",
+          "weight": 400,
+          "x": 2000.0,
+          "y": 979
+        },
+        {
+          "dash": true,
+          "stroke": "#6B7280",
+          "stroke_width": 4,
+          "type": "arrow",
+          "x1": 2000,
+          "x2": 2000,
+          "y1": 680,
+          "y2": 820
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 24,
+          "text": "Proxy onsets are normalized-life evaluation rules, not observed physical fault-onset annotations.",
+          "type": "text",
+          "weight": 600,
+          "x": 1100.0,
+          "y": 1410
+        }
+      ],
+      "title": "Experimental protocol and evaluation boundaries",
+      "width": 2200,
+      "width_mm": 190
+    },
+    {
+      "data": [
+        {
+          "coverage_percent": 51.92307692307692,
+          "delay_population": "detected engines only; misses retained in coverage",
+          "detected_engines": 27,
+          "engine_count": 52,
+          "false_positive_endpoints": 265,
+          "far_per_1000": 32.43971110295018,
+          "far_percent": 3.2439711102950177,
+          "healthy_endpoints": 8169,
+          "median_delay_cycles": 12.0,
+          "policy_id": "normalized_life_last_10pct_endpoint",
+          "pr_auc": 0.6026705075624872,
+          "proxy": "Final 10%",
+          "roc_auc": 0.9476205805711868
+        },
+        {
+          "coverage_percent": 78.84615384615384,
+          "delay_population": "detected engines only; misses retained in coverage",
+          "detected_engines": 41,
+          "engine_count": 52,
+          "false_positive_endpoints": 67,
+          "far_per_1000": 9.443269908386187,
+          "far_percent": 0.9443269908386187,
+          "healthy_endpoints": 7095,
+          "median_delay_cycles": 25.0,
+          "policy_id": "normalized_life_last_20pct_endpoint",
+          "pr_auc": 0.8097437092694553,
+          "proxy": "Final 20%",
+          "roc_auc": 0.926731911712888
+        },
+        {
+          "coverage_percent": 84.61538461538461,
+          "delay_population": "detected engines only; misses retained in coverage",
+          "detected_engines": 44,
+          "engine_count": 52,
+          "false_positive_endpoints": 31,
+          "far_per_1000": 5.152925531914893,
+          "far_percent": 0.5152925531914894,
+          "healthy_endpoints": 6016,
+          "median_delay_cycles": 42.5,
+          "policy_id": "normalized_life_last_30pct_endpoint",
+          "pr_auc": 0.8274519039746946,
+          "proxy": "Final 30%",
+          "roc_auc": 0.8675761206164003
+        }
+      ],
+      "description": "Three panels show endpoint FAR percentage, engine coverage percentage, and median delay cycles for final-10%, final-20%, and final-30% endpoint proxies.",
+      "filename": "figure_03_operational_results",
+      "height": 980,
+      "height_mm": 78,
+      "primitives": [
+        {
+          "fill": "#FFFFFF",
+          "height": 980,
+          "stroke": "#FFFFFF",
+          "stroke_width": 0,
+          "type": "rect",
+          "width": 2400,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 38,
+          "text": "Frozen PCA internal held-out operational results",
+          "type": "text",
+          "weight": 600,
+          "x": 1200.0,
+          "y": 55
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 25,
+          "text": "Normalized-life endpoint proxies; 52 engines",
+          "type": "text",
+          "weight": 400,
+          "x": 1200.0,
+          "y": 95
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 29,
+          "text": "Endpoint FAR (%)",
+          "type": "text",
+          "weight": 600,
+          "x": 445.0,
+          "y": 150
+        },
+        {
+          "dash": false,
+          "stroke": "#222222",
+          "stroke_width": 3,
+          "type": "line",
+          "x1": 200,
+          "x2": 200,
+          "y1": 220,
+          "y2": 750
+        },
+        {
+          "dash": false,
+          "stroke": "#222222",
+          "stroke_width": 3,
+          "type": "line",
+          "x1": 200,
+          "x2": 755,
+          "y1": 750,
+          "y2": 750
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 200,
+          "x2": 755,
+          "y1": 750.0,
+          "y2": 750.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.0",
+          "type": "text",
+          "weight": 400,
+          "x": 185,
+          "y": 758.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 200,
+          "x2": 755,
+          "y1": 617.5,
+          "y2": 617.5
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "1.6",
+          "type": "text",
+          "weight": 400,
+          "x": 185,
+          "y": 625.5
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 200,
+          "x2": 755,
+          "y1": 485.0,
+          "y2": 485.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "3.2",
+          "type": "text",
+          "weight": 400,
+          "x": 185,
+          "y": 493.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 200,
+          "x2": 755,
+          "y1": 352.5,
+          "y2": 352.5
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "4.9",
+          "type": "text",
+          "weight": 400,
+          "x": 185,
+          "y": 360.5
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 200,
+          "x2": 755,
+          "y1": 220.0,
+          "y2": 220.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "6.5",
+          "type": "text",
+          "weight": 400,
+          "x": 185,
+          "y": 228.0
+        },
+        {
+          "dash": true,
+          "stroke": "#D55E00",
+          "stroke_width": 3,
+          "type": "line",
+          "x1": 200,
+          "x2": 755,
+          "y1": 260.7692307692308,
+          "y2": 260.7692307692308
+        },
+        {
+          "anchor": "end",
+          "color": "#D55E00",
+          "size": 19,
+          "text": "FAR objective: 6%",
+          "type": "text",
+          "weight": 600,
+          "x": 750,
+          "y": 248.76923076923077
+        },
+        {
+          "dash": false,
+          "fill": "#0072B2",
+          "height": 264.50841360867065,
+          "radius": 0,
+          "stroke": "#0072B2",
+          "stroke_width": 0,
+          "type": "rect",
+          "width": 110,
+          "x": 237.5,
+          "y": 485.49158639132935
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "3.2440%",
+          "type": "text",
+          "weight": 600,
+          "x": 292.5,
+          "y": 471.49158639132935
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "Final\n10%",
+          "type": "text",
+          "weight": 400,
+          "x": 292.5,
+          "y": 788
+        },
+        {
+          "dash": false,
+          "fill": "#0072B2",
+          "height": 76.99897002222588,
+          "radius": 0,
+          "stroke": "#0072B2",
+          "stroke_width": 0,
+          "type": "rect",
+          "width": 110,
+          "x": 422.5,
+          "y": 673.0010299777741
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "0.9443%",
+          "type": "text",
+          "weight": 600,
+          "x": 477.5,
+          "y": 659.0010299777741
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "Final\n20%",
+          "type": "text",
+          "weight": 400,
+          "x": 477.5,
+          "y": 788
+        },
+        {
+          "dash": false,
+          "fill": "#0072B2",
+          "height": 42.016162029459906,
+          "radius": 0,
+          "stroke": "#0072B2",
+          "stroke_width": 0,
+          "type": "rect",
+          "width": 110,
+          "x": 607.5,
+          "y": 707.9838379705401
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "0.5153%",
+          "type": "text",
+          "weight": 600,
+          "x": 662.5,
+          "y": 693.9838379705401
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "Final\n30%",
+          "type": "text",
+          "weight": 400,
+          "x": 662.5,
+          "y": 788
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Onset proxy",
+          "type": "text",
+          "weight": 600,
+          "x": 445.0,
+          "y": 840
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 29,
+          "text": "Engine coverage (%)",
+          "type": "text",
+          "weight": 600,
+          "x": 1215.0,
+          "y": 150
+        },
+        {
+          "dash": false,
+          "stroke": "#222222",
+          "stroke_width": 3,
+          "type": "line",
+          "x1": 970,
+          "x2": 970,
+          "y1": 220,
+          "y2": 750
+        },
+        {
+          "dash": false,
+          "stroke": "#222222",
+          "stroke_width": 3,
+          "type": "line",
+          "x1": 970,
+          "x2": 1525,
+          "y1": 750,
+          "y2": 750
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 970,
+          "x2": 1525,
+          "y1": 750.0,
+          "y2": 750.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0",
+          "type": "text",
+          "weight": 400,
+          "x": 955,
+          "y": 758.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 970,
+          "x2": 1525,
+          "y1": 644.0,
+          "y2": 644.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "20",
+          "type": "text",
+          "weight": 400,
+          "x": 955,
+          "y": 652.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 970,
+          "x2": 1525,
+          "y1": 538.0,
+          "y2": 538.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "40",
+          "type": "text",
+          "weight": 400,
+          "x": 955,
+          "y": 546.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 970,
+          "x2": 1525,
+          "y1": 432.0,
+          "y2": 432.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "60",
+          "type": "text",
+          "weight": 400,
+          "x": 955,
+          "y": 440.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 970,
+          "x2": 1525,
+          "y1": 326.0,
+          "y2": 326.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "80",
+          "type": "text",
+          "weight": 400,
+          "x": 955,
+          "y": 334.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 970,
+          "x2": 1525,
+          "y1": 220.0,
+          "y2": 220.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "100",
+          "type": "text",
+          "weight": 400,
+          "x": 955,
+          "y": 228.0
+        },
+        {
+          "dash": false,
+          "fill": "#009E73",
+          "height": 275.1923076923077,
+          "radius": 0,
+          "stroke": "#009E73",
+          "stroke_width": 0,
+          "type": "rect",
+          "width": 110,
+          "x": 1007.5,
+          "y": 474.8076923076923
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "51.92%",
+          "type": "text",
+          "weight": 600,
+          "x": 1062.5,
+          "y": 460.8076923076923
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "Final\n10%",
+          "type": "text",
+          "weight": 400,
+          "x": 1062.5,
+          "y": 788
+        },
+        {
+          "dash": false,
+          "fill": "#009E73",
+          "height": 417.8846153846153,
+          "radius": 0,
+          "stroke": "#009E73",
+          "stroke_width": 0,
+          "type": "rect",
+          "width": 110,
+          "x": 1192.5,
+          "y": 332.1153846153847
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "78.85%",
+          "type": "text",
+          "weight": 600,
+          "x": 1247.5,
+          "y": 318.1153846153847
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "Final\n20%",
+          "type": "text",
+          "weight": 400,
+          "x": 1247.5,
+          "y": 788
+        },
+        {
+          "dash": false,
+          "fill": "#009E73",
+          "height": 448.46153846153845,
+          "radius": 0,
+          "stroke": "#009E73",
+          "stroke_width": 0,
+          "type": "rect",
+          "width": 110,
+          "x": 1377.5,
+          "y": 301.53846153846155
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "84.62%",
+          "type": "text",
+          "weight": 600,
+          "x": 1432.5,
+          "y": 287.53846153846155
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "Final\n30%",
+          "type": "text",
+          "weight": 400,
+          "x": 1432.5,
+          "y": 788
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Onset proxy",
+          "type": "text",
+          "weight": 600,
+          "x": 1215.0,
+          "y": 840
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 29,
+          "text": "Median detection delay (cycles)",
+          "type": "text",
+          "weight": 600,
+          "x": 1985.0,
+          "y": 150
+        },
+        {
+          "dash": false,
+          "stroke": "#222222",
+          "stroke_width": 3,
+          "type": "line",
+          "x1": 1740,
+          "x2": 1740,
+          "y1": 220,
+          "y2": 750
+        },
+        {
+          "dash": false,
+          "stroke": "#222222",
+          "stroke_width": 3,
+          "type": "line",
+          "x1": 1740,
+          "x2": 2295,
+          "y1": 750,
+          "y2": 750
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1740,
+          "x2": 2295,
+          "y1": 750.0,
+          "y2": 750.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0",
+          "type": "text",
+          "weight": 400,
+          "x": 1725,
+          "y": 758.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1740,
+          "x2": 2295,
+          "y1": 644.0,
+          "y2": 644.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "10",
+          "type": "text",
+          "weight": 400,
+          "x": 1725,
+          "y": 652.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1740,
+          "x2": 2295,
+          "y1": 538.0,
+          "y2": 538.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "20",
+          "type": "text",
+          "weight": 400,
+          "x": 1725,
+          "y": 546.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1740,
+          "x2": 2295,
+          "y1": 432.0,
+          "y2": 432.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "30",
+          "type": "text",
+          "weight": 400,
+          "x": 1725,
+          "y": 440.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1740,
+          "x2": 2295,
+          "y1": 326.0,
+          "y2": 326.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "40",
+          "type": "text",
+          "weight": 400,
+          "x": 1725,
+          "y": 334.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1740,
+          "x2": 2295,
+          "y1": 220.0,
+          "y2": 220.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "50",
+          "type": "text",
+          "weight": 400,
+          "x": 1725,
+          "y": 228.0
+        },
+        {
+          "dash": true,
+          "stroke": "#D55E00",
+          "stroke_width": 3,
+          "type": "line",
+          "x1": 1740,
+          "x2": 2295,
+          "y1": 622.8,
+          "y2": 622.8
+        },
+        {
+          "anchor": "middle",
+          "color": "#D55E00",
+          "size": 18,
+          "text": "Aggregate aspiration: ≤12 cycles",
+          "type": "text",
+          "weight": 600,
+          "x": 1985.0,
+          "y": 180
+        },
+        {
+          "anchor": "middle",
+          "color": "#D55E00",
+          "size": 18,
+          "text": "(not proxy-wise pass/fail)",
+          "type": "text",
+          "weight": 600,
+          "x": 1985.0,
+          "y": 203
+        },
+        {
+          "dash": false,
+          "fill": "#E69F00",
+          "height": 127.20000000000005,
+          "radius": 0,
+          "stroke": "#E69F00",
+          "stroke_width": 0,
+          "type": "rect",
+          "width": 110,
+          "x": 1777.5,
+          "y": 622.8
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "12",
+          "type": "text",
+          "weight": 600,
+          "x": 1832.5,
+          "y": 608.8
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "Final\n10%",
+          "type": "text",
+          "weight": 400,
+          "x": 1832.5,
+          "y": 788
+        },
+        {
+          "dash": false,
+          "fill": "#E69F00",
+          "height": 265.0,
+          "radius": 0,
+          "stroke": "#E69F00",
+          "stroke_width": 0,
+          "type": "rect",
+          "width": 110,
+          "x": 1962.5,
+          "y": 485.0
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "25",
+          "type": "text",
+          "weight": 600,
+          "x": 2017.5,
+          "y": 471.0
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "Final\n20%",
+          "type": "text",
+          "weight": 400,
+          "x": 2017.5,
+          "y": 788
+        },
+        {
+          "dash": false,
+          "fill": "#E69F00",
+          "height": 450.5,
+          "radius": 0,
+          "stroke": "#E69F00",
+          "stroke_width": 0,
+          "type": "rect",
+          "width": 110,
+          "x": 2147.5,
+          "y": 299.5
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "42.5",
+          "type": "text",
+          "weight": 600,
+          "x": 2202.5,
+          "y": 285.5
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "Final\n30%",
+          "type": "text",
+          "weight": 400,
+          "x": 2202.5,
+          "y": 788
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Onset proxy",
+          "type": "text",
+          "weight": 600,
+          "x": 1985.0,
+          "y": 840
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 24,
+          "text": "Delay medians condition on detected engines; missed engines remain in coverage.",
+          "type": "text",
+          "weight": 400,
+          "x": 1200.0,
+          "y": 900
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 24,
+          "text": "Registered aggregate delay = median of proxy medians (12, 25, 42.5) = 25 cycles.",
+          "type": "text",
+          "weight": 600,
+          "x": 1200.0,
+          "y": 938
+        }
+      ],
+      "title": "Frozen PCA internal held-out operational results",
+      "width": 2400,
+      "width_mm": 190
+    },
+    {
+      "data": [
+        {
+          "coverage_percent": 51.92307692307692,
+          "delay_population": "detected engines only; misses retained in coverage",
+          "detected_engines": 27,
+          "engine_count": 52,
+          "false_positive_endpoints": 265,
+          "far_per_1000": 32.43971110295018,
+          "far_percent": 3.2439711102950177,
+          "healthy_endpoints": 8169,
+          "median_delay_cycles": 12.0,
+          "policy_id": "normalized_life_last_10pct_endpoint",
+          "pr_auc": 0.6026705075624872,
+          "proxy": "Final 10%",
+          "roc_auc": 0.9476205805711868
+        },
+        {
+          "coverage_percent": 78.84615384615384,
+          "delay_population": "detected engines only; misses retained in coverage",
+          "detected_engines": 41,
+          "engine_count": 52,
+          "false_positive_endpoints": 67,
+          "far_per_1000": 9.443269908386187,
+          "far_percent": 0.9443269908386187,
+          "healthy_endpoints": 7095,
+          "median_delay_cycles": 25.0,
+          "policy_id": "normalized_life_last_20pct_endpoint",
+          "pr_auc": 0.8097437092694553,
+          "proxy": "Final 20%",
+          "roc_auc": 0.926731911712888
+        },
+        {
+          "coverage_percent": 84.61538461538461,
+          "delay_population": "detected engines only; misses retained in coverage",
+          "detected_engines": 44,
+          "engine_count": 52,
+          "false_positive_endpoints": 31,
+          "far_per_1000": 5.152925531914893,
+          "far_percent": 0.5152925531914894,
+          "healthy_endpoints": 6016,
+          "median_delay_cycles": 42.5,
+          "policy_id": "normalized_life_last_30pct_endpoint",
+          "pr_auc": 0.8274519039746946,
+          "proxy": "Final 30%",
+          "roc_auc": 0.8675761206164003
+        }
+      ],
+      "description": "Two panels show PR-AUC and ROC-AUC for the same three normalized-life endpoint proxies.",
+      "filename": "figure_04_ranking_results",
+      "height": 920,
+      "height_mm": 92,
+      "primitives": [
+        {
+          "fill": "#FFFFFF",
+          "height": 920,
+          "stroke": "#FFFFFF",
+          "stroke_width": 0,
+          "type": "rect",
+          "width": 1800,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 38,
+          "text": "Frozen PCA threshold-free ranking by onset proxy",
+          "type": "text",
+          "weight": 600,
+          "x": 900.0,
+          "y": 55
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 25,
+          "text": "Internal held-out window endpoints; metrics are not accuracy",
+          "type": "text",
+          "weight": 400,
+          "x": 900.0,
+          "y": 95
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 31,
+          "text": "PR-AUC",
+          "type": "text",
+          "weight": 600,
+          "x": 470.0,
+          "y": 145
+        },
+        {
+          "dash": false,
+          "stroke": "#222222",
+          "stroke_width": 3,
+          "type": "line",
+          "x1": 210,
+          "x2": 210,
+          "y1": 180,
+          "y2": 740
+        },
+        {
+          "dash": false,
+          "stroke": "#222222",
+          "stroke_width": 3,
+          "type": "line",
+          "x1": 210,
+          "x2": 795,
+          "y1": 740,
+          "y2": 740
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 210,
+          "x2": 795,
+          "y1": 740.0,
+          "y2": 740.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.0",
+          "type": "text",
+          "weight": 400,
+          "x": 195,
+          "y": 748.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 210,
+          "x2": 795,
+          "y1": 628.0,
+          "y2": 628.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.2",
+          "type": "text",
+          "weight": 400,
+          "x": 195,
+          "y": 636.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 210,
+          "x2": 795,
+          "y1": 516.0,
+          "y2": 516.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.4",
+          "type": "text",
+          "weight": 400,
+          "x": 195,
+          "y": 524.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 210,
+          "x2": 795,
+          "y1": 404.0,
+          "y2": 404.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.6",
+          "type": "text",
+          "weight": 400,
+          "x": 195,
+          "y": 412.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 210,
+          "x2": 795,
+          "y1": 292.0,
+          "y2": 292.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.8",
+          "type": "text",
+          "weight": 400,
+          "x": 195,
+          "y": 300.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 210,
+          "x2": 795,
+          "y1": 180.0,
+          "y2": 180.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "1.0",
+          "type": "text",
+          "weight": 400,
+          "x": 195,
+          "y": 188.0
+        },
+        {
+          "cx": 307.5,
+          "cy": 402.50451576500717,
+          "fill": "#0072B2",
+          "radius": 16,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 22,
+          "text": "0.60267",
+          "type": "text",
+          "weight": 600,
+          "x": 307.5,
+          "y": 378.50451576500717
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "Final\n10%",
+          "type": "text",
+          "weight": 400,
+          "x": 307.5,
+          "y": 780
+        },
+        {
+          "cx": 502.5,
+          "cy": 286.54352280910507,
+          "fill": "#0072B2",
+          "radius": 16,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 22,
+          "text": "0.80974",
+          "type": "text",
+          "weight": 600,
+          "x": 502.5,
+          "y": 262.54352280910507
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "Final\n20%",
+          "type": "text",
+          "weight": 400,
+          "x": 502.5,
+          "y": 780
+        },
+        {
+          "cx": 697.5,
+          "cy": 276.62693377417105,
+          "fill": "#0072B2",
+          "radius": 16,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 22,
+          "text": "0.82745",
+          "type": "text",
+          "weight": 600,
+          "x": 697.5,
+          "y": 252.62693377417105
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "Final\n30%",
+          "type": "text",
+          "weight": 400,
+          "x": 697.5,
+          "y": 780
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Onset proxy",
+          "type": "text",
+          "weight": 600,
+          "x": 470.0,
+          "y": 832
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 31,
+          "text": "ROC-AUC",
+          "type": "text",
+          "weight": 600,
+          "x": 1310.0,
+          "y": 145
+        },
+        {
+          "dash": false,
+          "stroke": "#222222",
+          "stroke_width": 3,
+          "type": "line",
+          "x1": 1050,
+          "x2": 1050,
+          "y1": 180,
+          "y2": 740
+        },
+        {
+          "dash": false,
+          "stroke": "#222222",
+          "stroke_width": 3,
+          "type": "line",
+          "x1": 1050,
+          "x2": 1635,
+          "y1": 740,
+          "y2": 740
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1050,
+          "x2": 1635,
+          "y1": 740.0,
+          "y2": 740.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.0",
+          "type": "text",
+          "weight": 400,
+          "x": 1035,
+          "y": 748.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1050,
+          "x2": 1635,
+          "y1": 628.0,
+          "y2": 628.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.2",
+          "type": "text",
+          "weight": 400,
+          "x": 1035,
+          "y": 636.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1050,
+          "x2": 1635,
+          "y1": 516.0,
+          "y2": 516.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.4",
+          "type": "text",
+          "weight": 400,
+          "x": 1035,
+          "y": 524.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1050,
+          "x2": 1635,
+          "y1": 404.0,
+          "y2": 404.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.6",
+          "type": "text",
+          "weight": 400,
+          "x": 1035,
+          "y": 412.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1050,
+          "x2": 1635,
+          "y1": 292.0,
+          "y2": 292.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.8",
+          "type": "text",
+          "weight": 400,
+          "x": 1035,
+          "y": 300.0
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1050,
+          "x2": 1635,
+          "y1": 180.0,
+          "y2": 180.0
+        },
+        {
+          "anchor": "end",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "1.0",
+          "type": "text",
+          "weight": 400,
+          "x": 1035,
+          "y": 188.0
+        },
+        {
+          "cx": 1147.5,
+          "cy": 209.33247488013535,
+          "fill": "#CC79A7",
+          "radius": 16,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 22,
+          "text": "0.94762",
+          "type": "text",
+          "weight": 600,
+          "x": 1147.5,
+          "y": 185.33247488013535
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "Final\n10%",
+          "type": "text",
+          "weight": 400,
+          "x": 1147.5,
+          "y": 780
+        },
+        {
+          "cx": 1342.5,
+          "cy": 221.03012944078273,
+          "fill": "#CC79A7",
+          "radius": 16,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 22,
+          "text": "0.92673",
+          "type": "text",
+          "weight": 600,
+          "x": 1342.5,
+          "y": 197.03012944078273
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "Final\n20%",
+          "type": "text",
+          "weight": 400,
+          "x": 1342.5,
+          "y": 780
+        },
+        {
+          "cx": 1537.5,
+          "cy": 254.1573724548158,
+          "fill": "#CC79A7",
+          "radius": 16,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 22,
+          "text": "0.86758",
+          "type": "text",
+          "weight": 600,
+          "x": 1537.5,
+          "y": 230.1573724548158
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "Final\n30%",
+          "type": "text",
+          "weight": 400,
+          "x": 1537.5,
+          "y": 780
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Onset proxy",
+          "type": "text",
+          "weight": 600,
+          "x": 1310.0,
+          "y": 832
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 22,
+          "text": "PR-AUC and ROC-AUC are pooled-window ranking metrics under explicit proxy labels; no curves or uncertainty intervals are inferred.",
+          "type": "text",
+          "weight": 400,
+          "x": 900.0,
+          "y": 860
+        }
+      ],
+      "title": "Frozen PCA ranking results",
+      "width": 1800,
+      "width_mm": 180
+    },
+    {
+      "data": [
+        {
+          "detector_id": "lof",
+          "label": "LOF",
+          "mean_pr_auc": 0.8496951348722845,
+          "mean_roc_auc": 0.9643631320006216
+        },
+        {
+          "detector_id": "one_class_svm",
+          "label": "One-Class SVM",
+          "mean_pr_auc": 0.8328076731468985,
+          "mean_roc_auc": 0.9643711100022
+        },
+        {
+          "detector_id": "lstm_calibrated_ensemble",
+          "label": "LSTM calibrated ensemble",
+          "mean_pr_auc": 0.8221205251743674,
+          "mean_roc_auc": 0.9512891505686406
+        },
+        {
+          "detector_id": "isolation_forest",
+          "label": "Isolation Forest",
+          "mean_pr_auc": 0.7891693415246449,
+          "mean_roc_auc": 0.9559210354459168
+        },
+        {
+          "detector_id": "pca_reconstruction",
+          "label": "PCA reconstruction",
+          "mean_pr_auc": 0.7724072946895637,
+          "mean_roc_auc": 0.92503449818727
+        }
+      ],
+      "description": "Two horizontal dot plots compare mean validation PR-AUC and ROC-AUC for five registered P1/K=6 score sources.",
+      "filename": "figure_05_validation_model_comparison",
+      "height": 1080,
+      "height_mm": 108,
+      "primitives": [
+        {
+          "fill": "#FFFFFF",
+          "height": 1080,
+          "stroke": "#FFFFFF",
+          "stroke_width": 0,
+          "type": "rect",
+          "width": 1900,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 38,
+          "text": "Validation/model-selection ranking evidence",
+          "type": "text",
+          "weight": 600,
+          "x": 950.0,
+          "y": 55
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 25,
+          "text": "Same 52-engine validation split; mean over final-10/20/30% endpoint proxies",
+          "type": "text",
+          "weight": 400,
+          "x": 950.0,
+          "y": 95
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 30,
+          "text": "Mean validation PR-AUC",
+          "type": "text",
+          "weight": 600,
+          "x": 490.0,
+          "y": 145
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 350.0,
+          "x2": 350.0,
+          "y1": 180,
+          "y2": 870
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.70",
+          "type": "text",
+          "weight": 400,
+          "x": 350.0,
+          "y": 905
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 509.99999999999994,
+          "x2": 509.99999999999994,
+          "y1": 180,
+          "y2": 870
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.80",
+          "type": "text",
+          "weight": 400,
+          "x": 509.99999999999994,
+          "y": 905
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 669.9999999999999,
+          "x2": 669.9999999999999,
+          "y1": 180,
+          "y2": 870
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.90",
+          "type": "text",
+          "weight": 400,
+          "x": 669.9999999999999,
+          "y": 905
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 830.0,
+          "x2": 830.0,
+          "y1": 180,
+          "y2": 870
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "1.00",
+          "type": "text",
+          "weight": 400,
+          "x": 830.0,
+          "y": 905
+        },
+        {
+          "dash": false,
+          "stroke": "#222222",
+          "stroke_width": 3,
+          "type": "line",
+          "x1": 350,
+          "x2": 830,
+          "y1": 870,
+          "y2": 870
+        },
+        {
+          "anchor": "end",
+          "color": "#222222",
+          "size": 23,
+          "text": "LOF",
+          "type": "text",
+          "weight": 400,
+          "x": 332,
+          "y": 257.0
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 6,
+          "type": "line",
+          "x1": 350,
+          "x2": 589.5122157956553,
+          "y1": 249.0,
+          "y2": 249.0
+        },
+        {
+          "cx": 589.5122157956553,
+          "cy": 249.0,
+          "fill": "#0072B2",
+          "radius": 15,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "start",
+          "color": "#222222",
+          "size": 21,
+          "text": "0.84970",
+          "type": "text",
+          "weight": 600,
+          "x": 607.5122157956553,
+          "y": 231.0
+        },
+        {
+          "anchor": "end",
+          "color": "#222222",
+          "size": 23,
+          "text": "One-Class SVM",
+          "type": "text",
+          "weight": 400,
+          "x": 332,
+          "y": 395.0
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 6,
+          "type": "line",
+          "x1": 350,
+          "x2": 562.4922770350377,
+          "y1": 387.0,
+          "y2": 387.0
+        },
+        {
+          "cx": 562.4922770350377,
+          "cy": 387.0,
+          "fill": "#0072B2",
+          "radius": 15,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "start",
+          "color": "#222222",
+          "size": 21,
+          "text": "0.83281",
+          "type": "text",
+          "weight": 600,
+          "x": 580.4922770350377,
+          "y": 369.0
+        },
+        {
+          "anchor": "end",
+          "color": "#222222",
+          "size": 23,
+          "text": "LSTM calibrated ensemble",
+          "type": "text",
+          "weight": 400,
+          "x": 332,
+          "y": 533.0
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 6,
+          "type": "line",
+          "x1": 350,
+          "x2": 545.3928402789879,
+          "y1": 525.0,
+          "y2": 525.0
+        },
+        {
+          "cx": 545.3928402789879,
+          "cy": 525.0,
+          "fill": "#0072B2",
+          "radius": 15,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "start",
+          "color": "#222222",
+          "size": 21,
+          "text": "0.82212",
+          "type": "text",
+          "weight": 600,
+          "x": 563.3928402789879,
+          "y": 507.0
+        },
+        {
+          "anchor": "end",
+          "color": "#222222",
+          "size": 23,
+          "text": "Isolation Forest",
+          "type": "text",
+          "weight": 400,
+          "x": 332,
+          "y": 671.0
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 6,
+          "type": "line",
+          "x1": 350,
+          "x2": 492.6709464394319,
+          "y1": 663.0,
+          "y2": 663.0
+        },
+        {
+          "cx": 492.6709464394319,
+          "cy": 663.0,
+          "fill": "#0072B2",
+          "radius": 15,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "start",
+          "color": "#222222",
+          "size": 21,
+          "text": "0.78917",
+          "type": "text",
+          "weight": 600,
+          "x": 510.6709464394319,
+          "y": 645.0
+        },
+        {
+          "anchor": "end",
+          "color": "#222222",
+          "size": 23,
+          "text": "PCA reconstruction",
+          "type": "text",
+          "weight": 400,
+          "x": 332,
+          "y": 809.0
+        },
+        {
+          "dash": false,
+          "stroke": "#0072B2",
+          "stroke_width": 6,
+          "type": "line",
+          "x1": 350,
+          "x2": 465.851671503302,
+          "y1": 801.0,
+          "y2": 801.0
+        },
+        {
+          "cx": 465.851671503302,
+          "cy": 801.0,
+          "fill": "#0072B2",
+          "radius": 15,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "start",
+          "color": "#222222",
+          "size": 21,
+          "text": "0.77241",
+          "type": "text",
+          "weight": 600,
+          "x": 483.851671503302,
+          "y": 783.0
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Mean AUC across three endpoint proxies",
+          "type": "text",
+          "weight": 600,
+          "x": 590.0,
+          "y": 948
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 30,
+          "text": "Mean validation ROC-AUC",
+          "type": "text",
+          "weight": 600,
+          "x": 1370.0,
+          "y": 145
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1230.0,
+          "x2": 1230.0,
+          "y1": 180,
+          "y2": 870
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.70",
+          "type": "text",
+          "weight": 400,
+          "x": 1230.0,
+          "y": 905
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1390.0,
+          "x2": 1390.0,
+          "y1": 180,
+          "y2": 870
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.80",
+          "type": "text",
+          "weight": 400,
+          "x": 1390.0,
+          "y": 905
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1550.0,
+          "x2": 1550.0,
+          "y1": 180,
+          "y2": 870
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "0.90",
+          "type": "text",
+          "weight": 400,
+          "x": 1550.0,
+          "y": 905
+        },
+        {
+          "dash": false,
+          "stroke": "#E5E7EB",
+          "stroke_width": 2,
+          "type": "line",
+          "x1": 1710.0,
+          "x2": 1710.0,
+          "y1": 180,
+          "y2": 870
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 21,
+          "text": "1.00",
+          "type": "text",
+          "weight": 400,
+          "x": 1710.0,
+          "y": 905
+        },
+        {
+          "dash": false,
+          "stroke": "#222222",
+          "stroke_width": 3,
+          "type": "line",
+          "x1": 1230,
+          "x2": 1710,
+          "y1": 870,
+          "y2": 870
+        },
+        {
+          "anchor": "end",
+          "color": "#222222",
+          "size": 23,
+          "text": "LOF",
+          "type": "text",
+          "weight": 400,
+          "x": 1212,
+          "y": 257.0
+        },
+        {
+          "dash": false,
+          "stroke": "#CC79A7",
+          "stroke_width": 6,
+          "type": "line",
+          "x1": 1230,
+          "x2": 1652.9810112009945,
+          "y1": 249.0,
+          "y2": 249.0
+        },
+        {
+          "cx": 1652.9810112009945,
+          "cy": 249.0,
+          "fill": "#CC79A7",
+          "radius": 15,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "start",
+          "color": "#222222",
+          "size": 21,
+          "text": "0.96436",
+          "type": "text",
+          "weight": 600,
+          "x": 1670.9810112009945,
+          "y": 231.0
+        },
+        {
+          "anchor": "end",
+          "color": "#222222",
+          "size": 23,
+          "text": "One-Class SVM",
+          "type": "text",
+          "weight": 400,
+          "x": 1212,
+          "y": 395.0
+        },
+        {
+          "dash": false,
+          "stroke": "#CC79A7",
+          "stroke_width": 6,
+          "type": "line",
+          "x1": 1230,
+          "x2": 1652.99377600352,
+          "y1": 387.0,
+          "y2": 387.0
+        },
+        {
+          "cx": 1652.99377600352,
+          "cy": 387.0,
+          "fill": "#CC79A7",
+          "radius": 15,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "start",
+          "color": "#222222",
+          "size": 21,
+          "text": "0.96437",
+          "type": "text",
+          "weight": 600,
+          "x": 1670.99377600352,
+          "y": 369.0
+        },
+        {
+          "anchor": "end",
+          "color": "#222222",
+          "size": 23,
+          "text": "LSTM calibrated ensemble",
+          "type": "text",
+          "weight": 400,
+          "x": 1212,
+          "y": 533.0
+        },
+        {
+          "dash": false,
+          "stroke": "#CC79A7",
+          "stroke_width": 6,
+          "type": "line",
+          "x1": 1230,
+          "x2": 1632.062640909825,
+          "y1": 525.0,
+          "y2": 525.0
+        },
+        {
+          "cx": 1632.062640909825,
+          "cy": 525.0,
+          "fill": "#CC79A7",
+          "radius": 15,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "start",
+          "color": "#222222",
+          "size": 21,
+          "text": "0.95129",
+          "type": "text",
+          "weight": 600,
+          "x": 1650.062640909825,
+          "y": 507.0
+        },
+        {
+          "anchor": "end",
+          "color": "#222222",
+          "size": 23,
+          "text": "Isolation Forest",
+          "type": "text",
+          "weight": 400,
+          "x": 1212,
+          "y": 671.0
+        },
+        {
+          "dash": false,
+          "stroke": "#CC79A7",
+          "stroke_width": 6,
+          "type": "line",
+          "x1": 1230,
+          "x2": 1639.4736567134669,
+          "y1": 663.0,
+          "y2": 663.0
+        },
+        {
+          "cx": 1639.4736567134669,
+          "cy": 663.0,
+          "fill": "#CC79A7",
+          "radius": 15,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "start",
+          "color": "#222222",
+          "size": 21,
+          "text": "0.95592",
+          "type": "text",
+          "weight": 600,
+          "x": 1657.4736567134669,
+          "y": 645.0
+        },
+        {
+          "anchor": "end",
+          "color": "#222222",
+          "size": 23,
+          "text": "PCA reconstruction",
+          "type": "text",
+          "weight": 400,
+          "x": 1212,
+          "y": 809.0
+        },
+        {
+          "dash": false,
+          "stroke": "#CC79A7",
+          "stroke_width": 6,
+          "type": "line",
+          "x1": 1230,
+          "x2": 1590.055197099632,
+          "y1": 801.0,
+          "y2": 801.0
+        },
+        {
+          "cx": 1590.055197099632,
+          "cy": 801.0,
+          "fill": "#CC79A7",
+          "radius": 15,
+          "stroke": "#222222",
+          "stroke_width": 2,
+          "type": "circle"
+        },
+        {
+          "anchor": "start",
+          "color": "#222222",
+          "size": 21,
+          "text": "0.92503",
+          "type": "text",
+          "weight": 600,
+          "x": 1608.055197099632,
+          "y": 783.0
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 23,
+          "text": "Mean AUC across three endpoint proxies",
+          "type": "text",
+          "weight": 600,
+          "x": 1470.0,
+          "y": 948
+        },
+        {
+          "anchor": "middle",
+          "color": "#6B7280",
+          "size": 23,
+          "text": "Validation-only selection evidence—not internal held-out performance. PCA was frozen later under the registered operational alert objective.",
+          "type": "text",
+          "weight": 400,
+          "x": 950.0,
+          "y": 1000
+        }
+      ],
+      "title": "Validation model comparison",
+      "width": 1900,
+      "width_mm": 190
+    }
+  ],
+  "palette": {
+    "black": "#222222",
+    "blue": "#0072B2",
+    "gray": "#6B7280",
+    "green": "#009E73",
+    "light_gray": "#E5E7EB",
+    "lighter_gray": "#F3F4F6",
+    "orange": "#E69F00",
+    "purple": "#CC79A7",
+    "sky": "#56B4E9",
+    "vermillion": "#D55E00",
+    "white": "#FFFFFF"
+  },
+  "png_dpi": 300,
+  "renderer": "dependency-free SVG primitives; matching System.Drawing PNG previews",
+  "schema_version": "1.0.0"
+}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="190mm" height="108mm" viewBox="0 0 1900 1080" role="img" aria-labelledby="title desc">
+<title id="title">Validation model comparison</title>
+<desc id="desc">Two horizontal dot plots compare mean validation PR-AUC and ROC-AUC for five registered P1/K=6 score sources.</desc>
+<style>text{font-family:Arial,Helvetica,sans-serif} .dash{stroke-dasharray:12 9}</style>
+<rect x="0" y="0" width="1900" height="1080" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="950.0" y="55" font-size="38" font-weight="600" text-anchor="middle" fill="#222222">Validation/model-selection ranking evidence</text>
+<text x="950.0" y="95" font-size="25" font-weight="400" text-anchor="middle" fill="#6B7280">Same 52-engine validation split; mean over final-10/20/30% endpoint proxies</text>
+<text x="490.0" y="145" font-size="30" font-weight="600" text-anchor="middle" fill="#222222">Mean validation PR-AUC</text>
+<line x1="350.0" y1="180" x2="350.0" y2="870" stroke="#E5E7EB" stroke-width="2"/>
+<text x="350.0" y="905" font-size="21" font-weight="400" text-anchor="middle" fill="#6B7280">0.70</text>
+<line x1="509.99999999999994" y1="180" x2="509.99999999999994" y2="870" stroke="#E5E7EB" stroke-width="2"/>
+<text x="509.99999999999994" y="905" font-size="21" font-weight="400" text-anchor="middle" fill="#6B7280">0.80</text>
+<line x1="669.9999999999999" y1="180" x2="669.9999999999999" y2="870" stroke="#E5E7EB" stroke-width="2"/>
+<text x="669.9999999999999" y="905" font-size="21" font-weight="400" text-anchor="middle" fill="#6B7280">0.90</text>
+<line x1="830.0" y1="180" x2="830.0" y2="870" stroke="#E5E7EB" stroke-width="2"/>
+<text x="830.0" y="905" font-size="21" font-weight="400" text-anchor="middle" fill="#6B7280">1.00</text>
+<line x1="350" y1="870" x2="830" y2="870" stroke="#222222" stroke-width="3"/>
+<text x="332" y="257.0" font-size="23" font-weight="400" text-anchor="end" fill="#222222">LOF</text>
+<line x1="350" y1="249.0" x2="589.5122157956553" y2="249.0" stroke="#0072B2" stroke-width="6"/>
+<circle cx="589.5122157956553" cy="249.0" r="15" fill="#0072B2" stroke="#222222" stroke-width="2"/>
+<text x="607.5122157956553" y="231.0" font-size="21" font-weight="600" text-anchor="start" fill="#222222">0.84970</text>
+<text x="332" y="395.0" font-size="23" font-weight="400" text-anchor="end" fill="#222222">One-Class SVM</text>
+<line x1="350" y1="387.0" x2="562.4922770350377" y2="387.0" stroke="#0072B2" stroke-width="6"/>
+<circle cx="562.4922770350377" cy="387.0" r="15" fill="#0072B2" stroke="#222222" stroke-width="2"/>
+<text x="580.4922770350377" y="369.0" font-size="21" font-weight="600" text-anchor="start" fill="#222222">0.83281</text>
+<text x="332" y="533.0" font-size="23" font-weight="400" text-anchor="end" fill="#222222">LSTM calibrated ensemble</text>
+<line x1="350" y1="525.0" x2="545.3928402789879" y2="525.0" stroke="#0072B2" stroke-width="6"/>
+<circle cx="545.3928402789879" cy="525.0" r="15" fill="#0072B2" stroke="#222222" stroke-width="2"/>
+<text x="563.3928402789879" y="507.0" font-size="21" font-weight="600" text-anchor="start" fill="#222222">0.82212</text>
+<text x="332" y="671.0" font-size="23" font-weight="400" text-anchor="end" fill="#222222">Isolation Forest</text>
+<line x1="350" y1="663.0" x2="492.6709464394319" y2="663.0" stroke="#0072B2" stroke-width="6"/>
+<circle cx="492.6709464394319" cy="663.0" r="15" fill="#0072B2" stroke="#222222" stroke-width="2"/>
+<text x="510.6709464394319" y="645.0" font-size="21" font-weight="600" text-anchor="start" fill="#222222">0.78917</text>
+<text x="332" y="809.0" font-size="23" font-weight="400" text-anchor="end" fill="#222222">PCA reconstruction</text>
+<line x1="350" y1="801.0" x2="465.851671503302" y2="801.0" stroke="#0072B2" stroke-width="6"/>
+<circle cx="465.851671503302" cy="801.0" r="15" fill="#0072B2" stroke="#222222" stroke-width="2"/>
+<text x="483.851671503302" y="783.0" font-size="21" font-weight="600" text-anchor="start" fill="#222222">0.77241</text>
+<text x="590.0" y="948" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">Mean AUC across three endpoint proxies</text>
+<text x="1370.0" y="145" font-size="30" font-weight="600" text-anchor="middle" fill="#222222">Mean validation ROC-AUC</text>
+<line x1="1230.0" y1="180" x2="1230.0" y2="870" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1230.0" y="905" font-size="21" font-weight="400" text-anchor="middle" fill="#6B7280">0.70</text>
+<line x1="1390.0" y1="180" x2="1390.0" y2="870" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1390.0" y="905" font-size="21" font-weight="400" text-anchor="middle" fill="#6B7280">0.80</text>
+<line x1="1550.0" y1="180" x2="1550.0" y2="870" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1550.0" y="905" font-size="21" font-weight="400" text-anchor="middle" fill="#6B7280">0.90</text>
+<line x1="1710.0" y1="180" x2="1710.0" y2="870" stroke="#E5E7EB" stroke-width="2"/>
+<text x="1710.0" y="905" font-size="21" font-weight="400" text-anchor="middle" fill="#6B7280">1.00</text>
+<line x1="1230" y1="870" x2="1710" y2="870" stroke="#222222" stroke-width="3"/>
+<text x="1212" y="257.0" font-size="23" font-weight="400" text-anchor="end" fill="#222222">LOF</text>
+<line x1="1230" y1="249.0" x2="1652.9810112009945" y2="249.0" stroke="#CC79A7" stroke-width="6"/>
+<circle cx="1652.9810112009945" cy="249.0" r="15" fill="#CC79A7" stroke="#222222" stroke-width="2"/>
+<text x="1670.9810112009945" y="231.0" font-size="21" font-weight="600" text-anchor="start" fill="#222222">0.96436</text>
+<text x="1212" y="395.0" font-size="23" font-weight="400" text-anchor="end" fill="#222222">One-Class SVM</text>
+<line x1="1230" y1="387.0" x2="1652.99377600352" y2="387.0" stroke="#CC79A7" stroke-width="6"/>
+<circle cx="1652.99377600352" cy="387.0" r="15" fill="#CC79A7" stroke="#222222" stroke-width="2"/>
+<text x="1670.99377600352" y="369.0" font-size="21" font-weight="600" text-anchor="start" fill="#222222">0.96437</text>
+<text x="1212" y="533.0" font-size="23" font-weight="400" text-anchor="end" fill="#222222">LSTM calibrated ensemble</text>
+<line x1="1230" y1="525.0" x2="1632.062640909825" y2="525.0" stroke="#CC79A7" stroke-width="6"/>
+<circle cx="1632.062640909825" cy="525.0" r="15" fill="#CC79A7" stroke="#222222" stroke-width="2"/>
+<text x="1650.062640909825" y="507.0" font-size="21" font-weight="600" text-anchor="start" fill="#222222">0.95129</text>
+<text x="1212" y="671.0" font-size="23" font-weight="400" text-anchor="end" fill="#222222">Isolation Forest</text>
+<line x1="1230" y1="663.0" x2="1639.4736567134669" y2="663.0" stroke="#CC79A7" stroke-width="6"/>
+<circle cx="1639.4736567134669" cy="663.0" r="15" fill="#CC79A7" stroke="#222222" stroke-width="2"/>
+<text x="1657.4736567134669" y="645.0" font-size="21" font-weight="600" text-anchor="start" fill="#222222">0.95592</text>
+<text x="1212" y="809.0" font-size="23" font-weight="400" text-anchor="end" fill="#222222">PCA reconstruction</text>
+<line x1="1230" y1="801.0" x2="1590.055197099632" y2="801.0" stroke="#CC79A7" stroke-width="6"/>
+<circle cx="1590.055197099632" cy="801.0" r="15" fill="#CC79A7" stroke="#222222" stroke-width="2"/>
+<text x="1608.055197099632" y="783.0" font-size="21" font-weight="600" text-anchor="start" fill="#222222">0.92503</text>
+<text x="1470.0" y="948" font-size="23" font-weight="600" text-anchor="middle" fill="#222222">Mean AUC across three endpoint proxies</text>
+<text x="950.0" y="1000" font-size="23" font-weight="400" text-anchor="middle" fill="#6B7280">Validation-only selection evidence—not internal held-out performance. PCA was frozen later under the registered operational alert objective.</text>
+</svg>

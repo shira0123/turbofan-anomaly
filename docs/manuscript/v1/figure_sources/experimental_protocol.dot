@@ -1,0 +1,27 @@
+digraph ExperimentalProtocol {
+  graph [rankdir=TB, splines=ortho, nodesep=0.45, ranksep=0.65, fontname="Arial", label="Experimental protocol and evaluation boundaries", labelloc=t];
+  node [shape=box, style="rounded", fontname="Arial"];
+  edge [fontname="Arial"];
+  source [label="FD002 run-to-failure source\n260 engines"];
+  train [label="Training\n156 engines\n32,107 rows / 27,583 windows"];
+  validation [label="Validation\n52 engines\n10,873 rows / 9,365 windows"];
+  heldout [label="Internal held-out\n52 engines\n10,779 rows / 9,271 windows"];
+  source -> train;
+  source -> validation;
+  source -> heldout;
+  fit [label="Training-only fitting\npreprocessing, detectors, calibration, thresholds"];
+  select [label="Validation selection\nK, model candidates, alert policy"];
+  boundary [label="Held-out unavailable before freeze"];
+  train -> fit;
+  validation -> select;
+  heldout -> boundary;
+  freeze [label="Gate 4 freeze\nP1/K=6 + PCA + q=0.995 per mode + EWMA 0.20 + persistence 8"];
+  fit -> freeze;
+  select -> freeze;
+  confirm [label="Completed first valid internal held-out evaluation\nno refit/recalibration/reselection/fusion"];
+  freeze -> confirm;
+  boundary -> confirm;
+  official [label="Official NASA test\nnot accessed; outside completed study", style="rounded,dashed"];
+  future [label="Future separate preregistration required", style="rounded,dashed"];
+  official -> future [style=dashed];
+}
