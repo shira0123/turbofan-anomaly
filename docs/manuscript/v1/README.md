@@ -2,7 +2,7 @@
 
 ## Purpose and scope
 
-This directory contains the verified evidence foundation, detailed outline, and reproducible figure/table bundle for a first manuscript about the FD002 context-aware anomaly-alert study. It does not yet contain the full manuscript and introduces no new scientific results.
+This directory contains the complete venue-neutral manuscript V1, its manuscript-specific claims and review records, the verified evidence foundation, and a reproducible figure/table bundle for the FD002 context-aware anomaly-alert study. The manuscript introduces no new scientific results; it synthesizes committed aggregate evidence under the registered claim boundaries.
 
 The intended paper reports a governed, engine-disjoint study of operating-condition-aware preprocessing and frozen anomaly-alert behavior on an internal held-out partition. The reported endpoint labels are normalized-life proxies. They are not observed physical fault onsets, and the results are not official NASA-test, operational, production, or real-aircraft estimates.
 
@@ -21,6 +21,12 @@ This work is documentation and evidence synthesis only. It must not trigger data
 - `CAPTIONS.md` contains self-contained figure and table captions.
 - `ARTIFACT_PROVENANCE.json` records artifact/source hashes, source selectors, commands, software versions, and scientific-boundary declarations.
 - `BUILD.md` records exact regeneration and verification commands plus renderer limitations.
+- `MANUSCRIPT_V1.md` is the editorial source of truth for the complete paper.
+- `manuscript_v1.tex` is the deterministically rendered venue-neutral LaTeX counterpart.
+- `references_v1.bib` is the 20-entry cited subset copied from the verified core bibliography.
+- `MANUSCRIPT_CLAIMS_AUDIT_V1.md` records the authority, support status, and caveat for each major claim.
+- `MANUSCRIPT_REVIEW_CHECKLIST_V1.md` records scientific, citation, asset, equation, originality, placeholder, and guide review status.
+- `PLAIN_LANGUAGE_SUMMARY.md` gives a one-page nontechnical explanation for the guide and project team.
 
 ## Evidence hierarchy
 
@@ -77,14 +83,15 @@ Historical prose does not override a registered protocol or implementation. In p
 - `src/turbofan_anomaly/inference/pipeline.py`
 - `src/turbofan_anomaly/explainability/pca_attribution.py`
 
-## Workflow to manuscript V1
+## Manuscript V1 status
 
-1. Evidence foundation and outline: complete.
+1. Evidence foundation and detailed outline: complete.
 2. Reproducible figures, diagrams, tables, captions, and provenance: complete.
-3. Next: resolve the manuscript decisions in `OPEN_QUESTIONS.md` and synthesize the full Markdown manuscript from `OUTLINE.md` with verified citations.
-4. Convert approved text to the target venue's LaTeX template without changing claim scope.
-5. Reuse `docs/research/MANUSCRIPT_CORE_CITATIONS_V1.bib` as the citation authority; create a venue-specific BibTeX derivative only if required, preserving the existing keys.
-6. Run path, citation-key, numerical-claim, and cross-format consistency checks before review.
+3. Complete Markdown manuscript and synchronized venue-neutral LaTeX source: complete.
+4. Cited bibliography subset, manuscript claims audit, review checklist, and plain-language summary: complete.
+5. Static numerical, citation, path, terminology, cross-format, hash, and LaTeX-structure checks: complete.
+6. Author/affiliation placeholders and venue selection: deliberately unresolved for guide/author action.
+7. Official NASA-test evaluation: deferred and outside manuscript V1.
 
 ## Generated artifact bundle
 
@@ -93,7 +100,9 @@ Historical prose does not override a registered protocol or implementation. In p
 - Dataset/protocol, frozen-policy, confirmatory-result, and focused-literature tables are in `tables/` as CSV, Markdown, and LaTeX.
 - Run `python scripts/manuscript/generate_manuscript_v1_assets.py --repo-root .` to regenerate the complete bundle.
 - Run `python scripts/manuscript/verify_manuscript_v1_assets.py --repo-root .` to verify exact registered values, cross-format digests, citations, vector/raster structure, 300-dpi metadata, and provenance hashes.
+- Run `python scripts/manuscript/render_manuscript_v1_latex.py` after editing the Markdown source.
+- Run `python scripts/manuscript/verify_manuscript_v1.py --repo-root .` to verify manuscript structure, citations, major values, paths, terminology, cross-format consistency, LaTeX structure, and document provenance.
 
-Graphviz, Matplotlib, an SVG converter, and a LaTeX engine were unavailable; no dependency was installed. The committed SVGs are produced by a deterministic standard-library primitive renderer, while PNG previews use Windows `System.Drawing`. DOT sources remain available for later Graphviz rendering, and LaTeX table fragments remain uncompiled.
+Graphviz, Matplotlib, an SVG converter, and a LaTeX engine were unavailable; no dependency was installed. The committed SVGs are produced by a deterministic standard-library primitive renderer, while PNG previews use Windows `System.Drawing`. DOT sources remain available for later Graphviz rendering. The complete LaTeX source and its included table fragments passed static checks but were not compiled.
 
-No artifact reconstructs score traces, invents curves or intervals, or reruns evaluation. The next-stage prose draft must preserve the same boundary.
+No artifact reconstructs score traces, invents curves or intervals, or reruns evaluation. A later venue-formatting or scientific-extension task must preserve the same boundary unless separately registered.

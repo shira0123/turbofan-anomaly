@@ -523,44 +523,54 @@
         {
           "dash": false,
           "fill": "#F3F4F6",
-          "height": 145,
+          "height": 175,
           "radius": 12,
           "stroke": "#D55E00",
           "stroke_width": 3,
           "type": "rect",
-          "width": 300,
-          "x": 1325,
-          "y": 450
+          "width": 340,
+          "x": 1305,
+          "y": 435
         },
         {
           "anchor": "middle",
           "color": "#222222",
-          "size": 28,
-          "text": "Gate 4 freeze",
+          "size": 24,
+          "text": "Pre-held-out policy freeze",
           "type": "text",
           "weight": 600,
           "x": 1475.0,
-          "y": 488
+          "y": 473
         },
         {
           "anchor": "middle",
           "color": "#222222",
-          "size": 23,
-          "text": "Primary policy locked",
+          "size": 21,
+          "text": "Project governance Gate 4",
           "type": "text",
           "weight": 400,
           "x": 1475.0,
-          "y": 525
+          "y": 510
         },
         {
           "anchor": "middle",
           "color": "#222222",
-          "size": 23,
-          "text": "before held-out access",
+          "size": 21,
+          "text": "Complete policy locked before",
           "type": "text",
           "weight": 400,
           "x": 1475.0,
-          "y": 553
+          "y": 536
+        },
+        {
+          "anchor": "middle",
+          "color": "#222222",
+          "size": 21,
+          "text": "held-out access",
+          "type": "text",
+          "weight": 400,
+          "x": 1475.0,
+          "y": 562
         },
         {
           "dash": false,
@@ -700,7 +710,7 @@
           "stroke_width": 4,
           "type": "arrow",
           "x1": 1220,
-          "x2": 1325,
+          "x2": 1305,
           "y1": 522,
           "y2": 522
         },
@@ -709,7 +719,7 @@
           "stroke": "#D55E00",
           "stroke_width": 4,
           "type": "arrow",
-          "x1": 1625,
+          "x1": 1645,
           "x2": 1730,
           "y1": 522,
           "y2": 522
@@ -1842,54 +1852,54 @@
         {
           "dash": false,
           "fill": "#FFFFFF",
-          "height": 175,
+          "height": 205,
           "radius": 12,
           "stroke": "#D55E00",
           "stroke_width": 3,
           "type": "rect",
           "width": 520,
           "x": 520,
-          "y": 950
+          "y": 935
         },
         {
           "anchor": "middle",
           "color": "#222222",
-          "size": 28,
-          "text": "Gate 4 policy freeze",
+          "size": 27,
+          "text": "Pre-held-out policy freeze",
           "type": "text",
           "weight": 600,
           "x": 780.0,
-          "y": 988
+          "y": 973
         },
         {
           "anchor": "middle",
           "color": "#222222",
-          "size": 23,
-          "text": "P1/K=6 + PCA + training empirical CDF + six",
+          "size": 21,
+          "text": "Project governance Gate 4",
           "type": "text",
           "weight": 400,
           "x": 780.0,
-          "y": 1025
+          "y": 1010
         },
         {
           "anchor": "middle",
           "color": "#222222",
-          "size": 23,
-          "text": "per-mode q=0.995 thresholds + EWMA 0.20 +",
+          "size": 21,
+          "text": "P1/K=6 + PCA + calibration + six per-mode",
           "type": "text",
           "weight": 400,
           "x": 780.0,
-          "y": 1053
+          "y": 1036
         },
         {
           "anchor": "middle",
           "color": "#222222",
-          "size": 23,
-          "text": "persistence 8",
+          "size": 21,
+          "text": "q=0.995 thresholds + EWMA 0.20 + persistence 8",
           "type": "text",
           "weight": 400,
           "x": 780.0,
-          "y": 1081
+          "y": 1062
         },
         {
           "dash": false,
@@ -1899,7 +1909,7 @@
           "x1": 330,
           "x2": 640,
           "y1": 850,
-          "y2": 950
+          "y2": 935
         },
         {
           "dash": false,
@@ -1909,7 +1919,7 @@
           "x1": 960,
           "x2": 900,
           "y1": 850,
-          "y2": 950
+          "y2": 935
         },
         {
           "dash": false,
@@ -1960,8 +1970,8 @@
           "type": "arrow",
           "x1": 1040,
           "x2": 1230,
-          "y1": 1035,
-          "y2": 1035
+          "y1": 1038,
+          "y2": 1038
         },
         {
           "dash": false,
@@ -2064,7 +2074,7 @@
           "type": "arrow",
           "x1": 780,
           "x2": 780,
-          "y1": 1125,
+          "y1": 1140,
           "y2": 1220
         },
         {

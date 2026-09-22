@@ -2,11 +2,11 @@
 
 ## Current stage
 
-The evidence foundation, detailed outline, five figures, two editable diagram sources, four cross-format tables, self-contained captions, reproducible build scripts, and artifact provenance are complete. The full manuscript has not been written. The next task is full manuscript synthesis from the verified foundation and generated assets, with registered citation keys and claim boundaries preserved.
+The complete venue-neutral manuscript V1 is written in Markdown and synchronized LaTeX. The evidence foundation, detailed outline, five figures, two editable diagram sources, four cross-format tables, self-contained captions, cited bibliography subset, manuscript claims audit, review checklist, plain-language summary, reproducible build scripts, and artifact provenance are complete. The next action is author/guide review, not additional manuscript synthesis.
 
 Repository branch: `research/manuscript-v1`.
 
-Artifact-generation starting commit: `4bcab1d13a1d44dccbedb0cecd7aa99ddea7ade1`. No remote reference was fetched or changed during artifact generation.
+Manuscript-V1 starting commit: `1b25a6566d9a7ae22ef2ecee70a2eca13dc9356b`. No remote reference was fetched or changed during manuscript preparation.
 
 ## Protected boundaries
 
@@ -22,6 +22,12 @@ Figures and tables must read only committed aggregate configs/reports and must n
 
 ## Completed outputs
 
+- `docs/manuscript/v1/MANUSCRIPT_V1.md`
+- `docs/manuscript/v1/manuscript_v1.tex`
+- `docs/manuscript/v1/references_v1.bib`
+- `docs/manuscript/v1/MANUSCRIPT_CLAIMS_AUDIT_V1.md`
+- `docs/manuscript/v1/MANUSCRIPT_REVIEW_CHECKLIST_V1.md`
+- `docs/manuscript/v1/PLAIN_LANGUAGE_SUMMARY.md`
 - `docs/manuscript/v1/README.md`
 - `docs/manuscript/v1/EVIDENCE_MAP.md`
 - `docs/manuscript/v1/OUTLINE.md`
@@ -38,16 +44,20 @@ Figures and tables must read only committed aggregate configs/reports and must n
 - `docs/manuscript/v1/ARTIFACT_PROVENANCE.json`
 - `scripts/manuscript/generate_manuscript_v1_assets.py`
 - `scripts/manuscript/render_manuscript_v1_previews.ps1`
+- `scripts/manuscript/render_manuscript_v1_latex.py`
 - `scripts/manuscript/verify_manuscript_v1_assets.py`
+- `scripts/manuscript/verify_manuscript_v1.py`
 
 Regenerate and verify from the repository root:
 
 ```powershell
 python scripts/manuscript/generate_manuscript_v1_assets.py --repo-root .
 python scripts/manuscript/verify_manuscript_v1_assets.py --repo-root .
+python scripts/manuscript/render_manuscript_v1_latex.py
+python scripts/manuscript/verify_manuscript_v1.py --repo-root .
 ```
 
-The verifier confirms exact registered values; CSV/Markdown/LaTeX consistency; eight selected literature citation keys; five well-formed SVG/PNG pairs; 300-dpi PNG metadata; allowlisted source hashes; and generated-artifact hashes. All five previews were visually inspected. Graphviz, Matplotlib, an SVG converter, and a LaTeX engine were unavailable, so DOT and LaTeX sources were retained without tool-specific rendering/compilation. No dependency was installed.
+The verifiers confirm exact registered values; CSV/Markdown/LaTeX table consistency; 20 manuscript citation keys; five well-formed SVG/PNG pairs; 300-dpi PNG metadata; allowlisted source hashes; generated-artifact and manuscript-document hashes; manuscript structure; figure/table paths; policy-freeze terminology; and cross-format consistency. All five previews, including the two regenerated diagrams, were visually inspected. Graphviz, Matplotlib, an SVG converter, and a LaTeX engine were unavailable, so DOT sources were retained and the complete LaTeX manuscript received static rather than compilation validation. No dependency was installed.
 
 ## Primary source authorities
 
@@ -126,13 +136,12 @@ These are proxy-labelled internal held-out results, not official NASA-test resul
 
 Some guide sections and FCA-015/FCA-016 predate the later frozen inference/attribution implementation. Follow registered configs and current code. The supported correction is narrow: batch transform-only inference and local additive PCA reconstruction attribution exist. SHAP, causality, physical localization, streaming, online recalibration, and production deployment do not.
 
-Before final manuscript approval, the author should authorize a new claims-audit version or addendum rather than editing the existing audit.
+The manuscript-specific `MANUSCRIPT_CLAIMS_AUDIT_V1.md` supplements rather than edits the existing final claims audit.
 
 ## Next action
 
-1. Resolve title, venue, author metadata, and delivery/attribution placement decisions recorded in `OPEN_QUESTIONS.md`.
-2. Draft the full manuscript in Markdown from `OUTLINE.md`, inserting the generated figures/tables and citing only registered keys from `MANUSCRIPT_CORE_CITATIONS_V1.bib`.
-3. Verify every numerical and methodological sentence against `EVIDENCE_MAP.md` and `ARTIFACT_PROVENANCE.json`.
-4. After author review, create a venue-specific LaTeX manuscript without changing claim scope or silently converting incompatible literature metrics.
+1. Resolve the six author/affiliation/contact placeholders recorded in `MANUSCRIPT_REVIEW_CHECKLIST_V1.md`.
+2. Review the venue-neutral scientific wording and decide whether the intended venue needs a separately scoped formatting pass.
+3. If additional uncertainty analysis, literature expansion, another split, or official-test evaluation is desired, register it as new scientific work rather than revising the first valid frozen result.
 
-Do not create or revise the claims-audit addendum as part of artifact generation. Preserve the proxy-labelled internal held-out and deferred official-test boundaries during manuscript synthesis.
+Preserve the proxy-labelled internal held-out and deferred official-test boundaries during review and any later venue formatting.

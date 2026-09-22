@@ -58,10 +58,11 @@
 <text x="840.0" y="505" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">Select K/model candidates; compare five score sources; evaluate</text>
 <text x="840.0" y="533" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">1,280 alert candidates under five proxies and a predeclared</text>
 <text x="840.0" y="561" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">lexicographic objective</text>
-<rect x="1325" y="450" width="300" height="145" rx="12" fill="#F3F4F6" stroke="#D55E00" stroke-width="3"/>
-<text x="1475.0" y="488" font-size="28" font-weight="600" text-anchor="middle" fill="#222222">Gate 4 freeze</text>
-<text x="1475.0" y="525" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">Primary policy locked</text>
-<text x="1475.0" y="553" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">before held-out access</text>
+<rect x="1305" y="435" width="340" height="175" rx="12" fill="#F3F4F6" stroke="#D55E00" stroke-width="3"/>
+<text x="1475.0" y="473" font-size="24" font-weight="600" text-anchor="middle" fill="#222222">Pre-held-out policy freeze</text>
+<text x="1475.0" y="510" font-size="21" font-weight="400" text-anchor="middle" fill="#222222">Project governance Gate 4</text>
+<text x="1475.0" y="536" font-size="21" font-weight="400" text-anchor="middle" fill="#222222">Complete policy locked before</text>
+<text x="1475.0" y="562" font-size="21" font-weight="400" text-anchor="middle" fill="#222222">held-out access</text>
 <rect x="1730" y="430" width="410" height="185" rx="12" fill="#FFFFFF" stroke="#D55E00" stroke-width="3"/>
 <text x="1935.0" y="468" font-size="28" font-weight="600" text-anchor="middle" fill="#222222">Frozen roles</text>
 <text x="1935.0" y="505" font-size="23" font-weight="400" text-anchor="middle" fill="#222222">Primary: PCA per-mode q=0.995 / EWMA</text>
@@ -78,9 +79,9 @@
 <line x1="1665" y1="325" x2="1665" y2="440" stroke="#CC79A7" stroke-width="4"/>
 <line x1="1665.0" y1="440.0" x2="1220.0" y2="440.0" stroke="#CC79A7" stroke-width="4"/>
 <polygon points="1220.0,440.0 1239.5138883011443,429.84085813808736 1239.5138883011443,450.15914186191264" fill="#CC79A7"/>
-<line x1="1220.0" y1="522.0" x2="1325.0" y2="522.0" stroke="#D55E00" stroke-width="4"/>
-<polygon points="1325.0,522.0 1305.4861116988557,532.1591418619126 1305.4861116988557,511.84085813808736" fill="#D55E00"/>
-<line x1="1625.0" y1="522.0" x2="1730.0" y2="522.0" stroke="#D55E00" stroke-width="4"/>
+<line x1="1220.0" y1="522.0" x2="1305.0" y2="522.0" stroke="#D55E00" stroke-width="4"/>
+<polygon points="1305.0,522.0 1285.4861116988557,532.1591418619126 1285.4861116988557,511.84085813808736" fill="#D55E00"/>
+<line x1="1645.0" y1="522.0" x2="1730.0" y2="522.0" stroke="#D55E00" stroke-width="4"/>
 <polygon points="1730.0,522.0 1710.4861116988557,532.1591418619126 1710.4861116988557,511.84085813808736" fill="#D55E00"/>
 <text x="1930" y="650" font-size="24" font-weight="600" text-anchor="middle" fill="#D55E00">No PCA–LSTM score or decision fusion was implemented.</text>
 <line x1="40" y1="700" x2="2360" y2="700" stroke="#6B7280" stroke-width="3"/>

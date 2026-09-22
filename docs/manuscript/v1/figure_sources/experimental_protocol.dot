@@ -15,7 +15,7 @@ digraph ExperimentalProtocol {
   train -> fit;
   validation -> select;
   heldout -> boundary;
-  freeze [label="Gate 4 freeze\nP1/K=6 + PCA + q=0.995 per mode + EWMA 0.20 + persistence 8"];
+  freeze [label="Pre-held-out policy freeze\n(project governance Gate 4)\nP1/K=6 + PCA + calibration + q=0.995 per mode + EWMA 0.20 + persistence 8"];
   fit -> freeze;
   select -> freeze;
   confirm [label="Completed first valid internal held-out evaluation\nno refit/recalibration/reselection/fusion"];

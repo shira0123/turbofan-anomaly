@@ -119,9 +119,9 @@
   ],
   "artifacts": [
     {
-      "bytes": 2363,
+      "bytes": 3154,
       "path": "docs/manuscript/v1/BUILD.md",
-      "sha256": "79b18d2b54fe12fce26ec8f5e033590aa983e0fcf477d6abd442250d3b2cdf23",
+      "sha256": "60bb9f33e2b8102445eaa1cf3ab1b61a79b9688e8de91f95a770f63c15d62771",
       "sources": [
         {
           "path": "docs/manuscript/v1/EVIDENCE_MAP.md",
@@ -136,9 +136,9 @@
       ]
     },
     {
-      "bytes": 5820,
+      "bytes": 6094,
       "path": "docs/manuscript/v1/CAPTIONS.md",
-      "sha256": "8d0c36a13152cf313023d048552bad95e5a77f3de940ba341a6c7ed95846f92b",
+      "sha256": "24ed797dfb6ec3dbf0b68ddabb3d7fcc113036a754509967b377211e055d49fc",
       "sources": [
         {
           "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
@@ -288,9 +288,9 @@
       ]
     },
     {
-      "bytes": 1422,
+      "bytes": 1478,
       "path": "docs/manuscript/v1/figure_sources/experimental_protocol.dot",
-      "sha256": "445ff1806c13791a9158b1a1e6749b5d215e78e6361810e283a5a700adae941b",
+      "sha256": "a6ddbb15deb04c92fa8ec2dc994c74f8c4f5e10c4c7809db03919ca64ca87bd1",
       "sources": [
         {
           "path": "configs/splits/fd002-primary-v1.json",
@@ -315,9 +315,9 @@
       ]
     },
     {
-      "bytes": 107149,
+      "bytes": 107427,
       "path": "docs/manuscript/v1/figure_sources/figure_specs.json",
-      "sha256": "711250da5e55124cba7c0457281b42358f1e5cef75d0a0ff4ae3a8e63afb3419",
+      "sha256": "8e04c027eb0701ddc50d17cfaff64b101a4022450df1031ec0a7c0107e8854bc",
       "sources": [
         {
           "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
@@ -467,9 +467,9 @@
       ]
     },
     {
-      "bytes": 2135,
+      "bytes": 2224,
       "path": "docs/manuscript/v1/figure_sources/system_architecture.dot",
-      "sha256": "a510d32c74afde90a28f21e5f4d60798e7ab7d9e491669407231f501306c7a9c",
+      "sha256": "ee5f57ae782113fb31f6ede8a73c19436304f181d47dd06719c5714fe1170fdb",
       "sources": [
         {
           "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
@@ -524,9 +524,9 @@
       ]
     },
     {
-      "bytes": 200020,
+      "bytes": 202197,
       "path": "docs/manuscript/v1/figures/figure_01_system_architecture.png",
-      "sha256": "382d57be17b6295b2ef4fb0ae8c968ee5c602fe94bfdf481b8f52b60bc2039ee",
+      "sha256": "8f35f77f5a8f025bb6f933110b25764b253c3a8f3cf7200d25aac8c044e0513f",
       "sources": [
         {
           "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
@@ -581,9 +581,9 @@
       ]
     },
     {
-      "bytes": 18549,
+      "bytes": 18690,
       "path": "docs/manuscript/v1/figures/figure_01_system_architecture.svg",
-      "sha256": "44ef30120c35d23111b746b649d631ce136e4716ed05069e3c3f3cf76ca9ad15",
+      "sha256": "015f21fec17068f7cf39e69e155e8206a65535006c9491a16e6f802d7d481a82",
       "sources": [
         {
           "path": "configs/evaluation/fd002-confirmatory-execution-protocol-v1.json",
@@ -638,9 +638,9 @@
       ]
     },
     {
-      "bytes": 173576,
+      "bytes": 173005,
       "path": "docs/manuscript/v1/figures/figure_02_experimental_protocol.png",
-      "sha256": "cde70b767232aef24fb67b1ab94293bd466e79350336c2528791502b9dbdfd2c",
+      "sha256": "0cc65bf1f812d3cf42be1ad9984d2204258badb072c40c15b2d8cb1a12cdd242",
       "sources": [
         {
           "path": "configs/splits/fd002-primary-v1.json",
@@ -665,9 +665,9 @@
       ]
     },
     {
-      "bytes": 11924,
+      "bytes": 11945,
       "path": "docs/manuscript/v1/figures/figure_02_experimental_protocol.svg",
-      "sha256": "8983382014b9cc247849a88790ce9cdce5831cbecfda5fa67938bf0f2e5b2fd6",
+      "sha256": "17e7aabe7dcaeed18d4dc7735c7bc17bdc9cdfb8c39239f1519e63f26f54470d",
       "sources": [
         {
           "path": "configs/splits/fd002-primary-v1.json",
@@ -692,9 +692,9 @@
       ]
     },
     {
-      "bytes": 72833,
+      "bytes": 72826,
       "path": "docs/manuscript/v1/figures/figure_03_operational_results.png",
-      "sha256": "dfb92d0983a3130eadb717b82d89c6177c4efe75323dd6fc093843270ec01163",
+      "sha256": "c22bbbdf1ee2fb6fb6eb250c924e420d6db1d36b6ff41203422142b2f4c1092f",
       "sources": [
         {
           "path": "configs/evaluation/fd002-confirmatory-results-v1.json",
@@ -1081,15 +1081,55 @@
   "generator_files": [
     {
       "path": "scripts/manuscript/generate_manuscript_v1_assets.py",
-      "sha256": "551e572a6f08ca14b3f7a5f5374236bb829650de17ad2d8825f952bd4be50c9c"
+      "sha256": "82d95493da1aaa22b0b672413c470716fd69e8c8ef78f8ef7634b31814d71ea5"
     },
     {
       "path": "scripts/manuscript/render_manuscript_v1_previews.ps1",
       "sha256": "b13842701ac9912784c0b10ba1e65e0926471b9b567bff3debd453471d8c2ea7"
     },
     {
+      "path": "scripts/manuscript/render_manuscript_v1_latex.py",
+      "sha256": "1843284a1fe06ee3ef102069255529ab2dbacaee597c68a3e65364d871fb1bba"
+    },
+    {
       "path": "scripts/manuscript/verify_manuscript_v1_assets.py",
       "sha256": "c4910af4216dea2850238f383d6faa8ce4cc2a1009981bac7a9cb3aad7772a30"
+    },
+    {
+      "path": "scripts/manuscript/verify_manuscript_v1.py",
+      "sha256": "da948639fbd2c81a05e2f57d267273f175950b879e73c6bdb808d541b87f2688"
+    }
+  ],
+  "manuscript_documents": [
+    {
+      "bytes": 55452,
+      "path": "docs/manuscript/v1/MANUSCRIPT_V1.md",
+      "sha256": "42b397955a79c002e14a72afa9d72fe3180e1484f046b4f1ed6aaba398eb353c"
+    },
+    {
+      "bytes": 43968,
+      "path": "docs/manuscript/v1/manuscript_v1.tex",
+      "sha256": "5040c18d58db58f46accc88174ece06ec539714853a17c46be30257277e656b2"
+    },
+    {
+      "bytes": 7654,
+      "path": "docs/manuscript/v1/references_v1.bib",
+      "sha256": "b02b5ecd59269ec8135d0573868589133dd7f49ca25ceda16bbe99a858f2b716"
+    },
+    {
+      "bytes": 8675,
+      "path": "docs/manuscript/v1/MANUSCRIPT_CLAIMS_AUDIT_V1.md",
+      "sha256": "ff988df2f15649ce56671255f65f2ebf250ec5f6fedddafa95bb82761ea5a407"
+    },
+    {
+      "bytes": 5612,
+      "path": "docs/manuscript/v1/MANUSCRIPT_REVIEW_CHECKLIST_V1.md",
+      "sha256": "a5bf53620a56b9b458f4f1245e722c9ec53591fb9b3d09167e851264df56eb31"
+    },
+    {
+      "bytes": 4647,
+      "path": "docs/manuscript/v1/PLAIN_LANGUAGE_SUMMARY.md",
+      "sha256": "c5ec53378bebd763401a8f150af05ab7503fedc5c04c40b8875d488f70912cc3"
     }
   ],
   "png_renderer_log": "Rendered C:\\Users\\shiva_lajayge\\turbofan-clean-v3\\docs\\manuscript\\v1\\figures\\figure_01_system_architecture.png [2244x1476, 300 dpi]\nRendered C:\\Users\\shiva_lajayge\\turbofan-clean-v3\\docs\\manuscript\\v1\\figures\\figure_02_experimental_protocol.png [2244x1476, 300 dpi]\nRendered C:\\Users\\shiva_lajayge\\turbofan-clean-v3\\docs\\manuscript\\v1\\figures\\figure_03_operational_results.png [2244x921, 300 dpi]\nRendered C:\\Users\\shiva_lajayge\\turbofan-clean-v3\\docs\\manuscript\\v1\\figures\\figure_04_ranking_results.png [2126x1087, 300 dpi]\nRendered C:\\Users\\shiva_lajayge\\turbofan-clean-v3\\docs\\manuscript\\v1\\figures\\figure_05_validation_model_comparison.png [2244x1276, 300 dpi]",

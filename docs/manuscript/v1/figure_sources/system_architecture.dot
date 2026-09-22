@@ -13,7 +13,7 @@ digraph SystemArchitecture {
     lstmstate [label="Three fixed-epoch LSTMs;\naligned calibrated-score mean"];
     validation [label="52 validation engines"];
     selection [label="Registered model and alert-policy selection"];
-    freeze [label="Gate 4 freeze"];
+    freeze [label="Pre-held-out policy freeze\n(project governance Gate 4)\ncomplete policy locked before held-out access"];
     train -> p1fit -> windows;
     windows -> pca63 -> pcastate;
     windows -> lstmseq -> lstmstate;

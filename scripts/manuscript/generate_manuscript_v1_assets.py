@@ -79,6 +79,14 @@ OUTPUT_ROOT = Path("docs/manuscript/v1")
 FIGURES_DIR = OUTPUT_ROOT / "figures"
 TABLES_DIR = OUTPUT_ROOT / "tables"
 SOURCES_DIR = OUTPUT_ROOT / "figure_sources"
+MANUSCRIPT_DOCUMENTS = (
+    "docs/manuscript/v1/MANUSCRIPT_V1.md",
+    "docs/manuscript/v1/manuscript_v1.tex",
+    "docs/manuscript/v1/references_v1.bib",
+    "docs/manuscript/v1/MANUSCRIPT_CLAIMS_AUDIT_V1.md",
+    "docs/manuscript/v1/MANUSCRIPT_REVIEW_CHECKLIST_V1.md",
+    "docs/manuscript/v1/PLAIN_LANGUAGE_SUMMARY.md",
+)
 
 PALETTE = {
     "blue": "#0072B2",
@@ -1153,7 +1161,7 @@ def build_architecture_figure() -> dict[str, Any]:
     add_arrow(items, 1650, 325, 1720, 325, color="purple")
     add_box(items, 55, 455, 300, 135, "Validation engines", "52 unseen engines\nproxy labels only", fill="lighter_gray", stroke="green", chars=23)
     add_box(items, 460, 430, 760, 185, "Registered validation comparison", "Select K/model candidates; compare five score sources; evaluate 1,280 alert candidates under five proxies and a predeclared lexicographic objective", fill="white", stroke="green", chars=68)
-    add_box(items, 1325, 450, 300, 145, "Gate 4 freeze", "Primary policy locked before held-out access", fill="lighter_gray", stroke="vermillion", chars=27)
+    add_box(items, 1305, 435, 340, 175, "Pre-held-out policy freeze", "Project governance Gate 4\nComplete policy locked before held-out access", fill="lighter_gray", stroke="vermillion", title_size=24, body_size=21, chars=30)
     add_box(items, 1730, 430, 410, 185, "Frozen roles", "Primary: PCA per-mode q=0.995 / EWMA 0.20 / persistence 8\nComparator: LSTM ensemble; no fusion", fill="white", stroke="vermillion", chars=38)
     add_arrow(items, 355, 522, 460, 522, color="green")
     add_line(items, 1720, 155, 1688, 155, color="blue", width=4)
@@ -1163,8 +1171,8 @@ def build_architecture_figure() -> dict[str, Any]:
     add_line(items, 1720, 325, 1665, 325, color="purple", width=4)
     add_line(items, 1665, 325, 1665, 440, color="purple", width=4)
     add_arrow(items, 1665, 440, 1220, 440, color="purple")
-    add_arrow(items, 1220, 522, 1325, 522, color="vermillion")
-    add_arrow(items, 1625, 522, 1730, 522, color="vermillion")
+    add_arrow(items, 1220, 522, 1305, 522, color="vermillion")
+    add_arrow(items, 1645, 522, 1730, 522, color="vermillion")
     add_text(items, 1930, 650, "No PCA–LSTM score or decision fusion was implemented.", size=24, weight=600, anchor="middle", color="vermillion")
     add_line(items, 40, 700, 2360, 700, color="gray", width=3)
     add_text(items, 55, 750, "B. Frozen primary transformation and alert path", size=28, weight=600, anchor="start", color="blue")
@@ -1226,15 +1234,15 @@ def build_protocol_figure() -> dict[str, Any]:
     add_arrow(items, 330, 510, 330, 610, color="blue")
     add_arrow(items, 960, 510, 960, 610, color="green")
     add_arrow(items, 1590, 510, 1590, 610, color="vermillion")
-    add_box(items, 520, 950, 520, 175, "Gate 4 policy freeze", "P1/K=6 + PCA + training empirical CDF + six per-mode q=0.995 thresholds + EWMA 0.20 + persistence 8", fill="white", stroke="vermillion", chars=46)
-    add_arrow(items, 330, 850, 640, 950, color="blue")
-    add_arrow(items, 960, 850, 900, 950, color="green")
+    add_box(items, 520, 935, 520, 205, "Pre-held-out policy freeze", "Project governance Gate 4\nP1/K=6 + PCA + calibration + six per-mode q=0.995 thresholds + EWMA 0.20 + persistence 8", fill="white", stroke="vermillion", title_size=27, body_size=21, chars=46)
+    add_arrow(items, 330, 850, 640, 935, color="blue")
+    add_arrow(items, 960, 850, 900, 935, color="green")
     add_box(items, 1230, 950, 600, 175, "Completed internal held-out evaluation", "First valid frozen run; no refit, recalibration, reselection, online update, or fusion", fill="white", stroke="vermillion", chars=48)
-    add_arrow(items, 1040, 1035, 1230, 1035, color="vermillion")
+    add_arrow(items, 1040, 1038, 1230, 1038, color="vermillion")
     add_arrow(items, 1590, 850, 1530, 950, color="vermillion")
     add_box(items, 520, 1220, 520, 135, "Validation evidence", "Model/policy selection only—not held-out performance", fill="white", stroke="green", chars=44)
     add_box(items, 1230, 1220, 600, 135, "Confirmatory evidence", "Proxy-labelled internal held-out results—not physical onset", fill="white", stroke="vermillion", chars=48)
-    add_arrow(items, 780, 1125, 780, 1220, color="green")
+    add_arrow(items, 780, 1140, 780, 1220, color="green")
     add_arrow(items, 1530, 1125, 1530, 1220, color="vermillion")
     add_box(items, 1870, 340, 260, 340, "Official NASA test", "Separate truncated-trajectory external protocol\n\nNot accessed\nNot completed\nFuture preregistration required", fill="white", stroke="gray", chars=24, dashed=True)
     add_box(items, 1870, 820, 260, 220, "Outside study", "Outside the completed study: no official-test, production, or real-aircraft result", fill="lighter_gray", stroke="gray", chars=24, dashed=True)
@@ -1324,7 +1332,7 @@ def architecture_dot() -> str:
     lstmstate [label="Three fixed-epoch LSTMs;\naligned calibrated-score mean"];
     validation [label="52 validation engines"];
     selection [label="Registered model and alert-policy selection"];
-    freeze [label="Gate 4 freeze"];
+    freeze [label="Pre-held-out policy freeze\n(project governance Gate 4)\ncomplete policy locked before held-out access"];
     train -> p1fit -> windows;
     windows -> pca63 -> pcastate;
     windows -> lstmseq -> lstmstate;
@@ -1373,7 +1381,7 @@ def protocol_dot() -> str:
   train -> fit;
   validation -> select;
   heldout -> boundary;
-  freeze [label="Gate 4 freeze\nP1/K=6 + PCA + q=0.995 per mode + EWMA 0.20 + persistence 8"];
+  freeze [label="Pre-held-out policy freeze\n(project governance Gate 4)\nP1/K=6 + PCA + calibration + q=0.995 per mode + EWMA 0.20 + persistence 8"];
   fit -> freeze;
   select -> freeze;
   confirm [label="Completed first valid internal held-out evaluation\nno refit/recalibration/reselection/fusion"];
@@ -1442,7 +1450,7 @@ Training-only fitting and validation selection are separated from the frozen pri
 
 ## Figure 2. Experimental protocol and evaluation boundaries
 
-The deterministic FD002 split assigns complete engines to 156 training, 52 validation, and 52 internal held-out engines with zero overlap. Learned preprocessing, detector, calibration, and threshold state uses registered training populations only; validation selects K, model candidates, and the alert policy. Gate 4 froze P1/K=6, PCA, the training empirical CDF, six per-mode q=0.995 thresholds, EWMA 0.20, and persistence 8 before internal held-out access. The completed first valid held-out run allowed no refit, recalibration, reselection, online update, or fusion. NASA’s separate official test protocol was not accessed and remains outside the completed study.
+The deterministic FD002 split assigns complete engines to 156 training, 52 validation, and 52 internal held-out engines with zero overlap. Learned preprocessing, detector, calibration, and threshold state uses registered training populations only; validation selects K, model candidates, and the alert policy. At the pre-held-out policy freeze (project governance Gate 4), the complete configuration was locked before internal held-out access: P1/K=6 preprocessing, 30-cycle windows and 63 PCA summaries, PCA scoring, training-only empirical-CDF calibration, endpoint-mode assignment, six per-mode q=0.995 thresholds, EWMA 0.20, persistence 8, reset rules, proxy definitions, event/metric semantics, and the unfused LSTM comparator. The completed first valid held-out run allowed no refit, recalibration, reselection, online update, or fusion. NASA’s separate official test protocol was not accessed and remains outside the completed study.
 
 ## Figure 3. Frozen PCA internal held-out operational results
 
@@ -1491,13 +1499,24 @@ From the repository root on Windows with the recorded Python 3.12 environment:
 
 This command generates editable figure specifications/DOT sources, SVG figures, 300-dpi PNG previews, Markdown/CSV/LaTeX tables, captions, build notes, and provenance.
 
+## Render the venue-neutral LaTeX manuscript
+
+`MANUSCRIPT_V1.md` is the editorial source of truth. After editing it, regenerate `manuscript_v1.tex` with:
+
+```powershell
+python scripts/manuscript/render_manuscript_v1_latex.py
+```
+
+The renderer supports the controlled Markdown constructs used by this manuscript, inserts the generated LaTeX table fragments, and references the PNG figure previews. It does not read scientific data or model artifacts.
+
 ## Verify generated assets
 
 ```powershell
 python scripts/manuscript/verify_manuscript_v1_assets.py --repo-root .
+python scripts/manuscript/verify_manuscript_v1.py --repo-root .
 ```
 
-The verifier checks allowlisted source hashes, exact registered values, citation keys, CSV-to-Markdown/LaTeX canonical digests, SVG well-formedness, PNG dimensions and 300-dpi metadata, and all generated-artifact hashes recorded in provenance. It does not access scientific data or models.
+The asset verifier checks allowlisted source hashes, exact registered values, citation keys, CSV-to-Markdown/LaTeX canonical digests, SVG well-formedness, PNG dimensions and 300-dpi metadata, and all generated-artifact hashes recorded in provenance. The manuscript verifier checks structure, citations, major numerical claims, cross-format consistency, figure/table paths, terminology, and LaTeX structure. Neither verifier accesses scientific data or models.
 
 ## Render PNG previews only
 
@@ -1512,6 +1531,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/manuscript/render_ma
 - Editable diagrams: DOT sources plus the shared JSON primitive specification.
 - Graphviz `dot` was unavailable, so DOT was not used for rendering. The committed SVGs are produced by the local deterministic renderer and remain editable vector files.
 - Matplotlib, an SVG converter, and a LaTeX engine were unavailable. No dependency was installed. LaTeX table fragments were generated but not compiled in this task.
+- The venue-neutral manuscript LaTeX source was statically checked because no LaTeX engine was installed.
 - No PDF duplicate is produced because SVG already supplies the requested vector format.
 
 ## Display rounding
@@ -1691,7 +1711,9 @@ def write_provenance(evidence: Evidence, artifact_paths: list[Path], png_log: st
     for relative in (
         "scripts/manuscript/generate_manuscript_v1_assets.py",
         "scripts/manuscript/render_manuscript_v1_previews.ps1",
+        "scripts/manuscript/render_manuscript_v1_latex.py",
         "scripts/manuscript/verify_manuscript_v1_assets.py",
+        "scripts/manuscript/verify_manuscript_v1.py",
     ):
         path = root / relative
         generator_files.append({"path": relative, "sha256": sha256_file(path)})
@@ -1732,6 +1754,14 @@ def write_provenance(evidence: Evidence, artifact_paths: list[Path], png_log: st
             {"path": path, "sha256": evidence.source_hashes[path]} for path in ALLOWED_INPUTS
         ],
         "generator_files": generator_files,
+        "manuscript_documents": [
+            {
+                "path": relative,
+                "sha256": sha256_file(root / relative),
+                "bytes": (root / relative).stat().st_size,
+            }
+            for relative in MANUSCRIPT_DOCUMENTS
+        ],
         "png_renderer_log": png_log,
         "artifacts": artifacts,
         "self_record": {
