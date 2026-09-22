@@ -87,6 +87,16 @@ MANUSCRIPT_DOCUMENTS = (
     "docs/manuscript/v1/MANUSCRIPT_REVIEW_CHECKLIST_V1.md",
     "docs/manuscript/v1/PLAIN_LANGUAGE_SUMMARY.md",
 )
+REVIEW_DOCUMENTS = (
+    "docs/manuscript/v1/INDEPENDENT_REVIEW_V1.md",
+    "docs/manuscript/v1/REVISION_LOG_V1.md",
+    "docs/manuscript/v1/README.md",
+    "docs/manuscript/v1/HANDOFF.md",
+    "docs/manuscript/v1/review_package/GUIDE_FEEDBACK.md",
+    "docs/manuscript/v1/review_package/MANUSCRIPT_V1_GUIDE_REVIEW.pdf",
+    "docs/manuscript/v1/review_package/MANUSCRIPT_V1_GUIDE_REVIEW.docx",
+    "docs/manuscript/v1/review_package/manuscript_v1_latex_source.zip",
+)
 
 PALETTE = {
     "blue": "#0072B2",
@@ -1509,6 +1519,18 @@ python scripts/manuscript/render_manuscript_v1_latex.py
 
 The renderer supports the controlled Markdown constructs used by this manuscript, inserts the generated LaTeX table fragments, and references the PNG figure previews. It does not read scientific data or model artifacts.
 
+## Build the alternative guide-review rendering
+
+No TeX engine is installed in the review environment. The guide PDF is therefore explicitly an alternative HTML/MathML rendering, not a LaTeX compilation. Build its complete local HTML source with:
+
+```powershell
+python scripts/manuscript/build_guide_review_html.py --repo-root . --output C:\tmp\fd002_manuscript_v1_guide_review.html
+```
+
+Print that HTML with installed Microsoft Edge (`--headless --no-pdf-header-footer --allow-file-access-from-files --print-to-pdf=...`). Microsoft Word can open the same HTML and save it as Word Document format 16 to create the editable DOCX. The accepted PDF and the Word-rendered DOCX are each 19 pages. Both were rasterized with the Windows native PDF API and every page was visually inspected. The DOCX contains five figures, five rendered tables (Table 4 is split into its reader-facing comparison and evidence-locator display), and ten native editable Word equations.
+
+The portable ZIP beside those files contains `manuscript_v1.tex`, `references_v1.bib`, all five required PNG figures, all four required LaTeX table fragments, and `README_BUILD.md`. It was extracted to a fresh temporary directory; all ten transitive LaTeX references resolved.
+
 ## Verify generated assets
 
 ```powershell
@@ -1530,9 +1552,10 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/manuscript/render_ma
 - PNG: Windows `System.Drawing`, saved with 300-dpi metadata from the same primitive specifications.
 - Editable diagrams: DOT sources plus the shared JSON primitive specification.
 - Graphviz `dot` was unavailable, so DOT was not used for rendering. The committed SVGs are produced by the local deterministic renderer and remain editable vector files.
-- Matplotlib, an SVG converter, and a LaTeX engine were unavailable. No dependency was installed. LaTeX table fragments were generated but not compiled in this task.
-- The venue-neutral manuscript LaTeX source was statically checked because no LaTeX engine was installed.
-- No PDF duplicate is produced because SVG already supplies the requested vector format.
+- Matplotlib, an SVG converter, and a LaTeX engine were unavailable. No dependency was installed. LaTeX table fragments and the complete manuscript source were generated but not compiled in this task.
+- The venue-neutral manuscript LaTeX source was statically checked and packaged because no `pdflatex`, `xelatex`, `lualatex`, `latexmk`, `bibtex`, or `biber` executable was installed.
+- `review_package/MANUSCRIPT_V1_GUIDE_REVIEW.pdf` is the 19-page Microsoft Edge HTML/MathML review rendering; it is not represented as LaTeX output.
+- `review_package/MANUSCRIPT_V1_GUIDE_REVIEW.docx` is the editable Microsoft Word conversion; its 19-page Word PDF rendering was separately inspected.
 
 ## Display rounding
 
@@ -1712,6 +1735,7 @@ def write_provenance(evidence: Evidence, artifact_paths: list[Path], png_log: st
         "scripts/manuscript/generate_manuscript_v1_assets.py",
         "scripts/manuscript/render_manuscript_v1_previews.ps1",
         "scripts/manuscript/render_manuscript_v1_latex.py",
+        "scripts/manuscript/build_guide_review_html.py",
         "scripts/manuscript/verify_manuscript_v1_assets.py",
         "scripts/manuscript/verify_manuscript_v1.py",
     ):
@@ -1741,6 +1765,8 @@ def write_provenance(evidence: Evidence, artifact_paths: list[Path], png_log: st
             "graphviz": "unavailable; DOT sources retained but not used for rendering",
             "matplotlib": "unavailable; not installed",
             "latex_engine": "unavailable; table fragments not compiled",
+            "guide_pdf_renderer": "Microsoft Edge HTML/MathML print-to-PDF; 19 pages; visually inspected",
+            "guide_docx_renderer": "Microsoft Word HTML conversion; 19 pages; visually inspected",
         },
         "display_rounding": {
             "far_per_1000_decimals": 3,
@@ -1761,6 +1787,14 @@ def write_provenance(evidence: Evidence, artifact_paths: list[Path], png_log: st
                 "bytes": (root / relative).stat().st_size,
             }
             for relative in MANUSCRIPT_DOCUMENTS
+        ],
+        "review_documents": [
+            {
+                "path": relative,
+                "sha256": sha256_file(root / relative),
+                "bytes": (root / relative).stat().st_size,
+            }
+            for relative in REVIEW_DOCUMENTS
         ],
         "png_renderer_log": png_log,
         "artifacts": artifacts,

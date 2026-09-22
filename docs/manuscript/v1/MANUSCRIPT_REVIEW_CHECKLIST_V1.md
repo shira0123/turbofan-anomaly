@@ -42,6 +42,9 @@ Status legend: `[x]` checked, `[ ]` requires guide or author action.
 - [x] Markdown is the editorial source; LaTeX is deterministically rendered from it.
 - [x] Title, abstract, section order, equations, metrics, figures, tables, citations, limitations, and conclusion agree across formats.
 - [x] LaTeX braces/environments and referenced paths pass static validation.
+- [x] The 19-page alternative guide PDF and the DOCX's 19-page Word rendering were visually inspected page by page.
+- [x] The DOCX contains five figures, five editable rendered tables, and ten native editable Word equations.
+- [x] The portable LaTeX ZIP was extracted; all five graphics, four table inputs, and the bibliography reference resolved inside the archive.
 - [ ] Compile LaTeX when a preinstalled engine is available; none was present during manuscript V1 preparation.
 
 ## Originality review
@@ -80,7 +83,9 @@ This was a local originality review, not a Turnitin or other commercial similari
 ## Final release checks
 
 - [x] Claims audit complete.
+- [x] Independent findings were recorded before correction and post-correction dispositions were added.
 - [x] Asset and manuscript verifiers pass.
+- [x] Guide PDF, editable DOCX, feedback form, and portable LaTeX-source ZIP are complete.
 - [x] Protected scientific-source hashes remain unchanged.
 - [x] `git diff --check` passes.
 - [x] Changed Python scripts compile.

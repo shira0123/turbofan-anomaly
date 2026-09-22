@@ -27,6 +27,9 @@ This work is documentation and evidence synthesis only. It must not trigger data
 - `MANUSCRIPT_CLAIMS_AUDIT_V1.md` records the authority, support status, and caveat for each major claim.
 - `MANUSCRIPT_REVIEW_CHECKLIST_V1.md` records scientific, citation, asset, equation, originality, placeholder, and guide review status.
 - `PLAIN_LANGUAGE_SUMMARY.md` gives a one-page nontechnical explanation for the guide and project team.
+- `INDEPENDENT_REVIEW_V1.md` records findings by severity, evidence, proposed correction, and disposition before correction.
+- `REVISION_LOG_V1.md` records the evidence-preserving corrections applied after independent review.
+- `review_package/` contains the guide-review PDF and DOCX, guide feedback form, and verified portable LaTeX-source ZIP.
 
 ## Evidence hierarchy
 
@@ -90,8 +93,10 @@ Historical prose does not override a registered protocol or implementation. In p
 3. Complete Markdown manuscript and synchronized venue-neutral LaTeX source: complete.
 4. Cited bibliography subset, manuscript claims audit, review checklist, and plain-language summary: complete.
 5. Static numerical, citation, path, terminology, cross-format, hash, and LaTeX-structure checks: complete.
-6. Author/affiliation placeholders and venue selection: deliberately unresolved for guide/author action.
-7. Official NASA-test evaluation: deferred and outside manuscript V1.
+6. Independent evidence audit and supported V1 corrections: complete (0 critical, 2 major, 5 minor, 2 editorial findings).
+7. Guide-review PDF/DOCX and portable LaTeX package: complete and visually/source-package verified.
+8. Author/affiliation placeholders and venue selection: deliberately unresolved for guide/author action.
+9. Official NASA-test evaluation: deferred and outside manuscript V1.
 
 ## Generated artifact bundle
 
@@ -102,7 +107,10 @@ Historical prose does not override a registered protocol or implementation. In p
 - Run `python scripts/manuscript/verify_manuscript_v1_assets.py --repo-root .` to verify exact registered values, cross-format digests, citations, vector/raster structure, 300-dpi metadata, and provenance hashes.
 - Run `python scripts/manuscript/render_manuscript_v1_latex.py` after editing the Markdown source.
 - Run `python scripts/manuscript/verify_manuscript_v1.py --repo-root .` to verify manuscript structure, citations, major values, paths, terminology, cross-format consistency, LaTeX structure, and document provenance.
+- Open `review_package/MANUSCRIPT_V1_GUIDE_REVIEW.pdf` first for guide review. It is a 19-page Microsoft Edge HTML/MathML rendering, explicitly not a LaTeX compilation.
+- `review_package/MANUSCRIPT_V1_GUIDE_REVIEW.docx` is the editable Microsoft Word conversion. Its 19-page Word rendering was inspected separately and contains five figures, five rendered tables, and ten editable equations.
+- `review_package/manuscript_v1_latex_source.zip` contains 12 files: synchronized TeX, the 20-entry BibTeX file, five PNG figures, four LaTeX table fragments, and a build README. It was extracted and all referenced paths resolved.
 
-Graphviz, Matplotlib, an SVG converter, and a LaTeX engine were unavailable; no dependency was installed. The committed SVGs are produced by a deterministic standard-library primitive renderer, while PNG previews use Windows `System.Drawing`. DOT sources remain available for later Graphviz rendering. The complete LaTeX source and its included table fragments passed static checks but were not compiled.
+Graphviz, Matplotlib, an SVG converter, and a LaTeX engine were unavailable; no dependency was installed. The committed SVGs are produced by a deterministic standard-library primitive renderer, while PNG previews use Windows `System.Drawing`. DOT sources remain available for later Graphviz rendering. The complete LaTeX source and its included table fragments passed static and portable-package checks but were not compiled. The PDF was printed locally from a complete HTML/MathML rendering with Microsoft Edge; the DOCX was produced with installed Microsoft Word. Every page of both final renderings was visually inspected through the Windows native PDF renderer.
 
 No artifact reconstructs score traces, invents curves or intervals, or reruns evaluation. A later venue-formatting or scientific-extension task must preserve the same boundary unless separately registered.

@@ -2,11 +2,13 @@
 
 ## Current stage
 
-The complete venue-neutral manuscript V1 is written in Markdown and synchronized LaTeX. The evidence foundation, detailed outline, five figures, two editable diagram sources, four cross-format tables, self-contained captions, cited bibliography subset, manuscript claims audit, review checklist, plain-language summary, reproducible build scripts, and artifact provenance are complete. The next action is author/guide review, not additional manuscript synthesis.
+The complete venue-neutral manuscript V1 is written in Markdown and synchronized LaTeX. An independent evidence audit was recorded before correction, supported errors were corrected, and a guide-review package was completed. The package includes a 19-page PDF, an editable DOCX whose 19-page Word rendering was separately inspected, a guide feedback form, and a verified portable LaTeX-source ZIP. The next action is guide review, not additional manuscript synthesis.
 
 Repository branch: `research/manuscript-v1`.
 
 Manuscript-V1 starting commit: `1b25a6566d9a7ae22ef2ecee70a2eca13dc9356b`. No remote reference was fetched or changed during manuscript preparation.
+
+Independent-review task starting commit: `f760536ace49801ff72fcc1d30b82e642fa4c93e`. The review began only after branch/HEAD and a clean worktree/index were confirmed.
 
 ## Protected boundaries
 
@@ -42,6 +44,13 @@ Figures and tables must read only committed aggregate configs/reports and must n
 - `docs/manuscript/v1/CAPTIONS.md`
 - `docs/manuscript/v1/BUILD.md`
 - `docs/manuscript/v1/ARTIFACT_PROVENANCE.json`
+- `docs/manuscript/v1/INDEPENDENT_REVIEW_V1.md`
+- `docs/manuscript/v1/REVISION_LOG_V1.md`
+- `docs/manuscript/v1/review_package/MANUSCRIPT_V1_GUIDE_REVIEW.pdf`
+- `docs/manuscript/v1/review_package/MANUSCRIPT_V1_GUIDE_REVIEW.docx`
+- `docs/manuscript/v1/review_package/manuscript_v1_latex_source.zip`
+- `docs/manuscript/v1/review_package/GUIDE_FEEDBACK.md`
+- `scripts/manuscript/build_guide_review_html.py`
 - `scripts/manuscript/generate_manuscript_v1_assets.py`
 - `scripts/manuscript/render_manuscript_v1_previews.ps1`
 - `scripts/manuscript/render_manuscript_v1_latex.py`
@@ -57,7 +66,7 @@ python scripts/manuscript/render_manuscript_v1_latex.py
 python scripts/manuscript/verify_manuscript_v1.py --repo-root .
 ```
 
-The verifiers confirm exact registered values; CSV/Markdown/LaTeX table consistency; 20 manuscript citation keys; five well-formed SVG/PNG pairs; 300-dpi PNG metadata; allowlisted source hashes; generated-artifact and manuscript-document hashes; manuscript structure; figure/table paths; policy-freeze terminology; and cross-format consistency. All five previews, including the two regenerated diagrams, were visually inspected. Graphviz, Matplotlib, an SVG converter, and a LaTeX engine were unavailable, so DOT sources were retained and the complete LaTeX manuscript received static rather than compilation validation. No dependency was installed.
+The verifiers confirm exact registered values; CSV/Markdown/LaTeX table consistency; 20 manuscript citation keys; five well-formed SVG/PNG pairs; 300-dpi PNG metadata; allowlisted source hashes; generated-artifact/manuscript/review-document hashes; manuscript structure; figure/table paths; policy-freeze terminology; the 19-page guide PDF; and portable ZIP contents/references. The final PDF and the DOCX's Word-exported rendering were rasterized with the Windows native PDF API and every page was inspected. Graphviz, Matplotlib, an SVG converter, and a LaTeX engine were unavailable, so the complete LaTeX manuscript received static and extracted-package validation rather than compilation validation. No dependency was installed.
 
 ## Primary source authorities
 
@@ -140,8 +149,9 @@ The manuscript-specific `MANUSCRIPT_CLAIMS_AUDIT_V1.md` supplements rather than 
 
 ## Next action
 
-1. Resolve the six author/affiliation/contact placeholders recorded in `MANUSCRIPT_REVIEW_CHECKLIST_V1.md`.
-2. Review the venue-neutral scientific wording and decide whether the intended venue needs a separately scoped formatting pass.
-3. If additional uncertainty analysis, literature expansion, another split, or official-test evaluation is desired, register it as new scientific work rather than revising the first valid frozen result.
+1. Open `docs/manuscript/v1/review_package/MANUSCRIPT_V1_GUIDE_REVIEW.pdf` and record comments in `GUIDE_FEEDBACK.md`.
+2. Resolve the six author/affiliation/contact placeholders recorded in `MANUSCRIPT_REVIEW_CHECKLIST_V1.md`.
+3. Choose the target venue/template before a venue-specific formatting pass.
+4. If additional uncertainty analysis, literature expansion, another split, or official-test evaluation is desired, register it as new scientific work rather than revising the first valid frozen result.
 
 Preserve the proxy-labelled internal held-out and deferred official-test boundaries during review and any later venue formatting.

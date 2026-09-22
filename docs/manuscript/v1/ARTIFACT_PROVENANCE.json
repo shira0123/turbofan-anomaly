@@ -119,9 +119,9 @@
   ],
   "artifacts": [
     {
-      "bytes": 3154,
+      "bytes": 4715,
       "path": "docs/manuscript/v1/BUILD.md",
-      "sha256": "60bb9f33e2b8102445eaa1cf3ab1b61a79b9688e8de91f95a770f63c15d62771",
+      "sha256": "c607328bf8c0efe3dc93a6b223dce0c116f1d7e637633fd35fcc63374c34b246",
       "sources": [
         {
           "path": "docs/manuscript/v1/EVIDENCE_MAP.md",
@@ -1081,7 +1081,7 @@
   "generator_files": [
     {
       "path": "scripts/manuscript/generate_manuscript_v1_assets.py",
-      "sha256": "82d95493da1aaa22b0b672413c470716fd69e8c8ef78f8ef7634b31814d71ea5"
+      "sha256": "c8d6bdee58c4f784a9f0d6a67311d867f8a676363fa0d8b7a3a0a59a776f491b"
     },
     {
       "path": "scripts/manuscript/render_manuscript_v1_previews.ps1",
@@ -1092,24 +1092,28 @@
       "sha256": "1843284a1fe06ee3ef102069255529ab2dbacaee597c68a3e65364d871fb1bba"
     },
     {
+      "path": "scripts/manuscript/build_guide_review_html.py",
+      "sha256": "925ff2775da1114e1b111fa847f9212af75f40c8476b75280aad7f153ba53671"
+    },
+    {
       "path": "scripts/manuscript/verify_manuscript_v1_assets.py",
       "sha256": "c4910af4216dea2850238f383d6faa8ce4cc2a1009981bac7a9cb3aad7772a30"
     },
     {
       "path": "scripts/manuscript/verify_manuscript_v1.py",
-      "sha256": "da948639fbd2c81a05e2f57d267273f175950b879e73c6bdb808d541b87f2688"
+      "sha256": "ada4f628462d99861ffc01b62976b00bbae5ab1c4e2aabb88b9f0f763ef8c8b7"
     }
   ],
   "manuscript_documents": [
     {
-      "bytes": 55452,
+      "bytes": 56202,
       "path": "docs/manuscript/v1/MANUSCRIPT_V1.md",
-      "sha256": "42b397955a79c002e14a72afa9d72fe3180e1484f046b4f1ed6aaba398eb353c"
+      "sha256": "3494411d219a0e0bb6a66d7df78b7653880e8c9cdf950671d11e21afa6a89c5d"
     },
     {
-      "bytes": 43968,
+      "bytes": 44749,
       "path": "docs/manuscript/v1/manuscript_v1.tex",
-      "sha256": "5040c18d58db58f46accc88174ece06ec539714853a17c46be30257277e656b2"
+      "sha256": "5c92ac9da1fe9156331f1f08a937757e0577dd9affa5b210519f2fd1ff0eb2db"
     },
     {
       "bytes": 7654,
@@ -1122,9 +1126,9 @@
       "sha256": "ff988df2f15649ce56671255f65f2ebf250ec5f6fedddafa95bb82761ea5a407"
     },
     {
-      "bytes": 5612,
+      "bytes": 6174,
       "path": "docs/manuscript/v1/MANUSCRIPT_REVIEW_CHECKLIST_V1.md",
-      "sha256": "a5bf53620a56b9b458f4f1245e722c9ec53591fb9b3d09167e851264df56eb31"
+      "sha256": "cae4c4500cc65c0b667ae4c592e50619b40bae182cc5a7a8a190616efd08cae3"
     },
     {
       "bytes": 4647,
@@ -1133,6 +1137,48 @@
     }
   ],
   "png_renderer_log": "Rendered C:\\Users\\shiva_lajayge\\turbofan-clean-v3\\docs\\manuscript\\v1\\figures\\figure_01_system_architecture.png [2244x1476, 300 dpi]\nRendered C:\\Users\\shiva_lajayge\\turbofan-clean-v3\\docs\\manuscript\\v1\\figures\\figure_02_experimental_protocol.png [2244x1476, 300 dpi]\nRendered C:\\Users\\shiva_lajayge\\turbofan-clean-v3\\docs\\manuscript\\v1\\figures\\figure_03_operational_results.png [2244x921, 300 dpi]\nRendered C:\\Users\\shiva_lajayge\\turbofan-clean-v3\\docs\\manuscript\\v1\\figures\\figure_04_ranking_results.png [2126x1087, 300 dpi]\nRendered C:\\Users\\shiva_lajayge\\turbofan-clean-v3\\docs\\manuscript\\v1\\figures\\figure_05_validation_model_comparison.png [2244x1276, 300 dpi]",
+  "review_documents": [
+    {
+      "bytes": 11961,
+      "path": "docs/manuscript/v1/INDEPENDENT_REVIEW_V1.md",
+      "sha256": "b283d8e077826e2dab08d3d4a06b35fafef385261e189941675a93bc699a032a"
+    },
+    {
+      "bytes": 3580,
+      "path": "docs/manuscript/v1/REVISION_LOG_V1.md",
+      "sha256": "4561c011f5fd9d6800b99aa69daae28ea05b854a989982266fd28ed2116254b0"
+    },
+    {
+      "bytes": 9755,
+      "path": "docs/manuscript/v1/README.md",
+      "sha256": "6fd51bc2149496874a4b9913717171f8856942195717472e5adf5efbdcef31de"
+    },
+    {
+      "bytes": 9578,
+      "path": "docs/manuscript/v1/HANDOFF.md",
+      "sha256": "adb851a8b8ffdd1b7d151ec40bfd8597136e64a741596117664fe1b52288cdb1"
+    },
+    {
+      "bytes": 2499,
+      "path": "docs/manuscript/v1/review_package/GUIDE_FEEDBACK.md",
+      "sha256": "f0d0534e2d718ea0fc328d8d96139692670fee836f7cf3de83f5f76105543f55"
+    },
+    {
+      "bytes": 983997,
+      "path": "docs/manuscript/v1/review_package/MANUSCRIPT_V1_GUIDE_REVIEW.pdf",
+      "sha256": "59534ed7d42038cbefda43cc1993e64e14cc8c1457d0401f5c73c415a82079b6"
+    },
+    {
+      "bytes": 54118,
+      "path": "docs/manuscript/v1/review_package/MANUSCRIPT_V1_GUIDE_REVIEW.docx",
+      "sha256": "b21c4da245758b2f713e9b8a08293405d9dd31990e5056eb29c86bf06b282e84"
+    },
+    {
+      "bytes": 517498,
+      "path": "docs/manuscript/v1/review_package/manuscript_v1_latex_source.zip",
+      "sha256": "219e5751ffec928a87b250f8392cb4a1b0a9c4bbf5d3b99b18fb830e9ac7761d"
+    }
+  ],
   "schema_version": "1.0.0",
   "scientific_boundary": {
     "datasets_opened": false,
@@ -1150,6 +1196,8 @@
   },
   "software": {
     "graphviz": "unavailable; DOT sources retained but not used for rendering",
+    "guide_docx_renderer": "Microsoft Word HTML conversion; 19 pages; visually inspected",
+    "guide_pdf_renderer": "Microsoft Edge HTML/MathML print-to-PDF; 19 pages; visually inspected",
     "latex_engine": "unavailable; table fragments not compiled",
     "matplotlib": "unavailable; not installed",
     "platform": "Windows-11-10.0.26200-SP0",

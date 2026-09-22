@@ -11,6 +11,7 @@ import argparse
 import hashlib
 import json
 import re
+import zipfile
 from pathlib import Path
 
 
@@ -162,10 +163,21 @@ def main() -> None:
         if "Gate 4" in line:
             context = line.lower()
             require(
-                "governance" in context or "pre-held-out policy freeze" in context,
+                "governance" in context
+                or "pre-held-out policy freeze" in context
+                or "pre-held-out policy-freeze" in context,
                 f"Unexplained Gate 4 occurrence: {line[:160]}",
             )
     lower_md = md.lower()
+    require(
+        "at or below 6%" in lower_md,
+        "Registered inclusive 6% criterion is not stated in the manuscript",
+    )
+    require(
+        "healthy-only, condition-aware" not in lower_md
+        and "condition-aware, healthy-only" not in lower_md,
+        "Pipeline-level healthy-only wording remains overbroad",
+    )
     for phrase in ("we propose a novel", "state-of-the-art", "outperforms", "superior to", "real-time system"):
         require(phrase not in lower_md, f"Unsupported promotional phrase present: {phrase}")
 
@@ -191,8 +203,46 @@ def main() -> None:
         require(relative in document_records, f"Provenance document record missing: {relative}")
         require(document_records[relative]["sha256"] == sha256(path), f"Provenance hash mismatch: {relative}")
 
+    expected_review_documents = (
+        "docs/manuscript/v1/INDEPENDENT_REVIEW_V1.md",
+        "docs/manuscript/v1/REVISION_LOG_V1.md",
+        "docs/manuscript/v1/README.md",
+        "docs/manuscript/v1/HANDOFF.md",
+        "docs/manuscript/v1/review_package/GUIDE_FEEDBACK.md",
+        "docs/manuscript/v1/review_package/MANUSCRIPT_V1_GUIDE_REVIEW.pdf",
+        "docs/manuscript/v1/review_package/MANUSCRIPT_V1_GUIDE_REVIEW.docx",
+        "docs/manuscript/v1/review_package/manuscript_v1_latex_source.zip",
+    )
+    review_records = {item["path"]: item for item in provenance.get("review_documents", [])}
+    for relative in expected_review_documents:
+        path = root / relative
+        require(path.is_file() and path.stat().st_size > 0, f"Review artifact missing: {relative}")
+        require(relative in review_records, f"Provenance review record missing: {relative}")
+        require(review_records[relative]["sha256"] == sha256(path), f"Review provenance hash mismatch: {relative}")
+
+    guide_pdf = root / "docs/manuscript/v1/review_package/MANUSCRIPT_V1_GUIDE_REVIEW.pdf"
+    require(
+        len(re.findall(rb"/Type\s*/Page\b", guide_pdf.read_bytes())) == 19,
+        "Guide-review PDF page count is not 19",
+    )
+    source_zip = root / "docs/manuscript/v1/review_package/manuscript_v1_latex_source.zip"
+    with zipfile.ZipFile(source_zip) as archive:
+        members = {name.replace("\\", "/") for name in archive.namelist() if not name.endswith("/")}
+        zip_tex = archive.read("manuscript_v1.tex").decode("utf-8")
+        referenced = re.findall(r"\\input\{([^}]+)\}", zip_tex)
+        referenced += re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}", zip_tex)
+        referenced += [f"{item.strip()}.bib" for group in re.findall(r"\\bibliography\{([^}]+)\}", zip_tex) for item in group.split(",")]
+        expected_zip_members = {"README_BUILD.md", "manuscript_v1.tex", *referenced}
+        require(members == expected_zip_members, "Portable LaTeX ZIP contents differ from the required set")
+        require(all(item in members for item in referenced), "Portable LaTeX ZIP has unresolved transitive references")
+        for relative in ("manuscript_v1.tex", *referenced):
+            require(
+                archive.read(relative) == (manuscript_dir / relative).read_bytes(),
+                f"Portable LaTeX ZIP member differs from repository source: {relative}",
+            )
+
     print(f"Manuscript verification passed: {word_count} words excluding tables, captions, metadata, and references; {len(md_citations)} references, 5 figures, 4 tables.")
-    print("Cross-format evidence, terminology, paths, bibliography, LaTeX structure, and provenance hashes passed.")
+    print("Cross-format evidence, terminology, paths, bibliography, LaTeX structure, review package, portable ZIP, and provenance hashes passed.")
 
 
 if __name__ == "__main__":
